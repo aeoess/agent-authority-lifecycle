@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use or adapt this work, please cite it as below."
+title: "Authority Lifecycle for Long-Running AI Agents"
+abstract: "What happens to an AI agent's authority across changes of personnel, keys, approvals and roles, with each statement marked specified, tested, candidate, implemented, proposed or open, and tested statements linked to runnable conformance cases."
+type: software
+authors:
+  - family-names: Pidlisnyi
+    given-names: Tymofii
+    orcid: "https://orcid.org/0009-0002-4700-3594"
+version: 0.1.0-draft
+license: Apache-2.0
+repository-code: "https://github.com/aeoess/agent-authority-lifecycle"
+keywords:
+  - AI agents
+  - delegation
+  - revocation
+  - authority
+  - succession
+  - conformance
