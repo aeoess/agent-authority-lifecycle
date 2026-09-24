@@ -20,6 +20,9 @@ Stdlib only. Checks:
   6. Every fixture entry names a decision, a family (unless the decision is
      RESEARCH_ONLY), a vector id list and an SDK summary, and carries a url
      only when pending_pr is false.
+  7. Taxonomy fields: every case carries exactly one known semantic_family and
+     one known domain, a non-empty fixture_family, and an out_of_scope_reason
+     if and only if its tier is boundary.
 
 Exit code 0 if every check passes, 1 otherwise. Prints a report either way.
 """
@@ -44,6 +47,41 @@ OPEN_QUESTION_SLUGS = {
     "notice-and-relying-parties",
 }
 FETCHED_BY_VALUES = {"auditor", "thin-group ledger"}
+SEMANTIC_FAMILIES = {
+    "creation-and-activation",
+    "issuer-standing-and-authority-to-change",
+    "dependencies-and-subdelegation",
+    "succession-and-replacement",
+    "collective-and-multi-principal-authority",
+    "suspension-restriction-and-release",
+    "revocation-expiry-and-exhaustion",
+    "external-authority-changing-events",
+    "notice-observation-and-reliance",
+    "credentials-keys-and-derived-authority",
+    "in-flight-actions-and-authorization-boundaries",
+    "scheduled-and-dormant-authority",
+    "replication-rollback-and-stale-state",
+    "identity-target-and-capability-drift",
+    "policy-version-and-rule-change",
+    "retroactive-findings-and-recharacterization",
+    "time-clocks-and-validity-windows",
+    "evidence-attribution-and-completeness",
+}
+DOMAINS = {
+    "agency-law", "estates-and-trusts", "corporate", "banking-payments",
+    "insolvency", "civil-procedure", "regulatory", "government", "military",
+    "aviation", "medicine", "maritime", "industrial-safety", "security-incident",
+    "distributed-systems", "cryptography-and-pki", "platform-engineering",
+    "naming-and-registry", "agent-native",
+}
+OUT_OF_SCOPE_REASONS = {
+    "security-control",
+    "liability-or-legal-consequence",
+    "execution-and-scheduler-mechanics",
+    "no-verifier-in-the-scenario",
+    "implementation-or-configuration-defect",
+    "no-authority-transition-in-the-scenario",
+}
 FIXTURE_DECISIONS = {"VECTOR", "COVERED", "RESEARCH_ONLY"}
 REQUIRED_FIXTURE_KEYS = {"decision", "family", "vector_ids", "sdk_results", "pending_pr"}
 ALLOWED_FIXTURE_KEYS = REQUIRED_FIXTURE_KEYS | {"url", "note"}
@@ -168,11 +206,11 @@ def check_related(rel, case_id, errors):
 
 
 REQUIRED_CASE_KEYS = {
-    "id", "title", "family", "tier", "status",
+    "id", "title", "semantic_family", "domain", "fixture_family", "tier", "status",
     "situation", "expected_outcome", "naive_failure",
     "related", "sources", "variants", "fixtures",
 }
-ALLOWED_CASE_KEYS = REQUIRED_CASE_KEYS | {"notes"}
+ALLOWED_CASE_KEYS = REQUIRED_CASE_KEYS | {"notes", "out_of_scope_reason"}
 ALLOWED_TIERS = {"verified", "hypothetical", "candidate", "boundary"}
 ALLOWED_STATUS = {"proposed"}
 NO_PRECEDENT_MARKER = "no external precedent claimed"
@@ -193,11 +231,26 @@ def check_case(case, errors):
 
     if not isinstance(case_id, str) or not CASE_ID_RE.match(case_id):
         err(errors, case_id, f"id {case_id!r} does not match ^LC-[A-Z]-[0-9]{{3}}$")
-    for key in ("title", "family"):
+    for key in ("title", "fixture_family"):
         if not isinstance(case.get(key), str) or not case.get(key, "").strip():
             err(errors, case_id, f"{key} must be a non-empty string")
+    if case.get("semantic_family") not in SEMANTIC_FAMILIES:
+        err(errors, case_id, f"semantic_family {case.get('semantic_family')!r} is not one of "
+                             f"the {len(SEMANTIC_FAMILIES)} families in drafts/TAXONOMY.md")
+    if case.get("domain") not in DOMAINS:
+        err(errors, case_id, f"domain {case.get('domain')!r} not in {sorted(DOMAINS)}")
     if case.get("tier") not in ALLOWED_TIERS:
         err(errors, case_id, f"tier {case.get('tier')!r} not in {sorted(ALLOWED_TIERS)}")
+    reason = case.get("out_of_scope_reason")
+    if case.get("tier") == "boundary":
+        if reason is None:
+            err(errors, case_id, "tier is boundary but no out_of_scope_reason is given")
+        elif reason not in OUT_OF_SCOPE_REASONS:
+            err(errors, case_id, f"out_of_scope_reason {reason!r} not in "
+                                 f"{sorted(OUT_OF_SCOPE_REASONS)}")
+    elif reason is not None:
+        err(errors, case_id, f"tier is {case.get('tier')!r} but an out_of_scope_reason "
+                             f"({reason!r}) is set; only boundary cases carry one")
     if case.get("status") not in ALLOWED_STATUS:
         err(errors, case_id, f"status {case.get('status')!r} not in {sorted(ALLOWED_STATUS)}")
     for key in ("situation", "expected_outcome", "naive_failure"):
@@ -319,6 +372,24 @@ def main():
     print(f"fixture entries: {fixture_entries} across {len(families)} families, "
           f"{vector_refs} vector id references")
     print("fixture decisions: " + ", ".join(f"{k} {v}" for k, v in sorted(decisions.items())))
+    semantic_counts = {}
+    domain_counts = {}
+    reason_counts = {}
+    for case in cases:
+        if not isinstance(case, dict):
+            continue
+        semantic_counts[case.get("semantic_family")] = \
+            semantic_counts.get(case.get("semantic_family"), 0) + 1
+        domain_counts[case.get("domain")] = domain_counts.get(case.get("domain"), 0) + 1
+        if case.get("tier") == "boundary":
+            reason_counts[case.get("out_of_scope_reason")] = \
+                reason_counts.get(case.get("out_of_scope_reason"), 0) + 1
+    print(f"semantic families in use: {len(semantic_counts)} of {len(SEMANTIC_FAMILIES)}, "
+          f"domains in use: {len(domain_counts)} of {len(DOMAINS)}")
+    print("semantic families: " + ", ".join(
+        f"{k} {v}" for k, v in sorted(semantic_counts.items(), key=lambda kv: (-kv[1], str(kv[0])))))
+    print("boundary reasons: " + ", ".join(
+        f"{k} {v}" for k, v in sorted(reason_counts.items(), key=lambda kv: (-kv[1], str(kv[0])))))
     tier_counts = {}
     for case in cases:
         if isinstance(case, dict):

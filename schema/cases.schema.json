@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/aeoess/agent-authority-lifecycle/schema/cases.schema.json",
   "title": "Agent Authority Lifecycle case catalog",
-  "description": "Machine-readable form of the cases in CASES.md and BOUNDARY-CASES.md. One object per case. No object in this file is itself a conformance result; `fixtures` links out to the Agent Authority Conformance suite. A fixture entry records a lab decision (VECTOR, COVERED or RESEARCH_ONLY), the fixture family, the vector ids and a summary of what the two reference SDKs decided. Entries with `pending_pr` true have no published branch yet, so no link is given.",
+  "description": "Machine-readable form of the cases in CASES.md and BOUNDARY-CASES.md. One object per case, grouped by semantic_family (the authority question the case asks) with the pre-v0.3 grouping kept as fixture_family. No object in this file is itself a conformance result; `fixtures` links out to the Agent Authority Conformance suite. A fixture entry records a lab decision (VECTOR, COVERED or RESEARCH_ONLY), the fixture family, the vector ids and a summary of what the two reference SDKs decided. Entries with `pending_pr` true have no published branch yet, so no link is given.",
   "type": "array",
   "items": {
     "$ref": "#/$defs/case"
@@ -116,7 +116,9 @@
       "required": [
         "id",
         "title",
-        "family",
+        "semantic_family",
+        "domain",
+        "fixture_family",
         "tier",
         "status",
         "situation",
@@ -135,10 +137,59 @@
           "type": "string",
           "minLength": 1
         },
-        "family": {
+        "semantic_family": {
+          "type": "string",
+          "enum": [
+            "creation-and-activation",
+            "issuer-standing-and-authority-to-change",
+            "dependencies-and-subdelegation",
+            "succession-and-replacement",
+            "collective-and-multi-principal-authority",
+            "suspension-restriction-and-release",
+            "revocation-expiry-and-exhaustion",
+            "external-authority-changing-events",
+            "notice-observation-and-reliance",
+            "credentials-keys-and-derived-authority",
+            "in-flight-actions-and-authorization-boundaries",
+            "scheduled-and-dormant-authority",
+            "replication-rollback-and-stale-state",
+            "identity-target-and-capability-drift",
+            "policy-version-and-rule-change",
+            "retroactive-findings-and-recharacterization",
+            "time-clocks-and-validity-windows",
+            "evidence-attribution-and-completeness"
+          ],
+          "description": "The authority question this case asks, derived from the cases themselves in the v0.3 pass. Exactly one per case, including boundary cases, where it records the nearest authority question rather than a claim that the case resolves to an authority verdict. Defined in drafts/TAXONOMY.md and used to group CASES.md."
+        },
+        "domain": {
+          "type": "string",
+          "enum": [
+            "agency-law",
+            "estates-and-trusts",
+            "corporate",
+            "banking-payments",
+            "insolvency",
+            "civil-procedure",
+            "regulatory",
+            "government",
+            "military",
+            "aviation",
+            "medicine",
+            "maritime",
+            "industrial-safety",
+            "security-incident",
+            "distributed-systems",
+            "cryptography-and-pki",
+            "platform-engineering",
+            "naming-and-registry",
+            "agent-native"
+          ],
+          "description": "The source domain the case is drawn from. Metadata only: it records where the evidence comes from, not what the case decides. For an unsourced hypothetical it records the domain the scenario is set in."
+        },
+        "fixture_family": {
           "type": "string",
           "minLength": 1,
-          "description": "The ### grouping heading this case sits under in CASES.md or BOUNDARY-CASES.md."
+          "description": "The pre-v0.3 grouping heading this case sat under in CASES.md or BOUNDARY-CASES.md, kept so lab fixture family directory names stay resolvable. Superseded by semantic_family for grouping."
         },
         "tier": {
           "type": "string",
@@ -156,6 +207,18 @@
             "proposed"
           ],
           "description": "Fixture/build-maturity status. Proposed unless a runnable fixture exists in the Agent Authority Conformance suite; none does yet for any case, so this is 'proposed' throughout. Distinct from `tier`, which is about sourcing confidence."
+        },
+        "out_of_scope_reason": {
+          "type": "string",
+          "enum": [
+            "security-control",
+            "liability-or-legal-consequence",
+            "execution-and-scheduler-mechanics",
+            "no-verifier-in-the-scenario",
+            "implementation-or-configuration-defect",
+            "no-authority-transition-in-the-scenario"
+          ],
+          "description": "Why this case is a boundary case and not a lifecycle case. Required when tier is boundary, forbidden otherwise. BOUNDARY-CASES.md is grouped by this field."
         },
         "situation": {
           "type": "string",
@@ -199,7 +262,33 @@
           },
           "description": "Optional. Carries the source document's own literal status line and any 'Known issue' / inline annotation text verbatim, so nothing found during parsing is silently dropped."
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tier": {
+                "const": "boundary"
+              }
+            },
+            "required": [
+              "tier"
+            ]
+          },
+          "then": {
+            "required": [
+              "out_of_scope_reason"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "out_of_scope_reason"
+              ]
+            }
+          }
+        }
+      ]
     },
     "fixture": {
       "type": "object",
