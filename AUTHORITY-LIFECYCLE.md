@@ -1,6 +1,6 @@
 # Authority Lifecycle for Long-Running AI Agents
 
-Version 0.1.1-draft. Part of the Agent Passport System work. Apache-2.0.
+Version 0.1.2-draft. Part of the Agent Passport System work. Apache-2.0.
 
 ## Scope
 
@@ -17,7 +17,9 @@ Every statement below carries a status.
 
 Statuses combine, for example specified and tested, or specified, not yet tested.
 
-## Lifecycle objects are separate
+<a name="lifecycle-objects-are-separate"></a>
+
+## Lifecycle concepts are separate
 
 Authority, as used here, is the bounded set of actions an agent may perform on behalf of a principal under currently valid grants and constraints.
 
@@ -31,6 +33,7 @@ Not every concept below has to be a separate protocol object.
 - **Principal.** The person, office, organization or other body on whose behalf authority exists.
 - **Issuer.** Whoever issues or signs an authority artifact. The issuer and the principal can be different.
 - **Issuer standing.** Why the issuer was allowed to create, narrow, suspend, revoke or replace authority for the principal. A valid signature establishes who signed. It does not by itself establish standing.
+- **Lifecycle standing.** Who may suspend, revoke, replace or reaffirm an authority artifact. This is not always the issuer. An organization, a quorum, a successor, a court or a security function can have standing to change authority it never issued.
 - **Principal binding.** Says which principal an agent acts for. It can exist before any grant and outlive one, for example an agent registered to an organization between grants.
 - **Sponsor or responsible owner.** Who is responsible for an agent's continued operation, where a system has that role. Changing a sponsor does not by itself transfer or replace existing authority.
 
@@ -41,6 +44,7 @@ Not every concept below has to be a separate protocol object.
 - **Presented credential or session.** A session or derived token used to exercise authority in a particular request. Ending a grant does not necessarily invalidate every session or derived token already issued, and ending a session does not by itself end the grant.
 - **Activation condition.** When already issued authority becomes exercisable. A grant can be validly issued and still wait on a date or a recorded event.
 - **Target binding.** Which resource, counterparty or object the authority applies to. Continuity of a name does not by itself establish continuity of the thing named.
+- **Action or capability binding.** Which operation, implementation or schema a grant refers to, where that distinction matters. A tool can keep its name while what it does changes, which widens effective authority without any change to the grant.
 
 ### Authority lifecycle state
 
@@ -48,12 +52,13 @@ Not every concept below has to be a separate protocol object.
 - **Suspension.** Pauses or narrows the use of authority without permanently ending it.
 - **Expiry or exhaustion.** Ends authority because a declared time, use count, budget, purpose or other bound has been reached. Expiry is not revocation.
 - **Revocation.** Permanently ends a named authority artifact. A reversible pause is suspension, not revocation.
-- **External restriction.** A block from outside the grant chain, such as a sanction, a court order or a legal hold. It can stop some effects while the grant itself stays valid.
+- **External restriction.** A block from outside the grant chain, such as a sanction, a court order, or a legal hold that blocks a deletion. It can stop some effects while the grant itself stays valid.
 - **Authority epoch.** Where a system uses generations, separates current authority from stale authority surviving in sessions, queues, replicas, snapshots or restored state.
 
 ### Decisions and effects
 
 - **Approval.** A principal or approver allows a proposed action. It is an input to authorization, with its own scope, expiry and use count, and it can be withdrawn before dispatch.
+- **Policy version.** Which policy an approval or decision was evaluated against. The same action can be allowed under one version and denied under the next.
 - **Authorization decision.** The record an enforcement point makes that an action was allowed or denied, against the authority, policy and inputs it evaluated.
 - **Invocation.** The exact action submitted for execution.
 - **Execution.** The attempt to carry out that invocation.
@@ -67,12 +72,13 @@ Not every concept below has to be a separate protocol object.
 - **Status observation.** What authority state a verifier could establish, from which source, at what time and with what freshness. Current authority and observed authority can differ.
 - **Notice.** That a particular party or enforcement point learned of a transition at a particular time. Recording a transition and observing it are different events.
 - **Evidence.** Records a decision, transition, invocation, execution or effect. Ending authority does not by itself erase or invalidate evidence of earlier events.
+- **Evidence attestor.** Who produced or signed a piece of evidence, and in what role. A gateway attesting an execution makes a different claim from an issuer signing a grant, and its key has its own lifecycle.
 - **Coverage and completeness.** What set or interval the available evidence covers. Showing that individual records are authentic is weaker than establishing that all relevant events were observed.
 - **Accountability record.** Who a system identifies as responsible for an agent or action. It does not by itself establish legal liability.
 
 Human agency law has related distinctions between actual authority, notice and apparent authority. Those doctrines are a useful source of cases for this work. This document does not assume they apply to AI agents.
 
-Status. Agent identity, principal binding, delegated authority, signing key, approval, suspension, revocation and execution carry over from 0.1.0-draft. The grouping and every other entry are **proposed** in 0.1.1-draft. No public case tests them yet.
+Status. Agent identity, principal binding, delegated authority, signing key, approval, suspension, revocation and execution carry over from 0.1.0-draft. The grouping and every other entry are **proposed**, added in 0.1.1-draft or 0.1.2-draft. No public case tests them yet.
 
 ### What changes when a person leaves
 

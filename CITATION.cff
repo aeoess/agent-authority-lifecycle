@@ -7,7 +7,7 @@ authors:
   - family-names: Pidlisnyi
     given-names: Tymofii
     orcid: "https://orcid.org/0009-0002-4700-3594"
-version: 0.1.1-draft
+version: 0.1.2-draft
 license: Apache-2.0
 repository-code: "https://github.com/aeoess/agent-authority-lifecycle"
 keywords:
