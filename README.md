@@ -8,15 +8,21 @@ In short, an agent can survive a personnel change and its old authority does not
 
 ## Contents
 
-- [AUTHORITY-LIFECYCLE.md](AUTHORITY-LIFECYCLE.md), the model and its invariants
-- [INVARIANT-CANDIDATES.md](INVARIANT-CANDIDATES.md), proposed invariants that are not in the published L series, each with what it does not claim, the cases that force it and the strongest counterexample
-- [CASES.md](CASES.md), situations that test the model, grouped by the authority question each one asks: verified, reviewed hypothetical and candidate
-- [BOUNDARY-CASES.md](BOUNDARY-CASES.md), sound security and evidence cases that are not authority-lifecycle cases, grouped by why each is out of scope
-- [cases.json](cases.json), the single source of truth for the cases, validated by [schema/cases.schema.json](schema/cases.schema.json) and [scripts/validate_cases.py](scripts/validate_cases.py), with each case's `fixtures` array naming the fixture family, vector ids and SDK results the lab wave produced for it
+Read in this order.
+
+1. [AUTHORITY-LIFECYCLE.md](AUTHORITY-LIFECYCLE.md), the model: the concepts it keeps separate, the verification model naming what a verifier may say, and the published L1 to L12 invariants.
+2. [CASES.md](CASES.md), the situations that test the model, grouped by the authority question each one asks, verified, reviewed hypothetical and candidate, each with a stable id.
+3. [INVARIANT-CANDIDATES.md](INVARIANT-CANDIDATES.md), proposed invariants that are not in the published L series, each with what it does not claim, the cases that force it and the strongest counterexample.
+4. [OPEN-QUESTIONS.md](OPEN-QUESTIONS.md), what is not answered yet, each question linked to the cases, candidates and fixtures that bear on it.
+5. [BOUNDARY-CASES.md](BOUNDARY-CASES.md), sound security and evidence cases that are not authority-lifecycle cases, grouped by why each is out of scope.
+6. [cases.json](cases.json), the single source of truth for the cases, validated by [schema/cases.schema.json](schema/cases.schema.json) and [scripts/validate_cases.py](scripts/validate_cases.py), with each case's `fixtures` array naming the fixture family, vector ids and SDK results the lab wave produced for it.
+7. [SUPERSEDED.md](SUPERSEDED.md), designs we replaced and why.
 
 CASES.md and BOUNDARY-CASES.md are generated from `cases.json` by [scripts/build_cases_md.py](scripts/build_cases_md.py). Edit case content in `cases.json` and regenerate. CI runs `python3 scripts/build_cases_md.py --check` and fails on any drift.
-- [OPEN-QUESTIONS.md](OPEN-QUESTIONS.md), what is not answered yet
-- [SUPERSEDED.md](SUPERSEDED.md), designs we replaced and why
+
+## Versioning
+
+Releases version the whole repository, so every document carries the same line, and git history tracks each file.
 
 ## Relationship to the Agent Passport System
 
