@@ -1,6 +1,32 @@
 # Authority Lifecycle for Long-Running AI Agents
 
-Version 0.2.0-draft. Part of the Agent Passport System work. Apache-2.0.
+Version 0.2.1-draft. Part of the Agent Passport System work. Apache-2.0.
+
+## Contents
+
+- [Scope](#scope)
+- [Lifecycle concepts are separate](#lifecycle-concepts-are-separate)
+  - [Parties and standing](#parties-and-standing)
+  - [Authority and dependencies](#authority-and-dependencies)
+  - [Authority lifecycle state](#authority-lifecycle-state)
+  - [Decisions and effects](#decisions-and-effects)
+  - [Verification and evidence](#verification-and-evidence)
+  - [What changes when a person leaves](#what-changes-when-a-person-leaves)
+- [Invariants](#invariants)
+  - [L1. Revoking an ancestor invalidates the authority that depends on it](#l1-revoking-an-ancestor-invalidates-the-authority-that-depends-on-it)
+  - [L2. Identity continuity does not imply authority continuity](#l2-identity-continuity-does-not-imply-authority-continuity)
+  - [L3. Reauthorization creates new authority](#l3-reauthorization-creates-new-authority)
+  - [L4. A successor does not inherit the predecessor's delegation tree](#l4-a-successor-does-not-inherit-the-predecessors-delegation-tree)
+  - [L5. Independent chains are not combined](#l5-independent-chains-are-not-combined)
+  - [L6. An earlier approval is not current authority](#l6-an-earlier-approval-is-not-current-authority)
+  - [L7. Unknown revocation state is not active](#l7-unknown-revocation-state-is-not-active)
+  - [L8. Suspension is not revocation](#l8-suspension-is-not-revocation)
+  - [L9. Key rotation is not delegation revocation](#l9-key-rotation-is-not-delegation-revocation)
+  - [L10. Expiry is not revocation](#l10-expiry-is-not-revocation)
+  - [L11. No silent authority resurrection](#l11-no-silent-authority-resurrection)
+  - [L12. Completeness is a separate and stronger claim](#l12-completeness-is-a-separate-and-stronger-claim)
+- [Operational cases](#operational-cases)
+- [How to cite](#how-to-cite)
 
 ## Scope
 
