@@ -2,7 +2,7 @@
 
 Generated from cases.json by scripts/build_cases_md.py. Do not edit case data here.
 
-Part of Authority Lifecycle v0.3.0-draft, part of the Agent Passport System work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.
+Part of Authority Lifecycle v0.3.0-draft. From the Agent Passport System work. Apache-2.0.
 
 These are situations where the people, keys, approvals, offices, resources or infrastructure around an agent change, and the question is what happens to its authority. They test the concepts and invariants in [AUTHORITY-LIFECYCLE.md](AUTHORITY-LIFECYCLE.md) and the gaps in [OPEN-QUESTIONS.md](OPEN-QUESTIONS.md).
 
@@ -40,6 +40,8 @@ Cases are grouped by the authority question they ask, not by the research domain
 - [Succession and replacement](#succession-and-replacement) (13)
 - [Suspension, restriction and release](#suspension-restriction-and-release) (8)
 - [Time, clocks and validity windows](#time-clocks-and-validity-windows) (5)
+
+Tier is a column in the index below and a line on each case, not a section of its own. The 7 reviewed hypothetical cases are [LC-B-002](#lc-b-002-two-independently-authoritative-records-of-the-same-fact-can-disagree-and-neither-is-automatically-the-answer), [LC-B-004](#lc-b-004-a-successors-fresh-grant-is-bounded-by-the-successors-own-ceiling-not-the-predecessors), [LC-B-030](#lc-b-030-a-third-partys-own-contract-can-impose-a-re-authorization-gate-neither-side-of-a-clean-succession-controls), [LC-E-034](#lc-e-034-a-queued-action-that-outlasts-a-suspension-needs-a-live-check-at-fire-time-not-just-at-the-moment-it-was-queued), [LC-F-009](#lc-f-009-a-publisher-un-saying-its-own-false-revocation-is-a-different-operation-from-reauthorization-and-needs-its-own-evidence-trail), [LC-F-014](#lc-f-014-an-issuers-own-timestamp-is-only-as-trustworthy-as-the-time-source-it-was-signed-against) and [LC-F-035](#lc-f-035-choosing-a-stateless-bearer-credential-format-is-choosing-revocation-only-takes-effect-at-natural-expiry). The one candidate case is [LC-H-009](#lc-h-009-a-child-subdelegation-issued-inside-a-revocations-propagation-window-is-void-once-the-revocation-is-established-a-hypothetical-naming-a-gap-distinct-from-l1). Everything else is verified.
 
 <details>
 <summary>All 134 cases</summary>
@@ -409,7 +411,7 @@ Variants: LC-A-004 (the verifier's role has to match the specific contingency su
 
 **Status:** proposed.
 
-**Fixture:** `ancestor-revocation-chain` / no vector ids named in the coverage table (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/ancestor-revocation-chain/README.md); `sponsor-handover` / `SH-03`, `SH-05` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/sponsor-handover/README.md)
+**Fixture:** `ancestor-revocation-chain` / no vector ids named in the coverage table (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/ancestor-revocation-chain/README.md). `sponsor-handover` / `SH-03`, `SH-05` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/sponsor-handover/README.md)
 
 ---
 
@@ -1295,11 +1297,11 @@ Authority changed between authorization and outcome. What governs at the next au
 
 **Human analog.** UCC 4A-211's acceptance boundary. [Cornell LII](https://www.law.cornell.edu/ucc/4A/4A-211): "After a payment order has been accepted, cancellation or amendment of the order is not effective unless the receiving bank agrees or a funds-transfer system rule allows cancellation or amendment without agreement of the bank."
 
-**What should happen.** AUTHORITY-LIFECYCLE.md names "an action already in flight when authority changes" as an operational case it has to handle, without resolving it. This supplies a concrete resolution for one instrument type: the receiving institution's acceptance is the hard boundary. Before it, revoking the authorizing delegation stops the order. After it, the order proceeds independent of what the delegation graph says.
+**What should happen.** OPEN-QUESTIONS.md leaves "work in flight" open: the old grant cannot authorize a new effect at the next authorization boundary, and what happens to the operation itself is unsettled. This supplies a concrete resolution for one instrument type: the receiving institution's acceptance is the hard boundary. Before it, revoking the authorizing delegation stops the order. After it, the order proceeds independent of what the delegation graph says.
 
 **What a naive system gets wrong.** Assuming revocation automatically halts any payment order already submitted under it ignores that acceptance gives the order a revocation-proof effect. Assuming revocation never matters for in-flight orders ignores that unaccepted orders remain fully stoppable.
 
-**Related invariant/open question.** Distinct from the already-verified LC-B-028 (stop-payment), which is a customer-initiated cancellation decision under L6's recheck principle. This is the underlying delegated authority itself changing mid-flight, the specific unresolved operational case AUTHORITY-LIFECYCLE.md names.
+**Related invariant/open question.** Distinct from the already-verified LC-B-028 (stop-payment), which is a customer-initiated cancellation decision under L6's recheck principle. This is the underlying delegated authority itself changing mid-flight, the specific question OPEN-QUESTIONS.md leaves open under "work in flight."
 
 **Status:** proposed.
 
@@ -1337,7 +1339,7 @@ Variants: LC-C-010 (the same unreachability-triggers-fallback shape at organizat
 
 **What a naive system gets wrong.** Writing job logic that checks authority once at the start and trusts the held token for the job's full duration, treating "I had a valid token when I began" as equivalent to "I still have authority," when nothing about holding a token implies the issuer has not revoked the underlying grant since.
 
-**Related invariant/open question.** L6 states the enforcement gateway must recheck revocation at execution time. This is the client-agent side of the same problem, how a long-running job's own internal logic must be structured to cope with a gateway-side denial arriving mid-job, a concrete instance of the "work in flight" operational case for a client with no push notification at all.
+**Related invariant/open question.** L6 states the enforcement gateway must recheck revocation at execution time. This is the client-agent side of the same problem, how a long-running job's own internal logic must be structured to cope with a gateway-side denial arriving mid-job, a concrete instance of the "work in flight" open question for a client with no push notification at all.
 
 **Status:** proposed.
 
@@ -1609,7 +1611,7 @@ Which version of the rules governs this grant or this past decision?
 
 **What a naive system gets wrong.** Assuming that a changed authority rule should immediately apply to every in-flight instance for safety. Applying it naively mid-replay corrupts the instance rather than protecting it, because a durable execution engine's own determinism requirement means the fix has to be an explicit, versioned cutover point, not a blanket immediate switch.
 
-**Related invariant/open question.** Directly names the "Policy version" concept AUTHORITY-LIFECYCLE.md already lists among decisions and effects. It is also a narrower, concrete instance of the "work in flight" operational case, sharper than that case states it because for a replay-based execution engine the naive fix is actively wrong, not merely under-specified.
+**Related invariant/open question.** Directly names the "Policy version" concept AUTHORITY-LIFECYCLE.md already lists among decisions and effects. It is also a narrower, concrete instance of the "work in flight" open question, sharper than that case states it because for a replay-based execution engine the naive fix is actively wrong, not merely under-specified.
 
 **Status:** proposed.
 
@@ -1895,7 +1897,7 @@ Variants: LC-A-021 (probate relation-back doctrine: a personal representative's 
 
 **What a naive system gets wrong.** A revocation-only model finds nothing wrong here, because no one ever revoked anything. It has no way to represent "this grant was void from issuance" discovered after the fact, and no way to backdate that discovery without either pretending nothing happened or silently erasing evidence of effects already taken.
 
-**Related invariant/open question.** L1 (revoking an ancestor invalidates dependents) assumes the ancestor was once valid and was later revoked. This case is the harder one L1 does not cover, an ancestor invalid from the start, discovered long after the fact. Also touches the "work in flight" operational case and L12 (completeness), since the orders executed under the tainted chain are exactly the evidence a completeness claim needs to account for.
+**Related invariant/open question.** L1 (revoking an ancestor invalidates dependents) assumes the ancestor was once valid and was later revoked. This case is the harder one L1 does not cover, an ancestor invalid from the start, discovered long after the fact. Also touches the "work in flight" open question and L12 (completeness), since the orders executed under the tainted chain are exactly the evidence a completeness claim needs to account for.
 
 **Status:** proposed.
 
@@ -2103,7 +2105,7 @@ Authority ended. Which kind of ending was it, and what does it reach?
 
 **Status:** proposed.
 
-**Fixture:** `approval-single-use` / no vector ids named in the coverage table (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/approval-single-use/README.md); `lifecycle-purpose-exhaustion` / `LC-I-013-a`, `LC-I-013-b`, `LC-I-013-c`, `LC-I-013-d`, `PXE-04`, `PXE-05` (candidate, not yet merged)
+**Fixture:** `approval-single-use` / no vector ids named in the coverage table (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/approval-single-use/README.md). `lifecycle-purpose-exhaustion` / `LC-I-013-a`, `LC-I-013-b`, `LC-I-013-c`, `LC-I-013-d`, `PXE-04`, `PXE-05` (candidate, not yet merged)
 
 ---
 
@@ -2213,7 +2215,7 @@ Authority that fires later or sits unused. Whose authority is it when it fires?
 
 **What a naive system gets wrong.** Assuming the job's own definition being untouched means it remains a stable, well-understood piece of authority, when its actual executable permission was always parasitic on a separate identity record decommissioned through a completely different process, with no defined interaction between the two.
 
-**Related invariant/open question.** Sits in the same gap as the "work in flight" operational case, but for dormant scheduled authority rather than a single operation already running. The job is not in flight at decommissioning, it is dormant between occurrences, so there is nothing to interrupt, yet the next occurrence's authority is already silently compromised.
+**Related invariant/open question.** Sits in the same gap as the "work in flight" open question, but for dormant scheduled authority rather than a single operation already running. The job is not in flight at decommissioning, it is dormant between occurrences, so there is nothing to interrupt, yet the next occurrence's authority is already silently compromised.
 
 **Status:** proposed.
 

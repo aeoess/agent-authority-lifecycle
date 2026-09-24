@@ -1,5 +1,7 @@
 # Agent Authority Lifecycle
 
+Part of Authority Lifecycle v0.3.0-draft. From the Agent Passport System work. Apache-2.0.
+
 What happens to an AI agent's authority when people, keys, approvals and roles change around it.
 
 An agent can outlive the employee who sponsored it, the key it signed with and the approval that let it act. This repository describes which parts of its authority survive those changes, which must stop, how replacement authority is established, and what evidence establishes each step. Each statement is marked as specified, tested, candidate, implemented, proposed or open, and tested statements link to a runnable case in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite.

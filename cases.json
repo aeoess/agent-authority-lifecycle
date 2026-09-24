@@ -1151,7 +1151,7 @@
     "situation": "A treasury agent submits a payment order under a valid delegation. The authorizing principal's authority is revoked minutes later. If the receiving bank has not yet accepted the payment order, the revocation stops it from settling. If the bank already accepted it, the order proceeds regardless of the revocation, unless the bank itself agrees to unwind it.",
     "source_prose_label": "Human analog.",
     "source_prose": "UCC 4A-211's acceptance boundary. [Cornell LII](https://www.law.cornell.edu/ucc/4A/4A-211): \"After a payment order has been accepted, cancellation or amendment of the order is not effective unless the receiving bank agrees or a funds-transfer system rule allows cancellation or amendment without agreement of the bank.\"",
-    "expected_outcome": "AUTHORITY-LIFECYCLE.md names \"an action already in flight when authority changes\" as an operational case it has to handle, without resolving it. This supplies a concrete resolution for one instrument type: the receiving institution's acceptance is the hard boundary. Before it, revoking the authorizing delegation stops the order. After it, the order proceeds independent of what the delegation graph says.",
+    "expected_outcome": "OPEN-QUESTIONS.md leaves \"work in flight\" open: the old grant cannot authorize a new effect at the next authorization boundary, and what happens to the operation itself is unsettled. This supplies a concrete resolution for one instrument type: the receiving institution's acceptance is the hard boundary. Before it, revoking the authorizing delegation stops the order. After it, the order proceeds independent of what the delegation graph says.",
     "naive_failure": "Assuming revocation automatically halts any payment order already submitted under it ignores that acceptance gives the order a revocation-proof effect. Assuming revocation never matters for in-flight orders ignores that unaccepted orders remain fully stoppable.",
     "related": {
       "invariants": [
@@ -1161,7 +1161,7 @@
       "concepts": [
         "delegated-authority"
       ],
-      "text": "Distinct from the already-verified LC-B-028 (stop-payment), which is a customer-initiated cancellation decision under L6's recheck principle. This is the underlying delegated authority itself changing mid-flight, the specific unresolved operational case AUTHORITY-LIFECYCLE.md names."
+      "text": "Distinct from the already-verified LC-B-028 (stop-payment), which is a customer-initiated cancellation decision under L6's recheck principle. This is the underlying delegated authority itself changing mid-flight, the specific question OPEN-QUESTIONS.md leaves open under \"work in flight.\""
     },
     "sources": [
       {
@@ -2158,7 +2158,7 @@
       "concepts": [
         "evidence"
       ],
-      "text": "L1 (revoking an ancestor invalidates dependents) assumes the ancestor was once valid and was later revoked. This case is the harder one L1 does not cover, an ancestor invalid from the start, discovered long after the fact. Also touches the \"work in flight\" operational case and L12 (completeness), since the orders executed under the tainted chain are exactly the evidence a completeness claim needs to account for."
+      "text": "L1 (revoking an ancestor invalidates dependents) assumes the ancestor was once valid and was later revoked. This case is the harder one L1 does not cover, an ancestor invalid from the start, discovered long after the fact. Also touches the \"work in flight\" open question and L12 (completeness), since the orders executed under the tainted chain are exactly the evidence a completeness claim needs to account for."
     },
     "sources": [
       {
@@ -3541,7 +3541,7 @@
         "execution",
         "effect"
       ],
-      "text": "Directly names the \"Policy version\" concept AUTHORITY-LIFECYCLE.md already lists among decisions and effects. It is also a narrower, concrete instance of the \"work in flight\" operational case, sharper than that case states it because for a replay-based execution engine the naive fix is actively wrong, not merely under-specified."
+      "text": "Directly names the \"Policy version\" concept AUTHORITY-LIFECYCLE.md already lists among decisions and effects. It is also a narrower, concrete instance of the \"work in flight\" open question, sharper than that case states it because for a replay-based execution engine the naive fix is actively wrong, not merely under-specified."
     },
     "sources": [
       {
@@ -3743,7 +3743,7 @@
         "work-in-flight"
       ],
       "concepts": [],
-      "text": "Sits in the same gap as the \"work in flight\" operational case, but for dormant scheduled authority rather than a single operation already running. The job is not in flight at decommissioning, it is dormant between occurrences, so there is nothing to interrupt, yet the next occurrence's authority is already silently compromised."
+      "text": "Sits in the same gap as the \"work in flight\" open question, but for dormant scheduled authority rather than a single operation already running. The job is not in flight at decommissioning, it is dormant between occurrences, so there is nothing to interrupt, yet the next occurrence's authority is already silently compromised."
     },
     "sources": [
       {
@@ -5238,7 +5238,7 @@
         "revocation",
         "execution"
       ],
-      "text": "L6 states the enforcement gateway must recheck revocation at execution time. This is the client-agent side of the same problem, how a long-running job's own internal logic must be structured to cope with a gateway-side denial arriving mid-job, a concrete instance of the \"work in flight\" operational case for a client with no push notification at all."
+      "text": "L6 states the enforcement gateway must recheck revocation at execution time. This is the client-agent side of the same problem, how a long-running job's own internal logic must be structured to cope with a gateway-side denial arriving mid-job, a concrete instance of the \"work in flight\" open question for a client with no push notification at all."
     },
     "sources": [
       {

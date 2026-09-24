@@ -20,3 +20,5 @@ jobs:
         run: python3 scripts/validate_cases.py
       - name: Check the generated Markdown matches cases.json
         run: python3 scripts/build_cases_md.py --check
+      - name: Check every internal Markdown link resolves
+        run: python3 scripts/check_links.py

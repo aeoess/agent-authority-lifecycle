@@ -2,7 +2,7 @@
 
 Generated from cases.json by scripts/build_cases_md.py. Do not edit case data here.
 
-Part of Authority Lifecycle v0.3.0-draft, part of the Agent Passport System work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.
+Part of Authority Lifecycle v0.3.0-draft. From the Agent Passport System work. Apache-2.0.
 
 These are the 36 security and evidence cases that sit next to authority lifecycle without being lifecycle cases. Each one came out of the same research and audit pass as [CASES.md](CASES.md), and each one is sound. What each lacks is a lifecycle verdict: it resolves to a liability outcome, a detection-surface gap, an operational practice or an evidence question, not to an authority state a verifier returns from records (valid, invalid, not established, suspended, restricted, not yet effective).
 

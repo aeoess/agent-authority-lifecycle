@@ -1,6 +1,6 @@
 # Invariant candidates
 
-Version 0.3.0-draft. Part of the Agent Passport System work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.
+Part of Authority Lifecycle v0.3.0-draft. From the Agent Passport System work. Apache-2.0.
 
 Everything in this file is **proposed**. Nothing here is specified, tested or implemented, and no conformance result exists for any candidate. These are statements we think implementations should guarantee, each with what it does not claim, the cases in [CASES.md](CASES.md) that force it, the strongest counterexample we found and why the statement survives it, and whichever fixture currently tests any part of it.
 

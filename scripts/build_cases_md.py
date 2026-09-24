@@ -171,7 +171,8 @@ def fixture_line(case):
         where = ("candidate, not yet merged" if f["pending_pr"]
                  else f"merged_candidate, {f['url']}")
         parts.append(f"`{f['family']}` / {shown} ({where})")
-    return "; ".join(parts)
+    # A period, not a semicolon, separates families on one Fixture line.
+    return ". ".join(parts)
 
 
 def variants_line(case):
@@ -265,8 +266,8 @@ def build_cases_md(cases):
         "",
         GENERATED_BY,
         "",
-        f"Part of Authority Lifecycle v{VERSION}, part of the Agent Passport System "
-        f"work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.",
+        f"Part of Authority Lifecycle v{VERSION}. From the Agent Passport System "
+        f"work. Apache-2.0.",
         "",
         "These are situations where the people, keys, approvals, offices, resources "
         "or infrastructure around an agent change, and the question is what happens "
@@ -338,6 +339,13 @@ def build_cases_md(cases):
         heading = FAMILIES[slug][0]
         L.append(f"- [{heading}](#{slugify(heading)}) ({len(members)})")
 
+    # Tier is not a section any more, so say where a reader finds it.
+    hyp = [c for c in live if c["tier"] == "hypothetical"]
+    cand = [c for c in live if c["tier"] == "candidate"]
+    L += ["", "Tier is a column in the index below and a line on each case, not a "
+          "section of its own. " + tier_pointer("reviewed hypothetical", hyp) + " "
+          + tier_pointer("candidate", cand) + " Everything else is verified."]
+
     L += ["", f"<details>", f"<summary>All {len(live)} cases</summary>", ""]
     L += index_table(live, [
         ("ID", lambda c: f"[{c['id']}](#{case_anchor(c)})"),
@@ -360,6 +368,18 @@ def build_cases_md(cases):
     return "\n".join(L).rstrip("\n") + "\n"
 
 
+def tier_pointer(label, cases):
+    """One sentence naming the cases at a tier, linked, for the Contents block."""
+    if not cases:
+        return f"No case is {label}."
+    links = [f"[{c['id']}](#{case_anchor(c)})"
+             for c in sorted(cases, key=lambda c: c["id"])]
+    if len(links) == 1:
+        return f"The one {label} case is {links[0]}."
+    listed = ", ".join(links[:-1]) + " and " + links[-1]
+    return f"The {len(links)} {label} cases are {listed}."
+
+
 def build_boundary_md(cases):
     boundary = [c for c in cases if c["tier"] == "boundary"]
     boundary.sort(key=lambda c: (c["out_of_scope_reason"], c["id"]))
@@ -369,8 +389,8 @@ def build_boundary_md(cases):
         "",
         GENERATED_BY,
         "",
-        f"Part of Authority Lifecycle v{VERSION}, part of the Agent Passport System "
-        f"work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.",
+        f"Part of Authority Lifecycle v{VERSION}. From the Agent Passport System "
+        f"work. Apache-2.0.",
         "",
         f"These are the {len(boundary)} security and evidence cases that sit next to "
         f"authority lifecycle without being lifecycle cases. Each one came out of the "
