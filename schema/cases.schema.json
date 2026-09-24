@@ -144,10 +144,11 @@
           "type": "string",
           "enum": [
             "verified",
+            "hypothetical",
             "candidate",
             "boundary"
           ],
-          "description": "verified/candidate come from CASES.md's two sections; boundary means the case lives in BOUNDARY-CASES.md (it resolves to a liability, detection-surface or evidence question, not an authority verdict)."
+          "description": "verified/hypothetical/candidate come from CASES.md's three sections; boundary means the case lives in BOUNDARY-CASES.md (it resolves to a liability, detection-surface or evidence question, not an authority verdict). verified requires at least one source with a quote. hypothetical requires zero sources and an explicit no-external-precedent statement in notes. candidate requires a 'Known issue' marker in notes recording the claimed-but-unverified source state."
         },
         "status": {
           "type": "string",
@@ -176,7 +177,7 @@
           "items": {
             "$ref": "#/$defs/source"
           },
-          "description": "Empty only for an honestly-labelled hypothetical with the legal or incident claim removed (survival criterion 3's second branch), never for a case that states a sourceable claim."
+          "description": "Empty only when tier is hypothetical (an honestly-labelled hypothetical with the legal or incident claim removed, survival criterion 3's second branch), never for a case that states a sourceable claim."
         },
         "variants": {
           "type": "array",

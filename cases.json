@@ -779,7 +779,7 @@
     "id": "LC-B-002",
     "title": "Two independently authoritative records of the same fact can disagree, and neither is automatically the answer",
     "family": "Organization events",
-    "tier": "verified",
+    "tier": "hypothetical",
     "status": "proposed",
     "situation": "A payments agent checks authority against a bank's own signatory records. The company revoked a human officer's authority in its internal records days earlier but never sent the bank an updated signature card. The bank's system still shows the officer, and any delegation rooted in that officer, as active.",
     "expected_outcome": "Two systems of record disagree about whether the root authority is current. A verifier that only checks one side's copy returns a confident answer that may be wrong. Where no source is designated as authoritative for a given fact, the correct behavior is to surface the conflict as indeterminate, not to pick a side.",
@@ -808,14 +808,15 @@
       }
     ],
     "notes": [
-      "source status line: proposed"
+      "source status line: proposed",
+      "No external precedent claimed"
     ]
   },
   {
     "id": "LC-B-004",
     "title": "A successor's fresh grant is bounded by the successor's own ceiling, not the predecessor's",
     "family": "Organization events",
-    "tier": "verified",
+    "tier": "hypothetical",
     "status": "proposed",
     "situation": "An officer departs suddenly and an interim officer is appointed with a narrower mandate than the departed officer held, for example no authority to sign new financing agreements above a reduced threshold. The agent's old delegation still names the departed officer's broader scope.",
     "expected_outcome": "A successor's fresh grant can only ever be issued within the successor's own current ceiling, even where a departed predecessor held broader authority and an old delegation still names it.",
@@ -846,7 +847,8 @@
       }
     ],
     "notes": [
-      "source status line: proposed"
+      "source status line: proposed",
+      "No external precedent claimed"
     ]
   },
   {
@@ -1088,7 +1090,7 @@
     "id": "LC-B-030",
     "title": "A third party's own contract can impose a re-authorization gate neither side of a clean succession controls",
     "family": "Organization events",
-    "tier": "verified",
+    "tier": "hypothetical",
     "status": "proposed",
     "situation": "Company A acquires Company B in a clean statutory merger. A's authority over B's affairs is automatically intact under ordinary merger-vesting law. But B had a supply contract with Vendor C containing a change-of-control clause requiring C's consent before the contract continues past an acquisition. An ordering agent that operated under B's authority to place orders with C is not authorized to keep doing so under that specific contract until C consents, even though nothing about A's or B's own internal authority is in question.",
     "expected_outcome": "The limiting factor here is not the acquirer's or target's own authority chain at all, but a condition a third party attached to a specific relationship. Some re-authorization checkpoints are triggered by, and controlled by, someone entirely outside the principal-agent-successor structure the invariants otherwise assume.",
@@ -1116,7 +1118,8 @@
       }
     ],
     "notes": [
-      "source status line: proposed"
+      "source status line: proposed",
+      "No external precedent claimed"
     ]
   },
   {
@@ -3415,7 +3418,7 @@
     "id": "LC-E-034",
     "title": "A queued action that outlasts a suspension needs a live check at fire time, not just at the moment it was queued",
     "family": "Time and scheduling",
-    "tier": "verified",
+    "tier": "hypothetical",
     "status": "proposed",
     "situation": "An agent's authority is suspended pending an investigation. It already had a recurring action queued to fire later. The suspension is lifted before the queued action's scheduled fire time. The scheduler holding the queued action has no visibility into suspension state at all, it only knows the schedule, and fires the action exactly as originally planned.",
     "expected_outcome": "This particular timeline is actually benign under L8's own logic, since the suspension was already lifted before the action fired, so denying it would be wrong. The case is worth naming because the scheduler got the right answer by accident, having never checked live suspension state at all. The same scheduler would fire the action identically even if the suspension were still active at fire time, which is the actual failure this case points at.",
@@ -3445,7 +3448,8 @@
       }
     ],
     "notes": [
-      "source status line: proposed"
+      "source status line: proposed",
+      "No external precedent claimed"
     ]
   },
   {
@@ -4239,7 +4243,7 @@
     "id": "LC-F-035",
     "title": "Choosing a stateless bearer credential format is choosing \"revocation only takes effect at natural expiry\"",
     "family": "Credential events",
-    "tier": "verified",
+    "tier": "hypothetical",
     "status": "proposed",
     "situation": "A deployment issues a delegation credential as a self-contained, signed bearer artifact with a long validity window, verified purely by signature with no server-side revocation lookup, for performance reasons. When that credential needs to be revoked early (compromised agent, principal fired), the deployment discovers there is no way to invalidate it before its stated expiry without adding the very lookup step the design chose to avoid.",
     "expected_outcome": "A deployment that chooses stateless, non-looked-up bearer credentials is implicitly choosing \"revocation only takes effect at natural expiry\" for that credential class, and must set expiry short enough to bound worst-case exposure, and must evidence this design tradeoff explicitly rather than presenting the credential as ordinarily revocable.",
@@ -4276,7 +4280,8 @@
       }
     ],
     "notes": [
-      "source status line: proposed"
+      "source status line: proposed",
+      "No external precedent claimed"
     ]
   },
   {
@@ -5098,7 +5103,7 @@
     "id": "LC-F-009",
     "title": "A publisher un-saying its own false revocation is a different operation from reauthorization, and needs its own evidence trail",
     "family": "Infrastructure failure",
-    "tier": "verified",
+    "tier": "hypothetical",
     "status": "proposed",
     "situation": "A bug in the status-list build pipeline publishes a version that wrongly marks a block of active delegations as revoked. The error is caught and a corrected version is republished, but some gateways already cached the bad version and keep denying valid agents until their next scheduled fetch.",
     "expected_outcome": "A publish-time bug that wrongly marks authority revoked must be correctable by republishing, but the incident must be evidenced (which version, which window, which consumers likely affected), since some agents may have been wrongly denied and need remediation, not just future consumers being spared.",
@@ -5137,14 +5142,15 @@
       }
     ],
     "notes": [
-      "source status line: proposed"
+      "source status line: proposed",
+      "No external precedent claimed"
     ]
   },
   {
     "id": "LC-F-014",
     "title": "An issuer's own timestamp is only as trustworthy as the time source it was signed against",
     "family": "Infrastructure failure",
-    "tier": "verified",
+    "tier": "hypothetical",
     "status": "proposed",
     "situation": "An authority issuer relies on a single external time reference to stamp issued_at on the artifacts it signs. That reference is spoofed or jammed, and the issuer signs artifacts with a shifted timestamp, for example one that appears to predate a revocation that has already happened, while the issuer's own internal logs show no anomaly.",
     "expected_outcome": "An issuer should not treat a single external time reference as ground truth without cross-checking against at least one independent source. Artifacts signed during a detected time-source disagreement window should be flagged for re-verification once trusted time is restored.",
@@ -5177,7 +5183,8 @@
       }
     ],
     "notes": [
-      "source status line: proposed"
+      "source status line: proposed",
+      "No external precedent claimed"
     ]
   },
   {

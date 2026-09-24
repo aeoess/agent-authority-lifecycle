@@ -9,8 +9,12 @@ Stdlib only. Checks:
   2. No duplicate ids in cases.json.
   3. Every id that appears as a "#### LC-..." heading in CASES.md or
      BOUNDARY-CASES.md appears in cases.json, and the reverse.
-  4. Every case with tier "verified" carries at least one source with a
-     non-empty quote.
+  4. Sourcing rules are tier-specific:
+       - verified: at least one source with a non-empty quote.
+       - hypothetical: zero sources, and a notes entry stating explicitly
+         that no external precedent is claimed.
+       - candidate: a notes entry carrying the "Known issue" marker that
+         records the source as claimed but not yet verified.
   5. Extra: every quote is 40 words or fewer (the corpus's own sourcing
      rule), reported as a validation error rather than silently ignored.
   6. Every fixture entry names a decision, a family (unless the decision is
@@ -169,8 +173,10 @@ REQUIRED_CASE_KEYS = {
     "related", "sources", "variants", "fixtures",
 }
 ALLOWED_CASE_KEYS = REQUIRED_CASE_KEYS | {"notes"}
-ALLOWED_TIERS = {"verified", "candidate", "boundary"}
+ALLOWED_TIERS = {"verified", "hypothetical", "candidate", "boundary"}
 ALLOWED_STATUS = {"proposed"}
+NO_PRECEDENT_MARKER = "no external precedent claimed"
+KNOWN_ISSUE_MARKER = "known issue"
 
 
 def check_case(case, errors):
@@ -223,7 +229,7 @@ def check_case(case, errors):
         if case.get("tier") == "boundary" and fixtures:
             err(errors, case_id, "boundary cases carry no fixture entries, found "
                                  f"{len(fixtures)}")
-        if case.get("tier") in ("verified", "candidate") and not fixtures:
+        if case.get("tier") in ("verified", "hypothetical", "candidate") and not fixtures:
             err(errors, case_id, "case is in CASES.md but carries no fixture entry")
 
     if "notes" in case and not isinstance(case["notes"], list):
@@ -265,13 +271,29 @@ def main():
 
     unsourced_verified = []
     for case in cases:
-        if isinstance(case, dict) and case.get("tier") == "verified":
-            sources = case.get("sources") or []
+        if not isinstance(case, dict):
+            continue
+        cid = case.get("id")
+        tier = case.get("tier")
+        sources = case.get("sources") or []
+        notes = case.get("notes") or []
+        notes_text = " ".join(n for n in notes if isinstance(n, str)).lower()
+
+        if tier == "verified":
             has_quote = any(isinstance(s, dict) and (s.get("quote") or "").strip() for s in sources)
             if not has_quote:
-                unsourced_verified.append(case.get("id"))
-    for cid in unsourced_verified:
-        errors.append(f"{cid}: tier is verified but has no source with a quote")
+                unsourced_verified.append(cid)
+                errors.append(f"{cid}: tier is verified but has no source with a quote")
+        elif tier == "hypothetical":
+            if sources:
+                errors.append(f"{cid}: tier is hypothetical but carries {len(sources)} source(s), expected none")
+            if NO_PRECEDENT_MARKER not in notes_text:
+                errors.append(f"{cid}: tier is hypothetical but notes carry no explicit "
+                               f"no-external-precedent statement")
+        elif tier == "candidate":
+            if KNOWN_ISSUE_MARKER not in notes_text:
+                errors.append(f"{cid}: tier is candidate but notes carry no 'Known issue' marker "
+                               f"for the claimed-but-unverified source")
 
     print(f"cases.json: {len(cases)} entries, {len(json_ids)} unique ids")
     print(f"CASES.md ids: {len(md_case_ids)}, BOUNDARY-CASES.md ids: {len(md_boundary_ids)}")
@@ -297,6 +319,11 @@ def main():
     print(f"fixture entries: {fixture_entries} across {len(families)} families, "
           f"{vector_refs} vector id references")
     print("fixture decisions: " + ", ".join(f"{k} {v}" for k, v in sorted(decisions.items())))
+    tier_counts = {}
+    for case in cases:
+        if isinstance(case, dict):
+            tier_counts[case.get("tier")] = tier_counts.get(case.get("tier"), 0) + 1
+    print("tier counts: " + ", ".join(f"{k} {v}" for k, v in sorted(tier_counts.items(), key=lambda kv: str(kv[0]))))
     print(f"verified cases without a sourced quote: {len(unsourced_verified)}")
     if unsourced_verified:
         print("  " + ", ".join(unsourced_verified))

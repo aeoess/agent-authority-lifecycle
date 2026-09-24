@@ -6,12 +6,13 @@ These are situations where the people, keys, approvals, offices, resources or in
 
 Many cases rest on a human, institutional or systems precedent: a statute, a court or agency finding, a standard or a documented incident. None of those sources says anything about AI agents. The translation into agent terms is ours, and the precedent is a source of cases, not a claim that the law applies to AI agents.
 
-There are two tiers.
+There are three tiers.
 
 - **Verified.** We fetched the cited source and checked that it supports the stated precedent. The expected outcome is still **proposed**. A fixture existing for a case does not change that: the vectors are candidates against proposed text, not conformance results.
+- **Reviewed hypothetical.** The case survived the same review pass as a verified case, but it claims no external precedent: no statute, court or agency finding, standard or documented incident supports it. The source line says so, in place of a citation.
 - **Candidate.** Produced by a research pass and not yet checked. The source is claimed, not verified. A "Known issue" note marks a problem already found. Candidates are verified, corrected, merged into another case or removed as review continues. Do not cite a candidate's source without checking it.
 
-Current count: 133 verified, 1 candidate. No case is a conformance result. 133 of the 134 carry a **Fixture** line naming the fixture family and vector ids that now exist for them in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite. Most of those sit on unmerged candidate branches, which the line says. One case, LC-B-023, has no fixture because no record set decides it. The same mapping in machine-readable form is the `fixtures` array in [cases.json](cases.json).
+Current count: 126 verified, 7 reviewed hypothetical, 1 candidate. No case is a conformance result. 133 of the 134 carry a **Fixture** line naming the fixture family and vector ids that now exist for them in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite. Most of those sit on unmerged candidate branches, which the line says. One case, LC-B-023, has no fixture because no record set decides it. The same mapping in machine-readable form is the `fixtures` array in [cases.json](cases.json).
 
 What changed since v0.1. Every v0.1 candidate was read against its source by a survivor pass and then re-checked by an independent auditor who fetched each source again. Candidates that survived both became verified, duplicates were folded into a representative and listed under it as named variants, cases that resolve to a security or evidence question rather than an authority verdict moved to [BOUNDARY-CASES.md](BOUNDARY-CASES.md), and the rest were removed. Thirteen families the corpus covered thinly or not at all were researched from scratch in the same pass. IDs are stable: an ID that appears in v0.1 means the same case here.
 
@@ -309,42 +310,6 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 
 ### Organization events
 
-#### LC-B-002. Two independently authoritative records of the same fact can disagree, and neither is automatically the answer
-
-**Situation.** A payments agent checks authority against a bank's own signatory records. The company revoked a human officer's authority in its internal records days earlier but never sent the bank an updated signature card. The bank's system still shows the officer, and any delegation rooted in that officer, as active.
-
-**Human analog.** None cited. UCC 4-406, the source originally proposed for this case, governs a customer's duty to examine bank statements for unauthorized items, not which of two disagreeing records of an authority fact controls. No primary source was found stating a general rule for resolving disagreement between a company's own records and a counterparty's records of the same fact, so this is kept as a hypothetical scenario with no legal claim attached.
-
-**What should happen.** Two systems of record disagree about whether the root authority is current. A verifier that only checks one side's copy returns a confident answer that may be wrong. Where no source is designated as authoritative for a given fact, the correct behavior is to surface the conflict as indeterminate, not to pick a side.
-
-**What a naive system gets wrong.** Treating "the resolver answered" as sufficient, without asking whether that resolver is the one designated authoritative for this particular fact, produces a confident wrong answer instead of an indeterminate one.
-
-**Related invariant/open question.** L7 covers an unavailable or stale answer from a single resolver. This is a different shape: two live, reachable resolvers giving different current answers for the same underlying authority fact, which none of L1-L12 name.
-
-**Status:** proposed.
-
-**Fixture:** `conflicting-status-sources` / `CSS-04-fresh-conflict-denies-with-conflict-reason`, `CSS-05-stale-revoked-against-fresh-active-denies`, `CSS-08-no-usable-answer-not-established` (candidate, not yet merged)
-
----
-
-#### LC-B-004. A successor's fresh grant is bounded by the successor's own ceiling, not the predecessor's
-
-**Situation.** An officer departs suddenly and an interim officer is appointed with a narrower mandate than the departed officer held, for example no authority to sign new financing agreements above a reduced threshold. The agent's old delegation still names the departed officer's broader scope.
-
-**Human analog.** None cited. This is a hypothetical scenario illustrating ordinary corporate-secretarial practice for interim appointments. No specific documented incident is claimed.
-
-**What should happen.** A successor's fresh grant can only ever be issued within the successor's own current ceiling, even where a departed predecessor held broader authority and an old delegation still names it.
-
-**What a naive system gets wrong.** A system that checks only whether a currently valid successor exists in the role, and re-parents the old chain to the interim officer without re-checking scope, grants authority the interim officer was never given.
-
-**Related invariant/open question.** L4 is tested only as chain independence, a successor's own grants don't inherit the predecessor's tree. This adds that even when a successor does issue a fresh grant, the grant is bounded by the successor's own ceiling, not the predecessor's.
-
-**Status:** proposed.
-
-**Fixture:** `lifecycle-organization-events` / `LC-B-004-a`, `LC-B-004-b`, `LC-B-004-c`, `LC-B-004-d`, `LC-B-004-e` (candidate, not yet merged)
-
----
-
 #### LC-B-012. A merger can vest authority in a new principal by operation of law, with no issuance event at all
 
 **Situation.** Company A merges into Company B under state corporate law. The instant the merger takes effect, Company B, not Company A, holds every power Company A's officers held, without Company B's officers ever issuing anything. A delegation chain that depended on Company A's authority now needs to resolve to Company B, automatically.
@@ -434,24 +399,6 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 **Status:** proposed.
 
 **Fixture:** `lifecycle-organization-events` / `LC-B-029-a` to `LC-B-029-i` (9) (candidate, not yet merged)
-
----
-
-#### LC-B-030. A third party's own contract can impose a re-authorization gate neither side of a clean succession controls
-
-**Situation.** Company A acquires Company B in a clean statutory merger. A's authority over B's affairs is automatically intact under ordinary merger-vesting law. But B had a supply contract with Vendor C containing a change-of-control clause requiring C's consent before the contract continues past an acquisition. An ordering agent that operated under B's authority to place orders with C is not authorized to keep doing so under that specific contract until C consents, even though nothing about A's or B's own internal authority is in question.
-
-**Human analog.** None cited. This is a hypothetical scenario illustrating standard change-of-control contract drafting practice. No specific documented incident is claimed.
-
-**What should happen.** The limiting factor here is not the acquirer's or target's own authority chain at all, but a condition a third party attached to a specific relationship. Some re-authorization checkpoints are triggered by, and controlled by, someone entirely outside the principal-agent-successor structure the invariants otherwise assume.
-
-**What a naive system gets wrong.** A system that only checks whether the acquiring company's own internal succession is valid concludes the ordering agent may keep placing orders with Vendor C, missing that Vendor C's own contract independently requires consent nobody internal to A or B can supply.
-
-**Related invariant/open question.** Complements the already-verified LC-B-012 (statutory merger) and LC-B-026 (consent-decree gate) by identifying a third, independent layer: even when the corporate-law layer and the internal delegation layer are both clean, a bilateral contract with an unrelated third party can impose its own, separately controlled re-authorization gate.
-
-**Status:** proposed.
-
-**Fixture:** `lifecycle-organization-events` / `LC-B-030-a`, `LC-B-030-b`, `LC-B-030-c`, `LC-B-030-d` (candidate, not yet merged)
 
 ---
 
@@ -1363,24 +1310,6 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 ---
 
-#### LC-E-034. A queued action that outlasts a suspension needs a live check at fire time, not just at the moment it was queued
-
-**Situation.** An agent's authority is suspended pending an investigation. It already had a recurring action queued to fire later. The suspension is lifted before the queued action's scheduled fire time. The scheduler holding the queued action has no visibility into suspension state at all, it only knows the schedule, and fires the action exactly as originally planned.
-
-**Human analog.** Hypothetical, reasoning directly from AUTHORITY-LIFECYCLE.md's own L8. No external incident is cited for this specific scheduler-queue interaction. The legal or incident claim is removed accordingly.
-
-**What should happen.** This particular timeline is actually benign under L8's own logic, since the suspension was already lifted before the action fired, so denying it would be wrong. The case is worth naming because the scheduler got the right answer by accident, having never checked live suspension state at all. The same scheduler would fire the action identically even if the suspension were still active at fire time, which is the actual failure this case points at.
-
-**What a naive system gets wrong.** A scheduler that only checks authority state at the moment an action was queued, not at fire time, produces the correct result in this timeline purely by luck. Change nothing about the scheduler and only change the timeline so the suspension is still active at fire time, and it fires an action that should have been paused, because dormant queued work was never something L8's stated mechanism has a hook to act on until the scheduler itself checks live state at fire time.
-
-**Related invariant/open question.** L8 is specified only in terms of pausing the use of authority and everything that depends on it, which implicitly assumes a live dependency to pause. A queued-but-not-yet-executing action is dormant, not in use, so L8's text does not make explicit that the scheduler must check live state at fire time for the scheduled-action case specifically.
-
-**Status:** proposed.
-
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-034-a-suspension-lifted-before-fire`, `LC-E-034-b-suspension-still-active-at-fire`, `LC-E-034-c-revoked-between-queue-and-fire`, `LC-E-034-d-suspension-source-silent-at-fire-time` (candidate, not yet merged)
-
----
-
 #### LC-G-007. A validity-period check is run against the checking party's own clock at check time, not the issuer's claimed clock
 
 **Situation.** A specification defines a time-bounded credential's validity as covering "the current time." It does not name whose clock that phrase refers to.
@@ -1698,26 +1627,6 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 **Status:** proposed.
 
 **Fixture:** `lifecycle-credential-events` / `LC-F-033-a-issuer-population-trust-not-established`, `LC-F-033-b-issuer-population-reattested` (candidate, not yet merged)
-
----
-
-#### LC-F-035. Choosing a stateless bearer credential format is choosing "revocation only takes effect at natural expiry"
-
-**Situation.** A deployment issues a delegation credential as a self-contained, signed bearer artifact with a long validity window, verified purely by signature with no server-side revocation lookup, for performance reasons. When that credential needs to be revoked early (compromised agent, principal fired), the deployment discovers there is no way to invalidate it before its stated expiry without adding the very lookup step the design chose to avoid.
-
-**Human analog.** None cited as a specific incident. This is labeled hypothetical because it names a widely known structural property of stateless bearer tokens, a signature-only artifact with no server-side lookup cannot be individually invalidated before it expires, rather than a documented case.
-
-**What should happen.** A deployment that chooses stateless, non-looked-up bearer credentials is implicitly choosing "revocation only takes effect at natural expiry" for that credential class, and must set expiry short enough to bound worst-case exposure, and must evidence this design tradeoff explicitly rather than presenting the credential as ordinarily revocable.
-
-**What a naive system gets wrong.** Treating "we can revoke it" as a universal property of the authority system rather than a per-credential-format property, so an operator attempts to revoke a stateless bearer credential, sees the revocation API call return success, and does not realize the credential itself remains independently valid to anyone still holding it until it expires.
-
-**Related invariant/open question.** L8 distinguishes suspension from revocation as two effective states an implementation can produce. This case is about a credential format for which neither can actually be produced early at all without a design change, a prerequisite question the invariants assume is already solved.
-
-**Status:** proposed.
-
-**Fixture:** `lifecycle-credential-events` / `LC-F-035-a-revocation-not-yet-effective-for-this-credential-class`, `LC-F-035-b-revocation-effective-where-status-is-looked-up` (candidate, not yet merged)
-
-Variants: LC-F-034 (ambiguity is about how far a revocation cascades across derived tokens once cascading is possible, not about whether the base credential format can be revoked early at all).
 
 ---
 
@@ -2042,44 +1951,6 @@ Variants: E-003 (deprecation notice windows that differ by model tier, so one co
 **Fixture:** `lifecycle-infrastructure-failure` / `LC-F-006-a`, `LC-F-006-b`, `LC-F-006-c`, `LC-F-006-d-inverse-check` (candidate, not yet merged)
 
 Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not a missed scheduled publish), LC-F-004 (identity-provider outage blocks new credential issuance, doesn't touch already-valid chains' revocation freshness), LC-F-005 (load-induced resolver timeouts under legitimate traffic, not a missed publish cycle), LC-F-012 (verifier process itself crashes fleet-wide from an unrelated scheduler bug, not a stale list), LC-F-015 (resolver answer's own timestamp is in the future relative to the verifier, not simply overdue), LC-F-019 (gateway is totally isolated from every authority source at once, not just one stale list).
-
----
-
-#### LC-F-009. A publisher un-saying its own false revocation is a different operation from reauthorization, and needs its own evidence trail
-
-**Situation.** A bug in the status-list build pipeline publishes a version that wrongly marks a block of active delegations as revoked. The error is caught and a corrected version is republished, but some gateways already cached the bad version and keep denying valid agents until their next scheduled fetch.
-
-**Human analog.** None cited. This is a hypothetical operational scenario, not a documented incident, framed generically because status-list build-pipeline bugs of this shape are a known operational risk class rather than a specific reported case.
-
-**What should happen.** A publish-time bug that wrongly marks authority revoked must be correctable by republishing, but the incident must be evidenced (which version, which window, which consumers likely affected), since some agents may have been wrongly denied and need remediation, not just future consumers being spared.
-
-**What a naive system gets wrong.** Republishing a corrected version and considering the incident closed, without accounting for effects already caused during the bad-version window, or for consumers still holding the bad version until their next scheduled fetch.
-
-**Related invariant/open question.** L3 says reauthorization creates new authority and revocation is irreversible. This is the opposite direction: a publisher un-saying its own false revocation, which needs a distinct operation and its own evidence trail rather than being modeled as either a normal revocation or a routine reauthorization.
-
-**Status:** proposed.
-
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-009-a`, `LC-F-009-b`, `LC-F-009-c`, `LC-F-009-d`, `LC-F-009-e` (candidate, not yet merged)
-
-Variants: D-012 (the scope of a past disclosure revised upward long afterwards, reaching the same correct-the-record question from the claim side rather than the revocation side).
-
----
-
-#### LC-F-014. An issuer's own timestamp is only as trustworthy as the time source it was signed against
-
-**Situation.** An authority issuer relies on a single external time reference to stamp issued_at on the artifacts it signs. That reference is spoofed or jammed, and the issuer signs artifacts with a shifted timestamp, for example one that appears to predate a revocation that has already happened, while the issuer's own internal logs show no anomaly.
-
-**Human analog.** None cited. This is labeled hypothetical because it names a documented risk class, GPS spoofing and jamming of external time references, without an opened incident report tying it to a specific authority-issuance failure.
-
-**What should happen.** An issuer should not treat a single external time reference as ground truth without cross-checking against at least one independent source. Artifacts signed during a detected time-source disagreement window should be flagged for re-verification once trusted time is restored.
-
-**What a naive system gets wrong.** Trusting one time source unconditionally means a spoofed source can mint artifacts with an artificially shifted validity window, for example one that appears to predate issuance in order to predate a revocation.
-
-**Related invariant/open question.** None of L1-L12 discuss adversarial control of the issuer's own time source. L9 addresses selecting the historically correct key version, which assumes the timestamp being resolved against is honest.
-
-**Status:** proposed.
-
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-014-a`, `LC-F-014-b`, `LC-F-014-c`, `LC-F-014-d`, `LC-F-014-e` (candidate, not yet merged)
 
 ---
 
@@ -2512,6 +2383,146 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 **Status:** proposed.
 
 **Fixture:** `lifecycle-purpose-exhaustion` / `LC-I-014-a`, `LC-I-014-b`, `LC-I-014-c`, `LC-I-014-d`, `LC-I-014-e` (candidate, not yet merged)
+
+---
+
+## Reviewed hypothetical cases
+
+### Organization events
+
+#### LC-B-002. Two independently authoritative records of the same fact can disagree, and neither is automatically the answer
+
+**Situation.** A payments agent checks authority against a bank's own signatory records. The company revoked a human officer's authority in its internal records days earlier but never sent the bank an updated signature card. The bank's system still shows the officer, and any delegation rooted in that officer, as active.
+
+**Human analog.** No external precedent claimed.
+
+**What should happen.** Two systems of record disagree about whether the root authority is current. A verifier that only checks one side's copy returns a confident answer that may be wrong. Where no source is designated as authoritative for a given fact, the correct behavior is to surface the conflict as indeterminate, not to pick a side.
+
+**What a naive system gets wrong.** Treating "the resolver answered" as sufficient, without asking whether that resolver is the one designated authoritative for this particular fact, produces a confident wrong answer instead of an indeterminate one.
+
+**Related invariant/open question.** L7 covers an unavailable or stale answer from a single resolver. This is a different shape: two live, reachable resolvers giving different current answers for the same underlying authority fact, which none of L1-L12 name.
+
+**Status:** proposed.
+
+**Fixture:** `conflicting-status-sources` / `CSS-04-fresh-conflict-denies-with-conflict-reason`, `CSS-05-stale-revoked-against-fresh-active-denies`, `CSS-08-no-usable-answer-not-established` (candidate, not yet merged)
+
+---
+
+#### LC-B-004. A successor's fresh grant is bounded by the successor's own ceiling, not the predecessor's
+
+**Situation.** An officer departs suddenly and an interim officer is appointed with a narrower mandate than the departed officer held, for example no authority to sign new financing agreements above a reduced threshold. The agent's old delegation still names the departed officer's broader scope.
+
+**Human analog.** No external precedent claimed.
+
+**What should happen.** A successor's fresh grant can only ever be issued within the successor's own current ceiling, even where a departed predecessor held broader authority and an old delegation still names it.
+
+**What a naive system gets wrong.** A system that checks only whether a currently valid successor exists in the role, and re-parents the old chain to the interim officer without re-checking scope, grants authority the interim officer was never given.
+
+**Related invariant/open question.** L4 is tested only as chain independence, a successor's own grants don't inherit the predecessor's tree. This adds that even when a successor does issue a fresh grant, the grant is bounded by the successor's own ceiling, not the predecessor's.
+
+**Status:** proposed.
+
+**Fixture:** `lifecycle-organization-events` / `LC-B-004-a`, `LC-B-004-b`, `LC-B-004-c`, `LC-B-004-d`, `LC-B-004-e` (candidate, not yet merged)
+
+---
+
+#### LC-B-030. A third party's own contract can impose a re-authorization gate neither side of a clean succession controls
+
+**Situation.** Company A acquires Company B in a clean statutory merger. A's authority over B's affairs is automatically intact under ordinary merger-vesting law. But B had a supply contract with Vendor C containing a change-of-control clause requiring C's consent before the contract continues past an acquisition. An ordering agent that operated under B's authority to place orders with C is not authorized to keep doing so under that specific contract until C consents, even though nothing about A's or B's own internal authority is in question.
+
+**Human analog.** No external precedent claimed.
+
+**What should happen.** The limiting factor here is not the acquirer's or target's own authority chain at all, but a condition a third party attached to a specific relationship. Some re-authorization checkpoints are triggered by, and controlled by, someone entirely outside the principal-agent-successor structure the invariants otherwise assume.
+
+**What a naive system gets wrong.** A system that only checks whether the acquiring company's own internal succession is valid concludes the ordering agent may keep placing orders with Vendor C, missing that Vendor C's own contract independently requires consent nobody internal to A or B can supply.
+
+**Related invariant/open question.** Complements the already-verified LC-B-012 (statutory merger) and LC-B-026 (consent-decree gate) by identifying a third, independent layer: even when the corporate-law layer and the internal delegation layer are both clean, a bilateral contract with an unrelated third party can impose its own, separately controlled re-authorization gate.
+
+**Status:** proposed.
+
+**Fixture:** `lifecycle-organization-events` / `LC-B-030-a`, `LC-B-030-b`, `LC-B-030-c`, `LC-B-030-d` (candidate, not yet merged)
+
+---
+
+### Time and scheduling
+
+#### LC-E-034. A queued action that outlasts a suspension needs a live check at fire time, not just at the moment it was queued
+
+**Situation.** An agent's authority is suspended pending an investigation. It already had a recurring action queued to fire later. The suspension is lifted before the queued action's scheduled fire time. The scheduler holding the queued action has no visibility into suspension state at all, it only knows the schedule, and fires the action exactly as originally planned.
+
+**Human analog.** No external precedent claimed.
+
+**What should happen.** This particular timeline is actually benign under L8's own logic, since the suspension was already lifted before the action fired, so denying it would be wrong. The case is worth naming because the scheduler got the right answer by accident, having never checked live suspension state at all. The same scheduler would fire the action identically even if the suspension were still active at fire time, which is the actual failure this case points at.
+
+**What a naive system gets wrong.** A scheduler that only checks authority state at the moment an action was queued, not at fire time, produces the correct result in this timeline purely by luck. Change nothing about the scheduler and only change the timeline so the suspension is still active at fire time, and it fires an action that should have been paused, because dormant queued work was never something L8's stated mechanism has a hook to act on until the scheduler itself checks live state at fire time.
+
+**Related invariant/open question.** L8 is specified only in terms of pausing the use of authority and everything that depends on it, which implicitly assumes a live dependency to pause. A queued-but-not-yet-executing action is dormant, not in use, so L8's text does not make explicit that the scheduler must check live state at fire time for the scheduled-action case specifically.
+
+**Status:** proposed.
+
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-034-a-suspension-lifted-before-fire`, `LC-E-034-b-suspension-still-active-at-fire`, `LC-E-034-c-revoked-between-queue-and-fire`, `LC-E-034-d-suspension-source-silent-at-fire-time` (candidate, not yet merged)
+
+---
+
+### Credential events
+
+#### LC-F-035. Choosing a stateless bearer credential format is choosing "revocation only takes effect at natural expiry"
+
+**Situation.** A deployment issues a delegation credential as a self-contained, signed bearer artifact with a long validity window, verified purely by signature with no server-side revocation lookup, for performance reasons. When that credential needs to be revoked early (compromised agent, principal fired), the deployment discovers there is no way to invalidate it before its stated expiry without adding the very lookup step the design chose to avoid.
+
+**Human analog.** No external precedent claimed.
+
+**What should happen.** A deployment that chooses stateless, non-looked-up bearer credentials is implicitly choosing "revocation only takes effect at natural expiry" for that credential class, and must set expiry short enough to bound worst-case exposure, and must evidence this design tradeoff explicitly rather than presenting the credential as ordinarily revocable.
+
+**What a naive system gets wrong.** Treating "we can revoke it" as a universal property of the authority system rather than a per-credential-format property, so an operator attempts to revoke a stateless bearer credential, sees the revocation API call return success, and does not realize the credential itself remains independently valid to anyone still holding it until it expires.
+
+**Related invariant/open question.** L8 distinguishes suspension from revocation as two effective states an implementation can produce. This case is about a credential format for which neither can actually be produced early at all without a design change, a prerequisite question the invariants assume is already solved.
+
+**Status:** proposed.
+
+**Fixture:** `lifecycle-credential-events` / `LC-F-035-a-revocation-not-yet-effective-for-this-credential-class`, `LC-F-035-b-revocation-effective-where-status-is-looked-up` (candidate, not yet merged)
+
+Variants: LC-F-034 (ambiguity is about how far a revocation cascades across derived tokens once cascading is possible, not about whether the base credential format can be revoked early at all).
+
+---
+
+### Infrastructure failure
+
+#### LC-F-009. A publisher un-saying its own false revocation is a different operation from reauthorization, and needs its own evidence trail
+
+**Situation.** A bug in the status-list build pipeline publishes a version that wrongly marks a block of active delegations as revoked. The error is caught and a corrected version is republished, but some gateways already cached the bad version and keep denying valid agents until their next scheduled fetch.
+
+**Human analog.** No external precedent claimed.
+
+**What should happen.** A publish-time bug that wrongly marks authority revoked must be correctable by republishing, but the incident must be evidenced (which version, which window, which consumers likely affected), since some agents may have been wrongly denied and need remediation, not just future consumers being spared.
+
+**What a naive system gets wrong.** Republishing a corrected version and considering the incident closed, without accounting for effects already caused during the bad-version window, or for consumers still holding the bad version until their next scheduled fetch.
+
+**Related invariant/open question.** L3 says reauthorization creates new authority and revocation is irreversible. This is the opposite direction: a publisher un-saying its own false revocation, which needs a distinct operation and its own evidence trail rather than being modeled as either a normal revocation or a routine reauthorization.
+
+**Status:** proposed.
+
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-009-a`, `LC-F-009-b`, `LC-F-009-c`, `LC-F-009-d`, `LC-F-009-e` (candidate, not yet merged)
+
+Variants: D-012 (the scope of a past disclosure revised upward long afterwards, reaching the same correct-the-record question from the claim side rather than the revocation side).
+
+---
+
+#### LC-F-014. An issuer's own timestamp is only as trustworthy as the time source it was signed against
+
+**Situation.** An authority issuer relies on a single external time reference to stamp issued_at on the artifacts it signs. That reference is spoofed or jammed, and the issuer signs artifacts with a shifted timestamp, for example one that appears to predate a revocation that has already happened, while the issuer's own internal logs show no anomaly.
+
+**Human analog.** No external precedent claimed.
+
+**What should happen.** An issuer should not treat a single external time reference as ground truth without cross-checking against at least one independent source. Artifacts signed during a detected time-source disagreement window should be flagged for re-verification once trusted time is restored.
+
+**What a naive system gets wrong.** Trusting one time source unconditionally means a spoofed source can mint artifacts with an artificially shifted validity window, for example one that appears to predate issuance in order to predate a revocation.
+
+**Related invariant/open question.** None of L1-L12 discuss adversarial control of the issuer's own time source. L9 addresses selecting the historically correct key version, which assumes the timestamp being resolved against is honest.
+
+**Status:** proposed.
+
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-014-a`, `LC-F-014-b`, `LC-F-014-c`, `LC-F-014-d`, `LC-F-014-e` (candidate, not yet merged)
 
 ---
 
