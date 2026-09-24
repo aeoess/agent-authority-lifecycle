@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/aeoess/agent-authority-lifecycle/schema/cases.schema.json",
   "title": "Agent Authority Lifecycle case catalog",
-  "description": "Machine-readable form of the cases in CASES.md and BOUNDARY-CASES.md. One object per case, grouped by semantic_family (the authority question the case asks) with the pre-v0.3 grouping kept as fixture_family. No object in this file is itself a conformance result; `fixtures` links out to the Agent Authority Conformance suite. A fixture entry records a lab decision (VECTOR, COVERED or RESEARCH_ONLY), the fixture family, the vector ids and a summary of what the two reference SDKs decided. Entries with `pending_pr` true have no published branch yet, so no link is given.",
+  "description": "The single source of truth for the case catalog. CASES.md and BOUNDARY-CASES.md are generated from this file by scripts/build_cases_md.py and must not be edited by hand. One object per case, grouped by semantic_family (the authority question the case asks) with the pre-v0.3 grouping kept as fixture_family. No object in this file is itself a conformance result; `fixtures` links out to the Agent Authority Conformance suite. A fixture entry records a lab decision (VECTOR, COVERED or RESEARCH_ONLY), the fixture family, the vector ids and a summary of what the two reference SDKs decided. Entries with `pending_pr` true have no published branch yet, so no link is given.",
   "type": "array",
   "items": {
     "$ref": "#/$defs/case"
@@ -122,6 +122,8 @@
         "tier",
         "status",
         "situation",
+        "source_prose_label",
+        "source_prose",
         "expected_outcome",
         "naive_failure",
         "related",
@@ -199,7 +201,7 @@
             "candidate",
             "boundary"
           ],
-          "description": "verified/hypothetical/candidate come from CASES.md's three sections; boundary means the case lives in BOUNDARY-CASES.md (it resolves to a liability, detection-surface or evidence question, not an authority verdict). verified requires at least one source with a quote. hypothetical requires zero sources and an explicit no-external-precedent statement in notes. candidate requires a 'Known issue' marker in notes recording the claimed-but-unverified source state."
+          "description": "verified, hypothetical and candidate mark a case that lives in CASES.md. Boundary means the case lives in BOUNDARY-CASES.md (it resolves to a liability, detection-surface or evidence question, not an authority verdict). verified requires at least one source with a quote. hypothetical requires zero sources and an explicit no-external-precedent statement in notes. candidate requires a 'Known issue' marker in notes recording the claimed-but-unverified source state."
         },
         "status": {
           "type": "string",
@@ -222,7 +224,21 @@
         },
         "situation": {
           "type": "string",
-          "description": "What triggers the case. Empty only if the source entry uses the short reason-plus-source form and situation text is folded into related.text instead."
+          "description": "What triggers the case. In the short reason-plus-source form this paragraph is both the situation and the boundary reason, and related.text repeats it verbatim. The generator renders it once, under a **Reason.** label."
+        },
+        "source_prose_label": {
+          "type": "string",
+          "enum": [
+            "Human analog.",
+            "Source.",
+            "Source verified.",
+            ""
+          ],
+          "description": "The label the case's source paragraph carries in the generated Markdown. Empty string only when source_prose is empty."
+        },
+        "source_prose": {
+          "type": "string",
+          "description": "The case's source paragraph as Markdown: the named statute, standard, opinion or incident report, the link, and the quoted sentence in context. Every url in `sources` appears in this text. Empty only for a case that cites nothing."
         },
         "expected_outcome": {
           "type": "string",

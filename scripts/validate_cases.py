@@ -2,6 +2,10 @@
 """Validate cases.json against schema/cases.schema.json and the corpus's own
 CASES.md / BOUNDARY-CASES.md id lists.
 
+cases.json is the single source of truth. The two Markdown files are generated
+from it by scripts/build_cases_md.py; run that script with --check to prove they
+have not drifted.
+
 Stdlib only. Checks:
   1. Every case object matches schema/cases.schema.json (hand-rolled checks
      covering the schema's structural constraints -- required keys, types,
@@ -23,6 +27,9 @@ Stdlib only. Checks:
   7. Taxonomy fields: every case carries exactly one known semantic_family and
      one known domain, a non-empty fixture_family, and an out_of_scope_reason
      if and only if its tier is boundary.
+  8. Source prose: source_prose_label is set if and only if source_prose is
+     non-empty, a verified or candidate case has source prose, and every url in
+     `sources` appears somewhere in that prose.
 
 Exit code 0 if every check passes, 1 otherwise. Prints a report either way.
 """
@@ -85,7 +92,7 @@ OUT_OF_SCOPE_REASONS = {
 FIXTURE_DECISIONS = {"VECTOR", "COVERED", "RESEARCH_ONLY"}
 REQUIRED_FIXTURE_KEYS = {"decision", "family", "vector_ids", "sdk_results", "pending_pr"}
 ALLOWED_FIXTURE_KEYS = REQUIRED_FIXTURE_KEYS | {"url", "note"}
-HEADING_ID_RE = re.compile(r"^#### (LC-[A-Z]-[0-9]{3})\.")
+HEADING_ID_RE = re.compile(r"^#{3,4} (LC-[A-Z]-[0-9]{3})\.")
 
 
 def md_ids(path):
@@ -207,9 +214,10 @@ def check_related(rel, case_id, errors):
 
 REQUIRED_CASE_KEYS = {
     "id", "title", "semantic_family", "domain", "fixture_family", "tier", "status",
-    "situation", "expected_outcome", "naive_failure",
-    "related", "sources", "variants", "fixtures",
+    "situation", "source_prose_label", "source_prose", "expected_outcome",
+    "naive_failure", "related", "sources", "variants", "fixtures",
 }
+SOURCE_PROSE_LABELS = {"Human analog.", "Source.", "Source verified.", ""}
 ALLOWED_CASE_KEYS = REQUIRED_CASE_KEYS | {"notes", "out_of_scope_reason"}
 ALLOWED_TIERS = {"verified", "hypothetical", "candidate", "boundary"}
 ALLOWED_STATUS = {"proposed"}
@@ -253,9 +261,26 @@ def check_case(case, errors):
                              f"({reason!r}) is set; only boundary cases carry one")
     if case.get("status") not in ALLOWED_STATUS:
         err(errors, case_id, f"status {case.get('status')!r} not in {sorted(ALLOWED_STATUS)}")
-    for key in ("situation", "expected_outcome", "naive_failure"):
+    for key in ("situation", "expected_outcome", "naive_failure", "source_prose"):
         if not isinstance(case.get(key, ""), str):
             err(errors, case_id, f"{key} must be a string")
+
+    label = case.get("source_prose_label")
+    prose = case.get("source_prose") or ""
+    if label not in SOURCE_PROSE_LABELS:
+        err(errors, case_id, f"source_prose_label {label!r} not in "
+                             f"{sorted(SOURCE_PROSE_LABELS)}")
+    elif bool(label) != bool(prose.strip()):
+        err(errors, case_id, "source_prose_label and source_prose must both be set "
+                             f"or both be empty (label {label!r}, prose "
+                             f"{'non-empty' if prose.strip() else 'empty'})")
+    if case.get("tier") in ("verified", "candidate") and not prose.strip():
+        err(errors, case_id, f"tier is {case.get('tier')!r} but the case carries no "
+                             "source prose")
+    for i, src in enumerate(case.get("sources") or []):
+        if isinstance(src, dict) and src.get("url") and src["url"] not in prose:
+            err(errors, case_id, f"sources[{i}] url is not cited in source_prose: "
+                                 f"{src['url']}")
 
     check_related(case.get("related", {}), case_id, errors)
 
@@ -350,6 +375,8 @@ def main():
 
     print(f"cases.json: {len(cases)} entries, {len(json_ids)} unique ids")
     print(f"CASES.md ids: {len(md_case_ids)}, BOUNDARY-CASES.md ids: {len(md_boundary_ids)}")
+    with_prose = sum(1 for c in cases if isinstance(c, dict) and (c.get("source_prose") or "").strip())
+    print(f"cases carrying source prose: {with_prose} of {len(cases)}")
     print(f"id set match (md union vs json): {'OK' if not missing_from_json and not missing_from_md else 'MISMATCH'}")
     print(f"duplicate ids: {len(dupes)}")
     fixture_entries = 0
@@ -407,6 +434,8 @@ def main():
         return 1
 
     print("PASSED: all checks clean")
+    print("Note: this checks cases.json. Run 'python3 scripts/build_cases_md.py "
+          "--check' to prove CASES.md and BOUNDARY-CASES.md still match it.")
     return 0
 
 
