@@ -13,6 +13,9 @@ Stdlib only. Checks:
      non-empty quote.
   5. Extra: every quote is 40 words or fewer (the corpus's own sourcing
      rule), reported as a validation error rather than silently ignored.
+  6. Every fixture entry names a decision, a family (unless the decision is
+     RESEARCH_ONLY), a vector id list and an SDK summary, and carries a url
+     only when pending_pr is false.
 
 Exit code 0 if every check passes, 1 otherwise. Prints a report either way.
 """
@@ -37,6 +40,9 @@ OPEN_QUESTION_SLUGS = {
     "notice-and-relying-parties",
 }
 FETCHED_BY_VALUES = {"auditor", "thin-group ledger"}
+FIXTURE_DECISIONS = {"VECTOR", "COVERED", "RESEARCH_ONLY"}
+REQUIRED_FIXTURE_KEYS = {"decision", "family", "vector_ids", "sdk_results", "pending_pr"}
+ALLOWED_FIXTURE_KEYS = REQUIRED_FIXTURE_KEYS | {"url", "note"}
 HEADING_ID_RE = re.compile(r"^#### (LC-[A-Z]-[0-9]{3})\.")
 
 
@@ -76,6 +82,53 @@ def check_source(src, case_id, idx, errors):
     fb = src.get("fetched_by")
     if fb not in FETCHED_BY_VALUES:
         err(errors, case_id, f"sources[{idx}] fetched_by {fb!r} not in {sorted(FETCHED_BY_VALUES)}")
+
+
+def check_fixture(f, case_id, idx, errors):
+    if not isinstance(f, dict):
+        err(errors, case_id, f"fixtures[{idx}] is not an object")
+        return
+    for key in sorted(REQUIRED_FIXTURE_KEYS - set(f.keys())):
+        err(errors, case_id, f"fixtures[{idx}] missing '{key}'")
+    extra = set(f.keys()) - ALLOWED_FIXTURE_KEYS
+    if extra:
+        err(errors, case_id, f"fixtures[{idx}] has unexpected keys {sorted(extra)}")
+
+    decision = f.get("decision")
+    if decision not in FIXTURE_DECISIONS:
+        err(errors, case_id, f"fixtures[{idx}] decision {decision!r} not in {sorted(FIXTURE_DECISIONS)}")
+
+    family = f.get("family")
+    if family is None:
+        if decision != "RESEARCH_ONLY":
+            err(errors, case_id, f"fixtures[{idx}] family is null but decision is {decision!r}")
+    elif not isinstance(family, str) or not family.strip():
+        err(errors, case_id, f"fixtures[{idx}] family must be a non-empty string or null")
+
+    vector_ids = f.get("vector_ids")
+    if not isinstance(vector_ids, list):
+        err(errors, case_id, f"fixtures[{idx}] vector_ids must be an array")
+    else:
+        for j, vid in enumerate(vector_ids):
+            if not isinstance(vid, str) or not vid.strip():
+                err(errors, case_id, f"fixtures[{idx}] vector_ids[{j}] is not a non-empty string")
+        if len(set(vector_ids)) != len(vector_ids):
+            err(errors, case_id, f"fixtures[{idx}] vector_ids has duplicates")
+        if decision == "VECTOR" and not vector_ids:
+            err(errors, case_id, f"fixtures[{idx}] decision is VECTOR but no vector id is listed")
+
+    if not isinstance(f.get("sdk_results", ""), str) or not (f.get("sdk_results") or "").strip():
+        err(errors, case_id, f"fixtures[{idx}] sdk_results must be a non-empty string")
+
+    pending = f.get("pending_pr")
+    if not isinstance(pending, bool):
+        err(errors, case_id, f"fixtures[{idx}] pending_pr must be a boolean")
+    url = f.get("url")
+    if url is not None:
+        if pending is True:
+            err(errors, case_id, f"fixtures[{idx}] carries a url while pending_pr is true")
+        if not isinstance(url, str) or not re.match(r"^https?://", url):
+            err(errors, case_id, f"fixtures[{idx}] url is not http(s): {url!r}")
 
 
 def check_variant(v, case_id, idx, errors):
@@ -164,8 +217,14 @@ def check_case(case, errors):
     fixtures = case.get("fixtures")
     if not isinstance(fixtures, list):
         err(errors, case_id, "fixtures must be an array")
-    elif fixtures:
-        err(errors, case_id, f"fixtures must be empty in this wave, found {len(fixtures)}")
+    else:
+        for i, f in enumerate(fixtures):
+            check_fixture(f, case_id, i, errors)
+        if case.get("tier") == "boundary" and fixtures:
+            err(errors, case_id, "boundary cases carry no fixture entries, found "
+                                 f"{len(fixtures)}")
+        if case.get("tier") in ("verified", "candidate") and not fixtures:
+            err(errors, case_id, "case is in CASES.md but carries no fixture entry")
 
     if "notes" in case and not isinstance(case["notes"], list):
         err(errors, case_id, "notes must be an array of strings")
@@ -218,6 +277,26 @@ def main():
     print(f"CASES.md ids: {len(md_case_ids)}, BOUNDARY-CASES.md ids: {len(md_boundary_ids)}")
     print(f"id set match (md union vs json): {'OK' if not missing_from_json and not missing_from_md else 'MISMATCH'}")
     print(f"duplicate ids: {len(dupes)}")
+    fixture_entries = 0
+    vector_refs = 0
+    decisions = {"VECTOR": 0, "COVERED": 0, "RESEARCH_ONLY": 0}
+    families = set()
+    for case in cases:
+        if not isinstance(case, dict):
+            continue
+        for f in case.get("fixtures") or []:
+            if not isinstance(f, dict):
+                continue
+            fixture_entries += 1
+            vector_refs += len(f.get("vector_ids") or [])
+            if f.get("decision") in decisions:
+                decisions[f["decision"]] += 1
+            if f.get("family"):
+                families.add(f["family"])
+
+    print(f"fixture entries: {fixture_entries} across {len(families)} families, "
+          f"{vector_refs} vector id references")
+    print("fixture decisions: " + ", ".join(f"{k} {v}" for k, v in sorted(decisions.items())))
     print(f"verified cases without a sourced quote: {len(unsourced_verified)}")
     if unsourced_verified:
         print("  " + ", ".join(unsourced_verified))

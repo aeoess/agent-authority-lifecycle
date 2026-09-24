@@ -8,10 +8,10 @@ Many cases rest on a human, institutional or systems precedent: a statute, a cou
 
 There are two tiers.
 
-- **Verified.** We fetched the cited source and checked that it supports the stated precedent. The expected outcome is still **proposed**. No runnable fixture exists for any case yet.
+- **Verified.** We fetched the cited source and checked that it supports the stated precedent. The expected outcome is still **proposed**. A fixture existing for a case does not change that: the vectors are candidates against proposed text, not conformance results.
 - **Candidate.** Produced by a research pass and not yet checked. The source is claimed, not verified. A "Known issue" note marks a problem already found. Candidates are verified, corrected, merged into another case or removed as review continues. Do not cite a candidate's source without checking it.
 
-Current count: 133 verified, 1 candidate. No case is a conformance result. Cases that need a runnable fixture say so in the research record, and the ones that get built will link to the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite.
+Current count: 133 verified, 1 candidate. No case is a conformance result. 133 of the 134 carry a **Fixture** line naming the fixture family and vector ids that now exist for them in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite. Most of those sit on unmerged candidate branches, which the line says. One case, LC-B-023, has no fixture because no record set decides it. The same mapping in machine-readable form is the `fixtures` array in [cases.json](cases.json).
 
 What changed since v0.1. Every v0.1 candidate was read against its source by a survivor pass and then re-checked by an independent auditor who fetched each source again. Candidates that survived both became verified, duplicates were folded into a representative and listed under it as named variants, cases that resolve to a security or evidence question rather than an authority verdict moved to [BOUNDARY-CASES.md](BOUNDARY-CASES.md), and the rest were removed. Thirteen families the corpus covered thinly or not at all were researched from scratch in the same pass. IDs are stable: an ID that appears in v0.1 means the same case here.
 
@@ -35,6 +35,8 @@ Cases are grouped by the authority question they raise. A representative case li
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-principal-events` / `LPE-A-001-a` to `LPE-A-001-k` (11) (candidate, not yet merged)
+
 ---
 
 #### LC-A-003. An unmet contingency is indeterminate, not simply "not yet started"
@@ -50,6 +52,8 @@ Cases are grouped by the authority question they raise. A representative case li
 **Related invariant/open question.** L7 covers unknown revocation state. This is the mirror problem at issuance, unknown activation state, which none of L1-L12 name as its own category, and it needs a defined verifier role, not just any evidence.
 
 **Status:** proposed.
+
+**Fixture:** `activation-not-established` / `AX-02-no-attestation-not-established` (candidate, not yet merged)
 
 Variants: A-004 (the verifier's role has to match the specific contingency sub-type claimed, unavailability rather than impairment, not merely be an authorized verifier), C-004 (a conditional, event-extendable expiry window rather than a conditional, unverified activation).
 
@@ -69,6 +73,8 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-principal-events` / `LPE-A-005-a` (candidate, not yet merged)
+
 ---
 
 #### LC-A-006. The event that revokes a spousal delegation is jurisdiction-dependent: filing, not just a final decree, can be the trigger
@@ -84,6 +90,8 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 **Related invariant/open question.** Same underlying gap as LC-A-005, sharpened: the trigger fact and its evidentiary threshold (petition filed vs. decree entered) differ by jurisdiction, and jurisdiction-dependent trigger timing is not something any invariant addresses.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-principal-events` / `LPE-A-006-a`, `LPE-A-006-b`, `LPE-A-006-c` (candidate, not yet merged)
 
 ---
 
@@ -101,6 +109,8 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-purpose-exhaustion` / `PXE-01-accept-first-purchase-tuesday`, `PXE-02-observe-authenticated-completion`, `PXE-03-reject-second-purchase-wednesday` (candidate, not yet merged)
+
 ---
 
 #### LC-A-009. A fiduciary who feloniously kills the principal forfeits the appointment retroactively, not merely from the date of the finding
@@ -116,6 +126,8 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 **Related invariant/open question.** L3 says reauthorization never reverses a revocation. This is the opposite direction: a rule that retroactively voids authority for cause, a mechanism none of L1-L12 provide.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-principal-events` / `LPE-A-009-a`, `LPE-A-009-b`, `LPE-A-009-c` (candidate, not yet merged)
 
 ---
 
@@ -133,6 +145,8 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-principal-events` / `LPE-A-010-a`, `LPE-A-010-b`, `LPE-A-010-c`, `LPE-A-010-d` (candidate, not yet merged)
+
 ---
 
 #### LC-A-012. The "coupled with an interest" survival-past-death rule is dictum: the leading case actually held the power at issue died with the principal
@@ -148,6 +162,8 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 **Related invariant/open question.** None named. Every death-terminates-authority case in this corpus assumes the survival exception applies cleanly once claimed; this is the one place the corpus's own source shows a party trying and failing to claim it, which matters for how narrowly a verifier should read an `interest_coupled=true` flag.
 
 **Status:** proposed. (source_type: law)
+
+**Fixture:** `lifecycle-principal-events` / `LPE-A-012-a`, `LPE-A-012-b`, `LPE-A-012-c`, `LPE-A-012-d` (candidate, not yet merged)
 
 Variants: A-002 (same pattern, a per-delegation flag overriding a default termination rule, but for incapacity and a durability flag rather than death and a coupled-with-interest flag).
 
@@ -166,6 +182,8 @@ Variants: A-002 (same pattern, a per-delegation flag overriding a default termin
 **Related invariant/open question.** L3 and L4 assume replacement authority is issued fresh, after the fact, by whoever currently holds authority. This is a third pattern, authority pre-committed at issuance for a defined contingency, that neither invariant names.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-principal-events` / `LPE-A-016-a`, `LPE-A-016-b`, `LPE-A-016-c`, `LPE-A-016-d`, `LPE-A-016-e`, `LPE-A-016-f` (candidate, not yet merged)
 
 Variants: A-011 (a pre-named successor trustee taking control of a trust that itself persists, rather than a successor-agent list under a power of attorney), C-013 (the pre-committed replacement is a pre-equalized peer inside a fixed two-person crew rather than a named successor).
 
@@ -187,6 +205,8 @@ Variants: A-011 (a pre-named successor trustee taking control of a trust that it
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-019-a`, `LFS-A-019-b`, `LFS-A-019-c`, `LFS-A-019-d`, `LFS-A-019-e`, `LFS-A-019-f`, `LFS-A-019-g`, `LFS-A-019-h` (candidate, not yet merged)
+
 Variants: A-017 (default solo-authorization rule, joint vs. several, for co-agents acting alone under one instrument, rather than a majority-decision-on-disagreement-plus-vacancy rule for co-trustees).
 
 ---
@@ -205,6 +225,8 @@ Variants: A-017 (default solo-authorization rule, joint vs. several, for co-agen
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-022-a`, `LFS-A-022-b`, `LFS-A-022-c`, `LFS-A-022-d`, `LFS-A-022-e` (candidate, not yet merged)
+
 ---
 
 #### LC-A-023. Ratification retroactively authorizes a prior unauthorized act, but cannot be used to defeat a third party's intervening rights, and it is all-or-nothing
@@ -220,6 +242,8 @@ Variants: A-017 (default solo-authorization rule, joint vs. several, for co-agen
 **Related invariant/open question.** L3 says reauthorization is a new grant and never reverses revocation. Ratification is a third mechanism: retroactive validation of something never authorized in the first place, bounded to protect intervening third-party rights, and constrained by atomicity and a capacity check at the ratification moment, none of which any invariant states.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-023-a` to `LFS-A-023-j` (10) (candidate, not yet merged)
 
 Variants: A-021 (probate relation-back doctrine: a personal representative's beneficial pre-appointment acts are automatically validated back to the date of death once appointed, distinct from a principal's discretionary ratification bounded by intervening third-party rights); A-024 (the atomicity and capacity-at-ratification constraints, folded directly into this entry's own write-up rather than kept as a separate case).
 
@@ -241,6 +265,8 @@ Variants: A-021 (probate relation-back doctrine: a personal representative's ben
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-027-a`, `TPR-A-027-b`, `TPR-A-027-c`, `TPR-A-027-d` (candidate, not yet merged)
+
 Variants: A-029 (adds a statutory presumption of genuineness for good-faith acceptance of an acknowledged instrument, rather than the general common-law notice cutoff), A-032 (a duty to inquire that narrows reliance protection when the transaction is facially inconsistent with the delegation's visible scope, the opposite direction from the general rule).
 
 ---
@@ -259,6 +285,8 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-028-a`, `TPR-A-028-b`, `TPR-A-028-c`, `TPR-A-028-d` (candidate, not yet merged)
+
 ---
 
 #### LC-A-033. A newer delegation instrument does not automatically revoke an older one absent an express revocation clause
@@ -274,6 +302,8 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 **Related invariant/open question.** L5 states independent chains are not combined. This is the adjacent but distinct failure mode of assuming a newer chain implicitly kills an older one, a wrong reason to invalidate rather than a wrong reason to combine.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-033-a`, `TPR-A-033-b`, `TPR-A-033-c`, `TPR-A-033-d` (candidate, not yet merged)
 
 ---
 
@@ -293,6 +323,8 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 
 **Status:** proposed.
 
+**Fixture:** `conflicting-status-sources` / `CSS-04-fresh-conflict-denies-with-conflict-reason`, `CSS-05-stale-revoked-against-fresh-active-denies`, `CSS-08-no-usable-answer-not-established` (candidate, not yet merged)
+
 ---
 
 #### LC-B-004. A successor's fresh grant is bounded by the successor's own ceiling, not the predecessor's
@@ -309,6 +341,8 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-organization-events` / `LC-B-004-a`, `LC-B-004-b`, `LC-B-004-c`, `LC-B-004-d`, `LC-B-004-e` (candidate, not yet merged)
+
 ---
 
 #### LC-B-012. A merger can vest authority in a new principal by operation of law, with no issuance event at all
@@ -324,6 +358,8 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 **Related invariant/open question.** L2, L3, and L4 all assume a human or organizational principal actively issues a new grant to establish replacement authority. Statutory merger is a real, common succession pathway with no issuance event at all, which none of them contemplate.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-organization-events` / `LC-B-012-a`, `LC-B-012-b`, `LC-B-012-c` (candidate, not yet merged)
 
 Variants: C-001 (root-of-chain succession, where no superior issuer could ever exist, tests the same vesting-without-issuance mechanism as a merger vesting a new organizational principal).
 
@@ -343,6 +379,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-organization-events` / `LC-B-013-a`, `LC-B-013-b` (candidate, not yet merged)
+
 ---
 
 #### LC-B-016. A dissolution statute can automatically narrow the scope of authority that remains otherwise valid
@@ -358,6 +396,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 **Related invariant/open question.** None of L1-L12 models an external legal-status change automatically narrowing the scope of an authority that remains otherwise valid. L8's restricted state is the closest analog but is framed around validity, not automatic scope contraction triggered by an entity-status change.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-organization-events` / `LC-B-016-a`, `LC-B-016-b`, `LC-B-016-c`, `LC-B-016-d` (candidate, not yet merged)
 
 ---
 
@@ -375,6 +415,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-organization-events` / `LC-B-028-a`, `LC-B-028-b`, `LC-B-028-c`, `LC-B-028-d`, `LC-B-028-e`, `LC-B-028-f`, `LC-B-028-g`, `LC-B-028-h` (candidate, not yet merged)
+
 ---
 
 #### LC-B-029. A receiving bank's acceptance is the hard boundary after which a mid-flight authority change no longer stops the order
@@ -391,6 +433,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-organization-events` / `LC-B-029-a` to `LC-B-029-i` (9) (candidate, not yet merged)
+
 ---
 
 #### LC-B-030. A third party's own contract can impose a re-authorization gate neither side of a clean succession controls
@@ -406,6 +450,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 **Related invariant/open question.** Complements the already-verified LC-B-012 (statutory merger) and LC-B-026 (consent-decree gate) by identifying a third, independent layer: even when the corporate-law layer and the internal delegation layer are both clean, a bilateral contract with an unrelated third party can impose its own, separately controlled re-authorization gate.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-organization-events` / `LC-B-030-a`, `LC-B-030-b`, `LC-B-030-c`, `LC-B-030-d` (candidate, not yet merged)
 
 ---
 
@@ -425,6 +471,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-007-a`, `LRE-B-007-b`, `LRE-B-007-c`, `LRE-B-007-d` (candidate, not yet merged)
+
 ---
 
 #### LC-B-008. Authority can end completely, instantly, and outside the delegation system entirely
@@ -440,6 +488,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 **Related invariant/open question.** A harder-edged instance of L1 and L2, where the "ancestor" whose end triggers invalidation is not an APS artifact or even a company-internal record, but a statute taking effect the instant a regulator acts.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-008-a`, `LRE-B-008-b`, `LRE-B-008-c` (candidate, not yet merged)
 
 ---
 
@@ -457,6 +507,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-009-a`, `LRE-B-009-b`, `LRE-B-009-c` (candidate, not yet merged)
+
 ---
 
 #### LC-B-010. A court-supervised filing can add an approval gate without pausing the underlying authority
@@ -472,6 +524,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 **Related invariant/open question.** L8's proposed restricted state, illustrated here at the level of an entire office's authority for an extended period, based on an external legal filing rather than one delegation being paused.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-010-a`, `LRE-B-010-b`, `LRE-B-010-c`, `LRE-B-010-d` (candidate, not yet merged)
 
 ---
 
@@ -489,6 +543,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-011-a`, `LRE-B-011-b` (candidate, not yet merged)
+
 ---
 
 #### LC-B-017. A legitimate new authority root can come from entirely outside the original chain
@@ -505,6 +561,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-017-a`, `LRE-B-017-b`, `LRE-B-017-c` (candidate, not yet merged)
+
 ---
 
 #### LC-B-018. Chain validity and lawfulness to execute are different questions
@@ -520,6 +578,8 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 **Related invariant/open question.** The clearest sourced instance of the external-restriction concept AUTHORITY-LIFECYCLE.md already names but does not illustrate. Chain validity is necessary but not sufficient for lawful execution.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-018-a`, `LRE-B-018-b`, `LRE-B-018-c` (candidate, not yet merged)
 
 Variants: B-021 (a listing-based restriction that cascades to unlisted affiliates through an ownership fact, rather than applying only to the named entity).
 
@@ -539,6 +599,8 @@ Variants: B-021 (a listing-based restriction that cascades to unlisted affiliate
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-019-a`, `LRE-B-019-b` (candidate, not yet merged)
+
 ---
 
 #### LC-B-022. A real legal exception can supply exactly the basis a completeness claim needs, without needing an open-ended "we keep everything for audit" policy
@@ -554,6 +616,8 @@ Variants: B-021 (a listing-based restriction that cascades to unlisted affiliate
 **Related invariant/open question.** OPEN-QUESTIONS.md's teardown-completeness section names "what public commitment can prove closure over a set without exposing private state" as unsettled. GDPR's legal-claims exception is a real, existing legal basis that answers part of that directly.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-022-a`, `LRE-B-022-b` (candidate, not yet merged)
 
 ---
 
@@ -587,6 +651,8 @@ Variants: B-021 (a listing-based restriction that cascades to unlisted affiliate
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-024-a`, `LRE-B-024-b`, `LRE-B-024-c`, `LRE-B-024-d` (candidate, not yet merged)
+
 ---
 
 #### LC-B-025. A single revoked license can invalidate every chain that depends on it at once
@@ -602,6 +668,8 @@ Variants: B-021 (a listing-based restriction that cascades to unlisted affiliate
 **Related invariant/open question.** Directly related to OPEN-QUESTIONS.md's "critical revocation" section: revoking a high-level authority can disable a large set of agents. This grounds that question in a real, named regulatory mechanism rather than a hypothetical high-level delegation revocation.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-025-a`, `LRE-B-025-b`, `LRE-B-025-c`, `LRE-B-025-d` (candidate, not yet merged)
 
 Variants: LC-B-001 (a board resolution strips one officer's signing authority through a roster change with no per-agent revocation record, the same off-graph-ancestor principle at the individual-officer scale instead of the shared-license scale), C-023 (a closed, externally maintained statutory eligibility list that no in-chain delegation can expand, rather than a shared licence that many chains already depend on).
 
@@ -621,6 +689,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-026-a`, `LRE-B-026-b`, `LRE-B-026-c` (candidate, not yet merged)
+
 ---
 
 #### LC-B-027. Forfeiture changes who owns the resource, not just who may deal with it for now
@@ -637,6 +707,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-027-a`, `LRE-B-027-b`, `LRE-B-027-c`, `LRE-B-027-d` (candidate, not yet merged)
+
 ---
 
 #### LC-B-031. The same bankruptcy chapter question can produce opposite authority outcomes
@@ -652,6 +724,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 **Related invariant/open question.** Directly contrasts with LC-B-010 to show the same event category needs to branch into genuinely different authority outcomes depending on sub-type, which no single invariant captures alone.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-031-a`, `LRE-B-031-b`, `LRE-B-031-c` (candidate, not yet merged)
 
 ---
 
@@ -671,6 +745,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-root-authority-succession` / `LRAS-C-007-a` to `LRAS-C-007-k` (11) (candidate, not yet merged)
+
 ---
 
 ### Multiple principals and conflict
@@ -689,6 +765,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-002-a` to `LC-C-002-i` (9) (candidate, not yet merged)
+
 ---
 
 #### LC-C-005. Two independently valid succession sources can name different people for the same seat, and nothing says which one wins
@@ -704,6 +782,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 **Related invariant/open question.** L5 forbids combining two chains into one grant. This is different: a single seat with two independently sourced, individually valid chains disagreeing about who holds it. Nothing in L1 to L12 orders competing valid authority sources against each other.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-005-a`, `LC-C-005-b`, `LC-C-005-c`, `LC-C-005-d`, `LC-C-005-e` (candidate, not yet merged)
 
 ---
 
@@ -721,6 +801,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-006-a`, `LC-C-006-b`, `LC-C-006-c`, `LC-C-006-d`, `LC-C-006-e` (candidate, not yet merged)
+
 ---
 
 #### LC-C-009. A legitimately confidential succession order breaks the assumption that every chain is independently, publicly verifiable
@@ -737,6 +819,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
+**Fixture:** `activation-not-established` / `AX-02`, `AX-03`, `AX-04`, `AX-06` (candidate, not yet merged)
+
 ---
 
 #### LC-C-011. A concurrence requirement is a gate at the next authorization boundary, not a second chain to union with the first
@@ -752,6 +836,8 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 **Related invariant/open question.** L5 forbids unioning chains to expand what one action is allowed to do. This is a distinct primitive, a gate at the next authorization boundary requiring two separate, independently valid authorizations to be present together, that none of L1-L12 name.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-011-a`, `LC-C-011-b`, `LC-C-011-c`, `LC-C-011-d`, `LC-C-011-e`, `LC-C-011-f`, `LC-C-011-g` (candidate, not yet merged)
 
 Variants: B-003 (a dual-control money threshold requiring two independent chains before the next authorization boundary, the same "one valid chain is insufficient" gate in a corporate treasury setting rather than a safety-critical one).
 
@@ -771,6 +857,8 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-012-a`, `LC-C-012-b`, `LC-C-012-c`, `LC-C-012-d`, `LC-C-012-e`, `LC-C-012-f`, `LC-C-012-g` (candidate, not yet merged)
+
 ---
 
 #### LC-C-016. The bar for granting authority and the bar for withdrawing it are not always the same bar
@@ -786,6 +874,8 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 **Related invariant/open question.** Extends the joint or quorum family with an asymmetry, grant versus veto, that nothing in L1-L12 or the sponsor-handover conformance case names.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-016-a`, `LC-C-016-b`, `LC-C-016-c`, `LC-C-016-d`, `LC-C-016-e`, `LC-C-016-f`, `LC-C-016-g` (candidate, not yet merged)
 
 ---
 
@@ -803,6 +893,8 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-018-a`, `LC-C-018-b`, `LC-C-018-c`, `LC-C-018-d`, `LC-C-018-e` (candidate, not yet merged)
+
 ---
 
 #### LC-C-020. An authority position can be created on the fly by an eligibility rule, with no pre-named holder at all
@@ -819,6 +911,8 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-020-a` to `LC-C-020-i` (9) (candidate, not yet merged)
+
 ---
 
 #### LC-C-022. A pending-ratification state is neither "revoked" nor "not revoked," and if ratification is denied, the record has to say the action was provisional throughout, not that a final revocation was later reversed
@@ -834,6 +928,8 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 **Related invariant/open question.** Adds a ratification-pending intermediate state with retroactive recharacterization on denial, a shape not present in L8's plain suspension and revocation split, and directly relevant to OPEN-QUESTIONS.md's "release from suspension."
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-022-a`, `LC-C-022-b`, `LC-C-022-c`, `LC-C-022-d`, `LC-C-022-e`, `LC-C-022-f` (candidate, not yet merged)
 
 Variants: B-032 (an officer suspended pending investigation, where the open part is whether conversion to revocation reaches back to the suspension's start or runs only from the investigation's conclusion, and unsourced where this entry is sourced).
 
@@ -853,6 +949,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-029-a`, `LC-C-029-b`, `LC-C-029-c`, `LC-C-029-d`, `LC-C-029-e`, `LC-C-029-f` (candidate, not yet merged)
+
 ---
 
 #### LC-C-031. A standing, cause-free override can sit above a concurrently exercised authority without ever going through a revocation channel
@@ -868,6 +966,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 **Related invariant/open question.** Distinct from ordinary revocable delegation because the override is instantaneous, cause-free, and needs no formal revocation channel. It is a standing background right rather than a discrete revocation event, and distinct from the mandatory concurrence cases because only one party's authority was ever real at the root.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-031-a`, `LC-C-031-b`, `LC-C-031-c`, `LC-C-031-d`, `LC-C-031-e` (candidate, not yet merged)
 
 ---
 
@@ -885,6 +985,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-001-a`, `LC-H-001-b`, `LC-H-001-c`, `LC-H-001-d`, `LC-H-001-e`, `LC-H-001-f`, `LC-H-001-g` (candidate, not yet merged)
+
 ---
 
 #### LC-H-002. On an account requiring multiple signers, any one signer's stop instruction controls over a contradictory pay instruction from a co-signer
@@ -901,6 +1003,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-002-a`, `LC-H-002-b`, `LC-H-002-c`, `LC-H-002-d`, `LC-H-002-e`, `LC-H-002-f`, `LC-H-002-g` (candidate, not yet merged)
+
 ---
 
 #### LC-H-003. Bankruptcy discharge and debt reaffirmation racing each other resolve by a statutory sequencing and rescission window, not a first-arrival rule
@@ -916,6 +1020,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 **Related invariant/open question.** L3 says reauthorization creates new authority and never reverses a revocation. This case is adjacent but distinct: reaffirmation here is a targeted revival of one specific ended obligation, gated by an ordering rule and a standing rescission window, not a new grant from a currently authorized principal in the L3 sense.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-003-a`, `LC-H-003-b`, `LC-H-003-c`, `LC-H-003-d`, `LC-H-003-e`, `LC-H-003-f`, `LC-H-003-g` (candidate, not yet merged)
 
 ---
 
@@ -935,6 +1041,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-outside-the-chain-standing` / `LC-H-004-a`, `LC-H-004-b`, `LC-H-004-c`, `LC-H-004-d`, `LC-H-004-e`, `LC-H-004-f`, `LC-H-004-g`, `LC-H-004-h` (candidate, not yet merged)
+
 ---
 
 #### LC-H-005. A labor board's reinstatement order is a new grant issued from outside the original relationship, not a revival of the exact terminated one
@@ -951,6 +1059,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-005-a`, `LC-H-005-b`, `LC-H-005-c`, `LC-H-005-d`, `LC-H-005-e`, `LC-H-005-f` (candidate, not yet merged)
+
 ---
 
 #### LC-H-006. A disputed root can be deposited with a neutral forum pending resolution, discharging the holder from choosing between claimants
@@ -966,6 +1076,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 **Related invariant/open question.** OPEN-QUESTIONS.md's "notice and relying parties" section and L7 (unknown revocation state is not active) are adjacent but distinct: this is not an evidence-freshness problem, it is a genuine, acknowledged dispute over which of two claimed roots is authoritative, with an actual named mechanism (deposit with the court) for holding the question open without forcing a premature answer.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-006-a`, `LC-H-006-b`, `LC-H-006-c`, `LC-H-006-d`, `LC-H-006-e`, `LC-H-006-f`, `LC-H-006-g`, `LC-H-006-h` (candidate, not yet merged)
 
 ---
 
@@ -985,6 +1097,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-007-a`, `LC-H-007-b`, `LC-H-007-c`, `LC-H-007-d`, `LC-H-007-e` (candidate, not yet merged)
+
 ---
 
 #### LC-H-008. Delegation depth exhaustion is a distinct failure mode, rejecting subdelegation past a chain's own declared maximum depth
@@ -1000,6 +1114,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 **Related invariant/open question.** None of L1-L12 name a maximum-depth constraint as its own lifecycle concept. It is closest to L5 (independent chains are not combined) in spirit, structural limits on the shape of a chain rather than on its content, but depth exhaustion is a distinct constraint L5 does not cover.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-008-a`, `LC-H-008-b`, `LC-H-008-c`, `LC-H-008-d` (candidate, not yet merged)
 
 ---
 
@@ -1019,6 +1135,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-agent-renunciation` / `LAR-H-010-a` to `LAR-H-010-i` (9) (candidate, not yet merged)
+
 ---
 
 #### LC-H-011. A partner's power to dissociate is effective immediately whether the dissociation is rightful or wrongful, and wrongfulness is a separate, later liability question
@@ -1034,6 +1152,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 **Related invariant/open question.** Sharpens the general "agent renunciation" shape beyond what the corpus's existing Restatement-of-Agency renunciation entry establishes, since this domain explicitly names both the rightful and wrongful case as equally, immediately effective at the power level, with wrongfulness handled entirely as a downstream liability question.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-agent-renunciation` / `LAR-H-011-a`, `LAR-H-011-b` (candidate, not yet merged)
 
 ---
 
@@ -1053,6 +1173,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-principal-unreachable` / `LPU-H-012-a` to `LPU-H-012-j` (10) (candidate, not yet merged)
+
 ---
 
 ### Time and scheduling
@@ -1071,6 +1193,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-008-a-default-successor-resolved`, `LC-C-008-b-no-declared-default`, `LC-C-008-c-eligibility-not-met`, `LC-C-008-d-rule-without-standing`, `LC-C-008-e-direction-from-a-party-with-no-tenure` (candidate, not yet merged)
+
 ---
 
 #### LC-C-014. A handover can require the incoming holder's acknowledgment, with authority staying put until it arrives
@@ -1087,6 +1211,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-014-a-outgoing-acts-before-acknowledgment`, `LC-C-014-b-incoming-acts-before-acknowledgment`, `LC-C-014-c-incoming-acts-after-acknowledgment`, `LC-C-014-d-outgoing-acts-after-acknowledgment`, `LC-C-014-e-acknowledgment-from-a-party-the-offer-does-not-name` (candidate, not yet merged)
+
 ---
 
 #### LC-C-015. Losing contact with a directing principal should trigger a pre-authorized fallback, not a freeze or silent continuation
@@ -1102,6 +1228,8 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 **Related invariant/open question.** L7 says an unknown or stale revocation answer must fail closed. This is different: the loss is of the live directing channel itself, not of revocation information, and the correct behavior is a specific pre-granted fallback scope rather than a blanket fail-closed stop.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-015-a-live-direction-present`, `LC-C-015-b-fallback-scope-active`, `LC-C-015-c-outside-the-fallback-scope`, `LC-C-015-d-no-fallback-recorded`, `LC-C-015-e-contact-restored` (candidate, not yet merged)
 
 Variants: LC-C-010 (the same unreachability-triggers-fallback shape at organizational rather than single-agent granularity: continuity-of-government devolution to a pre-designated backup site when leadership at the primary seat cannot be contacted, per NSPD-51/PPD-40, with reconstitution required on restored contact rather than automatic resumption), E-016 (autonomous fallback authority activating only once round-trip time exceeds the decision window, and only for the pre-scoped action).
 
@@ -1121,6 +1249,8 @@ Variants: LC-C-010 (the same unreachability-triggers-fallback shape at organizat
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-017-a-scheduled-swap-pre-authorized`, `LC-C-017-b-swap-off-the-schedule`, `LC-C-017-c-required-rest-not-elapsed`, `LC-C-017-d-rest-state-not-recorded` (candidate, not yet merged)
+
 ---
 
 #### LC-C-025. Continuous-coverage roles need departure and successor designation to be a single atomic operation, not a sequence
@@ -1136,6 +1266,8 @@ Variants: LC-C-010 (the same unreachability-triggers-fallback shape at organizat
 **Related invariant/open question.** A stronger, zero-gap-tolerance version of continuous coverage than anything in L1 to L12. The existing invariants discuss what happens once a gap is discovered, not a hard requirement that the departure operation itself be atomic with successor designation for certain safety-critical roles.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-025-a-atomic-relief`, `LC-C-025-b-gap-between-departure-and-designation`, `LC-C-025-c-after-the-designation`, `LC-C-025-d-designee-qualification-not-recorded`, `LC-C-025-e-designation-names-another-party` (candidate, not yet merged)
 
 Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goal with a scripted two-event relinquish-then-assume ritual instead of an atomic departure-plus-designation record, and treats a gap between the two events as indeterminate rather than defaulting to either party) and LC-C-028 (surgeon incapacitation mid-incision adds that the action itself is non-pausable and actively degrading, so the zero-gap requirement carries no safety margin at all, unlike a monitoring role where the underlying process is not necessarily worsening during the gap).
 
@@ -1155,6 +1287,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-008-a-pinned-version-still-permits`, `LC-E-008-b-control-before-the-cutover`, `LC-E-008-c-new-instance-pinned-to-the-tighter-version`, `LC-E-008-d-instance-without-a-pin`, `LC-E-008-e-pinned-version-not-resolvable` (candidate, not yet merged)
+
 ---
 
 #### LC-E-014. A recurring series can outlive the identity that scheduled it, with no automatic cleanup and no owner left to cancel it
@@ -1170,6 +1304,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 **Related invariant/open question.** Distinct from L1's ancestor-revocation rule because the series was never itself revoked, and there may be no delegation chain to revoke at all if the series was created directly by the now-removed identity acting as its own root. The gap is that identity removal and scheduled-series cleanup are two separate lifecycle events nothing here requires to be linked.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-014-a-before-owner-removal`, `LC-E-014-b-owner-authority-revoked`, `LC-E-014-c-owner-removed-with-nothing-revoked`, `LC-E-014-d-recorded-disposition-reassigns` (candidate, not yet merged)
 
 ---
 
@@ -1187,6 +1323,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-018-a-occurrence-keeps-its-creation-template`, `LC-E-018-b-next-occurrence-under-the-tightened-template`, `LC-E-018-c-occurrence-template-version-not-recorded`, `LC-E-018-d-control-read-under-the-tightened-template` (candidate, not yet merged)
+
 ---
 
 #### LC-E-019. Authority stays valid through a scheduled wind-down, not cut off the instant termination begins
@@ -1202,6 +1340,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 **Related invariant/open question.** L8 distinguishes suspension (pauses use, can be lifted) from revocation (terminal). Termination-in-progress is neither, a third, scheduled-wind-down state L8 does not name.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-019-a-inside-the-grace-window`, `LC-E-019-b-after-the-grace-window`, `LC-E-019-c-revoked-during-the-wind-down`, `LC-E-019-d-no-declared-grace-bound` (candidate, not yet merged)
 
 ---
 
@@ -1219,6 +1359,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-020-a-creator-grant-unchanged`, `LC-E-020-b-creator-narrowed-job-definition-untouched`, `LC-E-020-c-narrowed-but-inside`, `LC-E-020-d-no-creator-grant-recorded` (candidate, not yet merged)
+
 ---
 
 #### LC-E-034. A queued action that outlasts a suspension needs a live check at fire time, not just at the moment it was queued
@@ -1234,6 +1376,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 **Related invariant/open question.** L8 is specified only in terms of pausing the use of authority and everything that depends on it, which implicitly assumes a live dependency to pause. A queued-but-not-yet-executing action is dormant, not in use, so L8's text does not make explicit that the scheduler must check live state at fire time for the scheduled-action case specifically.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-034-a-suspension-lifted-before-fire`, `LC-E-034-b-suspension-still-active-at-fire`, `LC-E-034-c-revoked-between-queue-and-fire`, `LC-E-034-d-suspension-source-silent-at-fire-time` (candidate, not yet merged)
 
 ---
 
@@ -1251,6 +1395,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-007-a-inside-by-the-checking-party-clock`, `LC-G-007-b-expired-by-a-second-checking-party-clock`, `LC-G-007-c-not-yet-effective-by-a-third-clock`, `LC-G-007-d-no-clock-attestation` (candidate, not yet merged)
+
 ---
 
 #### LC-G-008. A single external time source with no independent check can silently go wrong and nothing downstream can detect it
@@ -1267,6 +1413,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-008-a-cross-checked-reading`, `LC-G-008-b-wrapped-single-source`, `LC-G-008-c-cross-check-disagrees-past-the-bound`, `LC-G-008-d-no-source-recorded` (candidate, not yet merged)
+
 ---
 
 #### LC-G-009. Two legitimately-run clocks can disagree by design during a defined window, and neither reading is the wrong one
@@ -1282,6 +1430,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 **Related invariant/open question.** Distinct from LC-F-012 (a leap-second insertion crashing verifier processes fleet-wide) and LC-F-022 (last-writer-wins timestamp resolution discarding a legitimate write). Those are failures the leap second causes elsewhere. This case is about two simultaneously valid but differing time attestations, neither of which invalidates the other.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-009-a-declared-smear-window`, `LC-G-009-b-no-declared-window`, `LC-G-009-c-divergence-past-the-declared-bound`, `LC-G-009-d-two-clocks-that-agree` (candidate, not yet merged)
 
 ---
 
@@ -1301,6 +1451,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-D-001-a-third-party-disclosure-is-a-trigger`, `LC-D-001-b-reattested-after-disclosure`, `LC-D-001-c-unattributed-compromise-claim-is-not-a-trigger`, `LC-D-001-d-later-finding-does-not-rewrite-the-earlier-record` (candidate, not yet merged)
+
 **Variants:** LC-D-015 (Toyota T-Connect, the trigger is public exposure of the org's own credential rather than an integrator's breach disclosure), LC-D-018 (Salesloft Drift, the same integrator-compromise mechanism, but a single disclosure has to become a correlated revocation-relevant event across more than 700 independently administered downstream orgs at once).
 
 ---
@@ -1318,6 +1470,8 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 **Related invariant/open question.** A direct, real-world instance of L12: what a rotation claims to have covered versus what actually exists. Motivates why a "believed complete" inventory is not a valid basis for a completeness claim.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-credential-events` / `LC-D-003-a-reach-over-the-graph-not-the-believed-list`, `LC-D-003-b-both-bases-agree-so-agreement-establishes-nothing` (candidate, not yet merged)
 
 Variants: D-028 (a source-code leak surfacing credentials embedded over years, the same no-rotatable-inventory problem reached from the leak side rather than the rotation side).
 
@@ -1337,6 +1491,8 @@ Variants: D-028 (a source-code leak surfacing credentials embedded over years, t
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-D-004-a-operator-identity-reaches-an-independent-tree`, `LC-D-004-b-operator-identity-with-no-edge-to-this-tree` (candidate, not yet merged)
+
 ---
 
 #### LC-D-009. A documented scope means nothing if the resource-side boundary never actually enforces it
@@ -1352,6 +1508,8 @@ Variants: D-028 (a source-code leak surfacing credentials embedded over years, t
 **Related invariant/open question.** None of L1-L12 address whether the resource-side enforcement boundary actually implements a delegation's stated scope. They assume it does. This is the clearest sourced instance of "resource identity reuse / target binding" the corpus produced.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-credential-events` / `LC-D-009-a-enforced-scope-exceeds-declared-scope`, `LC-D-009-b-no-reachable-scope-attestation`, `LC-D-009-c-enforced-scope-contained` (candidate, not yet merged)
 
 ---
 
@@ -1369,6 +1527,8 @@ Variants: D-028 (a source-code leak surfacing credentials embedded over years, t
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-purpose-exhaustion` / `PXE-03-reject-second-purchase-wednesday`, `PXE-12-reject-after-grant-not_after-expiry-and-exhaustion-coexist` (candidate, not yet merged)
+
 ---
 
 #### LC-D-011. Inheriting another organization's entire root of trust by acquisition is not itself a re-verification event
@@ -1384,6 +1544,8 @@ Variants: D-028 (a source-code leak surfacing credentials embedded over years, t
 **Related invariant/open question.** None of L1-L12 address organizational succession at the level of an entire root of trust being absorbed into another organization's trust domain. L2 to L4 cover succession within one delegation tree under a continuing root, not the wholesale inheritance of a different root.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-credential-events` / `LC-D-011-a-inherited-root-past-its-reattestation-deadline`, `LC-D-011-b-inherited-root-inside-its-deadline`, `LC-D-011-c-inherited-root-reestablished` (candidate, not yet merged)
 
 Variants: B-015 (a business-unit spin-off requiring a fresh grant from the new independent entity, rather than an acquisition inheriting an existing root).
 
@@ -1403,6 +1565,8 @@ Variants: B-015 (a business-unit spin-off requiring a fresh grant from the new i
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-D-014-a-issuance-log-integrity-unestablished-for-the-window`, `LC-D-014-b-issued-outside-the-covered-window`, `LC-D-014-c-reestablished-from-a-reverified-root` (candidate, not yet merged)
+
 Variants: F-031 (a transport-layer memory bug leaking active delegation tokens out of process memory, raising the same proactive-rotation-over-the-whole-exposure-window question), F-032 (a multi-tenant proxy bug leaking one tenant's credentials into another tenant's response, the same question at the proxy layer rather than at TLS termination).
 
 ---
@@ -1421,6 +1585,8 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-D-025-a-revoked-and-accounting-not-established`, `LC-D-025-b-revoked-and-accounting-established` (candidate, not yet merged)
+
 ---
 
 #### LC-D-029. A correctly-resolved historical key proves who signed, not what was actually built
@@ -1436,6 +1602,8 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 **Related invariant/open question.** L9 addresses selecting the historically correct key version at issuance time, treating key rotation as distinct from delegation revocation. This is a different failure entirely: the correct key, used correctly, on an artifact the process itself made illegitimate, a gap key-version resolution alone cannot close.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-credential-events` / `LC-D-029-a-no-provenance-attestation`, `LC-D-029-b-provenance-attestor-is-the-signing-key-holder`, `LC-D-029-c-independent-provenance-attestation` (candidate, not yet merged)
 
 ---
 
@@ -1453,6 +1621,8 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-D-033-a-authorizer-with-no-addition-record`, `LC-D-033-b-addition-attestor-standing-not-declared`, `LC-D-033-c-every-authorizer-attested` (candidate, not yet merged)
+
 ---
 
 #### LC-D-034. "Test" or "legacy" as a label is not the same as "test" or "legacy" as a validity fact
@@ -1469,6 +1639,8 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-purpose-exhaustion` / `PXE-03-reject-second-purchase-wednesday`, `PXE-08-reject-unauthenticated-completion` (candidate, not yet merged)
+
 ---
 
 #### LC-F-008. A verifier that checks status entirely offline against a synced snapshot needs its own evidence category, not a degraded live check
@@ -1484,6 +1656,8 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 **Related invariant/open question.** None of L1-L12 name a bounded-offline-snapshot evidence category as distinct from a degraded live check. This is a design choice, not an outage, and needs its own evidence shape.
 
 **Status:** proposed.
+
+**Fixture:** `conflicting-status-sources` / `CSS-09-offline-snapshot-within-declared-bound-admits`, `CSS-10-offline-snapshot-past-declared-bound-not-established`, `CSS-11-offline-snapshot-revoked-denies` (candidate, not yet merged)
 
 Variants: LC-F-002 (a protocol migration leaves old verifiers with no working check at all and no signal they've stopped checking, not a deliberate bounded-offline design), LC-F-003 (staleness tracks a shipped runtime's update cadence rather than a single session's fixed sync point), LC-F-007 (a cache that could refresh live simply outlives its declared ttl, rather than a verifier with no live path by design), LC-F-010 (checking is deliberately disabled for privacy with no replacement snapshot at all, not degraded to a bounded offline one).
 
@@ -1503,6 +1677,8 @@ Variants: LC-F-002 (a protocol migration leaves old verifiers with no working ch
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-F-013-a-clock-disagreement-is-its-own-outcome`, `LC-F-013-b-expiry-with-clocks-agreeing`, `LC-F-013-c-clocks-agree-inside-the-window` (candidate, not yet merged)
+
 Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong, a fleet anomaly to detect and correlate, not a single gateway-agent disagreement to tolerate case by case).
 
 ---
@@ -1521,6 +1697,8 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-F-033-a-issuer-population-trust-not-established`, `LC-F-033-b-issuer-population-reattested` (candidate, not yet merged)
+
 ---
 
 #### LC-F-035. Choosing a stateless bearer credential format is choosing "revocation only takes effect at natural expiry"
@@ -1536,6 +1714,8 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 **Related invariant/open question.** L8 distinguishes suspension from revocation as two effective states an implementation can produce. This case is about a credential format for which neither can actually be produced early at all without a design change, a prerequisite question the invariants assume is already solved.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-credential-events` / `LC-F-035-a-revocation-not-yet-effective-for-this-credential-class`, `LC-F-035-b-revocation-effective-where-status-is-looked-up` (candidate, not yet merged)
 
 Variants: LC-F-034 (ambiguity is about how far a revocation cascades across derived tokens once cascading is possible, not about whether the base credential format can be revoked early at all).
 
@@ -1555,6 +1735,8 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-G-001-a-planned-rotation-opens-no-suspect-window` (candidate, not yet merged)
+
 ---
 
 #### LC-G-002. Unknown onset of a key compromise forces the suspect window to start at exposure, not at discovery
@@ -1570,6 +1752,8 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 **Related invariant/open question.** A harder case than L9's ordinary key-rotation boundary. Here the boundary a verifier must use is not a rotation event at all, but an earlier, independently-dated exposure event, and the actual moment of compromise inside that window is never established.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-credential-events` / `LC-G-002-a-window-starts-at-exposure-not-discovery`, `LC-G-002-b-issued-before-the-exposure-start` (candidate, not yet merged)
 
 ---
 
@@ -1587,6 +1771,8 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-credential-events` / `LC-G-003-a-independently-dated-before-the-compromise-point`, `LC-G-003-b-only-the-compromised-keys-own-claim-dates-the-artifact`, `LC-G-003-c-independently-dated-inside-the-window` (candidate, not yet merged)
+
 ---
 
 #### LC-G-004. A key scoped for one purpose can be wrongly accepted as authoritative for a broader one if the verifier does not check scope separately from signature validity
@@ -1602,6 +1788,8 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 **Related invariant/open question.** Distinct from L1's ancestor-revocation question and from LC-D-029's signature-versus-build-provenance question. Here the key was never revoked and the artifact was never tampered with in transit. What failed was the scope binding, never checked as a separate step. Related to LC-C-011's point that a valid chain alone can be insufficient, though the missing element here is scope, not a second concurring party.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-credential-events` / `LC-G-004-a-key-scope-does-not-cover-the-claimed-audience`, `LC-G-004-b-no-key-scope-declared`, `LC-G-004-c-key-scope-covers-the-claimed-audience` (candidate, not yet merged)
 
 ---
 
@@ -1621,6 +1809,8 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 
 **Status:** proposed.
 
+**Fixture:** `capability-binding-drift` / `CBD-04`, `CBD-05` (candidate, not yet merged)
+
 ---
 
 #### LC-E-002. A valid, non-expired, non-revoked grant can become unexecutable, and that is a fourth state, not a variant of the other three
@@ -1636,6 +1826,8 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 **Related invariant/open question.** L10 separates expiry (planned end) from revocation (early end by authority). This case is neither: the grant's own terms are unaffected, and what changed is outside the grant's control.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-agent-side-events` / `ASE-01`, `ASE-02`, `ASE-03`, `ASE-04` (candidate, not yet merged)
 
 ---
 
@@ -1653,6 +1845,8 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 
 **Status:** proposed.
 
+**Fixture:** `ancestor-revocation-chain` / no vector ids named in the coverage table (on the conformance suite main branch), and `sponsor-handover` / `SH-03`, `SH-05` (on the conformance suite main branch)
+
 ---
 
 #### LC-E-006. Holding a scope does not carry authority to hand it to something you spawn
@@ -1668,6 +1862,8 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 **Related invariant/open question.** L5 forbids unioning two chains to expand a single agent's own action. This is a different operation, originating a new grant for something spawned, which is closer to ordinary issuance but specifically flags that possessing a scope does not imply authority to redelegate it, a gap none of L1-L12 name for the agent-spawning-agent case.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-conferral-without-authority` / `CWA-02`, `CWA-03`, `CWA-08`, `CWA-09`, `CWA-10` (candidate, not yet merged)
 
 Variants: E-007 (a platform default service-linked role lets a spawning agent create a child with no explicit pass grant, the opposite outcome on the same mechanism).
 
@@ -1687,6 +1883,8 @@ Variants: E-007 (a platform default service-linked role lets a spawning agent cr
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-agent-side-events` / `ASE-05`, `ASE-06`, `ASE-07`, `ASE-08` (candidate, not yet merged)
+
 Variants: E-009 (an approval delivered as 0-RTT-style early data, the same single-use and replay-window gap outside Kerberos).
 
 ---
@@ -1704,6 +1902,8 @@ Variants: E-009 (an approval delivered as 0-RTT-style early data, the same singl
 **Related invariant/open question.** L6 states the enforcement gateway must recheck revocation at execution time. This is the client-agent side of the same problem, how a long-running job's own internal logic must be structured to cope with a gateway-side denial arriving mid-job, a concrete instance of the "work in flight" operational case for a client with no push notification at all.
 
 **Status:** proposed.
+
+**Fixture:** `cached-authorization-revocation` / `CAR-02`, `CAR-05`, `CAR-06` (on the conformance suite main branch)
 
 Variants: E-024 (warm execution-environment reuse letting one invocation's background work bleed into the next, rather than one long job holding a token).
 
@@ -1723,6 +1923,8 @@ Variants: E-024 (warm execution-environment reuse letting one invocation's backg
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-agent-side-events` / `ASE-09`, `ASE-10`, `ASE-11` (candidate, not yet merged)
+
 ---
 
 #### LC-E-023. Faithfully restoring a process's memory says nothing about whether the authority it was holding is still current
@@ -1739,6 +1941,8 @@ Variants: E-024 (warm execution-environment reuse letting one invocation's backg
 
 **Status:** proposed.
 
+**Fixture:** `authority-epoch-rollback` / `AER-03`, `AER-04` (candidate, not yet merged)
+
 ---
 
 #### LC-E-025. A self-replicated copy holds no authority by default, no matter how identical it is to an authorized original
@@ -1754,6 +1958,8 @@ Variants: E-024 (warm execution-environment reuse letting one invocation's backg
 **Related invariant/open question.** Distinct from an ordinary platform-initiated fork (LC-E-004), which copies authority state as a snapshot within a controlled orchestration layer. This is an agent-initiated, adversarial-by-construction copy with no lifecycle event at all for a verifier to check, only an absence of one.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-agent-side-events` / `ASE-12`, `ASE-13` (candidate, not yet merged)
 
 Variants: E-026 (a self-replicated swarm modelled as coordinating peers rather than descendants under one root).
 
@@ -1773,6 +1979,8 @@ Variants: E-026 (a self-replicated swarm modelled as coordinating peers rather t
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-agent-side-events` / `ASE-16`, `ASE-17`, `ASE-18`, `ASE-19`, `ASE-20` (candidate, not yet merged)
+
 ---
 
 #### LC-E-031. A memory architecture built for one continuous identity says nothing about whether its content is current authority once transferred to a different identity
@@ -1791,6 +1999,8 @@ Variants: E-026 (a self-replicated swarm modelled as coordinating peers rather t
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-agent-side-events` / `ASE-14`, `ASE-15` (candidate, not yet merged)
+
 ---
 
 #### LC-E-033. A provider-side capability upgrade can expand what a delegation authorizes with zero delegation-layer event
@@ -1806,6 +2016,8 @@ Variants: E-026 (a self-replicated swarm modelled as coordinating peers rather t
 **Related invariant/open question.** None of L1-L12 name capability drift, since they are scoped to grant, revoke, suspend, expire, and rotate, not to a delegation's target quietly becoming more capable. This is the concrete, dated instance behind the more abstract "semantic drift" shape the corpus also describes via rolling model aliases and mutable container tags.
 
 **Status:** proposed.
+
+**Fixture:** `capability-binding-drift` / `CBD-02`, `CBD-03` (candidate, not yet merged)
 
 Variants: E-003 (deprecation notice windows that differ by model tier, so one countdown assumption fails, rather than the capability jump itself), E-005 (a mutable image tag changing the agent runtime with no logged authority-relevant event, rather than a provider-side capability update).
 
@@ -1827,6 +2039,8 @@ Variants: E-003 (deprecation notice windows that differ by model tier, so one co
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-006-a`, `LC-F-006-b`, `LC-F-006-c`, `LC-F-006-d-inverse-check` (candidate, not yet merged)
+
 Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not a missed scheduled publish), LC-F-004 (identity-provider outage blocks new credential issuance, doesn't touch already-valid chains' revocation freshness), LC-F-005 (load-induced resolver timeouts under legitimate traffic, not a missed publish cycle), LC-F-012 (verifier process itself crashes fleet-wide from an unrelated scheduler bug, not a stale list), LC-F-015 (resolver answer's own timestamp is in the future relative to the verifier, not simply overdue), LC-F-019 (gateway is totally isolated from every authority source at once, not just one stale list).
 
 ---
@@ -1844,6 +2058,8 @@ Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not
 **Related invariant/open question.** L3 says reauthorization creates new authority and revocation is irreversible. This is the opposite direction: a publisher un-saying its own false revocation, which needs a distinct operation and its own evidence trail rather than being modeled as either a normal revocation or a routine reauthorization.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-009-a`, `LC-F-009-b`, `LC-F-009-c`, `LC-F-009-d`, `LC-F-009-e` (candidate, not yet merged)
 
 Variants: D-012 (the scope of a past disclosure revised upward long afterwards, reaching the same correct-the-record question from the claim side rather than the revocation side).
 
@@ -1863,6 +2079,8 @@ Variants: D-012 (the scope of a past disclosure revised upward long afterwards, 
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-014-a`, `LC-F-014-b`, `LC-F-014-c`, `LC-F-014-d`, `LC-F-014-e` (candidate, not yet merged)
+
 ---
 
 #### LC-F-016. A storage-layer partition can silently resurrect revoked authority below the application layer
@@ -1878,6 +2096,8 @@ Variants: D-012 (the scope of a past disclosure revised upward long afterwards, 
 **Related invariant/open question.** L11 forbids an implementation choosing a fallback authority path on its own; this is a level below that, the underlying data store losing linearizable order across a partition, so silent resurrection can happen in storage-layer reconciliation rather than application code. Also touches L12, completeness of the reconciled record.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-016-a`, `LC-F-016-b` (candidate, not yet merged)
 
 ---
 
@@ -1895,6 +2115,8 @@ Variants: D-012 (the scope of a past disclosure revised upward long afterwards, 
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-017-a`, `LC-F-017-b`, `LC-F-017-c`, `LC-F-017-d` (candidate, not yet merged)
+
 ---
 
 #### LC-F-018. Multiple regional enforcement points are physically distinct copies of authority state, and can briefly disagree
@@ -1910,6 +2132,8 @@ Variants: D-012 (the scope of a past disclosure revised upward long afterwards, 
 **Related invariant/open question.** None of L1-L12 model multiple enforcement points each holding their own view of a replicated authority store. The L7 shape, "the authority is unreachable," doesn't capture "reachable but behind."
 
 **Status:** proposed.
+
+**Fixture:** `conflicting-status-sources` / `CSS-06`, `CSS-13`, `CSS-14` (candidate, not yet merged)
 
 Variants: LC-F-020 (staleness comes from an added CDN edge-cache layer in front of the gateway, not from the authority store's own cross-region replication), LC-F-023 (gateways disagree over which policy version is loaded during a rolling config rollout, not over replication lag of authority-state data).
 
@@ -1929,6 +2153,8 @@ Variants: LC-F-020 (staleness comes from an added CDN edge-cache layer in front 
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-022-a`, `LC-F-022-b` (candidate, not yet merged)
+
 ---
 
 #### LC-F-024. Holding a lock is not proof of exclusive access once a pause can outlast the lease
@@ -1944,6 +2170,8 @@ Variants: LC-F-020 (staleness comes from an added CDN edge-cache layer in front 
 **Related invariant/open question.** None of L1-L12 discuss the mechanics of concurrency control around authority-mutating writes themselves. This is a precondition for several invariants (L3's fresh grant, L1's revocation being seen) actually holding under real concurrent execution, not a restatement of any of them.
 
 **Status:** proposed.
+
+**Fixture:** `authority-epoch-rollback` / `AER-07`, `AER-08`, `AER-09`, `AER-10` (candidate, not yet merged)
 
 Variants: LC-F-025 (a specific documented bug in a lock service's own lease-recheck logic that grants a lock without validating the existing lease, rather than the general GC-pause pattern the fencing-token fix addresses).
 
@@ -1963,6 +2191,8 @@ Variants: LC-F-025 (a specific documented bug in a lock service's own lease-rech
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-026-a`, `LC-F-026-b` (candidate, not yet merged)
+
 ---
 
 #### LC-F-027. An empty audit window can mean the record hasn't arrived yet, not that nothing happened
@@ -1978,6 +2208,8 @@ Variants: LC-F-025 (a specific documented bug in a lock service's own lease-rech
 **Related invariant/open question.** L12 (completeness is a separate and stronger claim). This is the delivery-lag instance: a record that hasn't arrived yet is not evidence of absence.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-027-a`, `LC-F-027-b` (candidate, not yet merged)
 
 Variants: LC-F-029 (some downstream consumers never receive a revocation notification at all during a fan-out failover, rather than merely receiving it several minutes late).
 
@@ -1999,6 +2231,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-evidence-and-record` / `LC-G-005-a`, `LC-G-005-b`, `LC-G-005-c`, `LC-G-005-d`, `LC-G-005-e`, `LC-G-005-f` (candidate, not yet merged)
+
 ---
 
 #### LC-G-006. A decision receipt is evaluated against the view available at decision time, not rewritten by what is learned afterward
@@ -2014,6 +2248,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 **Related invariant/open question.** Directly implements the corpus's own rule that later findings never rewrite earlier receipts. Distinct from LC-C-006 (an ancestor invalid from issuance, discovered late): here the original decision was validly made on the information available, so the later information does not make it void from inception, it only shows a fuller record exists now.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-evidence-and-record` / `LC-G-006-a`, `LC-G-006-b`, `LC-G-006-c`, `LC-G-006-d`, `LC-G-006-e`, `LC-G-006-f` (candidate, not yet merged)
 
 ---
 
@@ -2033,6 +2269,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-01`, `IRR-02`, `IRR-03`, `IRR-04`, `IRR-13` (candidate, not yet merged)
+
 ---
 
 #### LC-I-002. A rename does not travel with the references that still point at the old name, and a retirement policy meant to close that gap can itself be raced
@@ -2049,6 +2287,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-05`, `IRR-06`, `IRR-07`, `IRR-08` (candidate, not yet merged)
+
 ---
 
 #### LC-I-003. A recycled identifier reused for a new subject can still unlock the old subject's authority, because nothing marked the account as depending on who currently holds the number
@@ -2064,6 +2304,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 **Related invariant/open question.** Another instance of target-binding drift: the "target" (the number) is continuous in name but not in controller. Distinct from LC-I-001 (a domain the org itself abandoned) because here the reassignment is routine and expected carrier behavior, not a lapse anyone could have prevented by not walking away from it.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-09`, `IRR-10`, `IRR-11`, `IRR-12` (candidate, not yet merged)
 
 ---
 
@@ -2083,6 +2325,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-policy-change` / `PC-01`, `PC-02`, `PC-03`, `PC-04`, `PC-05` (candidate, not yet merged)
+
 ---
 
 #### LC-I-005. What a past authorization decision is evidenced against has to be the policy version live at the moment it happened, not whatever version is live when someone later looks
@@ -2099,6 +2343,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-policy-change` / `PC-06`, `PC-07`, `PC-08`, `PC-09` (candidate, not yet merged)
+
 ---
 
 #### LC-I-006. When a policy tightens after something was approved under the old rule, the old grant doesn't need to be revoked, and the new rule doesn't reach backward on its own
@@ -2114,6 +2360,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 **Related invariant/open question.** A distinct case from L10 (expiry is not revocation): here nothing about the grant itself changed, expired, or was revoked; the surrounding policy changed instead. `AUTHORITY-LIFECYCLE.md`'s "policy version" concept names the dependency but not this grandfathering question, which none of L1-L12 address.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-policy-change` / `PC-10`, `PC-11`, `PC-12`, `PC-13` (candidate, not yet merged)
 
 ---
 
@@ -2133,6 +2381,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-007-a-reached-its-declared-end`, `LC-I-007-b-ended-early-for-cause`, `LC-I-007-c-later-expiry-does-not-rewrite-the-earlier-record`, `LC-I-007-d-revocation-claim-without-lifecycle-standing`, `LC-I-007-e-inside-its-declared-window` (candidate, not yet merged)
+
 ---
 
 #### LC-I-008. Calling it a "renewal" doesn't make it an extension. Some renewal processes issue an entirely new artifact and discard the old one outright
@@ -2149,6 +2399,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-008-a-renewal-is-a-new-artifact`, `LC-I-008-b-superseded-artifact-runs-to-its-own-end`, `LC-I-008-c-evidence-keyed-to-the-superseded-artifact`, `LC-I-008-d-extension-in-place-does-not-bind`, `LC-I-008-e-renewal-widens-beyond-its-parent` (candidate, not yet merged)
+
 ---
 
 #### LC-I-009. An interim holder's mandate to keep the lights on is not a mandate to make new, binding commitments in the vacancy's name, including extending its own reach
@@ -2164,6 +2416,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 **Related invariant/open question.** Distinct from L4 (a successor does not inherit the predecessor's delegation tree), which is about descendants, not about the interim holder's own scope. Touches OPEN-QUESTIONS.md's "office vacancy and succession," which this document leaves open; this case does not resolve that question, only illustrates one governing model's answer for one specific office, without any claim that the mechanism generalizes.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-009-a-inside-the-recorded-caretaking-scope`, `LC-I-009-b-outside-the-recorded-caretaking-scope`, `LC-I-009-c-child-extends-past-the-interim-grant`, `LC-I-009-d-extension-record-is-not-a-fresh-grant`, `LC-I-009-e-self-extension-by-the-interim-holder` (candidate, not yet merged)
 
 ---
 
@@ -2183,6 +2437,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-010-a`, `LC-I-010-b`, `LC-I-010-c`, `LC-I-010-d`, `LC-I-010-e` (candidate, not yet merged)
+
 ---
 
 #### LC-I-011. When an action comes out of a shared identity, "who is accountable" can be a fact that has to be investigated after the fact, not something the identity itself ever recorded
@@ -2199,6 +2455,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-011-a`, `LC-I-011-b`, `LC-I-011-c`, `LC-I-011-d` (candidate, not yet merged)
+
 ---
 
 #### LC-I-012. A privileged identity that can act for everyone has to be structurally exceptional, not just discouraged in policy
@@ -2214,6 +2472,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 **Related invariant/open question.** A structural, preventive counterpart to LC-I-010 and LC-I-011: a design recommendation to keep the highest-privilege identity from being a shared-accountability identity at all, rather than a rule for handling shared accountability once it already exists.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-012-a`, `LC-I-012-b`, `LC-I-012-c` (candidate, not yet merged)
 
 ---
 
@@ -2233,6 +2493,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
+**Fixture:** `approval-single-use` / no vector ids named in the coverage table (on the conformance suite main branch), and `lifecycle-purpose-exhaustion` / `LC-I-013-a`, `LC-I-013-b`, `LC-I-013-c`, `LC-I-013-d`, `PXE-04`, `PXE-05` (candidate, not yet merged)
+
 ---
 
 #### LC-I-014. A permit issued for a single, specific act can be built so that using it is the same recorded event as spending it, with no separate step required to make it unusable again
@@ -2248,6 +2510,8 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 **Related invariant/open question.** A second, independently-sourced instance of the same machine-checkable exhaustion question as LC-I-013, grounded in a real regulatory permit scheme instead of a technical protocol, showing the pattern isn't specific to software credentials.
 
 **Status:** proposed.
+
+**Fixture:** `lifecycle-purpose-exhaustion` / `LC-I-014-a`, `LC-I-014-b`, `LC-I-014-c`, `LC-I-014-d`, `LC-I-014-e` (candidate, not yet merged)
 
 ---
 
@@ -2272,5 +2536,7 @@ Not yet verified. Each one carries a "Known issue" note saying what is missing.
 **Known issue.** Honestly labelled hypothetical with no fetched source, so it does not meet the verified bar. Status is candidate until a source is found or the case is rewritten around one.
 
 **Status:** candidate.
+
+**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-009-a`, `LC-H-009-b`, `LC-H-009-c`, `LC-H-009-d` (candidate, not yet merged)
 
 ---

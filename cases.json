@@ -34,7 +34,27 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-principal-events",
+        "vector_ids": [
+          "LPE-A-001-a",
+          "LPE-A-001-b",
+          "LPE-A-001-c",
+          "LPE-A-001-d",
+          "LPE-A-001-e",
+          "LPE-A-001-f",
+          "LPE-A-001-g",
+          "LPE-A-001-h",
+          "LPE-A-001-i",
+          "LPE-A-001-j",
+          "LPE-A-001-k"
+        ],
+        "sdk_results": "chain verified at every instant, 28 record signatures verified, death/notice/durability verdict `not_supported` / same, via `verify_authority_delegation_chain`, `canonicalize_jcs`, `verify`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -77,7 +97,18 @@
         "difference": "a conditional, event-extendable expiry window rather than a conditional, unverified activation"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "activation-not-established",
+        "vector_ids": [
+          "AX-02-no-attestation-not-established"
+        ],
+        "sdk_results": "recorded in that family, not re-run here / recorded in that family, not re-run here",
+        "pending_pr": true,
+        "note": "AX-01 and AX-03 to AX-16 are the surrounding family; AX-02 is the covering vector."
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -109,7 +140,17 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-principal-events",
+        "vector_ids": [
+          "LPE-A-005-a"
+        ],
+        "sdk_results": "chain valid, decree record signature verified, relationship-termination verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -137,7 +178,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-principal-events",
+        "vector_ids": [
+          "LPE-A-006-a",
+          "LPE-A-006-b",
+          "LPE-A-006-c"
+        ],
+        "sdk_results": "chain valid, filing and decree signatures verified, trigger verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -169,7 +222,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "lifecycle-purpose-exhaustion",
+        "vector_ids": [
+          "PXE-01-accept-first-purchase-tuesday",
+          "PXE-02-observe-authenticated-completion",
+          "PXE-03-reject-second-purchase-wednesday"
+        ],
+        "sdk_results": "recorded in that family, not re-run here / recorded in that family, not re-run here",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -206,7 +271,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-principal-events",
+        "vector_ids": [
+          "LPE-A-009-a",
+          "LPE-A-009-b",
+          "LPE-A-009-c"
+        ],
+        "sdk_results": "chain valid at the pre-finding instant, finding signature verified, retroactive forfeiture verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -237,7 +314,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-principal-events",
+        "vector_ids": [
+          "LPE-A-010-a",
+          "LPE-A-010-b",
+          "LPE-A-010-c",
+          "LPE-A-010-d"
+        ],
+        "sdk_results": "chain valid, four order and appointment signatures verified, external lifecycle standing and `suspended` verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -275,7 +365,20 @@
         "difference": "same pattern, a per-delegation flag overriding a default termination rule, but for incapacity and a durability flag rather than death and a coupled-with-interest flag"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-principal-events",
+        "vector_ids": [
+          "LPE-A-012-a",
+          "LPE-A-012-b",
+          "LPE-A-012-c",
+          "LPE-A-012-d"
+        ],
+        "sdk_results": "chain valid, interest-record signatures verified, survival-basis verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source_type: law",
       "source status line: proposed"
@@ -318,7 +421,22 @@
         "difference": "the pre-committed replacement is a pre-equalized peer inside a fixed two-person crew rather than a named successor"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-principal-events",
+        "vector_ids": [
+          "LPE-A-016-a",
+          "LPE-A-016-b",
+          "LPE-A-016-c",
+          "LPE-A-016-d",
+          "LPE-A-016-e",
+          "LPE-A-016-f"
+        ],
+        "sdk_results": "chain valid, exit-record signatures verified, successor activation and `not_yet_effective` verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -356,7 +474,24 @@
         "difference": "default solo-authorization rule, joint vs. several, for co-agents acting alone under one instrument, rather than a majority-decision-on-disagreement-plus-vacancy rule for co-trustees"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-fiduciary-succession",
+        "vector_ids": [
+          "LFS-A-019-a",
+          "LFS-A-019-b",
+          "LFS-A-019-c",
+          "LFS-A-019-d",
+          "LFS-A-019-e",
+          "LFS-A-019-f",
+          "LFS-A-019-g",
+          "LFS-A-019-h"
+        ],
+        "sdk_results": "chain valid, approval, dissent and vacancy signatures verified, quorum verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -398,7 +533,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-fiduciary-succession",
+        "vector_ids": [
+          "LFS-A-022-a",
+          "LFS-A-022-b",
+          "LFS-A-022-c",
+          "LFS-A-022-d",
+          "LFS-A-022-e"
+        ],
+        "sdk_results": "chain valid, resolution signatures verified, mandate class and end-on-event verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -454,7 +603,26 @@
         "difference": "the atomicity and capacity-at-ratification constraints, folded directly into this entry's own write-up rather than kept as a separate case"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-fiduciary-succession",
+        "vector_ids": [
+          "LFS-A-023-a",
+          "LFS-A-023-b",
+          "LFS-A-023-c",
+          "LFS-A-023-d",
+          "LFS-A-023-e",
+          "LFS-A-023-f",
+          "LFS-A-023-g",
+          "LFS-A-023-h",
+          "LFS-A-023-i",
+          "LFS-A-023-j"
+        ],
+        "sdk_results": "chain valid, ratification, capacity and interest signatures verified, ratification verdict and `restricted` `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -498,7 +666,20 @@
         "difference": "a duty to inquire that narrows reliance protection when the transaction is facially inconsistent with the delegation's visible scope, the opposite direction from the general rule"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-third-party-reliance-notice",
+        "vector_ids": [
+          "TPR-A-027-a",
+          "TPR-A-027-b",
+          "TPR-A-027-c",
+          "TPR-A-027-d"
+        ],
+        "sdk_results": "pass 4/4 / pass 4/4",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -533,7 +714,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-third-party-reliance-notice",
+        "vector_ids": [
+          "TPR-A-028-a",
+          "TPR-A-028-b",
+          "TPR-A-028-c",
+          "TPR-A-028-d"
+        ],
+        "sdk_results": "pass 4/4 / pass 4/4",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -563,7 +757,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-third-party-reliance-notice",
+        "vector_ids": [
+          "TPR-A-033-a",
+          "TPR-A-033-b",
+          "TPR-A-033-c",
+          "TPR-A-033-d"
+        ],
+        "sdk_results": "pass 4/4 / pass 4/4",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -587,7 +794,19 @@
     },
     "sources": [],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "conflicting-status-sources",
+        "vector_ids": [
+          "CSS-04-fresh-conflict-denies-with-conflict-reason",
+          "CSS-05-stale-revoked-against-fresh-active-denies",
+          "CSS-08-no-usable-answer-not-established"
+        ],
+        "sdk_results": "not run here / not run here",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -611,7 +830,21 @@
     },
     "sources": [],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-organization-events",
+        "vector_ids": [
+          "LC-B-004-a",
+          "LC-B-004-b",
+          "LC-B-004-c",
+          "LC-B-004-d",
+          "LC-B-004-e"
+        ],
+        "sdk_results": "chain verdict 4/4, issuance refusal not exercised (minted with PyPI) / chain verdict 4/4, `SCOPE_WIDENING` raised at issuance",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -651,7 +884,19 @@
         "difference": "root-of-chain succession, where no superior issuer could ever exist, tests the same vesting-without-issuance mechanism as a merger vesting a new organizational principal"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-organization-events",
+        "vector_ids": [
+          "LC-B-012-a",
+          "LC-B-012-b",
+          "LC-B-012-c"
+        ],
+        "sdk_results": "chain verdict 3/3, principal binding no API / chain verdict 3/3, principal binding no API",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -681,7 +926,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-organization-events",
+        "vector_ids": [
+          "LC-B-013-a",
+          "LC-B-013-b"
+        ],
+        "sdk_results": "chain verdict 2/2, attestor standing no API / chain verdict 2/2, attestor standing no API",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -711,7 +967,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-organization-events",
+        "vector_ids": [
+          "LC-B-016-a",
+          "LC-B-016-b",
+          "LC-B-016-c",
+          "LC-B-016-d"
+        ],
+        "sdk_results": "chain verdict 4/4, restriction no API / chain verdict 4/4, restriction no API",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -743,7 +1012,24 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-organization-events",
+        "vector_ids": [
+          "LC-B-028-a",
+          "LC-B-028-b",
+          "LC-B-028-c",
+          "LC-B-028-d",
+          "LC-B-028-e",
+          "LC-B-028-f",
+          "LC-B-028-g",
+          "LC-B-028-h"
+        ],
+        "sdk_results": "chain verdict on submit and accept, acceptance boundary no API / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -775,7 +1061,25 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-organization-events",
+        "vector_ids": [
+          "LC-B-029-a",
+          "LC-B-029-b",
+          "LC-B-029-c",
+          "LC-B-029-d",
+          "LC-B-029-e",
+          "LC-B-029-f",
+          "LC-B-029-g",
+          "LC-B-029-h",
+          "LC-B-029-i"
+        ],
+        "sdk_results": "chain verdict incl. `REVOKED` at index 0, acceptance boundary no API / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -797,7 +1101,20 @@
     },
     "sources": [],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-organization-events",
+        "vector_ids": [
+          "LC-B-030-a",
+          "LC-B-030-b",
+          "LC-B-030-c",
+          "LC-B-030-d"
+        ],
+        "sdk_results": "chain verdict 4/4, consent gate no API, detached signature check 6/6 records / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -829,7 +1146,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-007-a",
+          "LRE-B-007-b",
+          "LRE-B-007-c",
+          "LRE-B-007-d"
+        ],
+        "sdk_results": "pass 4/4 / pass 4/4",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -862,7 +1192,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-008-a",
+          "LRE-B-008-b",
+          "LRE-B-008-c"
+        ],
+        "sdk_results": "pass 3/3 / pass 3/3",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -894,7 +1236,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-009-a",
+          "LRE-B-009-b",
+          "LRE-B-009-c"
+        ],
+        "sdk_results": "pass 3/3 / pass 3/3",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -924,7 +1278,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-010-a",
+          "LRE-B-010-b",
+          "LRE-B-010-c",
+          "LRE-B-010-d"
+        ],
+        "sdk_results": "pass 4/4 / pass 4/4",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -956,7 +1323,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-011-a",
+          "LRE-B-011-b"
+        ],
+        "sdk_results": "pass 2/2 / pass 2/2",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -986,7 +1364,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-017-a",
+          "LRE-B-017-b",
+          "LRE-B-017-c"
+        ],
+        "sdk_results": "pass 3/3 / pass 3/3",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1021,7 +1411,19 @@
         "difference": "a listing-based restriction that cascades to unlisted affiliates through an ownership fact, rather than applying only to the named entity"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-018-a",
+          "LRE-B-018-b",
+          "LRE-B-018-c"
+        ],
+        "sdk_results": "pass 3/3 / pass 3/3",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1053,7 +1455,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-019-a",
+          "LRE-B-019-b"
+        ],
+        "sdk_results": "pass 2/2 / pass 2/2",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1081,7 +1494,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-022-a",
+          "LRE-B-022-b"
+        ],
+        "sdk_results": "pass 2/2 / pass 2/2",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1113,7 +1537,15 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "RESEARCH_ONLY",
+        "family": null,
+        "vector_ids": [],
+        "sdk_results": "n/a, no fixture built",
+        "pending_pr": false
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1148,7 +1580,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-024-a",
+          "LRE-B-024-b",
+          "LRE-B-024-c",
+          "LRE-B-024-d"
+        ],
+        "sdk_results": "pass 4/4 / pass 4/4",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1194,7 +1639,20 @@
         "difference": "a closed, externally maintained statutory eligibility list that no in-chain delegation can expand, rather than a shared licence that many chains already depend on"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-025-a",
+          "LRE-B-025-b",
+          "LRE-B-025-c",
+          "LRE-B-025-d"
+        ],
+        "sdk_results": "pass 4/4 / pass 4/4",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1222,7 +1680,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-026-a",
+          "LRE-B-026-b",
+          "LRE-B-026-c"
+        ],
+        "sdk_results": "pass 3/3 / pass 3/3",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1250,7 +1720,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-027-a",
+          "LRE-B-027-b",
+          "LRE-B-027-c",
+          "LRE-B-027-d"
+        ],
+        "sdk_results": "pass 4/4 / pass 4/4",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1283,7 +1766,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-legal-regulatory-events",
+        "vector_ids": [
+          "LRE-B-031-a",
+          "LRE-B-031-b",
+          "LRE-B-031-c"
+        ],
+        "sdk_results": "pass 3/3 / pass 3/3",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1316,7 +1811,27 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-root-authority-succession",
+        "vector_ids": [
+          "LRAS-C-007-a",
+          "LRAS-C-007-b",
+          "LRAS-C-007-c",
+          "LRAS-C-007-d",
+          "LRAS-C-007-e",
+          "LRAS-C-007-f",
+          "LRAS-C-007-g",
+          "LRAS-C-007-h",
+          "LRAS-C-007-i",
+          "LRAS-C-007-j",
+          "LRAS-C-007-k"
+        ],
+        "sdk_results": "chain valid, office-record signatures verified, subject-binding-mode verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1346,7 +1861,25 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-002-a",
+          "LC-C-002-b",
+          "LC-C-002-c",
+          "LC-C-002-d",
+          "LC-C-002-e",
+          "LC-C-002-f",
+          "LC-C-002-g",
+          "LC-C-002-h",
+          "LC-C-002-i"
+        ],
+        "sdk_results": "`not_supported`: no API takes a default holder, a deadline and a reversion / `not_supported`, same reason",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1376,7 +1909,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-005-a",
+          "LC-C-005-b",
+          "LC-C-005-c",
+          "LC-C-005-d",
+          "LC-C-005-e"
+        ],
+        "sdk_results": "`chain_state` PASS (10 probes). `source_priority` `not_supported`: `resolveSuccessor` walks one charter's `successionOrder` and cannot see a rival source / `chain_state` PASS (10). `source_priority` `not_supported`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1411,7 +1958,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-006-a",
+          "LC-C-006-b",
+          "LC-C-006-c",
+          "LC-C-006-d",
+          "LC-C-006-e"
+        ],
+        "sdk_results": "`chain_state` PASS (10). `void_from_issuance` `not_supported`: no status distinct from revoked / `chain_state` PASS (10). same `not_supported`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1441,7 +2002,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "activation-not-established",
+        "vector_ids": [
+          "AX-02",
+          "AX-03",
+          "AX-04",
+          "AX-06"
+        ],
+        "sdk_results": "n/a / n/a",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1476,7 +2050,23 @@
         "difference": "a dual-control money threshold requiring two independent chains before the next authorization boundary, the same \"one valid chain is insufficient\" gate in a corporate treasury setting rather than a safety-critical one"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-011-a",
+          "LC-C-011-b",
+          "LC-C-011-c",
+          "LC-C-011-d",
+          "LC-C-011-e",
+          "LC-C-011-f",
+          "LC-C-011-g"
+        ],
+        "sdk_results": "`multi_class_threshold` PASS (7 `evaluateThreshold` probes) / `not_supported`: no charter, office, approval-request or threshold module",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1506,7 +2096,23 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-012-a",
+          "LC-C-012-b",
+          "LC-C-012-c",
+          "LC-C-012-d",
+          "LC-C-012-e",
+          "LC-C-012-f",
+          "LC-C-012-g"
+        ],
+        "sdk_results": "`chain_state` PASS (14). `joint_objective` `not_supported` / `chain_state` PASS (14). same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1534,7 +2140,23 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-016-a",
+          "LC-C-016-b",
+          "LC-C-016-c",
+          "LC-C-016-d",
+          "LC-C-016-e",
+          "LC-C-016-f",
+          "LC-C-016-g"
+        ],
+        "sdk_results": "`multi_class_threshold` PASS (2, the all-mode directions). `direction_threshold` `not_supported`: no direction axis in `MultiClassThresholdPolicy` / `not_supported` for both layers",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1562,7 +2184,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-018-a",
+          "LC-C-018-b",
+          "LC-C-018-c",
+          "LC-C-018-d",
+          "LC-C-018-e"
+        ],
+        "sdk_results": "`multi_class_threshold` PASS (5) / `not_supported`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1590,7 +2226,25 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-020-a",
+          "LC-C-020-b",
+          "LC-C-020-c",
+          "LC-C-020-d",
+          "LC-C-020-e",
+          "LC-C-020-f",
+          "LC-C-020-g",
+          "LC-C-020-h",
+          "LC-C-020-i"
+        ],
+        "sdk_results": "`not_supported`: no live eligibility-rule position / `not_supported`, same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1630,7 +2284,22 @@
         "difference": "an officer suspended pending investigation, where the open part is whether conversion to revocation reaches back to the suspension's start or runs only from the investigation's conclusion, and unsourced where this entry is sourced"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-022-a",
+          "LC-C-022-b",
+          "LC-C-022-c",
+          "LC-C-022-d",
+          "LC-C-022-e",
+          "LC-C-022-f"
+        ],
+        "sdk_results": "`not_supported`: no state between initiation and ratification / `not_supported`, same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1658,7 +2327,22 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-029-a",
+          "LC-C-029-b",
+          "LC-C-029-c",
+          "LC-C-029-d",
+          "LC-C-029-e",
+          "LC-C-029-f"
+        ],
+        "sdk_results": "`chain_state` PASS (12). `per_contributor_caveat` `not_supported` / `chain_state` PASS (12). same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1688,7 +2372,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-C-031-a",
+          "LC-C-031-b",
+          "LC-C-031-c",
+          "LC-C-031-d",
+          "LC-C-031-e"
+        ],
+        "sdk_results": "`chain_state` PASS (5, all `valid`, which is the gap). `standing_override` `not_supported` / `chain_state` PASS (5). same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1723,7 +2421,23 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-H-001-a",
+          "LC-H-001-b",
+          "LC-H-001-c",
+          "LC-H-001-d",
+          "LC-H-001-e",
+          "LC-H-001-f",
+          "LC-H-001-g"
+        ],
+        "sdk_results": "`chain_state` PASS (21). `divisible_grant` `not_supported`: `AuthorityDelegationV1` has one issuer per record, so the object is not representable / `chain_state` PASS (21). same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1755,7 +2469,23 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-H-002-a",
+          "LC-H-002-b",
+          "LC-H-002-c",
+          "LC-H-002-d",
+          "LC-H-002-e",
+          "LC-H-002-f",
+          "LC-H-002-g"
+        ],
+        "sdk_results": "`not_supported`: no named asymmetric default / `not_supported`, same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1793,7 +2523,23 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-H-003-a",
+          "LC-H-003-b",
+          "LC-H-003-c",
+          "LC-H-003-d",
+          "LC-H-003-e",
+          "LC-H-003-f",
+          "LC-H-003-g"
+        ],
+        "sdk_results": "`not_supported`: no revival record at all / `not_supported`, same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1823,7 +2569,24 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-outside-the-chain-standing",
+        "vector_ids": [
+          "LC-H-004-a",
+          "LC-H-004-b",
+          "LC-H-004-c",
+          "LC-H-004-d",
+          "LC-H-004-e",
+          "LC-H-004-f",
+          "LC-H-004-g",
+          "LC-H-004-h"
+        ],
+        "sdk_results": "`office_holder_count` PASS (8 `checkQuorum` probes). `chain_state` PASS (8) / `chain_state` PASS (8). `office_holder_count` `not_supported`: no quorum, charter or office module",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1861,7 +2624,22 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-H-005-a",
+          "LC-H-005-b",
+          "LC-H-005-c",
+          "LC-H-005-d",
+          "LC-H-005-e",
+          "LC-H-005-f"
+        ],
+        "sdk_results": "`chain_state` PASS (9). `external_order` `not_supported` / `chain_state` PASS (9). same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1907,7 +2685,24 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-multiple-principals-and-conflict",
+        "vector_ids": [
+          "LC-H-006-a",
+          "LC-H-006-b",
+          "LC-H-006-c",
+          "LC-H-006-d",
+          "LC-H-006-e",
+          "LC-H-006-f",
+          "LC-H-006-g",
+          "LC-H-006-h"
+        ],
+        "sdk_results": "`chain_state` PASS (16, all `valid`, which is the gap). `held_pending_forum` `not_supported` / `chain_state` PASS (16). same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1940,7 +2735,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-subdelegation-edges",
+        "vector_ids": [
+          "LC-H-007-a",
+          "LC-H-007-b",
+          "LC-H-007-c",
+          "LC-H-007-d",
+          "LC-H-007-e"
+        ],
+        "sdk_results": "`TIME_WIDENING` at child index, verification side / same, plus `TIME_WIDENING` raised at issuance",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -1970,7 +2779,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-subdelegation-edges",
+        "vector_ids": [
+          "LC-H-008-a",
+          "LC-H-008-b",
+          "LC-H-008-c",
+          "LC-H-008-d"
+        ],
+        "sdk_results": "`DEPTH_EXHAUSTED` at deepest index / same, plus `DEPTH_EXHAUSTED` raised at issuance",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2005,7 +2827,25 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-agent-renunciation",
+        "vector_ids": [
+          "LAR-H-010-a",
+          "LAR-H-010-b",
+          "LAR-H-010-c",
+          "LAR-H-010-d",
+          "LAR-H-010-e",
+          "LAR-H-010-f",
+          "LAR-H-010-g",
+          "LAR-H-010-h",
+          "LAR-H-010-i"
+        ],
+        "sdk_results": "chain valid, renunciation and acceptance signatures verified, renunciation verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2040,7 +2880,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-agent-renunciation",
+        "vector_ids": [
+          "LAR-H-011-a",
+          "LAR-H-011-b"
+        ],
+        "sdk_results": "chain valid, agreement and determination signatures verified, verdict `not_supported`, no liability API in either SDK and none in this gate / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2070,7 +2921,26 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-principal-unreachable",
+        "vector_ids": [
+          "LPU-H-012-a",
+          "LPU-H-012-b",
+          "LPU-H-012-c",
+          "LPU-H-012-d",
+          "LPU-H-012-e",
+          "LPU-H-012-f",
+          "LPU-H-012-g",
+          "LPU-H-012-h",
+          "LPU-H-012-i",
+          "LPU-H-012-j"
+        ],
+        "sdk_results": "chain valid with `active` revocation throughout, confirmation signatures verified, per-action confirmation verdict `not_supported` / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2102,7 +2972,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-C-008-a-default-successor-resolved",
+          "LC-C-008-b-no-declared-default",
+          "LC-C-008-c-eligibility-not-met",
+          "LC-C-008-d-rule-without-standing",
+          "LC-C-008-e-direction-from-a-party-with-no-tenure"
+        ],
+        "sdk_results": "ok 5/5 / ok 5/5 / supplied: chain state, record signatures. `not_supported`: default-successor resolution, tenure eligibility, standing to declare a default",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2132,7 +3016,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-C-014-a-outgoing-acts-before-acknowledgment",
+          "LC-C-014-b-incoming-acts-before-acknowledgment",
+          "LC-C-014-c-incoming-acts-after-acknowledgment",
+          "LC-C-014-d-outgoing-acts-after-acknowledgment",
+          "LC-C-014-e-acknowledgment-from-a-party-the-offer-does-not-name"
+        ],
+        "sdk_results": "ok 5/5 / ok 5/5 / `not_supported`: handover acknowledgment, and `not_yet_effective` as a state",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2173,7 +3071,21 @@
         "difference": "autonomous fallback authority activating only once round-trip time exceeds the decision window, and only for the pre-scoped action"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-C-015-a-live-direction-present",
+          "LC-C-015-b-fallback-scope-active",
+          "LC-C-015-c-outside-the-fallback-scope",
+          "LC-C-015-d-no-fallback-recorded",
+          "LC-C-015-e-contact-restored"
+        ],
+        "sdk_results": "ok 5/5 / ok 5/5 / supplied: scope membership (npm only). `not_supported`: pre-authorized fallback scope, `restricted` as a state",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2201,7 +3113,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-C-017-a-scheduled-swap-pre-authorized",
+          "LC-C-017-b-swap-off-the-schedule",
+          "LC-C-017-c-required-rest-not-elapsed",
+          "LC-C-017-d-rest-state-not-recorded"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / `not_supported`: rotation schedule, rest ledger",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2238,7 +3163,21 @@
         "difference": "surgeon incapacitation mid-incision adds that the action itself is non-pausable and actively degrading, so the zero-gap requirement carries no safety margin at all, unlike a monitoring role where the underlying process is not necessarily worsening during the gap"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-C-025-a-atomic-relief",
+          "LC-C-025-b-gap-between-departure-and-designation",
+          "LC-C-025-c-after-the-designation",
+          "LC-C-025-d-designee-qualification-not-recorded",
+          "LC-C-025-e-designation-names-another-party"
+        ],
+        "sdk_results": "ok 5/5 / ok 5/5 / `not_supported`: atomic departure-plus-designation, the gap verdict",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2272,7 +3211,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-E-008-a-pinned-version-still-permits",
+          "LC-E-008-b-control-before-the-cutover",
+          "LC-E-008-c-new-instance-pinned-to-the-tighter-version",
+          "LC-E-008-d-instance-without-a-pin",
+          "LC-E-008-e-pinned-version-not-resolvable"
+        ],
+        "sdk_results": "ok 5/5 / ok 5/5 / `not_supported`: pinned policy version",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2304,7 +3257,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-E-014-a-before-owner-removal",
+          "LC-E-014-b-owner-authority-revoked",
+          "LC-E-014-c-owner-removed-with-nothing-revoked",
+          "LC-E-014-d-recorded-disposition-reassigns"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / supplied: `REVOKED` on `-b`, from both SDKs. `not_supported`: identity removal as distinct from revocation, series disposition",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2338,7 +3304,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-E-018-a-occurrence-keeps-its-creation-template",
+          "LC-E-018-b-next-occurrence-under-the-tightened-template",
+          "LC-E-018-c-occurrence-template-version-not-recorded",
+          "LC-E-018-d-control-read-under-the-tightened-template"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / `not_supported`: occurrence template pinning",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2371,7 +3350,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-E-019-a-inside-the-grace-window",
+          "LC-E-019-b-after-the-grace-window",
+          "LC-E-019-c-revoked-during-the-wind-down",
+          "LC-E-019-d-no-declared-grace-bound"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / supplied: `REVOKED` on `-c`. `not_supported`: wind-down grace bound. On `-b` the SDK says `valid` and the lifecycle verdict is `invalid`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2401,7 +3393,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-E-020-a-creator-grant-unchanged",
+          "LC-E-020-b-creator-narrowed-job-definition-untouched",
+          "LC-E-020-c-narrowed-but-inside",
+          "LC-E-020-d-no-creator-grant-recorded"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / supplied: scope membership (npm only). `not_supported`: the job-to-creator-grant link",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2425,7 +3430,20 @@
     },
     "sources": [],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-E-034-a-suspension-lifted-before-fire",
+          "LC-E-034-b-suspension-still-active-at-fire",
+          "LC-E-034-c-revoked-between-queue-and-fire",
+          "LC-E-034-d-suspension-source-silent-at-fire-time"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / supplied: `REVOKED` on `-c`, at the instant the boundary chose to ask. `not_supported`: suspension as a resolver answer, fire-time recheck",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2458,7 +3476,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-G-007-a-inside-by-the-checking-party-clock",
+          "LC-G-007-b-expired-by-a-second-checking-party-clock",
+          "LC-G-007-c-not-yet-effective-by-a-third-clock",
+          "LC-G-007-d-no-clock-attestation"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / supplied: `EXPIRED` and `NOT_YET_VALID`. `not_supported`: `not_yet_effective` as a state distinct from `invalid`, clock attestation",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2493,7 +3524,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-G-008-a-cross-checked-reading",
+          "LC-G-008-b-wrapped-single-source",
+          "LC-G-008-c-cross-check-disagrees-past-the-bound",
+          "LC-G-008-d-no-source-recorded"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / supplied: `NOT_YET_VALID` on the wrapped reading, from both SDKs. `not_supported`: time-source cross-check",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2526,7 +3570,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-time-and-scheduling",
+        "vector_ids": [
+          "LC-G-009-a-declared-smear-window",
+          "LC-G-009-b-no-declared-window",
+          "LC-G-009-c-divergence-past-the-declared-bound",
+          "LC-G-009-d-two-clocks-that-agree"
+        ],
+        "sdk_results": "ok 4/4 / ok 4/4 / `not_supported`: smear tolerance, declared divergence window",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2559,7 +3616,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-001-a-third-party-disclosure-is-a-trigger",
+          "LC-D-001-b-reattested-after-disclosure",
+          "LC-D-001-c-unattributed-compromise-claim-is-not-a-trigger",
+          "LC-D-001-d-later-finding-does-not-rewrite-the-earlier-record"
+        ],
+        "sdk_results": "claim 1 supported (5 boundaries), claim 4 supported, and claim 7 (reach over a declared graph) not_supported / same, plus claim 7 not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2594,7 +3664,18 @@
         "difference": "a source-code leak surfacing credentials embedded over years, the same no-rotatable-inventory problem reached from the leak side rather than the rotation side"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-003-a-reach-over-the-graph-not-the-believed-list",
+          "LC-D-003-b-both-bases-agree-so-agreement-establishes-nothing"
+        ],
+        "sdk_results": "claim 1 supported, claim 4 supported, and claim 7 not_supported / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2626,7 +3707,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-004-a-operator-identity-reaches-an-independent-tree",
+          "LC-D-004-b-operator-identity-with-no-edge-to-this-tree"
+        ],
+        "sdk_results": "claim 1 supported, claim 4 supported, and claim 7 not_supported / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2656,7 +3748,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-009-a-enforced-scope-exceeds-declared-scope",
+          "LC-D-009-b-no-reachable-scope-attestation",
+          "LC-D-009-c-enforced-scope-contained"
+        ],
+        "sdk_results": "claim 3 supported, `scopeCovers` matched 2/2 attested vectors / claim 3 supported, `scope_covers` matched 2/2",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2688,7 +3792,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "lifecycle-purpose-exhaustion",
+        "vector_ids": [
+          "PXE-03-reject-second-purchase-wednesday",
+          "PXE-12-reject-after-grant-not_after-expiry-and-exhaustion-coexist"
+        ],
+        "sdk_results": "not run here / not run here",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2725,7 +3840,19 @@
         "difference": "a business-unit spin-off requiring a fresh grant from the new independent entity, rather than an acquisition inheriting an existing root"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-011-a-inherited-root-past-its-reattestation-deadline",
+          "LC-D-011-b-inherited-root-inside-its-deadline",
+          "LC-D-011-c-inherited-root-reestablished"
+        ],
+        "sdk_results": "claim 1 and 4 supported. No inherited-root surface, so part of claim 9 is not_supported / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2766,7 +3893,19 @@
         "difference": "a multi-tenant proxy bug leaking one tenant's credentials into another tenant's response, the same question at the proxy layer rather than at TLS termination"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-014-a-issuance-log-integrity-unestablished-for-the-window",
+          "LC-D-014-b-issued-outside-the-covered-window",
+          "LC-D-014-c-reestablished-from-a-reverified-root"
+        ],
+        "sdk_results": "claim 9 not_supported / claim 9 not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2796,7 +3935,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-025-a-revoked-and-accounting-not-established",
+          "LC-D-025-b-revoked-and-accounting-established"
+        ],
+        "sdk_results": "claim 1 supported, claim 10 (coverage basis) not_supported / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2829,7 +3979,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-029-a-no-provenance-attestation",
+          "LC-D-029-b-provenance-attestor-is-the-signing-key-holder",
+          "LC-D-029-c-independent-provenance-attestation"
+        ],
+        "sdk_results": "claim 4 supported, including the SDK downgrading a self-declared independence the trust context does not back / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2857,7 +4019,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-D-033-a-authorizer-with-no-addition-record",
+          "LC-D-033-b-addition-attestor-standing-not-declared",
+          "LC-D-033-c-every-authorizer-attested"
+        ],
+        "sdk_results": "claim 1 and 4 supported. No authorizer-addition-provenance surface, recorded under claim 9's absence / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2889,7 +4063,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "lifecycle-purpose-exhaustion",
+        "vector_ids": [
+          "PXE-03-reject-second-purchase-wednesday",
+          "PXE-08-reject-unauthenticated-completion"
+        ],
+        "sdk_results": "not run here / not run here",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2936,7 +4121,19 @@
         "difference": "checking is deliberately disabled for privacy with no replacement snapshot at all, not degraded to a bounded offline one"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "conflicting-status-sources",
+        "vector_ids": [
+          "CSS-09-offline-snapshot-within-declared-bound-admits",
+          "CSS-10-offline-snapshot-past-declared-bound-not-established",
+          "CSS-11-offline-snapshot-revoked-denies"
+        ],
+        "sdk_results": "not run here / not run here",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -2974,7 +4171,19 @@
         "difference": "many independent agents' own clocks are simultaneously wrong, a fleet anomaly to detect and correlate, not a single gateway-agent disagreement to tolerate case by case"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-F-013-a-clock-disagreement-is-its-own-outcome",
+          "LC-F-013-b-expiry-with-clocks-agreeing",
+          "LC-F-013-c-clocks-agree-inside-the-window"
+        ],
+        "sdk_results": "claim 6 PARTIAL: `compareTimestamps` on `HybridTimestamp` reports a non-definite ordering inside the drift band, no denial category separates skew from expiry / claim 6 not_supported: no `HybridTimestamp`, no `compare_timestamps`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3010,7 +4219,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-F-033-a-issuer-population-trust-not-established",
+          "LC-F-033-b-issuer-population-reattested"
+        ],
+        "sdk_results": "claim 9 not_supported / claim 9 not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3043,7 +4263,18 @@
         "difference": "ambiguity is about how far a revocation cascades across derived tokens once cascading is possible, not about whether the base credential format can be revoked early at all"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-F-035-a-revocation-not-yet-effective-for-this-credential-class",
+          "LC-F-035-b-revocation-effective-where-status-is-looked-up"
+        ],
+        "sdk_results": "claim 8 not_supported: no API makes revocation effectiveness a credential-class property, so both boundaries are indistinguishable to the SDK / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3080,7 +4311,17 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-G-001-a-planned-rotation-opens-no-suspect-window"
+        ],
+        "sdk_results": "claim 1 and 4 supported. No planned-versus-compromise rotation distinction, recorded under claim 9's absence / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3115,7 +4356,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-G-002-a-window-starts-at-exposure-not-discovery",
+          "LC-G-002-b-issued-before-the-exposure-start"
+        ],
+        "sdk_results": "claim 1 and 4 supported. No exposure-window surface / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3146,7 +4398,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-G-003-a-independently-dated-before-the-compromise-point",
+          "LC-G-003-b-only-the-compromised-keys-own-claim-dates-the-artifact",
+          "LC-G-003-c-independently-dated-inside-the-window"
+        ],
+        "sdk_results": "claim 4 supported for the attestor-independence half / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3178,7 +4442,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-credential-events",
+        "vector_ids": [
+          "LC-G-004-a-key-scope-does-not-cover-the-claimed-audience",
+          "LC-G-004-b-no-key-scope-declared",
+          "LC-G-004-c-key-scope-covers-the-claimed-audience"
+        ],
+        "sdk_results": "claim 2 supported, `checkAudience` matched 2 of 3 outcomes, 1 divergence recorded. claim 5 supported, `assertKeyPurpose` rejects a key for an unauthorized purpose / claim 2 not_supported, claim 5 not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3206,7 +4482,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "capability-binding-drift",
+        "vector_ids": [
+          "CBD-04",
+          "CBD-05"
+        ],
+        "sdk_results": "see that family / see that family",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3238,7 +4525,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-agent-side-events",
+        "vector_ids": [
+          "ASE-01",
+          "ASE-02",
+          "ASE-03",
+          "ASE-04"
+        ],
+        "sdk_results": "chain `verifyAuthorityDelegationChain` valid at every instant. Executor lifecycle `not_supported`, no `resolveExecutorAvailabilityAt` or equivalent exported / chain `verify_authority_delegation_chain` agrees. Executor lifecycle `not_supported`, no executor module in the installed package",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3271,7 +4571,28 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "ancestor-revocation-chain",
+        "vector_ids": [],
+        "sdk_results": "see those families / see those families",
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/ancestor-revocation-chain/README.md",
+        "note": "Named in the coverage table for the shared-artifact half; no vector ids given there."
+      },
+      {
+        "decision": "COVERED",
+        "family": "sponsor-handover",
+        "vector_ids": [
+          "SH-03",
+          "SH-05"
+        ],
+        "sdk_results": "see those families / see those families",
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/sponsor-handover/README.md"
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3308,7 +4629,21 @@
         "difference": "a platform default service-linked role lets a spawning agent create a child with no explicit pass grant, the opposite outcome on the same mechanism"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "lifecycle-conferral-without-authority",
+        "vector_ids": [
+          "CWA-02",
+          "CWA-03",
+          "CWA-08",
+          "CWA-09",
+          "CWA-10"
+        ],
+        "sdk_results": "see that family / see that family",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3352,7 +4687,20 @@
         "difference": "an approval delivered as 0-RTT-style early data, the same single-use and replay-window gap outside Kerberos"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-agent-side-events",
+        "vector_ids": [
+          "ASE-05",
+          "ASE-06",
+          "ASE-07",
+          "ASE-08"
+        ],
+        "sdk_results": "credential signature via `verify` over `canonicalizeJCS`. Consumption record and lost-record window `not_supported`. `verifyApproval` exists and checks an artifact binding plus a signature with no expiry, use count or consumption record / signature via `agent_passport.crypto.verify` over `canonicalize_jcs`. Consumption record `not_supported`, and `verify_approval` is absent entirely",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3392,7 +4740,20 @@
         "difference": "warm execution-environment reuse letting one invocation's background work bleed into the next, rather than one long job holding a token"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "cached-authorization-revocation",
+        "vector_ids": [
+          "CAR-02",
+          "CAR-05",
+          "CAR-06"
+        ],
+        "sdk_results": "see that family / see that family",
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/cached-authorization-revocation/README.md"
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3422,7 +4783,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-agent-side-events",
+        "vector_ids": [
+          "ASE-09",
+          "ASE-10",
+          "ASE-11"
+        ],
+        "sdk_results": "revocation notice signature via `verify`. The effective-instant comparison and the resolver answer are the fixture's, then handed to `verifyAuthorityDelegationChain` which returns `REVOKED` / same shape via `crypto.verify` and `verify_authority_delegation_chain`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3455,7 +4828,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "authority-epoch-rollback",
+        "vector_ids": [
+          "AER-03",
+          "AER-04"
+        ],
+        "sdk_results": "see that family / see that family",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3488,7 +4872,18 @@
         "difference": "a self-replicated swarm modelled as coordinating peers rather than descendants under one root"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-agent-side-events",
+        "vector_ids": [
+          "ASE-12",
+          "ASE-13"
+        ],
+        "sdk_results": "presenter binding `not_supported`, no `verifyPresenterIsSubject` or equivalent. Chain and signatures via the SDK / presenter binding `not_supported`. Chain and signatures via the SDK",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3519,7 +4914,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-agent-side-events",
+        "vector_ids": [
+          "ASE-16",
+          "ASE-17",
+          "ASE-18",
+          "ASE-19",
+          "ASE-20"
+        ],
+        "sdk_results": "capability consent `not_supported`, no consent record type or resolver exported / capability consent `not_supported`, no consent module in the installed package",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3549,7 +4958,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-agent-side-events",
+        "vector_ids": [
+          "ASE-14",
+          "ASE-15"
+        ],
+        "sdk_results": "`verifyBehavioralMemoryObject` is exported and checks one Ed25519 signature over the canonicalized object and nothing else, so authority currency is `not_supported`. Claim signature via `verify` / no behavioral-memory module at all, `not_supported`. Claim signature via `crypto.verify`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3588,7 +5008,18 @@
         "difference": "a mutable image tag changing the agent runtime with no logged authority-relevant event, rather than a provider-side capability update"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "capability-binding-drift",
+        "vector_ids": [
+          "CBD-02",
+          "CBD-03"
+        ],
+        "sdk_results": "see that family / see that family",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3645,7 +5076,20 @@
         "difference": "gateway is totally isolated from every authority source at once, not just one stale list"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-infrastructure-failure",
+        "vector_ids": [
+          "LC-F-006-a",
+          "LC-F-006-b",
+          "LC-F-006-c",
+          "LC-F-006-d-inverse-check"
+        ],
+        "sdk_results": "run: `enforceFreshnessPolicy`, `isEvidenceFresh` (see note 1) / canonicalization pass, behaviour not_supported, no freshness surface exists",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3677,7 +5121,21 @@
         "difference": "the scope of a past disclosure revised upward long afterwards, reaching the same correct-the-record question from the claim side rather than the revocation side"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-infrastructure-failure",
+        "vector_ids": [
+          "LC-F-009-a",
+          "LC-F-009-b",
+          "LC-F-009-c",
+          "LC-F-009-d",
+          "LC-F-009-e"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported, no publication-error retraction surface / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3703,7 +5161,21 @@
     },
     "sources": [],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-infrastructure-failure",
+        "vector_ids": [
+          "LC-F-014-a",
+          "LC-F-014-b",
+          "LC-F-014-c",
+          "LC-F-014-d",
+          "LC-F-014-e"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported, no external time-evidence surface / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3734,7 +5206,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-infrastructure-failure",
+        "vector_ids": [
+          "LC-F-016-a",
+          "LC-F-016-b"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported, no two-history merge surface / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3774,7 +5257,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-infrastructure-failure",
+        "vector_ids": [
+          "LC-F-017-a",
+          "LC-F-017-b",
+          "LC-F-017-c",
+          "LC-F-017-d"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported, resolver callback takes the delegation only / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3813,7 +5309,19 @@
         "difference": "gateways disagree over which policy version is loaded during a rolling config rollout, not over replication lag of authority-state data"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "conflicting-status-sources",
+        "vector_ids": [
+          "CSS-06",
+          "CSS-13",
+          "CSS-14"
+        ],
+        "sdk_results": "n/a / n/a",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3844,7 +5352,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-infrastructure-failure",
+        "vector_ids": [
+          "LC-F-022-a",
+          "LC-F-022-b"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3888,7 +5407,20 @@
         "difference": "a specific documented bug in a lock service's own lease-recheck logic that grants a lock without validating the existing lease, rather than the general GC-pause pattern the fencing-token fix addresses"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "authority-epoch-rollback",
+        "vector_ids": [
+          "AER-07",
+          "AER-08",
+          "AER-09",
+          "AER-10"
+        ],
+        "sdk_results": "n/a / n/a",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3918,7 +5450,18 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-infrastructure-failure",
+        "vector_ids": [
+          "LC-F-026-a",
+          "LC-F-026-b"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3955,7 +5498,18 @@
         "difference": "some downstream consumers never receive a revocation notification at all during a fan-out failover, rather than merely receiving it several minutes late"
       }
     ],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-infrastructure-failure",
+        "vector_ids": [
+          "LC-F-027-a",
+          "LC-F-027-b"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported, `capabilityCoverage` is scope coverage not interval coverage / canonicalization pass, behaviour not_supported (`RequiredRoleCoverage` is a near-name, role coverage)",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -3985,7 +5539,22 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-evidence-and-record",
+        "vector_ids": [
+          "LC-G-005-a",
+          "LC-G-005-b",
+          "LC-G-005-c",
+          "LC-G-005-d",
+          "LC-G-005-e",
+          "LC-G-005-f"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported. `isRetentionExpired` runs (see note 2) / canonicalization pass, behaviour not_supported, no retention surface exists",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4015,7 +5584,22 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-evidence-and-record",
+        "vector_ids": [
+          "LC-G-006-a",
+          "LC-G-006-b",
+          "LC-G-006-c",
+          "LC-G-006-d",
+          "LC-G-006-e",
+          "LC-G-006-f"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4050,7 +5634,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-identifier-reuse-and-rename",
+        "vector_ids": [
+          "IRR-01",
+          "IRR-02",
+          "IRR-03",
+          "IRR-04",
+          "IRR-13"
+        ],
+        "sdk_results": "chain via `verifyAuthorityDelegationChain`, binding signatures via `verify` over `canonicalizeJCS`. Identifier binding and controller resolution `not_supported`, and the nearest surface, `createNamespaceClaim` / `verifyNamespaceClaim`, is compiled into `dist/src/core/tool-integrity.js` and exported from neither the package root nor `./core` / chain via `verify_authority_delegation_chain`, signatures via `crypto.verify` over `canonicalize_jcs`. Identifier binding `not_supported`, and no `verify_namespace_claim`, `create_did_document`, `public_key_from_did` or `verify_rotation_log` in the installed package",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4085,7 +5683,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-identifier-reuse-and-rename",
+        "vector_ids": [
+          "IRR-05",
+          "IRR-06",
+          "IRR-07",
+          "IRR-08"
+        ],
+        "sdk_results": "as above. Retention and continuity-interval arithmetic `not_supported` / as above. Retention and continuity-interval arithmetic `not_supported`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4118,7 +5729,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-identifier-reuse-and-rename",
+        "vector_ids": [
+          "IRR-09",
+          "IRR-10",
+          "IRR-11",
+          "IRR-12"
+        ],
+        "sdk_results": "as above. Conflicting-binding resolution `not_supported` / as above. Conflicting-binding resolution `not_supported`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4161,7 +5785,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-policy-change",
+        "vector_ids": [
+          "PC-01",
+          "PC-02",
+          "PC-03",
+          "PC-04",
+          "PC-05"
+        ],
+        "sdk_results": "chain via `verifyAuthorityDelegationChain`, pointer signatures via `verify` over `canonicalizeJCS`. Operative-pointer resolution and rollback classification `not_supported`. `verifyPolicyChain` is exported and checks only hash back-links in an ordered entry list / chain via `verify_authority_delegation_chain`, signatures via `crypto.verify` over `canonicalize_jcs`. No `verify_policy_chain`, `create_policy_bundle` or `compute_scope_version_hash` at all, `not_supported`",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4192,7 +5830,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-policy-change",
+        "vector_ids": [
+          "PC-06",
+          "PC-07",
+          "PC-08",
+          "PC-09"
+        ],
+        "sdk_results": "decision rendering against a pinned version `not_supported`. Decision signatures via `verify` / decision rendering `not_supported`. Signatures via `crypto.verify`. `verify_policy_decision` exists and verifies an unrelated record shape",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4225,7 +5876,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-policy-change",
+        "vector_ids": [
+          "PC-10",
+          "PC-11",
+          "PC-12",
+          "PC-13"
+        ],
+        "sdk_results": "chain result taken from the SDK unchanged. The `restricted` against `invalid` separation is the fixture's / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4257,7 +5921,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-expiry-and-renewal",
+        "vector_ids": [
+          "LC-I-007-a-reached-its-declared-end",
+          "LC-I-007-b-ended-early-for-cause",
+          "LC-I-007-c-later-expiry-does-not-rewrite-the-earlier-record",
+          "LC-I-007-d-revocation-claim-without-lifecycle-standing",
+          "LC-I-007-e-inside-its-declared-window"
+        ],
+        "sdk_results": "ok 5/5 / ok 5/5 / supplied: `EXPIRED`, `REVOKED`. `not_supported`: which ending happened, its ground and actor, lifecycle standing",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4289,7 +5967,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-expiry-and-renewal",
+        "vector_ids": [
+          "LC-I-008-a-renewal-is-a-new-artifact",
+          "LC-I-008-b-superseded-artifact-runs-to-its-own-end",
+          "LC-I-008-c-evidence-keyed-to-the-superseded-artifact",
+          "LC-I-008-d-extension-in-place-does-not-bind",
+          "LC-I-008-e-renewal-widens-beyond-its-parent"
+        ],
+        "sdk_results": "ok 5/5 / ok 5/5 / supplied: `ID_MISMATCH` on `-d`, `SCOPE_WIDENING` on `-e`, both SDKs. `not_supported`: renewal, supersession, evidence carry-over",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4321,7 +6013,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-expiry-and-renewal",
+        "vector_ids": [
+          "LC-I-009-a-inside-the-recorded-caretaking-scope",
+          "LC-I-009-b-outside-the-recorded-caretaking-scope",
+          "LC-I-009-c-child-extends-past-the-interim-grant",
+          "LC-I-009-d-extension-record-is-not-a-fresh-grant",
+          "LC-I-009-e-self-extension-by-the-interim-holder"
+        ],
+        "sdk_results": "ok 5/5 / ok 5/5 / supplied: `TIME_WIDENING` on `-c`, `EXPIRED` on `-d` and `-e`. `not_supported`: interim or caretaking mandate",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4351,7 +6057,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-shared-identity-with-no-accountable-principal",
+        "vector_ids": [
+          "LC-I-010-a",
+          "LC-I-010-b",
+          "LC-I-010-c",
+          "LC-I-010-d",
+          "LC-I-010-e"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported (see note 3) / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4386,7 +6106,20 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-shared-identity-with-no-accountable-principal",
+        "vector_ids": [
+          "LC-I-011-a",
+          "LC-I-011-b",
+          "LC-I-011-c",
+          "LC-I-011-d"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4414,7 +6147,19 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-shared-identity-with-no-accountable-principal",
+        "vector_ids": [
+          "LC-I-012-a",
+          "LC-I-012-b",
+          "LC-I-012-c"
+        ],
+        "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4447,7 +6192,31 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "COVERED",
+        "family": "approval-single-use",
+        "vector_ids": [],
+        "sdk_results": "chain verdict per event, exhaustion ledger no API / same",
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/d058112c0bf23aeeb35343885d75349100a8ad1e/fixtures/approval-single-use/README.md",
+        "note": "Covers the plain approval-reuse half only; the distinct half is the exhaustion-ledger vectors."
+      },
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-purpose-exhaustion",
+        "vector_ids": [
+          "LC-I-013-a",
+          "LC-I-013-b",
+          "LC-I-013-c",
+          "LC-I-013-d",
+          "PXE-04",
+          "PXE-05"
+        ],
+        "sdk_results": "chain verdict per event, exhaustion ledger no API / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4480,7 +6249,21 @@
       }
     ],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-purpose-exhaustion",
+        "vector_ids": [
+          "LC-I-014-a",
+          "LC-I-014-b",
+          "LC-I-014-c",
+          "LC-I-014-d",
+          "LC-I-014-e"
+        ],
+        "sdk_results": "chain verdict per event, exhaustion ledger no API / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "source status line: proposed"
     ]
@@ -4508,7 +6291,20 @@
     },
     "sources": [],
     "variants": [],
-    "fixtures": [],
+    "fixtures": [
+      {
+        "decision": "VECTOR",
+        "family": "lifecycle-subdelegation-edges",
+        "vector_ids": [
+          "LC-H-009-a",
+          "LC-H-009-b",
+          "LC-H-009-c",
+          "LC-H-009-d"
+        ],
+        "sdk_results": "`REVOKED` at index 0, record continuity no API (built on vendored JCS) / same",
+        "pending_pr": true
+      }
+    ],
     "notes": [
       "Known issue: Honestly labelled hypothetical with no fetched source, so it does not meet the verified bar. Status is candidate until a source is found or the case is rewritten around one.",
       "source status line: candidate"

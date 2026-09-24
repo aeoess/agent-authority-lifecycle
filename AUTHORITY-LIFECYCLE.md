@@ -1,6 +1,6 @@
 # Authority Lifecycle for Long-Running AI Agents
 
-Version 0.1.2-draft. Part of the Agent Passport System work. Apache-2.0.
+Version 0.2.0-draft. Part of the Agent Passport System work. Apache-2.0.
 
 ## Scope
 
@@ -132,7 +132,7 @@ Status **tested** as a scenario, vector SH-05 of the `sponsor-handover` case, [P
 
 An agent holding two valid chains cannot use them together to create a grant broader than either chain allows. Each grant follows one parent chain.
 
-Status **specified, not yet tested**. [draft-03](https://datatracker.ietf.org/doc/draft-pidlisnyi-aps/03/) Section 3.3 says each action selects one root-to-leaf authority chain and a verifier MUST NOT union scopes or budgets from multiple chains. No public case yet.
+Status **specified and tested**. [draft-03](https://datatracker.ietf.org/doc/draft-pidlisnyi-aps/03/) Section 3.3: "Each action selects one root-to-leaf authority chain.  A verifier MUST NOT union scopes or budgets from multiple chains." Case `single-chain-selection`, vectors SCS-01 to SCS-06, one leaf agent holding two independent chains from two roots. SCS-05 is the union check: an amount above the presented chain's own ceiling but below the two ceilings summed is rejected, because the second chain is never an input. Both reference SDKs decide every vector, through the scope and budget primitives on the primary path and through chain verification on the cross-check. [Pinned README](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a011fcdaa7dffe7c068434a39d3f32efce186c8e/fixtures/single-chain-selection/README.md).
 
 ### L6. An earlier approval is not current authority
 

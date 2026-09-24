@@ -2,9 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/aeoess/agent-authority-lifecycle/schema/cases.schema.json",
   "title": "Agent Authority Lifecycle case catalog",
-  "description": "Machine-readable form of the cases in CASES.md and BOUNDARY-CASES.md. One object per case. No object in this file is itself a conformance result; `fixtures` links out to the Agent Authority Conformance suite once a runnable fixture exists for a case.",
+  "description": "Machine-readable form of the cases in CASES.md and BOUNDARY-CASES.md. One object per case. No object in this file is itself a conformance result; `fixtures` links out to the Agent Authority Conformance suite. A fixture entry records a lab decision (VECTOR, COVERED or RESEARCH_ONLY), the fixture family, the vector ids and a summary of what the two reference SDKs decided. Entries with `pending_pr` true have no published branch yet, so no link is given.",
   "type": "array",
-  "items": { "$ref": "#/$defs/case" },
+  "items": {
+    "$ref": "#/$defs/case"
+  },
   "$defs": {
     "caseId": {
       "type": "string",
@@ -17,7 +19,11 @@
     "source": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["url", "quote", "fetched_by"],
+      "required": [
+        "url",
+        "quote",
+        "fetched_by"
+      ],
       "properties": {
         "url": {
           "type": "string",
@@ -30,16 +36,24 @@
         },
         "fetched_by": {
           "type": "string",
-          "enum": ["auditor", "thin-group ledger"]
+          "enum": [
+            "auditor",
+            "thin-group ledger"
+          ]
         }
       }
     },
     "variant": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "difference"],
+      "required": [
+        "id",
+        "difference"
+      ],
       "properties": {
-        "id": { "$ref": "#/$defs/caseId" },
+        "id": {
+          "$ref": "#/$defs/caseId"
+        },
         "difference": {
           "type": "string",
           "minLength": 1,
@@ -50,11 +64,18 @@
     "related": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["invariants", "open_questions", "concepts", "text"],
+      "required": [
+        "invariants",
+        "open_questions",
+        "concepts",
+        "text"
+      ],
       "properties": {
         "invariants": {
           "type": "array",
-          "items": { "$ref": "#/$defs/invariantId" },
+          "items": {
+            "$ref": "#/$defs/invariantId"
+          },
           "uniqueItems": true
         },
         "open_questions": {
@@ -77,7 +98,9 @@
         },
         "concepts": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "uniqueItems": true,
           "description": "Slugs of AUTHORITY-LIFECYCLE.md glossary terms (the 'Lifecycle concepts are separate' section) mentioned in this case's related-invariant or boundary-reason text."
         },
@@ -91,12 +114,23 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "id", "title", "family", "tier", "status",
-        "situation", "expected_outcome", "naive_failure",
-        "related", "sources", "variants", "fixtures"
+        "id",
+        "title",
+        "family",
+        "tier",
+        "status",
+        "situation",
+        "expected_outcome",
+        "naive_failure",
+        "related",
+        "sources",
+        "variants",
+        "fixtures"
       ],
       "properties": {
-        "id": { "$ref": "#/$defs/caseId" },
+        "id": {
+          "$ref": "#/$defs/caseId"
+        },
         "title": {
           "type": "string",
           "minLength": 1
@@ -108,12 +142,18 @@
         },
         "tier": {
           "type": "string",
-          "enum": ["verified", "candidate", "boundary"],
+          "enum": [
+            "verified",
+            "candidate",
+            "boundary"
+          ],
           "description": "verified/candidate come from CASES.md's two sections; boundary means the case lives in BOUNDARY-CASES.md (it resolves to a liability, detection-surface or evidence question, not an authority verdict)."
         },
         "status": {
           "type": "string",
-          "enum": ["proposed"],
+          "enum": [
+            "proposed"
+          ],
           "description": "Fixture/build-maturity status. Proposed unless a runnable fixture exists in the Agent Authority Conformance suite; none does yet for any case, so this is 'proposed' throughout. Distinct from `tier`, which is about sourcing confidence."
         },
         "situation": {
@@ -128,26 +168,89 @@
           "type": "string",
           "description": "What a naive system gets wrong. Empty for BOUNDARY-CASES.md's short-form entries."
         },
-        "related": { "$ref": "#/$defs/related" },
+        "related": {
+          "$ref": "#/$defs/related"
+        },
         "sources": {
           "type": "array",
-          "items": { "$ref": "#/$defs/source" },
+          "items": {
+            "$ref": "#/$defs/source"
+          },
           "description": "Empty only for an honestly-labelled hypothetical with the legal or incident claim removed (survival criterion 3's second branch), never for a case that states a sourceable claim."
         },
         "variants": {
           "type": "array",
-          "items": { "$ref": "#/$defs/variant" }
+          "items": {
+            "$ref": "#/$defs/variant"
+          }
         },
         "fixtures": {
           "type": "array",
-          "items": { "type": "object" },
-          "maxItems": 0,
-          "description": "Always empty in this wave. The lab wave fills this in with links to runnable Agent Authority Conformance fixtures."
+          "items": {
+            "$ref": "#/$defs/fixture"
+          },
+          "description": "One entry per fixture family the lab wave mapped this case onto. Empty for BOUNDARY-CASES.md entries, which the lab wave did not cover."
         },
         "notes": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "description": "Optional. Carries the source document's own literal status line and any 'Known issue' / inline annotation text verbatim, so nothing found during parsing is silently dropped."
+        }
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision",
+        "family",
+        "vector_ids",
+        "sdk_results",
+        "pending_pr"
+      ],
+      "properties": {
+        "decision": {
+          "type": "string",
+          "enum": [
+            "VECTOR",
+            "COVERED",
+            "RESEARCH_ONLY"
+          ],
+          "description": "The lab wave's decision for this case against this fixture family. VECTOR means new vectors were built for it, COVERED means an existing family already tests the same question, RESEARCH_ONLY means no record set decides it."
+        },
+        "family": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Fixture family directory name in the Agent Authority Conformance suite. Null only for a RESEARCH_ONLY decision, where no family exists."
+        },
+        "vector_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "description": "Vector ids in that family. Empty where the coverage table names the family without naming vectors."
+        },
+        "sdk_results": {
+          "type": "string",
+          "description": "Summary of what the npm and PyPI reference SDKs decided for this case, copied from the lab coverage table. Not a conformance claim."
+        },
+        "pending_pr": {
+          "type": "boolean",
+          "description": "True where the fixture sits on an unmerged candidate branch with no settled branch name to link, so no url is given. False where the fixture is already on the suite's main branch and `url` carries a pinned link."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Pinned link to the fixture README on the suite's main branch. Present only when pending_pr is false."
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional qualifier from the lab coverage table."
         }
       }
     }
