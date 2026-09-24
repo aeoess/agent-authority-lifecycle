@@ -1,5 +1,7 @@
 # Superseded designs
 
+Part of Authority Lifecycle v0.3.0-draft. From the Agent Passport System work. Apache-2.0.
+
 Designs we considered and replaced, with the reason. Kept because the reasons are part of the model.
 
 ## Cascade succession

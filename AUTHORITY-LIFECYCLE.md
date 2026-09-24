@@ -1,6 +1,6 @@
 # Authority Lifecycle for Long-Running AI Agents
 
-Version 0.2.1-draft. Part of the Agent Passport System work. Apache-2.0.
+Part of Authority Lifecycle v0.3.0-draft. From the Agent Passport System work. Apache-2.0.
 
 ## Contents
 
@@ -11,7 +11,11 @@ Version 0.2.1-draft. Part of the Agent Passport System work. Apache-2.0.
   - [Authority lifecycle state](#authority-lifecycle-state)
   - [Decisions and effects](#decisions-and-effects)
   - [Verification and evidence](#verification-and-evidence)
-  - [What changes when a person leaves](#what-changes-when-a-person-leaves)
+  - [Issuance standing and continuing authority](#issuance-standing-and-continuing-authority)
+- [Verification model](#verification-model)
+  - [Artifact verdicts](#artifact-verdicts)
+  - [Boundary outcomes](#boundary-outcomes)
+  - [The two uses of "not established"](#the-two-uses-of-not-established)
 - [Invariants](#invariants)
   - [L1. Revoking an ancestor invalidates the authority that depends on it](#l1-revoking-an-ancestor-invalidates-the-authority-that-depends-on-it)
   - [L2. Identity continuity does not imply authority continuity](#l2-identity-continuity-does-not-imply-authority-continuity)
@@ -25,7 +29,7 @@ Version 0.2.1-draft. Part of the Agent Passport System work. Apache-2.0.
   - [L10. Expiry is not revocation](#l10-expiry-is-not-revocation)
   - [L11. No silent authority resurrection](#l11-no-silent-authority-resurrection)
   - [L12. Completeness is a separate and stronger claim](#l12-completeness-is-a-separate-and-stronger-claim)
-- [Operational cases](#operational-cases)
+- [Applying the model](#applying-the-model)
 - [How to cite](#how-to-cite)
 
 ## Scope
@@ -83,7 +87,7 @@ Not every concept below has to be a separate protocol object.
 
 ### Decisions and effects
 
-- **Approval.** A principal or approver allows a proposed action. It is an input to authorization, with its own scope, expiry and use count, and it can be withdrawn before dispatch.
+- **Approval.** A principal or approver allows a proposed action. It is an input to authorization, with its own scope, expiry and use count, and it can be withdrawn before the next authorization boundary consumes it.
 - **Policy version.** Which policy an approval or decision was evaluated against. The same action can be allowed under one version and denied under the next.
 - **Authorization decision.** The record an enforcement point makes that an action was allowed or denied, against the authority, policy and inputs it evaluated.
 - **Invocation.** The exact action submitted for execution.
@@ -104,9 +108,13 @@ Not every concept below has to be a separate protocol object.
 
 Human agency law has related distinctions between actual authority, notice and apparent authority. Those doctrines are a useful source of cases for this work. This document does not assume they apply to AI agents.
 
-Status. Agent identity, principal binding, delegated authority, signing key, approval, suspension, revocation and execution carry over from 0.1.0-draft. The grouping and every other entry are **proposed**, added in 0.1.1-draft or 0.1.2-draft. No public case tests them yet.
+Status. Agent identity, principal binding, delegated authority, signing key, approval, suspension, revocation and execution carry over from this document's 0.1.0 draft. The grouping and every other entry are **proposed**, added in its 0.1.1 or 0.1.2 drafts, which git history tracks. No public case tests them yet.
 
-### What changes when a person leaves
+<a name="what-changes-when-a-person-leaves"></a>
+
+### Issuance standing and continuing authority
+
+Whether an artifact was validly issued and whether it still confers authority are two findings, established separately. Issuance standing is about the issuer at the moment of issuance and does not change with later events. Continuing authority is about what the grant depends on now. A person leaving is the clearest example of the two coming apart.
 
 A person's departure is not itself a revocation. It is an external event, and its effect on authority depends on the authority relationship involved and the rules that govern it.
 
@@ -123,6 +131,45 @@ Where the verification result depends on whether authority was personal, organiz
 Office vacancy and succession remain open. The model does not yet define whether office-based authority continues, suspends or needs reaffirmation when no current office holder can exercise or revoke it, or how to treat long-lived grants an issuer signs just before leaving.
 
 Status **proposed**. No public case tests these distinctions yet.
+
+## Verification model
+
+This section names what a verifier is allowed to say. It is the vocabulary the invariants below and the candidates in [INVARIANT-CANDIDATES.md](INVARIANT-CANDIDATES.md) are written against. There are two enumerations and they are never mixed.
+
+### Artifact verdicts
+
+An **artifact verdict** is what a verifier can say about an authority artifact at a moment.
+
+- **valid.** The verifier establishes the artifact currently confers the authority claimed.
+- **invalid.** The verifier establishes it does not, or no longer does. Revoked, expired, exhausted, void from issuance and dependent on an invalid ancestor all land here with a reason code saying which.
+- **not established.** The verifier cannot reach a conclusion. This is ignorance, not a finding about the world, and it is not the negation of the claim.
+- **not yet effective.** The verifier establishes the artifact was validly issued and that an enabling condition has not occurred yet. That is a positive finding with a different remedy from not established.
+- **suspended.** Use is paused by one or more live causes, each releasable.
+- **restricted.** Authority continues in reduced form under a live constraint that does not pause it.
+
+Unexecutable is not a seventh verdict. It is an execution outcome. A grant whose target, executor or named capability no longer exists keeps its verdict and fails at execution, with the unresolvable referent in the record.
+
+### Boundary outcomes
+
+A **boundary outcome** is what an enforcement point decides about one action at one authorization boundary: authorized, denied with a stated reason, or not established.
+
+Two findings that share a verdict name must carry different reason codes. A composition rule that is not satisfied does not make any artifact invalid, it denies the action. A restriction from outside the grant chain does not make a chain invalid, it denies the action.
+
+### The two uses of "not established"
+
+Keep the name for the evidential sense: the verifier cannot reach the conclusion because a source is missing, unrecognised, stale past its bound, silent, self-attested with nothing to check it against, or in unresolved conflict with another accepted source.
+
+Where the verifier has reached a conclusion and the conclusion is negative, name the shape instead.
+
+| Shape | Correct output |
+|---|---|
+| An enabling condition is established not to have occurred yet | artifact verdict **not yet effective** |
+| A composition rule is established not to be satisfied | boundary outcome **denied**, reason `composition_not_satisfied` |
+| A pinned referent is established to have changed | boundary outcome **denied**, reason `pinned_referent_mismatch` |
+
+That keeps "not established" meaning exactly one thing, which is what makes it testable.
+
+Status **proposed**. Both enumerations are this repository's own drafting vocabulary, not published specification text, and no public conformance case decides a verdict by these names.
 
 ## Invariants
 
@@ -202,20 +249,21 @@ A record that says a teardown processed some descendants proves that its signer 
 
 Status **open** for how to establish that basis. See OPEN-QUESTIONS.md.
 
-## Operational cases
+<a name="operational-cases"></a>
 
-These are scenarios the invariants have to handle, not new rules.
+## Applying the model
 
-- An employee leaves normally, with a planned handover.
-- An employee is fired or compromised, where immediate containment matters more than continuity.
-- A bookkeeping or reconciliation agent must keep running across the change.
-- A planned handover with a short overlap, against an emergency cutover that accepts a gap.
-- An action already in flight when authority changes.
-- An agent that holds more than one grant.
-- A revocation service that cannot be reached.
-- An agent suspended during an investigation.
+The invariants above are general. What they mean in practice is easiest to read off concrete situations, so the worked situations live in [CASES.md](CASES.md) rather than here. Each case states a situation, the outcome we propose, what a naive implementation gets wrong, and which invariant or open question it bears on. Every case carries a stable id, and the ids do not change when cases are regrouped.
 
-For a handover, the replacement authority has to come from a currently authorized principal, and continued operation has to use it. How the cutover is ordered is a choice. A planned handover may accept a short overlap. A compromised principal may call for revoking first and accepting a gap. The old chain must not remain the basis for continuity in either case. At the next authorization point after revocation, the old grant cannot authorize any new effect. Whether a workflow then resumes, restarts, compensates or stops depends on the operation.
+Five canonical cases cover the shapes this document is most often asked about.
+
+- **Planned handover.** [LC-C-014](CASES.md#lc-c-014-a-handover-can-require-the-incoming-holders-acknowledgment-with-authority-staying-put-until-it-arrives), a handover that requires the incoming holder's acknowledgment, with authority staying with the outgoing holder until it arrives, rather than an instant at which one party's authority ends and another's begins.
+- **Compromised principal.** [LC-D-004](CASES.md#lc-d-004-a-single-compromised-operator-identity-can-be-an-implicit-ancestor-over-many-independent-trees-at-once), one compromised operator identity acting as an implicit ancestor over many independent trees at once, where the set to revoke is what that identity could reach and not what it is recorded as having touched.
+- **In-flight revocation.** [LC-B-029](CASES.md#lc-b-029-a-receiving-banks-acceptance-is-the-hard-boundary-after-which-a-mid-flight-authority-change-no-longer-stops-the-order), authority changing while an action is between authorization and a known outcome, and what a terminal boundary does to a change that arrives after it.
+- **Independent chains.** [LC-C-012](CASES.md#lc-c-012-independently-rooted-chains-can-commit-to-a-shared-objective-without-unioning-their-scopes), independently rooted chains coordinating on a shared objective while each keeps its own scope, which L5 has to permit without permitting a union.
+- **Unknown status.** [LC-F-006](CASES.md#lc-f-006-a-revocation-status-list-served-past-its-own-declared-refresh-time-is-stale-not-confirmed-clean), a status list served past its own declared refresh time, which is stale rather than a continuing statement that nothing was revoked.
+
+For a handover, the replacement authority has to come from a currently authorized principal, and continued operation has to use it. How the cutover is ordered is a choice. A planned handover may accept a short overlap. A compromised principal may call for revoking first and accepting a gap. The old chain must not remain the basis for continuity in either case. At the next authorization boundary after revocation, the old grant cannot authorize any new effect. Whether a workflow then resumes, restarts, compensates or stops depends on the operation and is open, see [OPEN-QUESTIONS.md](OPEN-QUESTIONS.md).
 
 ## How to cite
 
