@@ -1,35 +1,82 @@
 # Invariant candidates
 
-Version 0.2.0-draft. Part of the Agent Passport System work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.
+Version 0.3.0-draft. Part of the Agent Passport System work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.
 
 Everything in this file is **proposed**. Nothing here is specified, tested or implemented, and no conformance result exists for any candidate. These are statements we think implementations should guarantee, each with what it does not claim, the cases in [CASES.md](CASES.md) that force it, the strongest counterexample we found and why the statement survives it, and whichever fixture currently tests any part of it.
 
+## Contents
+
+- [At a glance](#at-a-glance)
+- [How to read this file](#how-to-read-this-file)
+  - [The two uses of "not established"](#the-two-uses-of-not-established)
+- [Candidate invariants](#candidate-invariants)
+  - [CAND-01. An external event is authority-changing only when established](#cand-01-an-external-event-is-authority-changing-only-when-established)
+  - [CAND-02. Later evidence does not rewrite earlier evidence](#cand-02-later-evidence-does-not-rewrite-earlier-evidence)
+  - [CAND-03. Issuance validity, later attached effects and current validity are three separate findings](#cand-03-issuance-validity-later-attached-effects-and-current-validity-are-three-separate-findings)
+  - [CAND-04. Activation is established, not yet effective, or not established](#cand-04-activation-is-established-not-yet-effective-or-not-established)
+  - [CAND-05. Suspension and restriction causes compose](#cand-05-suspension-and-restriction-causes-compose)
+  - [CAND-06. Collective authority must satisfy its declared composition](#cand-06-collective-authority-must-satisfy-its-declared-composition)
+  - [CAND-07. A stable name does not establish stable semantics](#cand-07-a-stable-name-does-not-establish-stable-semantics)
+  - [CAND-08. No silent restoration from rollback or stale state](#cand-08-no-silent-restoration-from-rollback-or-stale-state)
+  - [CAND-09. Chain validity is not permission to execute](#cand-09-chain-validity-is-not-permission-to-execute)
+  - [CAND-10. Holding a scope does not establish authority to confer it](#cand-10-holding-a-scope-does-not-establish-authority-to-confer-it)
+  - [CAND-11. A valid grant can be unexecutable](#cand-11-a-valid-grant-can-be-unexecutable)
+  - [CAND-12. Ending authority bounds future effects, it does not undo past ones](#cand-12-ending-authority-bounds-future-effects-it-does-not-undo-past-ones)
+  - [CAND-13. Replacement authority may be pre-committed](#cand-13-replacement-authority-may-be-pre-committed)
+  - [CAND-16. A recorded lifecycle change is effective when the model's effectiveness rule is satisfied](#cand-16-a-recorded-lifecycle-change-is-effective-when-the-models-effectiveness-rule-is-satisfied)
+- [Proposed broadening of existing invariants](#proposed-broadening-of-existing-invariants)
+  - [BROAD-L6. L6 extends to every authorization boundary the operation requires](#broad-l6-l6-extends-to-every-authorization-boundary-the-operation-requires)
+  - [BROAD-L7. L7 extends to any current lifecycle state claim](#broad-l7-l7-extends-to-any-current-lifecycle-state-claim)
+- [Evidence and receipt annex](#evidence-and-receipt-annex)
+  - [ANX-01. A verdict records its event-class coverage](#anx-01-a-verdict-records-its-event-class-coverage)
+  - [ANX-02. A verifier can present an earlier record and a later finding together](#anx-02-a-verifier-can-present-an-earlier-record-and-a-later-finding-together)
+  - [ANX-03. Chain validity and a relying party's knowledge are separate findings](#anx-03-chain-validity-and-a-relying-partys-knowledge-are-separate-findings)
+  - [ANX-04. A declared scope is only as effective as the boundary that enforces it](#anx-04-a-declared-scope-is-only-as-effective-as-the-boundary-that-enforces-it)
+- [What this document does not close](#what-this-document-does-not-close)
+- [Fixture coverage](#fixture-coverage)
+- [Contributing](#contributing)
+- [Source notes](#source-notes)
+
+## At a glance
+
+Every row is **proposed**. The fixture column names what bears on the statement, not a conformance result. Full tested-by detail is in [Fixture coverage](#fixture-coverage), and the sources behind the case shapes are in [Source notes](#source-notes).
+
+| ID | Candidate | Forced by | Fixture |
+|---|---|---|---|
+| [CAND-01](#cand-01-an-external-event-is-authority-changing-only-when-established) | An external event is authority-changing only when established | LC-B-008, LC-B-012, LC-B-025, LC-B-009, LC-A-001, LC-A-008, LC-A-010, LC-B-002, LC-C-005, LC-D-001, LC-D-003, LC-D-011, LC-D-034, LC-C-006 | `lifecycle-purpose-exhaustion`, held back on an unmerged branch |
+| [CAND-02](#cand-02-later-evidence-does-not-rewrite-earlier-evidence) | Later evidence does not rewrite earlier evidence | LC-G-006, LC-B-007, LC-C-022, LC-A-023, LC-A-027, LC-C-006, LC-H-009, LC-F-009, LC-F-027, LC-D-025, LC-B-022, LC-I-005 | `authority-epoch-rollback` |
+| [CAND-03](#cand-03-issuance-validity-later-attached-effects-and-current-validity-are-three-separate-findings) | Issuance validity, later attached effects and current validity are three separate findings | LC-H-004, LC-C-006, LC-B-008, LC-B-012, LC-B-013, LC-A-016, LC-A-012, LC-A-023, LC-B-007, LC-A-022, LC-B-004, LC-B-016, LC-B-017, LC-C-005, LC-C-007, LC-C-009, LC-D-029, LC-D-034, LC-H-005 | none |
+| [CAND-04](#cand-04-activation-is-established-not-yet-effective-or-not-established) | Activation is established, not yet effective, or not established | LC-A-003, LC-A-016, LC-C-014, LC-H-012, LC-C-008, LC-C-015, LC-C-017, LC-C-020, LC-C-002, LC-E-034, LC-A-001, LC-A-008, LC-A-022, LC-G-007 | `activation-not-established` |
+| [CAND-05](#cand-05-suspension-and-restriction-causes-compose) | Suspension and restriction causes compose | LC-B-024, LC-B-010, LC-B-011, LC-B-019, LC-B-018, LC-B-031, LC-B-016, LC-B-026, LC-B-030, LC-C-022, LC-C-029, LC-A-010, LC-E-034 | `suspension-cause-composition` |
+| [CAND-06](#cand-06-collective-authority-must-satisfy-its-declared-composition) | Collective authority must satisfy its declared composition | LC-C-011, LC-C-016, LC-C-018, LC-C-012, LC-C-029, LC-A-019, LC-A-033, LC-H-001, LC-H-002, LC-H-004, LC-B-026 | `chain-selection-no-union`, negative half only |
+| [CAND-07](#cand-07-a-stable-name-does-not-establish-stable-semantics) | A stable name does not establish stable semantics | LC-E-033, LC-E-001, LC-E-002, LC-E-027, LC-E-004, LC-E-025, LC-E-031, LC-E-023, LC-D-009, LC-D-029, LC-D-034, LC-D-033, LC-I-001, LC-I-002, LC-I-003 | `capability-binding-drift` |
+| [CAND-08](#cand-08-no-silent-restoration-from-rollback-or-stale-state) | No silent restoration from rollback or stale state | LC-F-017, LC-F-026, LC-F-016, LC-F-018, LC-F-022, LC-F-024, LC-F-006, LC-F-009, LC-E-023, LC-D-003, LC-I-004 | `authority-epoch-rollback` |
+| [CAND-09](#cand-09-chain-validity-is-not-permission-to-execute) | Chain validity is not permission to execute | LC-B-018, LC-B-019, LC-B-010, LC-B-011, LC-B-016, LC-B-026, LC-B-030, LC-B-031, LC-A-010, LC-B-027 | none |
+| [CAND-10](#cand-10-holding-a-scope-does-not-establish-authority-to-confer-it) | Holding a scope does not establish authority to confer it | LC-E-006, LC-E-025, LC-E-004, LC-E-031, LC-E-023, LC-H-008, LC-H-007 | `lifecycle-conferral-without-authority` |
+| [CAND-11](#cand-11-a-valid-grant-can-be-unexecutable) | A valid grant can be unexecutable | LC-E-002, LC-E-014, LC-E-020, LC-E-001, LC-C-025 | none |
+| [CAND-12](#cand-12-ending-authority-bounds-future-effects-it-does-not-undo-past-ones) | Ending authority bounds future effects, it does not undo past ones | LC-E-021, LC-E-013, LC-E-019, LC-D-025, LC-B-029, LC-B-028, LC-A-023, LC-A-027, LC-I-013, LC-I-014 | none |
+| [CAND-13](#cand-13-replacement-authority-may-be-pre-committed) | Replacement authority may be pre-committed | LC-A-016, LC-C-017, LC-C-020, LC-C-008, LC-C-015, LC-C-025, LC-C-002, LC-A-019, LC-B-012, LC-B-008, LC-H-005 | `activation-not-established`, activation half only |
+| [CAND-16](#cand-16-a-recorded-lifecycle-change-is-effective-when-the-models-effectiveness-rule-is-satisfied) | A recorded lifecycle change is effective when the model's effectiveness rule is satisfied | LC-A-001, LC-B-009, LC-B-029, LC-H-010, LC-H-011, LC-H-009, LC-F-018, LC-C-006 | none |
+| [BROAD-L6](#broad-l6-l6-extends-to-every-authorization-boundary-the-operation-requires) | L6 extends to every authorization boundary the operation requires | LC-B-028, LC-B-029, LC-B-026, LC-C-011, LC-C-018, LC-C-025, LC-E-013, LC-E-034, LC-E-018, LC-E-021, LC-E-008, LC-I-006, LC-D-025 | none |
+| [BROAD-L7](#broad-l7-l7-extends-to-any-current-lifecycle-state-claim) | L7 extends to any current lifecycle state claim | LC-F-006, LC-F-008, LC-F-013, LC-F-017, LC-F-018, LC-F-027, LC-F-033, LC-F-035, LC-B-002, LC-C-005, LC-C-008, LC-C-009, LC-C-015, LC-D-003, LC-D-014, LC-D-011, LC-A-003, LC-G-008, LC-G-009 | `conflicting-status-sources` |
+| [ANX-01](#anx-01-a-verdict-records-its-event-class-coverage) | A verdict records its event-class coverage | LC-B-008, LC-B-025, LC-D-001, LC-B-009 | none |
+| [ANX-02](#anx-02-a-verifier-can-present-an-earlier-record-and-a-later-finding-together) | A verifier can present an earlier record and a later finding together | LC-B-007, LC-G-006, LC-C-022, LC-I-005 | `conflicting-status-sources`, CSS-12 touches it |
+| [ANX-03](#anx-03-chain-validity-and-a-relying-partys-knowledge-are-separate-findings) | Chain validity and a relying party's knowledge are separate findings | LC-A-027, LC-A-028, LC-A-001, LC-F-027, LC-F-018 | none |
+| [ANX-04](#anx-04-a-declared-scope-is-only-as-effective-as-the-boundary-that-enforces-it) | A declared scope is only as effective as the boundary that enforces it | LC-D-009, LC-D-027 (boundary case), LC-D-023 (boundary case), LC-D-019 (boundary case) | none |
+
+## How to read this file
+
 Ids stay in the CAND, BROAD and ANX series on purpose. Numbering them into the L series of [AUTHORITY-LIFECYCLE.md](AUTHORITY-LIFECYCLE.md) would read as settled additions to the published invariant list, and they are not that. L12 is the last published invariant and nothing here extends the numbering past it.
 
-A **tested by** entry names a fixture in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite and the vectors in it that bear on the candidate. Most of those fixtures are now merged_candidate, pinned to the lab main commit the "Tested by, at a glance" table links. `lifecycle-purpose-exhaustion` is held back and stays on an unmerged candidate branch. A fixture existing, merged or not, does not make a candidate tested in the sense `AUTHORITY-LIFECYCLE.md` uses, because these vectors are candidates against proposed text rather than conformance cases against a published specification. Where a candidate says nothing, nothing tests it.
+A **tested by** entry names a fixture in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite and the vectors in it that bear on the candidate. Most of those fixtures are now merged_candidate, pinned to the lab main commit the [Fixture coverage](#fixture-coverage) table links. `lifecycle-purpose-exhaustion` is held back and stays on an unmerged candidate branch. A fixture existing, merged or not, does not make a candidate tested in the sense `AUTHORITY-LIFECYCLE.md` uses, because these vectors are candidates against proposed text rather than conformance cases against a published specification. Where a candidate says nothing, nothing tests it.
 
 Legal, aviation, financial, data-protection and distributed-systems material is used below as the origin of case shapes and of counterexamples. None of those sources says anything about AI agents, and nothing here asserts that any legal doctrine applies to AI agents.
 
-## Verdict vocabulary
+<a name="verdict-vocabulary"></a>
 
-Every statement below is written against two enumerations and never mixes them.
+The verdict vocabulary these statements are written against, meaning the artifact verdicts, the boundary outcomes and the reason-code rule, lives in [AUTHORITY-LIFECYCLE.md](AUTHORITY-LIFECYCLE.md#verification-model).
 
-An **artifact verdict** is what a verifier can say about an authority artifact at a moment.
-
-- **valid.** The verifier establishes the artifact currently confers the authority claimed.
-- **invalid.** The verifier establishes it does not, or no longer does. Revoked, expired, exhausted, void from issuance and dependent on an invalid ancestor all land here with a reason code saying which.
-- **not established.** The verifier cannot reach a conclusion. This is ignorance, not a finding about the world, and it is not the negation of the claim.
-- **not yet effective.** The verifier establishes the artifact was validly issued and that an enabling condition has not occurred yet. That is a positive finding with a different remedy from not established.
-- **suspended.** Use is paused by one or more live causes, each releasable.
-- **restricted.** Authority continues in reduced form under a live constraint that does not pause it.
-
-A **boundary outcome** is what an enforcement point decides about one action at one authorization boundary: authorized, denied with a stated reason, or not established.
-
-Two findings that share a verdict name must carry different reason codes. A composition rule that is not satisfied does not make any artifact invalid, it denies the action. A restriction from outside the chain does not make a chain invalid, it denies the action.
-
-Unexecutable is not a seventh verdict. It is an execution outcome, and CAND-11 says where it goes.
-
-## The two uses of "not established"
+### The two uses of "not established"
 
 Keep the name for the evidential sense: the verifier cannot reach the conclusion because a source is missing, unrecognised, stale past its bound, silent, self-attested with nothing to check it against, or in unresolved conflict with another accepted source.
 
@@ -43,53 +90,9 @@ Where the verifier has reached a conclusion and the conclusion is negative, name
 
 That keeps "not established" meaning exactly one thing, which is what makes it testable.
 
-## Sources
+<a name="the-candidates"></a>
 
-Every source below was fetched on 2026-09-23 by the pass that wrote these candidates, and quoted verbatim at 40 words or fewer. Each is the origin of a case shape or of a counterexample pattern, never a rule that governs agents. S3, S6, S7, S19, S25, S26, S28, S34 and S36 were re-fetched and the quotes re-checked against the live source on 2026-09-23 when this file was assembled.
-
-| Ref | Source | Verbatim quote |
-|---|---|---|
-| S1 | Delaware General Corporation Law 259(a), [delcode.delaware.gov](https://delcode.delaware.gov/title8/c001/sc09/index.html) | "possessing all the rights, privileges, powers and franchises as well of a public as of a private nature" |
-| S2 | 12 U.S.C. 1821(d)(2)(A), [law.cornell.edu](https://www.law.cornell.edu/uscode/text/12/1821) | "The Corporation shall, as conservator or receiver, and by operation of law, succeed to" then "all rights, titles, powers, and privileges of the insured depository institution" |
-| S3 | 11 U.S.C. 362(a), [law.cornell.edu](https://www.law.cornell.edu/uscode/text/11/362) | "operates as a stay, applicable to all entities" |
-| S4 | N.H. RSA 564-E:109(b), [gc.nh.gov](https://gc.nh.gov/rsa/html/LVI/564-E/564-E-109.htm) | "the principal, in the power of attorney, may authorize one or more persons to determine in a writing or other record that the event or contingency has occurred" |
-| S5 | N.H. RSA 564-E:109(c), same page | "the person authorized is unable or unwilling to make the determination" |
-| S6 | N.H. RSA 564-E:111(a), [gc.nh.gov](https://gc.nh.gov/rsa/html/LVI/564-E/564-E-111.htm) | "Unless the power of attorney otherwise provides, the coagents must exercise their authority jointly." |
-| S7 | N.H. RSA 564-E:111(b) first sentence, same page | "A principal may designate one or more successor agents to act if an agent resigns, dies, becomes incapacitated, is not qualified to serve, or declines to serve." |
-| S8 | N.H. RSA 564-E:111(b) second sentence, same page | "A principal may grant authority to designate one or more successor agents to an agent or other person designated by name, office, or function." |
-| S9 | N.H. RSA 564-E:111(b)(1), same page | "has the same authority as that granted to the original agent" |
-| S10 | Restatement (Third) of Agency 4.01(1), course reproduction at [staff.washington.edu](https://staff.washington.edu/djdrake/RESt-Agency.doc) | "Ratification is the affirmance of a prior act done by another, whereby the act is given effect as if done by an agent acting with actual authority." |
-| S11 | Restatement (Third) of Agency 4.02(1), same reproduction | "Subject to the exceptions stated in subsection (2), ratification retroactively creates the effects of actual authority." |
-| S12 | Restatement (Third) of Agency 4.02(2)(c), same reproduction | "to diminish the rights or other interests of persons, not parties to the transaction, that were acquired in the subject matter prior to the ratification." |
-| S13 | Restatement (Third) of Agency 3.07(1), same reproduction | "The death of an individual agent terminates the agent's actual authority." |
-| S14 | Restatement (Third) of Agency 3.07(2), same reproduction | "The termination is effective only when the agent has notice of the principal's death." |
-| S15 | Restatement (Third) of Agency 3.10(1), same reproduction | "A revocation or a renunciation is effective when the other party has notice of it." |
-| S16 | Restatement (Third) of Agency 3.11(1), same reproduction | "The termination of actual authority does not by itself end any apparent authority held by an agent." |
-| S17 | Restatement (Third) of Agency 3.06(6), same reproduction | "the occurrence of circumstances specified by statute." |
-| S18 | 11 U.S.C. 1107(a), [law.cornell.edu](https://www.law.cornell.edu/uscode/text/11/1107) | "Subject to any limitations on a trustee serving in a case under this chapter, and to such limitations or conditions as the court prescribes" |
-| S19 | 14 CFR 121.533(a), [law.cornell.edu](https://www.law.cornell.edu/cfr/text/14/121.533) | "Each certificate holder conducting domestic operations is responsible for operational control." |
-| S20 | 14 CFR 121.533(b), same page | "The pilot in command and the aircraft dispatcher are jointly responsible for the preflight planning, delay, and dispatch release of a flight" |
-| S21 | 14 CFR 121.533(c)(3), same page | "Cancelling or redispatching a flight if, in his opinion or the opinion of the pilot in command, the flight cannot operate or continue to operate safely as planned or released." |
-| S22 | UCC 4A-211(b), [law.cornell.edu](https://www.law.cornell.edu/ucc/4A/4A-211) | "if notice of the communication is received at a time and in a manner affording the receiving bank a reasonable opportunity to act on the communication before the bank accepts the payment order" |
-| S23 | UCC 4A-211(c), same page | "After a payment order has been accepted, cancellation or amendment of the order is not effective unless the receiving bank agrees or a funds-transfer system rule allows cancellation or amendment without agreement of the bank." |
-| S24 | UCC 4A-211(d), same page | "An unaccepted payment order is canceled by operation of law at the close of the fifth funds-transfer business day of the receiving bank after the execution date or payment date of the order." |
-| S25 | RFC 5280 section 5.1.2.5, [rfc-editor.org](https://www.rfc-editor.org/rfc/rfc5280.txt) | "The behavior of clients processing CRLs that omit nextUpdate is not specified by this profile." |
-| S26 | RFC 6960 section 2.2, [rfc-editor.org](https://www.rfc-editor.org/rfc/rfc6960.txt) | "The \"unknown\" state indicates that the responder doesn't know about the certificate being requested" |
-| S27 | RFC 6960 section 2.2, same page | "This state MAY also be returned if the associated CA has no record of ever having issued a certificate with the certificate serial number in the request" |
-| S28 | RFC 6960 section 2.2 note, same page | "the \"unknown\" status indicates that the status could not be determined by this responder, thereby allowing the client to decide whether it wants to try another source of status information" |
-| S29 | Kleppmann, How to do distributed locking, [martin.kleppmann.com](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html) | "a fencing token is simply a number that increases (e.g. incremented by the lock service) every time a client acquires the lock" |
-| S30 | Kleppmann, same page | "the storage server remembers that it has already processed a write with a higher token number (34), and so it rejects the request with token 33" |
-| S31 | AWS DynamoDB global tables, [docs.aws.amazon.com](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_HowItWorks.html) | "DynamoDB will resolve the conflict by using the modification with the latest internal timestamp on a per-item basis, referred to as a \"last writer wins\" conflict resolution method" |
-| S32 | Chrome extensions permission warnings, [developer.chrome.com](https://developer.chrome.com/docs/extensions/develop/concepts/permission-warnings) | "When a new permission that triggers a warning is added, the extension will be disabled until the user accepts the new permission." |
-| S33 | OpenAI deprecations, [platform.openai.com](https://platform.openai.com/docs/deprecations) | "At the time of the shut down, the model or endpoint will no longer be accessible." |
-| S34 | AWS IAM PassRole, [docs.aws.amazon.com](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html) | "To pass a role (and its permissions) to an AWS service, a user must have permissions to pass the role to the service." |
-| S35 | AWS IAM roles terms and concepts, [docs.aws.amazon.com](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html) | "Service-linked roles appear in your AWS account and are owned by the service." |
-| S36 | GDPR Article 16(1), reproduction at [gdpr-info.eu](https://gdpr-info.eu/art-16-gdpr/) | "The data subject shall have the right to obtain from the controller without undue delay the rectification of inaccurate personal data concerning him or her." |
-| S37 | GDPR Article 16(2), same reproduction | "the data subject shall have the right to have incomplete personal data completed, including by means of providing a supplementary statement" |
-
-Four things could not be fetched and nothing here rests on them. FINRA Rule 8311: finra.org returned a Cloudflare interstitial, so this document carries no FINRA quote at all and CAND-05 says plainly that composition is forced by the corpus and externally unsourced. The GDPR official text: eur-lex.europa.eu returned an empty body, so S36 and S37 are from the gdpr-info.eu reproduction, labelled as such. The Lyondell Chemical 2010 SEC exhibit: HTTP 403, so no candidate here asserts the proposition `AUTHORITY-LIFECYCLE.md` cites it for. S10 to S17 come from a university course reproduction of the Restatement rather than from the official American Law Institute publication, and are cited as a reproduction.
-
-## The candidates
+## Candidate invariants
 
 ### CAND-01. An external event is authority-changing only when established
 
@@ -292,63 +295,6 @@ Four things could not be fetched and nothing here rests on them. FINRA Rule 8311
 
 ---
 
-### BROAD-L6. L6 extends to every authorization boundary the operation requires
-
-**Current L6.** An earlier approval is not current authority. Revocation state must be rechecked at execution time, not only at approval time.
-
-**Broadened statement.** An earlier approval or authorization decision does not establish current authority at any later authorization boundary the operation requires. Each boundary is evaluated against lifecycle state the verifier can establish as current and effective at that boundary, including boundaries added from outside the grant chain and boundaries within a long-running or multi-step operation. Rechecking current lifecycle state is not re-evaluating the operation under a newer policy version, and which policy version governs is a separately declared rule.
-
-**What it does not claim.**
-
-- It does not claim the operation must be re-evaluated against the current policy version. LC-E-008 is the counterexample, where an in-flight instance's remaining steps must resolve against a pinned version and "jumping straight to current rules mid-replay is not a safety improvement". LC-I-006 is the same point from the grant side: a tightened policy applies to new grants and new evaluations without the tightening being read as an implicit revocation of grants valid under the policy that governed them at issuance.
-- It does not claim a retry of an already decided effect is a new boundary. LC-E-010 and LC-E-011, both boundary cases, are the idempotency shapes.
-- It does not claim the start of a shutdown is a boundary. LC-E-019 is the counterexample, where authority stays valid and checkable through a declared graceful-shutdown window and the final in-flight call should succeed.
-- It does not claim every technical step is a boundary. Identifying the boundaries an operation requires is part of the operation's own design.
-- It does not claim a recorded change is automatically effective at the next boundary. That is CAND-16, and the word "effective" in the statement is the slot it fills.
-- It does not own the terminal-boundary rule. That moved to CAND-12.
-- It does not resolve work in flight. What happens to the operation itself after a mid-flight change stays open.
-
-**Forced by.** LC-B-028, LC-B-029, LC-B-026, LC-C-011, LC-C-018, LC-C-025, LC-E-013, LC-E-034, LC-E-018, LC-E-021, LC-E-008, LC-I-006, LC-D-025.
-
-**Strongest counterexample.** LC-E-008 with LC-E-019. Both are cases where more rechecking is the wrong answer. Read at its most aggressive the broadening breaks a durable workflow when policy is redeployed mid-run, and costs a pod with a legitimate grace period its last authorized call.
-
-**How the statement survives.** By separating current lifecycle state from policy version, and by leaving the boundary set to the operation rather than asserting that every technical step is one. The broadening says the lifecycle question must be asked again at each boundary. It does not say the policy question must be answered afresh, and LC-I-006 now supplies the grant-side half of that separation, which the wave 2 draft argued from LC-E-008 alone. The one genuine circularity objection, that "every boundary is its own decision" is close to a definition, is handled by the statement carrying three testable claims rather than one: an earlier decision does not satisfy a later boundary, lifecycle recheck is not policy re-evaluation, and a boundary imposed from outside the grant chain is still a boundary.
-
-**Tested by.** Nothing tests the broadening. The suite's `cached-authorization-revocation` tests the narrower published L6 and is a related fixture, not a source. **Not covered:** the policy-version separation, the externally added boundary, and the in-flight-invalidation shape.
-
-**Status.** proposed as a broadening of a partly specified invariant. L6's revocation recheck stays specified. Everything added here is proposed.
-
----
-
-### BROAD-L7. L7 extends to any current lifecycle state claim
-
-**Current L7.** Unknown revocation state is not active. An unavailable or stale revocation answer is indeterminate, an enforcement point may deny on indeterminate, and the denial should say why.
-
-**Broadened statement.** Any claim about the current lifecycle state of an authority artifact, meaning its revocation, suspension, restriction, expiry or exhaustion state, is established only from a source the authority model accepts for that state, within a freshness bound the model declares, and only over the set the claim itself states it covers. Where source or freshness is missing, the state is not established. A verifier must not read a state claim as covering more than the claim states. Not established is not the negation of the claim, and a verifier may deny on it as long as the denial records what was missing. Where the model declares a default for absence, the default applies and the verifier records that it was used.
-
-The same source, freshness and coverage discipline applies to every other finding the candidates in this document define, including issuer standing, activation, composition and referent continuity. Each of those candidates states which sources its own finding admits, because the admissible sources differ and a source accepted for one is not thereby accepted for another.
-
-**What it does not claim.**
-
-- It does not claim not established means inactive, or active, or anything about the world. S26 is the sourced form of that distinction in one protocol.
-- It does not claim liveness is required. A declared offline posture with a snapshot inside its declared bound satisfies the rule, which is LC-F-008's point that offline checking needs its own evidence category rather than being a degraded live check.
-- It does not claim absence is always indeterminate. LC-C-008 is the counterexample and the reason the default clause exists.
-- It does not solve completeness. The coverage limb requires a claim to state what it covers and forbids a verifier reading it as covering more. It does not require anyone to establish that a set was complete, which L12 keeps open and `OPEN-QUESTIONS.md` still names in three unsettled pieces.
-- It does not declare a freshness number. Bounds are model declared. S25 is why that matters, since RFC 5280 requires nextUpdate in conforming CRLs and leaves client behaviour unspecified where it is omitted.
-- It does not absorb CAND-03, CAND-04, CAND-06 or CAND-07. The enumeration is deliberately limited to lifecycle states in the sense L7 uses, and the general clause defers the admissible-source question to each candidate.
-
-**Forced by.** LC-F-006, LC-F-008, LC-F-013, LC-F-017, LC-F-018, LC-F-027, LC-F-033, LC-F-035, LC-B-002, LC-C-005, LC-C-008, LC-C-009, LC-C-015, LC-D-003, LC-D-014, LC-D-011, LC-A-003, LC-G-008, LC-G-009.
-
-**Strongest counterexample.** LC-C-008 and LC-F-008 together. One says absence resolves to a named fallback rather than to indeterminate. The other says a deliberately offline verifier with a snapshot that is stale by live standards may legitimately admit. Between them they cover a large fraction of real deployments. The second counterexample is coverage: requiring a claim to be established over the coverage it requires, while admitting that nobody knows how to establish completeness, is a requirement to fail.
-
-**How the statement survives.** Freshness is measured against a declared bound rather than against liveness, which admits LC-F-008. Absence is resolved by the model's declared default where there is one, which admits LC-C-008. Both carve-outs are conditioned on the model having declared something, and in both the verifier records what it used. The coverage limb is restated as a reading rule rather than an establishment duty: a claim states what it covers, and a verifier must not read it as covering more. That is decidable today and does not depend on solving L12.
-
-**Tested by.** `conflicting-status-sources`. CSS-04 and CSS-05 cover conflict, CSS-06 to CSS-08 a stale, silent or absent source, CSS-09 to CSS-11 the declared offline posture, CSS-13 and CSS-14 the bound exactly at and one second past, CSS-12 later-conflict-does-not-rewrite. **Not covered:** the coverage limb in its restated form and the declared-default-on-absence path.
-
-**Status.** proposed as a broadening. L7's unavailable-or-stale revocation case stays specified. Everything added here is proposed.
-
----
-
 ### CAND-09. Chain validity is not permission to execute
 
 **Statement.** Whether an authority chain is valid and whether the action it authorizes is permitted by rules outside the grant chain are separate findings. An external restriction can block execution with no event anywhere in the chain, and removing that restriction restores execution on the unchanged chain without creating new authority. A verifier that returns one finding must not be read as having answered the other. Where the principal itself changes rather than being restricted, that is not this rule.
@@ -397,7 +343,7 @@ The same source, freshness and coverage discipline applies to every other findin
 
 **What it does not claim.**
 
-- It does not propose a seventh verdict. Section 2.3 settles unexecutable as an execution outcome rather than a verdict, and whether the enumeration ever gains a value for it is a separate decision for the model owner.
+- It does not propose a seventh verdict. The [verification model](AUTHORITY-LIFECYCLE.md#verification-model) settles unexecutable as an execution outcome rather than a verdict, and whether the enumeration ever gains a value for it is a separate decision for the model owner.
 - It does not prescribe a remedy. Which party re-points the grant, and whether they may, is operational guidance around the invariant and not part of it.
 - It does not claim the authority is unaffected in the world. A grant naming a permanently gone executor may well be worth revoking. It claims only that nothing in the grant's own lifecycle has changed, so a lifecycle verdict must not say otherwise.
 - It does not cover a referent that changed rather than vanished. That is CAND-07.
@@ -476,7 +422,70 @@ The same source, freshness and coverage discipline applies to every other findin
 
 ---
 
-## Evidence and receipt-shape annex
+## Proposed broadening of existing invariants
+
+These two do not add a new statement. Each widens an invariant `AUTHORITY-LIFECYCLE.md` already publishes, and the published narrow form keeps the status it has there.
+
+### BROAD-L6. L6 extends to every authorization boundary the operation requires
+
+**Current L6.** An earlier approval is not current authority. Revocation state must be rechecked at execution time, not only at approval time.
+
+**Broadened statement.** An earlier approval or authorization decision does not establish current authority at any later authorization boundary the operation requires. Each boundary is evaluated against lifecycle state the verifier can establish as current and effective at that boundary, including boundaries added from outside the grant chain and boundaries within a long-running or multi-step operation. Rechecking current lifecycle state is not re-evaluating the operation under a newer policy version, and which policy version governs is a separately declared rule.
+
+**What it does not claim.**
+
+- It does not claim the operation must be re-evaluated against the current policy version. LC-E-008 is the counterexample, where an in-flight instance's remaining steps must resolve against a pinned version and "jumping straight to current rules mid-replay is not a safety improvement". LC-I-006 is the same point from the grant side: a tightened policy applies to new grants and new evaluations without the tightening being read as an implicit revocation of grants valid under the policy that governed them at issuance.
+- It does not claim a retry of an already decided effect is a new boundary. LC-E-010 and LC-E-011, both boundary cases, are the idempotency shapes.
+- It does not claim the start of a shutdown is a boundary. LC-E-019 is the counterexample, where authority stays valid and checkable through a declared graceful-shutdown window and the final in-flight call should succeed.
+- It does not claim every technical step is a boundary. Identifying the boundaries an operation requires is part of the operation's own design.
+- It does not claim a recorded change is automatically effective at the next boundary. That is CAND-16, and the word "effective" in the statement is the slot it fills.
+- It does not own the terminal-boundary rule. That moved to CAND-12.
+- It does not resolve work in flight. What happens to the operation itself after a mid-flight change stays open.
+
+**Forced by.** LC-B-028, LC-B-029, LC-B-026, LC-C-011, LC-C-018, LC-C-025, LC-E-013, LC-E-034, LC-E-018, LC-E-021, LC-E-008, LC-I-006, LC-D-025.
+
+**Strongest counterexample.** LC-E-008 with LC-E-019. Both are cases where more rechecking is the wrong answer. Read at its most aggressive the broadening breaks a durable workflow when policy is redeployed mid-run, and costs a pod with a legitimate grace period its last authorized call.
+
+**How the statement survives.** By separating current lifecycle state from policy version, and by leaving the boundary set to the operation rather than asserting that every technical step is one. The broadening says the lifecycle question must be asked again at each boundary. It does not say the policy question must be answered afresh, and LC-I-006 now supplies the grant-side half of that separation, which the wave 2 draft argued from LC-E-008 alone. The one genuine circularity objection, that "every boundary is its own decision" is close to a definition, is handled by the statement carrying three testable claims rather than one: an earlier decision does not satisfy a later boundary, lifecycle recheck is not policy re-evaluation, and a boundary imposed from outside the grant chain is still a boundary.
+
+**Tested by.** Nothing tests the broadening. The suite's `cached-authorization-revocation` tests the narrower published L6 and is a related fixture, not a source. **Not covered:** the policy-version separation, the externally added boundary, and the in-flight-invalidation shape.
+
+**Status.** proposed as a broadening of a partly specified invariant. L6's revocation recheck stays specified. Everything added here is proposed.
+
+---
+
+### BROAD-L7. L7 extends to any current lifecycle state claim
+
+**Current L7.** Unknown revocation state is not active. An unavailable or stale revocation answer is indeterminate, an enforcement point may deny on indeterminate, and the denial should say why.
+
+**Broadened statement.** Any claim about the current lifecycle state of an authority artifact, meaning its revocation, suspension, restriction, expiry or exhaustion state, is established only from a source the authority model accepts for that state, within a freshness bound the model declares, and only over the set the claim itself states it covers. Where source or freshness is missing, the state is not established. A verifier must not read a state claim as covering more than the claim states. Not established is not the negation of the claim, and a verifier may deny on it as long as the denial records what was missing. Where the model declares a default for absence, the default applies and the verifier records that it was used.
+
+The same source, freshness and coverage discipline applies to every other finding the candidates in this document define, including issuer standing, activation, composition and referent continuity. Each of those candidates states which sources its own finding admits, because the admissible sources differ and a source accepted for one is not thereby accepted for another.
+
+**What it does not claim.**
+
+- It does not claim not established means inactive, or active, or anything about the world. S26 is the sourced form of that distinction in one protocol.
+- It does not claim liveness is required. A declared offline posture with a snapshot inside its declared bound satisfies the rule, which is LC-F-008's point that offline checking needs its own evidence category rather than being a degraded live check.
+- It does not claim absence is always indeterminate. LC-C-008 is the counterexample and the reason the default clause exists.
+- It does not solve completeness. The coverage limb requires a claim to state what it covers and forbids a verifier reading it as covering more. It does not require anyone to establish that a set was complete, which L12 keeps open and `OPEN-QUESTIONS.md` still names in three unsettled pieces.
+- It does not declare a freshness number. Bounds are model declared. S25 is why that matters, since RFC 5280 requires nextUpdate in conforming CRLs and leaves client behaviour unspecified where it is omitted.
+- It does not absorb CAND-03, CAND-04, CAND-06 or CAND-07. The enumeration is deliberately limited to lifecycle states in the sense L7 uses, and the general clause defers the admissible-source question to each candidate.
+
+**Forced by.** LC-F-006, LC-F-008, LC-F-013, LC-F-017, LC-F-018, LC-F-027, LC-F-033, LC-F-035, LC-B-002, LC-C-005, LC-C-008, LC-C-009, LC-C-015, LC-D-003, LC-D-014, LC-D-011, LC-A-003, LC-G-008, LC-G-009.
+
+**Strongest counterexample.** LC-C-008 and LC-F-008 together. One says absence resolves to a named fallback rather than to indeterminate. The other says a deliberately offline verifier with a snapshot that is stale by live standards may legitimately admit. Between them they cover a large fraction of real deployments. The second counterexample is coverage: requiring a claim to be established over the coverage it requires, while admitting that nobody knows how to establish completeness, is a requirement to fail.
+
+**How the statement survives.** Freshness is measured against a declared bound rather than against liveness, which admits LC-F-008. Absence is resolved by the model's declared default where there is one, which admits LC-C-008. Both carve-outs are conditioned on the model having declared something, and in both the verifier records what it used. The coverage limb is restated as a reading rule rather than an establishment duty: a claim states what it covers, and a verifier must not read it as covering more. That is decidable today and does not depend on solving L12.
+
+**Tested by.** `conflicting-status-sources`. CSS-04 and CSS-05 cover conflict, CSS-06 to CSS-08 a stale, silent or absent source, CSS-09 to CSS-11 the declared offline posture, CSS-13 and CSS-14 the bound exactly at and one second past, CSS-12 later-conflict-does-not-rewrite. **Not covered:** the coverage limb in its restated form and the declared-default-on-absence path.
+
+**Status.** proposed as a broadening. L7's unavailable-or-stale revocation case stays specified. Everything added here is proposed.
+
+---
+
+<a name="evidence-and-receipt-shape-annex"></a>
+
+## Evidence and receipt annex
 
 These are requirements on what a verdict record carries rather than statements about when authority exists.
 
@@ -540,7 +549,9 @@ These are requirements on what a verdict record carries rather than statements a
 - **Which clock governs.** LC-G-007, LC-G-008 and LC-G-009 exist and no candidate resolves the family. CAND-04 defers it.
 - **Whether the verdict enumeration should gain a value for unexecutable.** It does not today. That is a decision for the model owner to take openly, not one an invariant should smuggle in.
 
-## Tested by, at a glance
+<a name="tested-by-at-a-glance"></a>
+
+## Fixture coverage
 
 | Candidate | Status | Tested by |
 |---|---|---|
@@ -570,3 +581,51 @@ Twenty items, sixteen in the invariant set and four in the annex. Eleven of them
 ## Contributing
 
 A counterexample that a statement does not survive is the most useful thing you can send. So is a fixture for anything in the table above whose tested-by entry says nothing.
+
+<a name="sources"></a>
+
+## Source notes
+
+Every source below was fetched on 2026-09-23 by the pass that wrote these candidates, and quoted verbatim at 40 words or fewer. Each is the origin of a case shape or of a counterexample pattern, never a rule that governs agents. S3, S6, S7, S19, S25, S26, S28, S34 and S36 were re-fetched and the quotes re-checked against the live source on 2026-09-23 when this file was assembled.
+
+| Ref | Source | Verbatim quote |
+|---|---|---|
+| S1 | Delaware General Corporation Law 259(a), [delcode.delaware.gov](https://delcode.delaware.gov/title8/c001/sc09/index.html) | "possessing all the rights, privileges, powers and franchises as well of a public as of a private nature" |
+| S2 | 12 U.S.C. 1821(d)(2)(A), [law.cornell.edu](https://www.law.cornell.edu/uscode/text/12/1821) | "The Corporation shall, as conservator or receiver, and by operation of law, succeed to" then "all rights, titles, powers, and privileges of the insured depository institution" |
+| S3 | 11 U.S.C. 362(a), [law.cornell.edu](https://www.law.cornell.edu/uscode/text/11/362) | "operates as a stay, applicable to all entities" |
+| S4 | N.H. RSA 564-E:109(b), [gc.nh.gov](https://gc.nh.gov/rsa/html/LVI/564-E/564-E-109.htm) | "the principal, in the power of attorney, may authorize one or more persons to determine in a writing or other record that the event or contingency has occurred" |
+| S5 | N.H. RSA 564-E:109(c), same page | "the person authorized is unable or unwilling to make the determination" |
+| S6 | N.H. RSA 564-E:111(a), [gc.nh.gov](https://gc.nh.gov/rsa/html/LVI/564-E/564-E-111.htm) | "Unless the power of attorney otherwise provides, the coagents must exercise their authority jointly." |
+| S7 | N.H. RSA 564-E:111(b) first sentence, same page | "A principal may designate one or more successor agents to act if an agent resigns, dies, becomes incapacitated, is not qualified to serve, or declines to serve." |
+| S8 | N.H. RSA 564-E:111(b) second sentence, same page | "A principal may grant authority to designate one or more successor agents to an agent or other person designated by name, office, or function." |
+| S9 | N.H. RSA 564-E:111(b)(1), same page | "has the same authority as that granted to the original agent" |
+| S10 | Restatement (Third) of Agency 4.01(1), course reproduction at [staff.washington.edu](https://staff.washington.edu/djdrake/RESt-Agency.doc) | "Ratification is the affirmance of a prior act done by another, whereby the act is given effect as if done by an agent acting with actual authority." |
+| S11 | Restatement (Third) of Agency 4.02(1), same reproduction | "Subject to the exceptions stated in subsection (2), ratification retroactively creates the effects of actual authority." |
+| S12 | Restatement (Third) of Agency 4.02(2)(c), same reproduction | "to diminish the rights or other interests of persons, not parties to the transaction, that were acquired in the subject matter prior to the ratification." |
+| S13 | Restatement (Third) of Agency 3.07(1), same reproduction | "The death of an individual agent terminates the agent's actual authority." |
+| S14 | Restatement (Third) of Agency 3.07(2), same reproduction | "The termination is effective only when the agent has notice of the principal's death." |
+| S15 | Restatement (Third) of Agency 3.10(1), same reproduction | "A revocation or a renunciation is effective when the other party has notice of it." |
+| S16 | Restatement (Third) of Agency 3.11(1), same reproduction | "The termination of actual authority does not by itself end any apparent authority held by an agent." |
+| S17 | Restatement (Third) of Agency 3.06(6), same reproduction | "the occurrence of circumstances specified by statute." |
+| S18 | 11 U.S.C. 1107(a), [law.cornell.edu](https://www.law.cornell.edu/uscode/text/11/1107) | "Subject to any limitations on a trustee serving in a case under this chapter, and to such limitations or conditions as the court prescribes" |
+| S19 | 14 CFR 121.533(a), [law.cornell.edu](https://www.law.cornell.edu/cfr/text/14/121.533) | "Each certificate holder conducting domestic operations is responsible for operational control." |
+| S20 | 14 CFR 121.533(b), same page | "The pilot in command and the aircraft dispatcher are jointly responsible for the preflight planning, delay, and dispatch release of a flight" |
+| S21 | 14 CFR 121.533(c)(3), same page | "Cancelling or redispatching a flight if, in his opinion or the opinion of the pilot in command, the flight cannot operate or continue to operate safely as planned or released." |
+| S22 | UCC 4A-211(b), [law.cornell.edu](https://www.law.cornell.edu/ucc/4A/4A-211) | "if notice of the communication is received at a time and in a manner affording the receiving bank a reasonable opportunity to act on the communication before the bank accepts the payment order" |
+| S23 | UCC 4A-211(c), same page | "After a payment order has been accepted, cancellation or amendment of the order is not effective unless the receiving bank agrees or a funds-transfer system rule allows cancellation or amendment without agreement of the bank." |
+| S24 | UCC 4A-211(d), same page | "An unaccepted payment order is canceled by operation of law at the close of the fifth funds-transfer business day of the receiving bank after the execution date or payment date of the order." |
+| S25 | RFC 5280 section 5.1.2.5, [rfc-editor.org](https://www.rfc-editor.org/rfc/rfc5280.txt) | "The behavior of clients processing CRLs that omit nextUpdate is not specified by this profile." |
+| S26 | RFC 6960 section 2.2, [rfc-editor.org](https://www.rfc-editor.org/rfc/rfc6960.txt) | "The \"unknown\" state indicates that the responder doesn't know about the certificate being requested" |
+| S27 | RFC 6960 section 2.2, same page | "This state MAY also be returned if the associated CA has no record of ever having issued a certificate with the certificate serial number in the request" |
+| S28 | RFC 6960 section 2.2 note, same page | "the \"unknown\" status indicates that the status could not be determined by this responder, thereby allowing the client to decide whether it wants to try another source of status information" |
+| S29 | Kleppmann, How to do distributed locking, [martin.kleppmann.com](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html) | "a fencing token is simply a number that increases (e.g. incremented by the lock service) every time a client acquires the lock" |
+| S30 | Kleppmann, same page | "the storage server remembers that it has already processed a write with a higher token number (34), and so it rejects the request with token 33" |
+| S31 | AWS DynamoDB global tables, [docs.aws.amazon.com](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_HowItWorks.html) | "DynamoDB will resolve the conflict by using the modification with the latest internal timestamp on a per-item basis, referred to as a \"last writer wins\" conflict resolution method" |
+| S32 | Chrome extensions permission warnings, [developer.chrome.com](https://developer.chrome.com/docs/extensions/develop/concepts/permission-warnings) | "When a new permission that triggers a warning is added, the extension will be disabled until the user accepts the new permission." |
+| S33 | OpenAI deprecations, [platform.openai.com](https://platform.openai.com/docs/deprecations) | "At the time of the shut down, the model or endpoint will no longer be accessible." |
+| S34 | AWS IAM PassRole, [docs.aws.amazon.com](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html) | "To pass a role (and its permissions) to an AWS service, a user must have permissions to pass the role to the service." |
+| S35 | AWS IAM roles terms and concepts, [docs.aws.amazon.com](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html) | "Service-linked roles appear in your AWS account and are owned by the service." |
+| S36 | GDPR Article 16(1), reproduction at [gdpr-info.eu](https://gdpr-info.eu/art-16-gdpr/) | "The data subject shall have the right to obtain from the controller without undue delay the rectification of inaccurate personal data concerning him or her." |
+| S37 | GDPR Article 16(2), same reproduction | "the data subject shall have the right to have incomplete personal data completed, including by means of providing a supplementary statement" |
+
+Four things could not be fetched and nothing here rests on them. FINRA Rule 8311: finra.org returned a Cloudflare interstitial, so this document carries no FINRA quote at all and CAND-05 says plainly that composition is forced by the corpus and externally unsourced. The GDPR official text: eur-lex.europa.eu returned an empty body, so S36 and S37 are from the gdpr-info.eu reproduction, labelled as such. The Lyondell Chemical 2010 SEC exhibit: HTTP 403, so no candidate here asserts the proposition `AUTHORITY-LIFECYCLE.md` cites it for. S10 to S17 come from a university course reproduction of the Restatement rather than from the official American Law Institute publication, and are cited as a reproduction.
