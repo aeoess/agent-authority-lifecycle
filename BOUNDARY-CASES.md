@@ -1,12 +1,68 @@
 # Authority Lifecycle: Boundary Cases
 
-Version 0.2-draft. Part of the Agent Passport System work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.
+Version 0.2.3-draft. Part of the Agent Passport System work. Apache-2.0, same terms as `AUTHORITY-LIFECYCLE.md`.
 
 These are the 36 security and evidence cases that sit next to authority lifecycle without being lifecycle cases. Each one came out of the same research and audit pass as [CASES.md](CASES.md), and each one is sound. What each lacks is a lifecycle verdict: it resolves to a liability outcome, a detection-surface gap, an operational practice or an evidence question, not to an authority state a verifier returns from records (valid, invalid, not established, suspended, restricted, not yet effective).
 
 They are kept because they bound the model. They mark where the authority-lifecycle question stops and a different question starts, and a design that answers them by extending the lifecycle model is probably answering the wrong question.
 
 Entry format matches CASES.md. Some entries are in the shorter reason-plus-source form the survivor pass used for them, rather than the full situation-and-outcome form. IDs are stable and match the ones used in CASES.md and in the research record. Status is **proposed** unless the entry says otherwise. None of the sources says anything about AI agents.
+
+## Contents
+
+- [Fiduciary succession](#fiduciary-succession) (2)
+- [Third-party reliance and notice](#third-party-reliance-and-notice) (1)
+- [Organization events](#organization-events) (1)
+- [Legal and regulatory events](#legal-and-regulatory-events) (1)
+- [Root authority and succession](#root-authority-and-succession) (1)
+- [Time and scheduling](#time-and-scheduling) (5)
+- [Credential events](#credential-events) (19)
+- [Agent-side events](#agent-side-events) (2)
+- [Infrastructure failure](#infrastructure-failure) (4)
+
+<details>
+<summary>All 36 boundary cases</summary>
+
+| ID | Case | Family |
+|---|---|---|
+| [LC-A-018](#lc-a-018-a-trustee-who-delegates-a-function-still-bears-supervisory-liability-for-the-delegate) | A trustee who delegates a function still bears supervisory liability for the delegate | [Fiduciary succession](#fiduciary-succession) |
+| [LC-A-020](#lc-a-020-executor-de-son-tort-acting-as-a-personal-representative-without-appointment-creates-personal-liability-not-authority) | Executor de son tort: acting as a personal representative without appointment creates personal liability, not authority | [Fiduciary succession](#fiduciary-succession) |
+| [LC-A-030](#lc-a-030-a-third-party-who-wrongfully-refuses-a-valid-acknowledged-power-of-attorney-can-be-held-liable-subject-to-a-suspected-abuse-safe-harbor) | A third party who wrongfully refuses a valid, acknowledged power of attorney can be held liable, subject to a suspected-abuse safe harbor | [Third-party reliance and notice](#third-party-reliance-and-notice) |
+| [LC-B-014](#lc-b-014-successor-liability-doctrine-is-a-liability-outcome-decided-on-facts-outside-the-delegation-graph) | Successor-liability doctrine is a liability outcome decided on facts outside the delegation graph | [Organization events](#organization-events) |
+| [LC-B-006](#lc-b-006-a-time-barred-remedy-does-not-cure-the-underlying-lack-of-authority) | A time-barred remedy does not cure the underlying lack of authority | [Legal and regulatory events](#legal-and-regulatory-events) |
+| [LC-C-026](#lc-c-026-rank-based-succession-by-self-attestation-has-no-verifier-to-check-it-against) | Rank-based succession by self-attestation has no verifier to check it against | [Root authority and succession](#root-authority-and-succession) |
+| [LC-C-024](#lc-c-024-a-shift-handover-can-transfer-authority-correctly-while-silently-losing-the-state-that-authority-depends-on) | A shift handover can transfer authority correctly while silently losing the state that authority depends on | [Time and scheduling](#time-and-scheduling) |
+| [LC-C-030](#lc-c-030-a-scope-restriction-tied-to-live-external-context-is-a-policy-question-not-an-authority-lifecycle-transition) | A scope restriction tied to live external context is a policy question, not an authority-lifecycle transition | [Time and scheduling](#time-and-scheduling) |
+| [LC-E-017](#lc-e-017-a-recurring-scheduler-needs-an-explicit-named-policy-for-late-and-overlapping-occurrences-not-a-silent-default) | A recurring scheduler needs an explicit, named policy for late and overlapping occurrences, not a silent default | [Time and scheduling](#time-and-scheduling) |
+| [LC-E-022](#lc-e-022-a-schedulers-at-least-once-delivery-guarantee-means-the-target-not-the-scheduler-has-to-prevent-duplicate-execution) | A scheduler's at-least-once delivery guarantee means the target, not the scheduler, has to prevent duplicate execution | [Time and scheduling](#time-and-scheduling) |
+| [LC-E-030](#lc-e-030-a-recurring-triggers-own-dst-handling-can-skip-or-delay-an-occurrence-with-zero-authority-chain-event-involved) | A recurring trigger's own DST handling can skip or delay an occurrence with zero authority-chain event involved | [Time and scheduling](#time-and-scheduling) |
+| [LC-D-002](#lc-d-002-okta-october-2023-a-service-account-credential-leaks-into-a-personal-account-through-an-ordinary-workflow-with-no-anomaly-in-the-credentials-own-usage-logs) | Okta October 2023: a service-account credential leaks into a personal account through an ordinary workflow, with no anomaly in the credential's own usage logs | [Credential events](#credential-events) |
+| [LC-D-005](#lc-d-005-slack-december-2022-an-unrelated-vendor-breach-exposes-employee-tokens-for-an-externally-hosted-code-repository-outside-the-orgs-own-iam) | Slack December 2022: an unrelated vendor breach exposes employee tokens for an externally hosted code repository outside the org's own IAM | [Credential events](#credential-events) |
+| [LC-D-006](#lc-d-006-ubiquiti-2020-an-engineers-undeclared-intent-to-leave-precedes-any-formal-offboarding-event-by-which-access-could-have-been-narrowed) | Ubiquiti 2020: an engineer's undeclared intent to leave precedes any formal offboarding event by which access could have been narrowed | [Credential events](#credential-events) |
+| [LC-D-007](#lc-d-007-desjardins-2017-2019-cumulative-over-extraction-within-an-otherwise-correctly-scoped-unrevoked-grant-undetected-for-26-months) | Desjardins 2017-2019: cumulative over-extraction within an otherwise correctly scoped, unrevoked grant, undetected for 26 months | [Credential events](#credential-events) |
+| [LC-D-008](#lc-d-008-twitterzatko-2022-standing-privileged-access-granted-org-wide-with-no-logging-fine-grained-enough-to-attribute-individual-actions) | Twitter/Zatko 2022: standing privileged access granted org-wide with no logging fine-grained enough to attribute individual actions | [Credential events](#credential-events) |
+| [LC-D-013](#lc-d-013-lastpass-2022-narrowing-key-custody-to-a-handful-of-named-holders-is-defeated-by-one-holders-unmanaged-personal-device) | LastPass 2022: narrowing key custody to a handful of named holders is defeated by one holder's unmanaged personal device | [Credential events](#credential-events) |
+| [LC-D-016](#lc-d-016-juniper-screenos-2012-2015-an-internally-self-consistent-but-substituted-cryptographic-constant-defeats-structural-verification-for-years) | Juniper ScreenOS 2012-2015: an internally self-consistent but substituted cryptographic constant defeats structural verification for years | [Credential events](#credential-events) |
+| [LC-D-017](#lc-d-017-codecov-2021-a-stolen-internal-build-credential-lets-an-attacker-silently-modify-a-widely-distributed-script-that-every-downstream-user-trusts-by-source-url-alone) | Codecov 2021: a stolen internal build credential lets an attacker silently modify a widely distributed script that every downstream user trusts by source URL alone | [Credential events](#credential-events) |
+| [LC-D-019](#lc-d-019-snowflake-2024-infostealer-harvested-credentials-remain-fully-sufficient-because-the-platform-did-not-enforce-a-second-factor-by-default) | Snowflake 2024: infostealer-harvested credentials remain fully sufficient because the platform did not enforce a second factor by default | [Credential events](#credential-events) |
+| [LC-D-020](#lc-d-020-mgm-resorts-2023-a-help-desk-roles-standing-power-to-reset-credentials-over-an-unverified-phone-call-becomes-the-entry-point) | MGM Resorts 2023: a help-desk role's standing power to reset credentials over an unverified phone call becomes the entry point | [Credential events](#credential-events) |
+| [LC-D-021](#lc-d-021-godaddy-2020-2022-three-incidents-disclosed-as-separate-events-later-turn-out-to-be-connected) | GoDaddy 2020-2022: three incidents disclosed as separate events later turn out to be connected | [Credential events](#credential-events) |
+| [LC-D-022](#lc-d-022-dropbox-2022-a-phishing-page-captures-a-hardware-keys-one-time-code-defeating-a-control-marketed-as-phishing-resistant) | Dropbox 2022: a phishing page captures a hardware key's one-time code, defeating a control marketed as phishing-resistant | [Credential events](#credential-events) |
+| [LC-D-023](#lc-d-023-uber-2022-an-admin-credential-hardcoded-in-a-script-on-a-broadly-readable-network-share-becomes-full-administrative-takeover) | Uber 2022: an admin credential hardcoded in a script on a broadly readable network share becomes full administrative takeover | [Credential events](#credential-events) |
+| [LC-D-024](#lc-d-024-lapsus-2022-a-revoked-credential-is-simply-replaced-by-another-bought-from-a-criminal-marketplace-faster-than-containment-can-keep-pace) | LAPSUS$ 2022: a revoked credential is simply replaced by another bought from a criminal marketplace, faster than containment can keep pace | [Credential events](#credential-events) |
+| [LC-D-026](#lc-d-026-opm-2015-a-contracting-company-disclaims-organizational-responsibility-for-the-scope-of-a-compromised-individual-employees-credential) | OPM 2015: a contracting company disclaims organizational responsibility for the scope of a compromised individual employee's credential | [Credential events](#credential-events) |
+| [LC-D-027](#lc-d-027-home-depot-2013-a-narrowly-granted-vendor-credential-reaches-unrelated-systems-because-nothing-enforces-the-boundary-on-paper) | Home Depot 2013: a narrowly granted vendor credential reaches unrelated systems because nothing enforces the boundary on paper | [Credential events](#credential-events) |
+| [LC-D-030](#lc-d-030-caesars-2023-attackers-target-an-outsourced-it-support-vendors-own-staff-rather-than-the-orgs-own-employees) | Caesars 2023: attackers target an outsourced IT support vendor's own staff rather than the org's own employees | [Credential events](#credential-events) |
+| [LC-D-031](#lc-d-031-beyondtrust-2023-2024-detection-speed-for-a-compromised-credential-varies-by-whether-that-credential-class-has-its-own-tailored-monitoring) | BeyondTrust 2023-2024: detection speed for a compromised credential varies by whether that credential class has its own tailored monitoring | [Credential events](#credential-events) |
+| [LC-D-032](#lc-d-032-epamticketmaster-2024-malware-on-a-contractors-laptop-harvests-a-credential-together-with-the-cached-internal-url-needed-to-use-it-against-one-specific-client) | EPAM/Ticketmaster 2024: malware on a contractor's laptop harvests a credential together with the cached internal URL needed to use it against one specific client | [Credential events](#credential-events) |
+| [LC-E-010](#lc-e-010-idempotency-key-retry-returns-the-original-result-instead-of-re-executing-the-effect) | Idempotency-key retry returns the original result instead of re-executing the effect | [Agent-side events](#agent-side-events) |
+| [LC-E-011](#lc-e-011-a-reused-idempotency-key-with-changed-parameters-errors-outright-rather-than-silently-doing-either-the-old-or-the-new-thing) | A reused idempotency key with changed parameters errors outright, rather than silently doing either the old or the new thing | [Agent-side events](#agent-side-events) |
+| [LC-F-021](#lc-f-021-browser-backforward-cache-can-display-a-stale-pre-revocation-authority-view-to-a-human-operator) | Browser back/forward cache can display a stale, pre-revocation authority view to a human operator | [Infrastructure failure](#infrastructure-failure) |
+| [LC-F-030](#lc-f-030-a-duplicated-control-flow-statement-can-cause-a-verifier-to-skip-its-own-revocationsignature-check-entirely) | A duplicated control-flow statement can cause a verifier to skip its own revocation/signature check entirely | [Infrastructure failure](#infrastructure-failure) |
+| [LC-F-036](#lc-f-036-a-caches-actual-configured-ttl-can-silently-drift-longer-than-its-declared-freshness-policy) | A cache's actual configured TTL can silently drift longer than its declared freshness policy | [Infrastructure failure](#infrastructure-failure) |
+| [LC-F-037](#lc-f-037-a-service-worker-offline-cache-can-serve-an-authority-bearing-view-after-revocation-with-no-distinction-from-static-assets) | A service-worker offline cache can serve an authority-bearing view after revocation with no distinction from static assets | [Infrastructure failure](#infrastructure-failure) |
+
+</details>
 
 ### Fiduciary succession
 
