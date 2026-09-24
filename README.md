@@ -11,6 +11,7 @@ In short, an agent can survive a personnel change and its old authority does not
 - [AUTHORITY-LIFECYCLE.md](AUTHORITY-LIFECYCLE.md), the model and its invariants
 - [CASES.md](CASES.md), situations that test the model, verified and candidate
 - [BOUNDARY-CASES.md](BOUNDARY-CASES.md), sound security and evidence cases that are not authority-lifecycle cases
+- [cases.json](cases.json), the same cases in machine-readable form, validated by [schema/cases.schema.json](schema/cases.schema.json) and [scripts/validate_cases.py](scripts/validate_cases.py)
 - [OPEN-QUESTIONS.md](OPEN-QUESTIONS.md), what is not answered yet
 - [SUPERSEDED.md](SUPERSEDED.md), designs we replaced and why
 
