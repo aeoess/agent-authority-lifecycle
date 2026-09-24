@@ -54,7 +54,7 @@ Entry format matches CASES.md. Some entries are in the shorter reason-plus-sourc
 
 **What a naive system gets wrong.** A framework that only ever asks "should the verifier accept or reject" treats every rejection as costless and symmetric with acceptance, when the law imposes an asymmetric liability risk on wrongful rejection.
 
-**Boundary reason.** This is a liability consequence for the refusing party, not an authority verdict; the delegation's own validity is not in question.
+**Boundary reason.** This is a liability consequence for the refusing party, not an authority verdict. The delegation's own validity is not in question.
 
 **Status:** proposed, boundary.
 
@@ -386,7 +386,7 @@ Variants: LC-C-019 (SBAR nursing handoff makes the same point as a positive requ
 
 #### LC-F-021. Browser back/forward cache can display a stale, pre-revocation authority view to a human operator
 
-**Reason.** This is a client-side presentation-caching problem, not a question a verifier answers. The delegation chain itself is correctly revoked server-side; only a rendered page shown to a human is stale. Not lifecycle, but adjacent: a human-facing instance of "unknown/stale state is not active" applied to a browser cache rather than a revocation resolver.
+**Reason.** This is a client-side presentation-caching problem, not a question a verifier answers. The delegation chain itself is correctly revoked server-side. Only a rendered page shown to a human is stale. Not lifecycle, but adjacent: a human-facing instance of "unknown/stale state is not active" applied to a browser cache rather than a revocation resolver.
 
 **Source verified.** [web.dev, bfcache](https://web.dev/articles/bfcache): "This could potentially expose private data that the user assumed was cleared when they logged out."
 
@@ -396,7 +396,7 @@ Variants: LC-C-019 (SBAR nursing handoff makes the same point as a positive requ
 
 #### LC-F-030. A duplicated control-flow statement can cause a verifier to skip its own revocation/signature check entirely
 
-**Reason.** This is an implementation-correctness and conformance-testing-methodology defect, not a question about what authority state should be. The model already requires revoked chains to fail; this is about proving an implementation actually executes that check on every code path.
+**Reason.** This is an implementation-correctness and conformance-testing-methodology defect, not a question about what authority state should be. The model already requires revoked chains to fail. This is about proving an implementation actually executes that check on every code path.
 
 **Source verified.** [imperialviolet.org, on Apple's "goto fail" bug](https://www.imperialviolet.org/2014/02/22/applebug.html): "The code will always jump to the end from that second goto... and so the signature verification will never fail."
 

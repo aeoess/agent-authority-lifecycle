@@ -30,7 +30,7 @@ Cases are grouped by the authority question they raise. A representative case li
 
 **What should happen.** Authority ends at death for every agent, durable or not. For verification purposes, termination becomes effective only once the agent has notice of the death, per the Restatement's notice-based rule, not at the biological instant of death. Evidence should record the death event and the notice timestamp, not merely a manual revocation.
 
-**What a naive system gets wrong.** A revoke-only system waits for an explicit revocation record and misses that death is a self-executing terminating event. A system can also over-read "durable" as blanket death-immunity, when durability is scoped only to surviving incapacity, not death; every power of attorney, durable or not, ends at death.
+**What a naive system gets wrong.** A revoke-only system waits for an explicit revocation record and misses that death is a self-executing terminating event. A system can also over-read "durable" as blanket death-immunity, when durability is scoped only to surviving incapacity, not death. Every power of attorney, durable or not, ends at death.
 
 **Related invariant/open question.** L1, L10. Termination happens at a factual moment (death) under a notice-effective rule, not an ancestor-revocation record. The scope of "durable" (incapacity-survival only, never death-survival) is a distinction no invariant states, and a naive system easily over-generalizes it.
 
@@ -160,7 +160,7 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **What a naive system gets wrong.** Reading the opinion's often-quoted general rule as its holding, and automatically flagging any collateral-adjacent or security-related delegation as death-surviving. The case's actual disposition is a warning: most delegations that look like they should qualify do not, on close reading, and default to dying with the principal like any other naked power.
 
-**Related invariant/open question.** None named. Every death-terminates-authority case in this corpus assumes the survival exception applies cleanly once claimed; this is the one place the corpus's own source shows a party trying and failing to claim it, which matters for how narrowly a verifier should read an `interest_coupled=true` flag.
+**Related invariant/open question.** None named. Every death-terminates-authority case in this corpus assumes the survival exception applies cleanly once claimed. This is the one place the corpus's own source shows a party trying and failing to claim it, which matters for how narrowly a verifier should read an `interest_coupled=true` flag.
 
 **Status:** proposed. (source_type: law)
 
@@ -234,7 +234,7 @@ Variants: A-017 (default solo-authorization rule, joint vs. several, for co-agen
 
 **Situation.** An agent takes an out-of-scope action. The principal later approves it after the fact. Between the original act and the approval, an unrelated third party acquires a real interest in the same subject matter in good faith. Separately: a principal tries to accept only the beneficial half of an out-of-scope act, or attempts to ratify while lacking capacity.
 
-**Human analog.** Restatement (Third) of Agency §4.02, [reproduced text, staff.washington.edu](https://staff.washington.edu/djdrake/RESt-Agency.doc): ratification "retroactively creates the effects of actual authority," except that it does not diminish "the rights or other interests of persons, not parties to the transaction, that were acquired in the subject matter prior to the ratification." Two further structural rules from the same source: §4.07, "A ratification is not effective unless it encompasses the entirety of an act, contract, or other single transaction"; §4.04, a person may ratify only if they "had capacity...at the time of ratifying the act."
+**Human analog.** Restatement (Third) of Agency §4.02, [reproduced text, staff.washington.edu](https://staff.washington.edu/djdrake/RESt-Agency.doc): ratification "retroactively creates the effects of actual authority," except that it does not diminish "the rights or other interests of persons, not parties to the transaction, that were acquired in the subject matter prior to the ratification." Two further structural rules from the same source: §4.07, "A ratification is not effective unless it encompasses the entirety of an act, contract, or other single transaction". §4.04, a person may ratify only if they "had capacity...at the time of ratifying the act."
 
 **What should happen.** Ratification makes the agent's original act retroactively authorized as between principal and agent, but it cannot claw back or defeat an intervening third party's independently acquired interest. Ratification is also all-or-nothing: a principal cannot keep the favorable part of a single integrated act and disavow the rest, and a ratification attempt from a principal who currently lacks capacity does not take effect regardless of how clearly it is expressed.
 
@@ -246,7 +246,7 @@ Variants: A-017 (default solo-authorization rule, joint vs. several, for co-agen
 
 **Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-023-a` to `LFS-A-023-j` (10) (candidate, not yet merged)
 
-Variants: A-021 (probate relation-back doctrine: a personal representative's beneficial pre-appointment acts are automatically validated back to the date of death once appointed, distinct from a principal's discretionary ratification bounded by intervening third-party rights); A-024 (the atomicity and capacity-at-ratification constraints, folded directly into this entry's own write-up rather than kept as a separate case).
+Variants: A-021 (probate relation-back doctrine: a personal representative's beneficial pre-appointment acts are automatically validated back to the date of death once appointed, distinct from a principal's discretionary ratification bounded by intervening third-party rights). A-024 (the atomicity and capacity-at-ratification constraints, folded directly into this entry's own write-up rather than kept as a separate case).
 
 ---
 
@@ -1598,7 +1598,7 @@ Variants: LC-F-002 (a protocol migration leaves old verifiers with no working ch
 
 **Human analog.** Kerberos rejects an authenticator when client and server clocks differ by more than a configured maximum skew. [MIT Kerberos documentation](https://web.mit.edu/kerberos/krb5-1.5/krb5-1.5.4/doc/krb5-admin/Clock-Skew.html): "Kerberos V5 is set up to reject ticket requests from any host whose clock is not within the specified maximum clock skew of the KDC."
 
-**What should happen.** A skew-triggered rejection must be evidenced and reported as a clock-disagreement denial, distinct from an expiry or revocation denial, so operators fix clock sync instead of investigating a nonexistent authority problem. The artifact itself is not invalidated; only this verification attempt is indeterminate.
+**What should happen.** A skew-triggered rejection must be evidenced and reported as a clock-disagreement denial, distinct from an expiry or revocation denial, so operators fix clock sync instead of investigating a nonexistent authority problem. The artifact itself is not invalidated. Only this verification attempt is indeterminate.
 
 **What a naive system gets wrong.** Logging a skew rejection identically to an expiry rejection, so operators can't tell "this credential's time is up" from "these two clocks disagree," and may reissue credentials repeatedly without fixing the actual clock problem.
 
@@ -1964,7 +1964,7 @@ Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not
 
 **What a naive system gets wrong.** Picking whichever side had more recent writes as the merge strategy can silently un-revoke an authority that was correctly revoked only on the losing side, a silent resurrection happening in the storage layer's own merge logic, below any application-level check.
 
-**Related invariant/open question.** L11 forbids an implementation choosing a fallback authority path on its own; this is a level below that, the underlying data store losing linearizable order across a partition, so silent resurrection can happen in storage-layer reconciliation rather than application code. Also touches L12, completeness of the reconciled record.
+**Related invariant/open question.** L11 forbids an implementation choosing a fallback authority path on its own. This is a level below that, the underlying data store losing linearizable order across a partition, so silent resurrection can happen in storage-layer reconciliation rather than application code. Also touches L12, completeness of the reconciled record.
 
 **Status:** proposed.
 
@@ -1992,7 +1992,7 @@ Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not
 
 #### LC-F-018. Multiple regional enforcement points are physically distinct copies of authority state, and can briefly disagree
 
-**Situation.** An APS deployment runs multiple regional gateways sharing a globally-replicated authority store. A principal revokes a delegation. The gateway in the same region as the write enforces the revocation immediately; a gateway in a different region still serves the pre-revocation decision for some seconds to minutes.
+**Situation.** An APS deployment runs multiple regional gateways sharing a globally-replicated authority store. A principal revokes a delegation. The gateway in the same region as the write enforces the revocation immediately. A gateway in a different region still serves the pre-revocation decision for some seconds to minutes.
 
 **Human analog.** AWS documents IAM's own distributed, eventually-consistent propagation path. [AWS IAM troubleshooting guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html): "Any changes that you make in IAM (or other AWS services)... take time to become visible from all possible endpoints. Some delay results from the time it takes to send data from server to server, replication zone to replication zone, and Region to Region."
 
@@ -2012,7 +2012,7 @@ Variants: LC-F-020 (staleness comes from an added CDN edge-cache layer in front 
 
 #### LC-F-022. A revocation write must not be able to lose a race to an unrelated, lower-stakes concurrent write
 
-**Situation.** An authority store uses multi-region, multi-active replication with last-writer-wins conflict resolution. A revocation write in one region and a routine metadata update to the same delegation record in another region happen close together; the conflict-resolution timestamp picks the metadata update as later, and the revocation is silently overwritten as if it never happened.
+**Situation.** An authority store uses multi-region, multi-active replication with last-writer-wins conflict resolution. A revocation write in one region and a routine metadata update to the same delegation record in another region happen close together. The conflict-resolution timestamp picks the metadata update as later, and the revocation is silently overwritten as if it never happened.
 
 **Human analog.** Amazon DynamoDB Global Tables documents exactly this conflict-resolution model. [AWS DynamoDB Global Tables documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables_HowItWorks.html): "Conflicts can arise if applications update the same item in different Regions at about the same time... DynamoDB global tables use a last writer wins reconciliation between concurrent updates... all the replicas will agree on the latest update."
 
@@ -2222,13 +2222,13 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Situation.** A use of a resource is lawfully established under one set of rules. The rules are later tightened so that the same use, if proposed today, would be denied. The question is not whether the tightened rule applies going forward (it plainly does, to new applicants) but whether it reaches back and invalidates the thing that was already validly approved.
 
-**Human analog.** Massachusetts zoning law answers this directly for land use. [Massachusetts General Laws Chapter 40A, Section 6](https://malegislature.gov/Laws/GeneralLaws/PartI/TitleVII/Chapter40a/Section6): "a zoning ordinance or by-law shall not apply to structures or uses lawfully in existence or lawfully begun, or to a building or special permit issued before the first publication of notice of the public hearing." A newer, stricter ordinance does not retroactively unwind a use that was lawful when established; it only binds what comes after.
+**Human analog.** Massachusetts zoning law answers this directly for land use. [Massachusetts General Laws Chapter 40A, Section 6](https://malegislature.gov/Laws/GeneralLaws/PartI/TitleVII/Chapter40a/Section6): "a zoning ordinance or by-law shall not apply to structures or uses lawfully in existence or lawfully begun, or to a building or special permit issued before the first publication of notice of the public hearing." A newer, stricter ordinance does not retroactively unwind a use that was lawful when established. It only binds what comes after.
 
 **What should happen.** A verifier needs to distinguish "policy in force when a grant was issued and never revoked" from "policy in force now." A tightened policy should apply to new grants and new evaluations at the next authorization boundary, without a verifier treating the tightening itself as an implicit revocation of grants that were valid, and not since suspended or revoked, under the policy that governed them at issuance.
 
 **What a naive system gets wrong.** Re-evaluating every existing grant against the newest policy version and treating a mismatch as automatic invalidity. That collapses "we changed the rule for new decisions" into "we revoked every decision made under the old rule," which is a much stronger and different action that nobody with standing actually took.
 
-**Related invariant/open question.** A distinct case from L10 (expiry is not revocation): here nothing about the grant itself changed, expired, or was revoked; the surrounding policy changed instead. `AUTHORITY-LIFECYCLE.md`'s "policy version" concept names the dependency but not this grandfathering question, which none of L1-L12 address.
+**Related invariant/open question.** A distinct case from L10 (expiry is not revocation): here nothing about the grant itself changed, expired, or was revoked. The surrounding policy changed instead. `AUTHORITY-LIFECYCLE.md`'s "policy version" concept names the dependency but not this grandfathering question, which none of L1-L12 address.
 
 **Status:** proposed.
 
@@ -2246,7 +2246,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **What should happen.** An authority record needs a status that distinguishes "reached its planned end" from "ended early, for cause, by an act of someone with standing," with the cause and the actor recorded for the second case. A relying party checking status after the fact should be able to tell which happened without having to infer it from the date alone.
 
-**What a naive system gets wrong.** Recording only a boolean "valid" or "not valid" with no distinction between the two paths to "not valid." That's exactly the gap L10 already names in the abstract; this case grounds it in a real, currently-in-force regulatory scheme that keeps the two mechanisms structurally separate, with different triggers, different actors, and different evidentiary requirements.
+**What a naive system gets wrong.** Recording only a boolean "valid" or "not valid" with no distinction between the two paths to "not valid." That's exactly the gap L10 already names in the abstract. This case grounds it in a real, currently-in-force regulatory scheme that keeps the two mechanisms structurally separate, with different triggers, different actors, and different evidentiary requirements.
 
 **Related invariant/open question.** A concrete instance of L10 (expiry is not revocation), sourced against a real regulatory scheme rather than stated as an abstract principle.
 
@@ -2260,7 +2260,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Situation.** An operator "renews" a credential that's approaching its expiration date. Whether that renewal is (a) extending the validity window on the same underlying artifact, or (b) tearing down the old artifact entirely and issuing a brand-new one that happens to cover the same subject, changes what evidence exists afterward and what it means for anything that referenced the old artifact by its own identity.
 
-**Human analog.** Let's Encrypt is explicit that its renewal path is not an extension mechanism at all. [Let's Encrypt](https://letsencrypt.org/how-it-works/): "Renewing a certificate at a later time means repeating the issuance process over again - performing domain validation and then requesting a new certificate." The old certificate is not modified or extended; a new one is issued, with its own serial number, and the old one simply continues toward its original, unchanged expiration.
+**Human analog.** Let's Encrypt is explicit that its renewal path is not an extension mechanism at all. [Let's Encrypt](https://letsencrypt.org/how-it-works/): "Renewing a certificate at a later time means repeating the issuance process over again - performing domain validation and then requesting a new certificate." The old certificate is not modified or extended. A new one is issued, with its own serial number, and the old one simply continues toward its original, unchanged expiration.
 
 **What should happen.** A verifier should treat "renewed" as ambiguous language until the underlying mechanism is known. Where renewal issues a new artifact, that new artifact needs its own full evaluation, not treatment as a continuation of the old one's identity, and evidence tied to the old artifact's identifier does not automatically transfer to the new one just because a human calls it the same credential.
 
@@ -2284,7 +2284,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **What a naive system gets wrong.** Treating "currently holds the authority to act for this office" as equivalent to "may decide the scope and duration of holding it." Those are different questions, and an interim holder answering the second one for itself is exactly the self-dealing a caretaking mandate is meant to prevent.
 
-**Related invariant/open question.** Distinct from L4 (a successor does not inherit the predecessor's delegation tree), which is about descendants, not about the interim holder's own scope. Touches OPEN-QUESTIONS.md's "office vacancy and succession," which this document leaves open; this case does not resolve that question, only illustrates one governing model's answer for one specific office, without any claim that the mechanism generalizes.
+**Related invariant/open question.** Distinct from L4 (a successor does not inherit the predecessor's delegation tree), which is about descendants, not about the interim holder's own scope. Touches OPEN-QUESTIONS.md's "office vacancy and succession," which this document leaves open. This case does not resolve that question, only illustrates one governing model's answer for one specific office, without any claim that the mechanism generalizes.
 
 **Status:** proposed.
 
@@ -2314,9 +2314,9 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 #### LC-I-011. When an action comes out of a shared identity, "who is accountable" can be a fact that has to be investigated after the fact, not something the identity itself ever recorded
 
-**Situation.** An organization's public-facing account is operated by more than one person at an outside agency, sharing one set of login credentials and one piece of client software. An offensive message goes out from the account. For a period afterward, the organization itself cannot say, from any record the account produced, which individual sent it; that has to be established separately, by the agency investigating who had control of the tool at that moment.
+**Situation.** An organization's public-facing account is operated by more than one person at an outside agency, sharing one set of login credentials and one piece of client software. An offensive message goes out from the account. For a period afterward, the organization itself cannot say, from any record the account produced, which individual sent it. That has to be established separately, by the agency investigating who had control of the tool at that moment.
 
-**Human analog.** In 2013, an employee of Chrysler's social-media agency, New Media Strategies, posted an obscene message from Chrysler's own branded Twitter account while meaning to post it from a personal one. [NBC News](https://www.nbcnews.com/id/wbna42132041) reports he mistakenly used "a program that aims to help users juggle multiple Twitter accounts." Chrysler's own public response, quoted by [InformationWeek](https://www.informationweek.com/it-leadership/chrysler-addresses-twitter-foul-up), stated only that "the company has set in place appropriate steps to ensure that this does not happen again," without the account's own records identifying the individual; that came from the agency's internal review.
+**Human analog.** In 2013, an employee of Chrysler's social-media agency, New Media Strategies, posted an obscene message from Chrysler's own branded Twitter account while meaning to post it from a personal one. [NBC News](https://www.nbcnews.com/id/wbna42132041) reports he mistakenly used "a program that aims to help users juggle multiple Twitter accounts." Chrysler's own public response, quoted by [InformationWeek](https://www.informationweek.com/it-leadership/chrysler-addresses-twitter-foul-up), stated only that "the company has set in place appropriate steps to ensure that this does not happen again," without the account's own records identifying the individual. That came from the agency's internal review.
 
 **What should happen.** Where an identity is operated by more than one accountable individual through shared tooling, the record of an action taken under that identity should say so, as "shared identity, individual attribution pending or external," rather than implying the identity itself is the accountable party. Establishing which individual acted is then a separate investigative fact, evidenced when it becomes available, not something the original action's record can supply on its own.
 
@@ -2336,7 +2336,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Human analog.** AWS documents the root identity as intentionally exceptional and warns against routine use. [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html): "We strongly recommend that you don't use the root user for your everyday tasks." The guidance pairs this with a specific, enumerated list of tasks that require root, implying that anything off that list done as root is root being used somewhere it structurally shouldn't be.
 
-**What should happen.** A verifier or policy engine should treat use of an unscoped, all-powerful identity for a task not on its enumerated required-list as itself an anomaly worth its own evidence trail, distinct from ordinary scoped-identity activity, precisely because that identity has no accountable individual bound to it by design; it is meant to be reached for rarely and by whoever currently holds its credentials.
+**What should happen.** A verifier or policy engine should treat use of an unscoped, all-powerful identity for a task not on its enumerated required-list as itself an anomaly worth its own evidence trail, distinct from ordinary scoped-identity activity, precisely because that identity has no accountable individual bound to it by design. It is meant to be reached for rarely and by whoever currently holds its credentials.
 
 **What a naive system gets wrong.** Auditing root-identity actions the same way as any scoped identity's actions, when the entire point of a root identity is that it isn't scoped to one accountable person in the first place, so "it was root" is a materially weaker statement about who is accountable than "it was this named user."
 
@@ -2356,7 +2356,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Human analog.** OAuth 2.0 makes single-use a checked server-side rule for the authorization code, not just guidance to the client. [RFC 6749, Section 4.1.2](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.2): "The client MUST NOT use the authorization code more than once." The same section requires the authorization server to deny a repeat attempt and revoke everything already issued from that code if one is presented twice, treating the second use as evidence of compromise rather than an ordinary retry.
 
-**What should happen.** A grant scoped to a single specific purpose should be checkable, by the issuer, as exhausted the moment it's used, with the underlying record (not merely the client's own restraint) enforcing that a second presentation fails and is treated as suspicious. The exhaustion event itself is the evidence that the grant's one purpose is complete; nothing else needs to happen for it to become unusable again.
+**What should happen.** A grant scoped to a single specific purpose should be checkable, by the issuer, as exhausted the moment it's used, with the underlying record (not merely the client's own restraint) enforcing that a second presentation fails and is treated as suspicious. The exhaustion event itself is the evidence that the grant's one purpose is complete. Nothing else needs to happen for it to become unusable again.
 
 **What a naive system gets wrong.** Relying on the requesting party to simply not reuse a single-use grant, rather than having the issuer track and reject reuse itself. That converts a machine-checkable exhaustion condition into an honor system, which fails exactly when it matters most, against a party that captured the artifact and has no reason to be honest about it.
 
