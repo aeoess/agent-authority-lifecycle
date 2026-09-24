@@ -52,7 +52,8 @@
           "LPE-A-001-k"
         ],
         "sdk_results": "chain verified at every instant, 28 record signatures verified, death/notice/durability verdict `not_supported` / same, via `verify_authority_delegation_chain`, `canonicalize_jcs`, `verify`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md"
       }
     ],
     "notes": [
@@ -105,8 +106,9 @@
           "AX-02-no-attestation-not-established"
         ],
         "sdk_results": "recorded in that family, not re-run here / recorded in that family, not re-run here",
-        "pending_pr": true,
-        "note": "AX-01 and AX-03 to AX-16 are the surrounding family; AX-02 is the covering vector."
+        "pending_pr": false,
+        "note": "AX-01 and AX-03 to AX-16 are the surrounding family; AX-02 is the covering vector.",
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/activation-not-established/README.md"
       }
     ],
     "notes": [
@@ -148,7 +150,8 @@
           "LPE-A-005-a"
         ],
         "sdk_results": "chain valid, decree record signature verified, relationship-termination verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md"
       }
     ],
     "notes": [
@@ -188,7 +191,8 @@
           "LPE-A-006-c"
         ],
         "sdk_results": "chain valid, filing and decree signatures verified, trigger verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md"
       }
     ],
     "notes": [
@@ -281,7 +285,8 @@
           "LPE-A-009-c"
         ],
         "sdk_results": "chain valid at the pre-finding instant, finding signature verified, retroactive forfeiture verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md"
       }
     ],
     "notes": [
@@ -325,7 +330,8 @@
           "LPE-A-010-d"
         ],
         "sdk_results": "chain valid, four order and appointment signatures verified, external lifecycle standing and `suspended` verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md"
       }
     ],
     "notes": [
@@ -376,7 +382,8 @@
           "LPE-A-012-d"
         ],
         "sdk_results": "chain valid, interest-record signatures verified, survival-basis verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md"
       }
     ],
     "notes": [
@@ -434,7 +441,8 @@
           "LPE-A-016-f"
         ],
         "sdk_results": "chain valid, exit-record signatures verified, successor activation and `not_yet_effective` verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md"
       }
     ],
     "notes": [
@@ -489,7 +497,8 @@
           "LFS-A-019-h"
         ],
         "sdk_results": "chain valid, approval, dissent and vacancy signatures verified, quorum verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-fiduciary-succession/README.md"
       }
     ],
     "notes": [
@@ -545,7 +554,8 @@
           "LFS-A-022-e"
         ],
         "sdk_results": "chain valid, resolution signatures verified, mandate class and end-on-event verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-fiduciary-succession/README.md"
       }
     ],
     "notes": [
@@ -620,7 +630,8 @@
           "LFS-A-023-j"
         ],
         "sdk_results": "chain valid, ratification, capacity and interest signatures verified, ratification verdict and `restricted` `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-fiduciary-succession/README.md"
       }
     ],
     "notes": [
@@ -677,7 +688,8 @@
           "TPR-A-027-d"
         ],
         "sdk_results": "pass 4/4 / pass 4/4",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-third-party-reliance-notice/README.md"
       }
     ],
     "notes": [
@@ -725,7 +737,8 @@
           "TPR-A-028-d"
         ],
         "sdk_results": "pass 4/4 / pass 4/4",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-third-party-reliance-notice/README.md"
       }
     ],
     "notes": [
@@ -768,7 +781,8 @@
           "TPR-A-033-d"
         ],
         "sdk_results": "pass 4/4 / pass 4/4",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-third-party-reliance-notice/README.md"
       }
     ],
     "notes": [
@@ -804,7 +818,8 @@
           "CSS-08-no-usable-answer-not-established"
         ],
         "sdk_results": "not run here / not run here",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/conflicting-status-sources/README.md"
       }
     ],
     "notes": [
@@ -843,7 +858,8 @@
           "LC-B-004-e"
         ],
         "sdk_results": "chain verdict 4/4, issuance refusal not exercised (minted with PyPI) / chain verdict 4/4, `SCOPE_WIDENING` raised at issuance",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md"
       }
     ],
     "notes": [
@@ -896,7 +912,8 @@
           "LC-B-012-c"
         ],
         "sdk_results": "chain verdict 3/3, principal binding no API / chain verdict 3/3, principal binding no API",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md"
       }
     ],
     "notes": [
@@ -937,7 +954,8 @@
           "LC-B-013-b"
         ],
         "sdk_results": "chain verdict 2/2, attestor standing no API / chain verdict 2/2, attestor standing no API",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md"
       }
     ],
     "notes": [
@@ -980,7 +998,8 @@
           "LC-B-016-d"
         ],
         "sdk_results": "chain verdict 4/4, restriction no API / chain verdict 4/4, restriction no API",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md"
       }
     ],
     "notes": [
@@ -1029,7 +1048,8 @@
           "LC-B-028-h"
         ],
         "sdk_results": "chain verdict on submit and accept, acceptance boundary no API / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md"
       }
     ],
     "notes": [
@@ -1079,7 +1099,8 @@
           "LC-B-029-i"
         ],
         "sdk_results": "chain verdict incl. `REVOKED` at index 0, acceptance boundary no API / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md"
       }
     ],
     "notes": [
@@ -1114,7 +1135,8 @@
           "LC-B-030-d"
         ],
         "sdk_results": "chain verdict 4/4, consent gate no API, detached signature check 6/6 records / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md"
       }
     ],
     "notes": [
@@ -1160,7 +1182,8 @@
           "LRE-B-007-d"
         ],
         "sdk_results": "pass 4/4 / pass 4/4",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1205,7 +1228,8 @@
           "LRE-B-008-c"
         ],
         "sdk_results": "pass 3/3 / pass 3/3",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1249,7 +1273,8 @@
           "LRE-B-009-c"
         ],
         "sdk_results": "pass 3/3 / pass 3/3",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1292,7 +1317,8 @@
           "LRE-B-010-d"
         ],
         "sdk_results": "pass 4/4 / pass 4/4",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1335,7 +1361,8 @@
           "LRE-B-011-b"
         ],
         "sdk_results": "pass 2/2 / pass 2/2",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1377,7 +1404,8 @@
           "LRE-B-017-c"
         ],
         "sdk_results": "pass 3/3 / pass 3/3",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1424,7 +1452,8 @@
           "LRE-B-018-c"
         ],
         "sdk_results": "pass 3/3 / pass 3/3",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1467,7 +1496,8 @@
           "LRE-B-019-b"
         ],
         "sdk_results": "pass 2/2 / pass 2/2",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1506,7 +1536,8 @@
           "LRE-B-022-b"
         ],
         "sdk_results": "pass 2/2 / pass 2/2",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1594,7 +1625,8 @@
           "LRE-B-024-d"
         ],
         "sdk_results": "pass 4/4 / pass 4/4",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1653,7 +1685,8 @@
           "LRE-B-025-d"
         ],
         "sdk_results": "pass 4/4 / pass 4/4",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1693,7 +1726,8 @@
           "LRE-B-026-c"
         ],
         "sdk_results": "pass 3/3 / pass 3/3",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1734,7 +1768,8 @@
           "LRE-B-027-d"
         ],
         "sdk_results": "pass 4/4 / pass 4/4",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1779,7 +1814,8 @@
           "LRE-B-031-c"
         ],
         "sdk_results": "pass 3/3 / pass 3/3",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md"
       }
     ],
     "notes": [
@@ -1832,7 +1868,8 @@
           "LRAS-C-007-k"
         ],
         "sdk_results": "chain valid, office-record signatures verified, subject-binding-mode verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-root-authority-succession/README.md"
       }
     ],
     "notes": [
@@ -1880,7 +1917,8 @@
           "LC-C-002-i"
         ],
         "sdk_results": "`not_supported`: no API takes a default holder, a deadline and a reversion / `not_supported`, same reason",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -1924,7 +1962,8 @@
           "LC-C-005-e"
         ],
         "sdk_results": "`chain_state` PASS (10 probes). `source_priority` `not_supported`: `resolveSuccessor` walks one charter's `successionOrder` and cannot see a rival source / `chain_state` PASS (10). `source_priority` `not_supported`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -1973,7 +2012,8 @@
           "LC-C-006-e"
         ],
         "sdk_results": "`chain_state` PASS (10). `void_from_issuance` `not_supported`: no status distinct from revoked / `chain_state` PASS (10). same `not_supported`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2016,7 +2056,8 @@
           "AX-06"
         ],
         "sdk_results": "n/a / n/a",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/activation-not-established/README.md"
       }
     ],
     "notes": [
@@ -2067,7 +2108,8 @@
           "LC-C-011-g"
         ],
         "sdk_results": "`multi_class_threshold` PASS (7 `evaluateThreshold` probes) / `not_supported`: no charter, office, approval-request or threshold module",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2113,7 +2155,8 @@
           "LC-C-012-g"
         ],
         "sdk_results": "`chain_state` PASS (14). `joint_objective` `not_supported` / `chain_state` PASS (14). same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2157,7 +2200,8 @@
           "LC-C-016-g"
         ],
         "sdk_results": "`multi_class_threshold` PASS (2, the all-mode directions). `direction_threshold` `not_supported`: no direction axis in `MultiClassThresholdPolicy` / `not_supported` for both layers",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2199,7 +2243,8 @@
           "LC-C-018-e"
         ],
         "sdk_results": "`multi_class_threshold` PASS (5) / `not_supported`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2245,7 +2290,8 @@
           "LC-C-020-i"
         ],
         "sdk_results": "`not_supported`: no live eligibility-rule position / `not_supported`, same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2300,7 +2346,8 @@
           "LC-C-022-f"
         ],
         "sdk_results": "`not_supported`: no state between initiation and ratification / `not_supported`, same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2343,7 +2390,8 @@
           "LC-C-029-f"
         ],
         "sdk_results": "`chain_state` PASS (12). `per_contributor_caveat` `not_supported` / `chain_state` PASS (12). same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2387,7 +2435,8 @@
           "LC-C-031-e"
         ],
         "sdk_results": "`chain_state` PASS (5, all `valid`, which is the gap). `standing_override` `not_supported` / `chain_state` PASS (5). same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2438,7 +2487,8 @@
           "LC-H-001-g"
         ],
         "sdk_results": "`chain_state` PASS (21). `divisible_grant` `not_supported`: `AuthorityDelegationV1` has one issuer per record, so the object is not representable / `chain_state` PASS (21). same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2486,7 +2536,8 @@
           "LC-H-002-g"
         ],
         "sdk_results": "`not_supported`: no named asymmetric default / `not_supported`, same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2540,7 +2591,8 @@
           "LC-H-003-g"
         ],
         "sdk_results": "`not_supported`: no revival record at all / `not_supported`, same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2587,7 +2639,8 @@
           "LC-H-004-h"
         ],
         "sdk_results": "`office_holder_count` PASS (8 `checkQuorum` probes). `chain_state` PASS (8) / `chain_state` PASS (8). `office_holder_count` `not_supported`: no quorum, charter or office module",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-outside-the-chain-standing/README.md"
       }
     ],
     "notes": [
@@ -2640,7 +2693,8 @@
           "LC-H-005-f"
         ],
         "sdk_results": "`chain_state` PASS (9). `external_order` `not_supported` / `chain_state` PASS (9). same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2703,7 +2757,8 @@
           "LC-H-006-h"
         ],
         "sdk_results": "`chain_state` PASS (16, all `valid`, which is the gap). `held_pending_forum` `not_supported` / `chain_state` PASS (16). same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md"
       }
     ],
     "notes": [
@@ -2750,7 +2805,8 @@
           "LC-H-007-e"
         ],
         "sdk_results": "`TIME_WIDENING` at child index, verification side / same, plus `TIME_WIDENING` raised at issuance",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-subdelegation-edges/README.md"
       }
     ],
     "notes": [
@@ -2793,7 +2849,8 @@
           "LC-H-008-d"
         ],
         "sdk_results": "`DEPTH_EXHAUSTED` at deepest index / same, plus `DEPTH_EXHAUSTED` raised at issuance",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-subdelegation-edges/README.md"
       }
     ],
     "notes": [
@@ -2846,7 +2903,8 @@
           "LAR-H-010-i"
         ],
         "sdk_results": "chain valid, renunciation and acceptance signatures verified, renunciation verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-renunciation/README.md"
       }
     ],
     "notes": [
@@ -2892,7 +2950,8 @@
           "LAR-H-011-b"
         ],
         "sdk_results": "chain valid, agreement and determination signatures verified, verdict `not_supported`, no liability API in either SDK and none in this gate / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-renunciation/README.md"
       }
     ],
     "notes": [
@@ -2941,7 +3000,8 @@
           "LPU-H-012-j"
         ],
         "sdk_results": "chain valid with `active` revocation throughout, confirmation signatures verified, per-action confirmation verdict `not_supported` / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-unreachable/README.md"
       }
     ],
     "notes": [
@@ -2987,7 +3047,8 @@
           "LC-C-008-e-direction-from-a-party-with-no-tenure"
         ],
         "sdk_results": "ok 5/5 / ok 5/5 / supplied: chain state, record signatures. `not_supported`: default-successor resolution, tenure eligibility, standing to declare a default",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3031,7 +3092,8 @@
           "LC-C-014-e-acknowledgment-from-a-party-the-offer-does-not-name"
         ],
         "sdk_results": "ok 5/5 / ok 5/5 / `not_supported`: handover acknowledgment, and `not_yet_effective` as a state",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3086,7 +3148,8 @@
           "LC-C-015-e-contact-restored"
         ],
         "sdk_results": "ok 5/5 / ok 5/5 / supplied: scope membership (npm only). `not_supported`: pre-authorized fallback scope, `restricted` as a state",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3127,7 +3190,8 @@
           "LC-C-017-d-rest-state-not-recorded"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / `not_supported`: rotation schedule, rest ledger",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3178,7 +3242,8 @@
           "LC-C-025-e-designation-names-another-party"
         ],
         "sdk_results": "ok 5/5 / ok 5/5 / `not_supported`: atomic departure-plus-designation, the gap verdict",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3226,7 +3291,8 @@
           "LC-E-008-e-pinned-version-not-resolvable"
         ],
         "sdk_results": "ok 5/5 / ok 5/5 / `not_supported`: pinned policy version",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3271,7 +3337,8 @@
           "LC-E-014-d-recorded-disposition-reassigns"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / supplied: `REVOKED` on `-b`, from both SDKs. `not_supported`: identity removal as distinct from revocation, series disposition",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3318,7 +3385,8 @@
           "LC-E-018-d-control-read-under-the-tightened-template"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / `not_supported`: occurrence template pinning",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3364,7 +3432,8 @@
           "LC-E-019-d-no-declared-grace-bound"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / supplied: `REVOKED` on `-c`. `not_supported`: wind-down grace bound. On `-b` the SDK says `valid` and the lifecycle verdict is `invalid`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3407,7 +3476,8 @@
           "LC-E-020-d-no-creator-grant-recorded"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / supplied: scope membership (npm only). `not_supported`: the job-to-creator-grant link",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3444,7 +3514,8 @@
           "LC-E-034-d-suspension-source-silent-at-fire-time"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / supplied: `REVOKED` on `-c`, at the instant the boundary chose to ask. `not_supported`: suspension as a resolver answer, fire-time recheck",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3491,7 +3562,8 @@
           "LC-G-007-d-no-clock-attestation"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / supplied: `EXPIRED` and `NOT_YET_VALID`. `not_supported`: `not_yet_effective` as a state distinct from `invalid`, clock attestation",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3539,7 +3611,8 @@
           "LC-G-008-d-no-source-recorded"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / supplied: `NOT_YET_VALID` on the wrapped reading, from both SDKs. `not_supported`: time-source cross-check",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3585,7 +3658,8 @@
           "LC-G-009-d-two-clocks-that-agree"
         ],
         "sdk_results": "ok 4/4 / ok 4/4 / `not_supported`: smear tolerance, declared divergence window",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md"
       }
     ],
     "notes": [
@@ -3631,7 +3705,8 @@
           "LC-D-001-d-later-finding-does-not-rewrite-the-earlier-record"
         ],
         "sdk_results": "claim 1 supported (5 boundaries), claim 4 supported, and claim 7 (reach over a declared graph) not_supported / same, plus claim 7 not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -3677,7 +3752,8 @@
           "LC-D-003-b-both-bases-agree-so-agreement-establishes-nothing"
         ],
         "sdk_results": "claim 1 supported, claim 4 supported, and claim 7 not_supported / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -3720,7 +3796,8 @@
           "LC-D-004-b-operator-identity-with-no-edge-to-this-tree"
         ],
         "sdk_results": "claim 1 supported, claim 4 supported, and claim 7 not_supported / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -3762,7 +3839,8 @@
           "LC-D-009-c-enforced-scope-contained"
         ],
         "sdk_results": "claim 3 supported, `scopeCovers` matched 2/2 attested vectors / claim 3 supported, `scope_covers` matched 2/2",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -3854,7 +3932,8 @@
           "LC-D-011-c-inherited-root-reestablished"
         ],
         "sdk_results": "claim 1 and 4 supported. No inherited-root surface, so part of claim 9 is not_supported / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -3907,7 +3986,8 @@
           "LC-D-014-c-reestablished-from-a-reverified-root"
         ],
         "sdk_results": "claim 9 not_supported / claim 9 not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -3948,7 +4028,8 @@
           "LC-D-025-b-revoked-and-accounting-established"
         ],
         "sdk_results": "claim 1 supported, claim 10 (coverage basis) not_supported / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -3993,7 +4074,8 @@
           "LC-D-029-c-independent-provenance-attestation"
         ],
         "sdk_results": "claim 4 supported, including the SDK downgrading a self-declared independence the trust context does not back / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4033,7 +4115,8 @@
           "LC-D-033-c-every-authorizer-attested"
         ],
         "sdk_results": "claim 1 and 4 supported. No authorizer-addition-provenance surface, recorded under claim 9's absence / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4135,7 +4218,8 @@
           "CSS-11-offline-snapshot-revoked-denies"
         ],
         "sdk_results": "not run here / not run here",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/conflicting-status-sources/README.md"
       }
     ],
     "notes": [
@@ -4185,7 +4269,8 @@
           "LC-F-013-c-clocks-agree-inside-the-window"
         ],
         "sdk_results": "claim 6 PARTIAL: `compareTimestamps` on `HybridTimestamp` reports a non-definite ordering inside the drift band, no denial category separates skew from expiry / claim 6 not_supported: no `HybridTimestamp`, no `compare_timestamps`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4232,7 +4317,8 @@
           "LC-F-033-b-issuer-population-reattested"
         ],
         "sdk_results": "claim 9 not_supported / claim 9 not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4276,7 +4362,8 @@
           "LC-F-035-b-revocation-effective-where-status-is-looked-up"
         ],
         "sdk_results": "claim 8 not_supported: no API makes revocation effectiveness a credential-class property, so both boundaries are indistinguishable to the SDK / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4324,7 +4411,8 @@
           "LC-G-001-a-planned-rotation-opens-no-suspect-window"
         ],
         "sdk_results": "claim 1 and 4 supported. No planned-versus-compromise rotation distinction, recorded under claim 9's absence / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4370,7 +4458,8 @@
           "LC-G-002-b-issued-before-the-exposure-start"
         ],
         "sdk_results": "claim 1 and 4 supported. No exposure-window surface / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4413,7 +4502,8 @@
           "LC-G-003-c-independently-dated-inside-the-window"
         ],
         "sdk_results": "claim 4 supported for the attestor-independence half / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4457,7 +4547,8 @@
           "LC-G-004-c-key-scope-covers-the-claimed-audience"
         ],
         "sdk_results": "claim 2 supported, `checkAudience` matched 2 of 3 outcomes, 1 divergence recorded. claim 5 supported, `assertKeyPurpose` rejects a key for an unauthorized purpose / claim 2 not_supported, claim 5 not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md"
       }
     ],
     "notes": [
@@ -4496,7 +4587,8 @@
           "CBD-05"
         ],
         "sdk_results": "see that family / see that family",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/capability-binding-drift/README.md"
       }
     ],
     "notes": [
@@ -4541,7 +4633,8 @@
           "ASE-04"
         ],
         "sdk_results": "chain `verifyAuthorityDelegationChain` valid at every instant. Executor lifecycle `not_supported`, no `resolveExecutorAvailabilityAt` or equivalent exported / chain `verify_authority_delegation_chain` agrees. Executor lifecycle `not_supported`, no executor module in the installed package",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md"
       }
     ],
     "notes": [
@@ -4646,7 +4739,8 @@
           "CWA-10"
         ],
         "sdk_results": "see that family / see that family",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-conferral-without-authority/README.md"
       }
     ],
     "notes": [
@@ -4703,7 +4797,8 @@
           "ASE-08"
         ],
         "sdk_results": "credential signature via `verify` over `canonicalizeJCS`. Consumption record and lost-record window `not_supported`. `verifyApproval` exists and checks an artifact binding plus a signature with no expiry, use count or consumption record / signature via `agent_passport.crypto.verify` over `canonicalize_jcs`. Consumption record `not_supported`, and `verify_approval` is absent entirely",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md"
       }
     ],
     "notes": [
@@ -4798,7 +4893,8 @@
           "ASE-11"
         ],
         "sdk_results": "revocation notice signature via `verify`. The effective-instant comparison and the resolver answer are the fixture's, then handed to `verifyAuthorityDelegationChain` which returns `REVOKED` / same shape via `crypto.verify` and `verify_authority_delegation_chain`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md"
       }
     ],
     "notes": [
@@ -4842,7 +4938,8 @@
           "AER-04"
         ],
         "sdk_results": "see that family / see that family",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/authority-epoch-rollback/README.md"
       }
     ],
     "notes": [
@@ -4886,7 +4983,8 @@
           "ASE-13"
         ],
         "sdk_results": "presenter binding `not_supported`, no `verifyPresenterIsSubject` or equivalent. Chain and signatures via the SDK / presenter binding `not_supported`. Chain and signatures via the SDK",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md"
       }
     ],
     "notes": [
@@ -4931,7 +5029,8 @@
           "ASE-20"
         ],
         "sdk_results": "capability consent `not_supported`, no consent record type or resolver exported / capability consent `not_supported`, no consent module in the installed package",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md"
       }
     ],
     "notes": [
@@ -4972,7 +5071,8 @@
           "ASE-15"
         ],
         "sdk_results": "`verifyBehavioralMemoryObject` is exported and checks one Ed25519 signature over the canonicalized object and nothing else, so authority currency is `not_supported`. Claim signature via `verify` / no behavioral-memory module at all, `not_supported`. Claim signature via `crypto.verify`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md"
       }
     ],
     "notes": [
@@ -5022,7 +5122,8 @@
           "CBD-03"
         ],
         "sdk_results": "see that family / see that family",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/capability-binding-drift/README.md"
       }
     ],
     "notes": [
@@ -5092,7 +5193,8 @@
           "LC-F-006-d-inverse-check"
         ],
         "sdk_results": "run: `enforceFreshnessPolicy`, `isEvidenceFresh` (see note 1) / canonicalization pass, behaviour not_supported, no freshness surface exists",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md"
       }
     ],
     "notes": [
@@ -5138,7 +5240,8 @@
           "LC-F-009-e"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported, no publication-error retraction surface / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md"
       }
     ],
     "notes": [
@@ -5179,7 +5282,8 @@
           "LC-F-014-e"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported, no external time-evidence surface / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md"
       }
     ],
     "notes": [
@@ -5222,7 +5326,8 @@
           "LC-F-016-b"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported, no two-history merge surface / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md"
       }
     ],
     "notes": [
@@ -5275,7 +5380,8 @@
           "LC-F-017-d"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported, resolver callback takes the delegation only / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md"
       }
     ],
     "notes": [
@@ -5326,7 +5432,8 @@
           "CSS-14"
         ],
         "sdk_results": "n/a / n/a",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/conflicting-status-sources/README.md"
       }
     ],
     "notes": [
@@ -5368,7 +5475,8 @@
           "LC-F-022-b"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md"
       }
     ],
     "notes": [
@@ -5425,7 +5533,8 @@
           "AER-10"
         ],
         "sdk_results": "n/a / n/a",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/authority-epoch-rollback/README.md"
       }
     ],
     "notes": [
@@ -5466,7 +5575,8 @@
           "LC-F-026-b"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md"
       }
     ],
     "notes": [
@@ -5514,7 +5624,8 @@
           "LC-F-027-b"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported, `capabilityCoverage` is scope coverage not interval coverage / canonicalization pass, behaviour not_supported (`RequiredRoleCoverage` is a near-name, role coverage)",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md"
       }
     ],
     "notes": [
@@ -5559,7 +5670,8 @@
           "LC-G-005-f"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported. `isRetentionExpired` runs (see note 2) / canonicalization pass, behaviour not_supported, no retention surface exists",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-evidence-and-record/README.md"
       }
     ],
     "notes": [
@@ -5604,7 +5716,8 @@
           "LC-G-006-f"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-evidence-and-record/README.md"
       }
     ],
     "notes": [
@@ -5653,7 +5766,8 @@
           "IRR-13"
         ],
         "sdk_results": "chain via `verifyAuthorityDelegationChain`, binding signatures via `verify` over `canonicalizeJCS`. Identifier binding and controller resolution `not_supported`, and the nearest surface, `createNamespaceClaim` / `verifyNamespaceClaim`, is compiled into `dist/src/core/tool-integrity.js` and exported from neither the package root nor `./core` / chain via `verify_authority_delegation_chain`, signatures via `crypto.verify` over `canonicalize_jcs`. Identifier binding `not_supported`, and no `verify_namespace_claim`, `create_did_document`, `public_key_from_did` or `verify_rotation_log` in the installed package",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-identifier-reuse-and-rename/README.md"
       }
     ],
     "notes": [
@@ -5701,7 +5815,8 @@
           "IRR-08"
         ],
         "sdk_results": "as above. Retention and continuity-interval arithmetic `not_supported` / as above. Retention and continuity-interval arithmetic `not_supported`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-identifier-reuse-and-rename/README.md"
       }
     ],
     "notes": [
@@ -5747,7 +5862,8 @@
           "IRR-12"
         ],
         "sdk_results": "as above. Conflicting-binding resolution `not_supported` / as above. Conflicting-binding resolution `not_supported`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-identifier-reuse-and-rename/README.md"
       }
     ],
     "notes": [
@@ -5804,7 +5920,8 @@
           "PC-05"
         ],
         "sdk_results": "chain via `verifyAuthorityDelegationChain`, pointer signatures via `verify` over `canonicalizeJCS`. Operative-pointer resolution and rollback classification `not_supported`. `verifyPolicyChain` is exported and checks only hash back-links in an ordered entry list / chain via `verify_authority_delegation_chain`, signatures via `crypto.verify` over `canonicalize_jcs`. No `verify_policy_chain`, `create_policy_bundle` or `compute_scope_version_hash` at all, `not_supported`",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-policy-change/README.md"
       }
     ],
     "notes": [
@@ -5848,7 +5965,8 @@
           "PC-09"
         ],
         "sdk_results": "decision rendering against a pinned version `not_supported`. Decision signatures via `verify` / decision rendering `not_supported`. Signatures via `crypto.verify`. `verify_policy_decision` exists and verifies an unrelated record shape",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-policy-change/README.md"
       }
     ],
     "notes": [
@@ -5894,7 +6012,8 @@
           "PC-13"
         ],
         "sdk_results": "chain result taken from the SDK unchanged. The `restricted` against `invalid` separation is the fixture's / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-policy-change/README.md"
       }
     ],
     "notes": [
@@ -5940,7 +6059,8 @@
           "LC-I-007-e-inside-its-declared-window"
         ],
         "sdk_results": "ok 5/5 / ok 5/5 / supplied: `EXPIRED`, `REVOKED`. `not_supported`: which ending happened, its ground and actor, lifecycle standing",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-expiry-and-renewal/README.md"
       }
     ],
     "notes": [
@@ -5986,7 +6106,8 @@
           "LC-I-008-e-renewal-widens-beyond-its-parent"
         ],
         "sdk_results": "ok 5/5 / ok 5/5 / supplied: `ID_MISMATCH` on `-d`, `SCOPE_WIDENING` on `-e`, both SDKs. `not_supported`: renewal, supersession, evidence carry-over",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-expiry-and-renewal/README.md"
       }
     ],
     "notes": [
@@ -6032,7 +6153,8 @@
           "LC-I-009-e-self-extension-by-the-interim-holder"
         ],
         "sdk_results": "ok 5/5 / ok 5/5 / supplied: `TIME_WIDENING` on `-c`, `EXPIRED` on `-d` and `-e`. `not_supported`: interim or caretaking mandate",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-expiry-and-renewal/README.md"
       }
     ],
     "notes": [
@@ -6076,7 +6198,8 @@
           "LC-I-010-e"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported (see note 3) / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-shared-identity-with-no-accountable-principal/README.md"
       }
     ],
     "notes": [
@@ -6124,7 +6247,8 @@
           "LC-I-011-d"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-shared-identity-with-no-accountable-principal/README.md"
       }
     ],
     "notes": [
@@ -6164,7 +6288,8 @@
           "LC-I-012-c"
         ],
         "sdk_results": "canonicalization pass, behaviour not_supported / canonicalization pass, behaviour not_supported",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-shared-identity-with-no-accountable-principal/README.md"
       }
     ],
     "notes": [
@@ -6309,7 +6434,8 @@
           "LC-H-009-d"
         ],
         "sdk_results": "`REVOKED` at index 0, record continuity no API (built on vendored JCS) / same",
-        "pending_pr": true
+        "pending_pr": false,
+        "url": "https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-subdelegation-edges/README.md"
       }
     ],
     "notes": [

@@ -6,7 +6,7 @@ Everything in this file is **proposed**. Nothing here is specified, tested or im
 
 Ids stay in the CAND, BROAD and ANX series on purpose. Numbering them into the L series of [AUTHORITY-LIFECYCLE.md](AUTHORITY-LIFECYCLE.md) would read as settled additions to the published invariant list, and they are not that. L12 is the last published invariant and nothing here extends the numbering past it.
 
-A **tested by** entry names a fixture in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite and the vectors in it that bear on the candidate. Most of those fixtures sit on unmerged candidate branches. A fixture existing does not make a candidate tested in the sense `AUTHORITY-LIFECYCLE.md` uses, because these vectors are candidates against proposed text rather than conformance cases against a published specification. Where a candidate says nothing, nothing tests it.
+A **tested by** entry names a fixture in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite and the vectors in it that bear on the candidate. Most of those fixtures are now merged_candidate, pinned to the lab main commit the "Tested by, at a glance" table links. `lifecycle-purpose-exhaustion` is held back and stays on an unmerged candidate branch. A fixture existing, merged or not, does not make a candidate tested in the sense `AUTHORITY-LIFECYCLE.md` uses, because these vectors are candidates against proposed text rather than conformance cases against a published specification. Where a candidate says nothing, nothing tests it.
 
 Legal, aviation, financial, data-protection and distributed-systems material is used below as the origin of case shapes and of counterexamples. None of those sources says anything about AI agents, and nothing here asserts that any legal doctrine applies to AI agents.
 
@@ -544,24 +544,24 @@ These are requirements on what a verdict record carries rather than statements a
 
 | Candidate | Status | Tested by |
 |---|---|---|
-| CAND-01. An external event is authority-changing only when established | proposed | `lifecycle-purpose-exhaustion` PXE-08 and PXE-09, an event record that is unauthenticated, or authenticated by a party without standing, leaving the effect not established |
-| CAND-02. Later evidence does not rewrite earlier evidence | proposed | `authority-epoch-rollback` AER-11 and AER-12, a signed withdrawal accepted as a new record with the original still held and still verifying |
+| CAND-01. An external event is authority-changing only when established | proposed | `lifecycle-purpose-exhaustion` PXE-08 and PXE-09 (held back, unmerged candidate branch), an event record that is unauthenticated, or authenticated by a party without standing, leaving the effect not established |
+| CAND-02. Later evidence does not rewrite earlier evidence | proposed | [`authority-epoch-rollback`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/authority-epoch-rollback/README.md) AER-11 and AER-12, a signed withdrawal accepted as a new record with the original still held and still verifying |
 | CAND-03. Issuance validity, later attached effects and current validity are three separate findings | proposed | nothing |
-| CAND-04. Activation is established, not yet effective, or not established | proposed | `activation-not-established` |
-| CAND-05. Suspension and restriction causes compose | proposed | `suspension-cause-composition` CR-01 to CR-16 |
-| CAND-06. Collective authority must satisfy its declared composition | proposed | `chain-selection-no-union`, the negative half only |
-| CAND-07. A stable name does not establish stable semantics | proposed | `capability-binding-drift`, the pinned and unpinned cases, stale registry and unrecognised attestor |
-| CAND-08. No silent restoration from rollback or stale state | proposed | `authority-epoch-rollback` AER-01 to AER-10, on both the observation side and the fencing side |
+| CAND-04. Activation is established, not yet effective, or not established | proposed | [`activation-not-established`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/activation-not-established/README.md) |
+| CAND-05. Suspension and restriction causes compose | proposed | [`suspension-cause-composition`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/suspension-cause-composition/README.md) CR-01 to CR-16 |
+| CAND-06. Collective authority must satisfy its declared composition | proposed | [`chain-selection-no-union`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/chain-selection-no-union/README.md), the negative half only |
+| CAND-07. A stable name does not establish stable semantics | proposed | [`capability-binding-drift`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/capability-binding-drift/README.md), the pinned and unpinned cases, stale registry and unrecognised attestor |
+| CAND-08. No silent restoration from rollback or stale state | proposed | [`authority-epoch-rollback`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/authority-epoch-rollback/README.md) AER-01 to AER-10, on both the observation side and the fencing side |
 | BROAD-L6. L6 extends to every authorization boundary the operation requires | proposed | nothing |
-| BROAD-L7. L7 extends to any current lifecycle state claim | proposed | `conflicting-status-sources` |
+| BROAD-L7. L7 extends to any current lifecycle state claim | proposed | [`conflicting-status-sources`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/conflicting-status-sources/README.md) |
 | CAND-09. Chain validity is not permission to execute | proposed | nothing |
-| CAND-10. Holding a scope does not establish authority to confer it | proposed | `lifecycle-conferral-without-authority` CWA-01 to CWA-10 |
+| CAND-10. Holding a scope does not establish authority to confer it | proposed | [`lifecycle-conferral-without-authority`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-conferral-without-authority/README.md) CWA-01 to CWA-10 |
 | CAND-11. A valid grant can be unexecutable | proposed | nothing |
 | CAND-12. Ending authority bounds future effects, it does not undo past ones | proposed | nothing |
-| CAND-13. Replacement authority may be pre-committed | proposed | `activation-not-established`, the activation half only |
+| CAND-13. Replacement authority may be pre-committed | proposed | [`activation-not-established`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/activation-not-established/README.md), the activation half only |
 | CAND-16. A recorded lifecycle change is effective when the model's effectiveness rule is satisfied | proposed | nothing |
 | ANX-01. A verdict records its event-class coverage | proposed | nothing |
-| ANX-02. A verifier can present an earlier record and a later finding together | proposed | `conflicting-status-sources` CSS-12 touches it |
+| ANX-02. A verifier can present an earlier record and a later finding together | proposed | [`conflicting-status-sources`](https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/conflicting-status-sources/README.md) CSS-12 touches it |
 | ANX-03. Chain validity and a relying party's knowledge are separate findings | proposed | nothing |
 | ANX-04. A declared scope is only as effective as the boundary that enforces it | proposed | nothing |
 

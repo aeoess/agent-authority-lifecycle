@@ -12,7 +12,7 @@ There are three tiers.
 - **Reviewed hypothetical.** The case survived the same review pass as a verified case, but it claims no external precedent: no statute, court or agency finding, standard or documented incident supports it. The source line says so, in place of a citation.
 - **Candidate.** Produced by a research pass and not yet checked. The source is claimed, not verified. A "Known issue" note marks a problem already found. Candidates are verified, corrected, merged into another case or removed as review continues. Do not cite a candidate's source without checking it.
 
-Current count: 126 verified, 7 reviewed hypothetical, 1 candidate. No case is a conformance result. 133 of the 134 carry a **Fixture** line naming the fixture family and vector ids that now exist for them in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite. Most of those sit on unmerged candidate branches, which the line says. One case, LC-B-023, has no fixture because no record set decides it. The same mapping in machine-readable form is the `fixtures` array in [cases.json](cases.json).
+Current count: 126 verified, 7 reviewed hypothetical, 1 candidate. No case is a conformance result. 133 of the 134 carry a **Fixture** line naming the fixture family and vector ids that now exist for them in the [Agent Authority Conformance](https://github.com/Agent-Authority-Conformance/aps-conformance-suite) suite. Most of those are now merged_candidate, pinned to the lab main commit the line links, still candidates against proposed text rather than conformance results. The `lifecycle-purpose-exhaustion` family is held back and stays on an unmerged candidate branch, which the line says. One case, LC-B-023, has no fixture because no record set decides it. The same mapping in machine-readable form is the `fixtures` array in [cases.json](cases.json).
 
 What changed since v0.1. Every v0.1 candidate was read against its source by a survivor pass and then re-checked by an independent auditor who fetched each source again. Candidates that survived both became verified, duplicates were folded into a representative and listed under it as named variants, cases that resolve to a security or evidence question rather than an authority verdict moved to [BOUNDARY-CASES.md](BOUNDARY-CASES.md), and the rest were removed. Thirteen families the corpus covered thinly or not at all were researched from scratch in the same pass. IDs are stable: an ID that appears in v0.1 means the same case here.
 
@@ -36,7 +36,7 @@ Cases are grouped by the authority question they raise. A representative case li
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-principal-events` / `LPE-A-001-a` to `LPE-A-001-k` (11) (candidate, not yet merged)
+**Fixture:** `lifecycle-principal-events` / `LPE-A-001-a` to `LPE-A-001-k` (11) (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md)
 
 ---
 
@@ -54,7 +54,7 @@ Cases are grouped by the authority question they raise. A representative case li
 
 **Status:** proposed.
 
-**Fixture:** `activation-not-established` / `AX-02-no-attestation-not-established` (candidate, not yet merged)
+**Fixture:** `activation-not-established` / `AX-02-no-attestation-not-established` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/activation-not-established/README.md)
 
 Variants: A-004 (the verifier's role has to match the specific contingency sub-type claimed, unavailability rather than impairment, not merely be an authorized verifier), C-004 (a conditional, event-extendable expiry window rather than a conditional, unverified activation).
 
@@ -74,7 +74,7 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-principal-events` / `LPE-A-005-a` (candidate, not yet merged)
+**Fixture:** `lifecycle-principal-events` / `LPE-A-005-a` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md)
 
 ---
 
@@ -92,7 +92,7 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-principal-events` / `LPE-A-006-a`, `LPE-A-006-b`, `LPE-A-006-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-principal-events` / `LPE-A-006-a`, `LPE-A-006-b`, `LPE-A-006-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md)
 
 ---
 
@@ -128,7 +128,7 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-principal-events` / `LPE-A-009-a`, `LPE-A-009-b`, `LPE-A-009-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-principal-events` / `LPE-A-009-a`, `LPE-A-009-b`, `LPE-A-009-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md)
 
 ---
 
@@ -146,7 +146,7 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-principal-events` / `LPE-A-010-a`, `LPE-A-010-b`, `LPE-A-010-c`, `LPE-A-010-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-principal-events` / `LPE-A-010-a`, `LPE-A-010-b`, `LPE-A-010-c`, `LPE-A-010-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md)
 
 ---
 
@@ -164,7 +164,7 @@ Variants: A-004 (the verifier's role has to match the specific contingency sub-t
 
 **Status:** proposed. (source_type: law)
 
-**Fixture:** `lifecycle-principal-events` / `LPE-A-012-a`, `LPE-A-012-b`, `LPE-A-012-c`, `LPE-A-012-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-principal-events` / `LPE-A-012-a`, `LPE-A-012-b`, `LPE-A-012-c`, `LPE-A-012-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md)
 
 Variants: A-002 (same pattern, a per-delegation flag overriding a default termination rule, but for incapacity and a durability flag rather than death and a coupled-with-interest flag).
 
@@ -184,7 +184,7 @@ Variants: A-002 (same pattern, a per-delegation flag overriding a default termin
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-principal-events` / `LPE-A-016-a`, `LPE-A-016-b`, `LPE-A-016-c`, `LPE-A-016-d`, `LPE-A-016-e`, `LPE-A-016-f` (candidate, not yet merged)
+**Fixture:** `lifecycle-principal-events` / `LPE-A-016-a`, `LPE-A-016-b`, `LPE-A-016-c`, `LPE-A-016-d`, `LPE-A-016-e`, `LPE-A-016-f` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-events/README.md)
 
 Variants: A-011 (a pre-named successor trustee taking control of a trust that itself persists, rather than a successor-agent list under a power of attorney), C-013 (the pre-committed replacement is a pre-equalized peer inside a fixed two-person crew rather than a named successor).
 
@@ -206,7 +206,7 @@ Variants: A-011 (a pre-named successor trustee taking control of a trust that it
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-019-a`, `LFS-A-019-b`, `LFS-A-019-c`, `LFS-A-019-d`, `LFS-A-019-e`, `LFS-A-019-f`, `LFS-A-019-g`, `LFS-A-019-h` (candidate, not yet merged)
+**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-019-a`, `LFS-A-019-b`, `LFS-A-019-c`, `LFS-A-019-d`, `LFS-A-019-e`, `LFS-A-019-f`, `LFS-A-019-g`, `LFS-A-019-h` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-fiduciary-succession/README.md)
 
 Variants: A-017 (default solo-authorization rule, joint vs. several, for co-agents acting alone under one instrument, rather than a majority-decision-on-disagreement-plus-vacancy rule for co-trustees).
 
@@ -226,7 +226,7 @@ Variants: A-017 (default solo-authorization rule, joint vs. several, for co-agen
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-022-a`, `LFS-A-022-b`, `LFS-A-022-c`, `LFS-A-022-d`, `LFS-A-022-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-022-a`, `LFS-A-022-b`, `LFS-A-022-c`, `LFS-A-022-d`, `LFS-A-022-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-fiduciary-succession/README.md)
 
 ---
 
@@ -244,7 +244,7 @@ Variants: A-017 (default solo-authorization rule, joint vs. several, for co-agen
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-023-a` to `LFS-A-023-j` (10) (candidate, not yet merged)
+**Fixture:** `lifecycle-fiduciary-succession` / `LFS-A-023-a` to `LFS-A-023-j` (10) (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-fiduciary-succession/README.md)
 
 Variants: A-021 (probate relation-back doctrine: a personal representative's beneficial pre-appointment acts are automatically validated back to the date of death once appointed, distinct from a principal's discretionary ratification bounded by intervening third-party rights). A-024 (the atomicity and capacity-at-ratification constraints, folded directly into this entry's own write-up rather than kept as a separate case).
 
@@ -266,7 +266,7 @@ Variants: A-021 (probate relation-back doctrine: a personal representative's ben
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-027-a`, `TPR-A-027-b`, `TPR-A-027-c`, `TPR-A-027-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-027-a`, `TPR-A-027-b`, `TPR-A-027-c`, `TPR-A-027-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-third-party-reliance-notice/README.md)
 
 Variants: A-029 (adds a statutory presumption of genuineness for good-faith acceptance of an acknowledged instrument, rather than the general common-law notice cutoff), A-032 (a duty to inquire that narrows reliance protection when the transaction is facially inconsistent with the delegation's visible scope, the opposite direction from the general rule).
 
@@ -286,7 +286,7 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-028-a`, `TPR-A-028-b`, `TPR-A-028-c`, `TPR-A-028-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-028-a`, `TPR-A-028-b`, `TPR-A-028-c`, `TPR-A-028-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-third-party-reliance-notice/README.md)
 
 ---
 
@@ -304,7 +304,7 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-033-a`, `TPR-A-033-b`, `TPR-A-033-c`, `TPR-A-033-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-third-party-reliance-notice` / `TPR-A-033-a`, `TPR-A-033-b`, `TPR-A-033-c`, `TPR-A-033-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-third-party-reliance-notice/README.md)
 
 ---
 
@@ -324,7 +324,7 @@ Variants: A-029 (adds a statutory presumption of genuineness for good-faith acce
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-organization-events` / `LC-B-012-a`, `LC-B-012-b`, `LC-B-012-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-organization-events` / `LC-B-012-a`, `LC-B-012-b`, `LC-B-012-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md)
 
 Variants: C-001 (root-of-chain succession, where no superior issuer could ever exist, tests the same vesting-without-issuance mechanism as a merger vesting a new organizational principal).
 
@@ -344,7 +344,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-organization-events` / `LC-B-013-a`, `LC-B-013-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-organization-events` / `LC-B-013-a`, `LC-B-013-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md)
 
 ---
 
@@ -362,7 +362,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-organization-events` / `LC-B-016-a`, `LC-B-016-b`, `LC-B-016-c`, `LC-B-016-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-organization-events` / `LC-B-016-a`, `LC-B-016-b`, `LC-B-016-c`, `LC-B-016-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md)
 
 ---
 
@@ -380,7 +380,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-organization-events` / `LC-B-028-a`, `LC-B-028-b`, `LC-B-028-c`, `LC-B-028-d`, `LC-B-028-e`, `LC-B-028-f`, `LC-B-028-g`, `LC-B-028-h` (candidate, not yet merged)
+**Fixture:** `lifecycle-organization-events` / `LC-B-028-a`, `LC-B-028-b`, `LC-B-028-c`, `LC-B-028-d`, `LC-B-028-e`, `LC-B-028-f`, `LC-B-028-g`, `LC-B-028-h` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md)
 
 ---
 
@@ -398,7 +398,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-organization-events` / `LC-B-029-a` to `LC-B-029-i` (9) (candidate, not yet merged)
+**Fixture:** `lifecycle-organization-events` / `LC-B-029-a` to `LC-B-029-i` (9) (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md)
 
 ---
 
@@ -418,7 +418,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-007-a`, `LRE-B-007-b`, `LRE-B-007-c`, `LRE-B-007-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-007-a`, `LRE-B-007-b`, `LRE-B-007-c`, `LRE-B-007-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -436,7 +436,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-008-a`, `LRE-B-008-b`, `LRE-B-008-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-008-a`, `LRE-B-008-b`, `LRE-B-008-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -454,7 +454,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-009-a`, `LRE-B-009-b`, `LRE-B-009-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-009-a`, `LRE-B-009-b`, `LRE-B-009-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -472,7 +472,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-010-a`, `LRE-B-010-b`, `LRE-B-010-c`, `LRE-B-010-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-010-a`, `LRE-B-010-b`, `LRE-B-010-c`, `LRE-B-010-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -490,7 +490,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-011-a`, `LRE-B-011-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-011-a`, `LRE-B-011-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -508,7 +508,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-017-a`, `LRE-B-017-b`, `LRE-B-017-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-017-a`, `LRE-B-017-b`, `LRE-B-017-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -526,7 +526,7 @@ Variants: C-001 (root-of-chain succession, where no superior issuer could ever e
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-018-a`, `LRE-B-018-b`, `LRE-B-018-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-018-a`, `LRE-B-018-b`, `LRE-B-018-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 Variants: B-021 (a listing-based restriction that cascades to unlisted affiliates through an ownership fact, rather than applying only to the named entity).
 
@@ -546,7 +546,7 @@ Variants: B-021 (a listing-based restriction that cascades to unlisted affiliate
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-019-a`, `LRE-B-019-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-019-a`, `LRE-B-019-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -564,7 +564,7 @@ Variants: B-021 (a listing-based restriction that cascades to unlisted affiliate
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-022-a`, `LRE-B-022-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-022-a`, `LRE-B-022-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -598,7 +598,7 @@ Variants: B-021 (a listing-based restriction that cascades to unlisted affiliate
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-024-a`, `LRE-B-024-b`, `LRE-B-024-c`, `LRE-B-024-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-024-a`, `LRE-B-024-b`, `LRE-B-024-c`, `LRE-B-024-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -616,7 +616,7 @@ Variants: B-021 (a listing-based restriction that cascades to unlisted affiliate
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-025-a`, `LRE-B-025-b`, `LRE-B-025-c`, `LRE-B-025-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-025-a`, `LRE-B-025-b`, `LRE-B-025-c`, `LRE-B-025-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 Variants: LC-B-001 (a board resolution strips one officer's signing authority through a roster change with no per-agent revocation record, the same off-graph-ancestor principle at the individual-officer scale instead of the shared-license scale), C-023 (a closed, externally maintained statutory eligibility list that no in-chain delegation can expand, rather than a shared licence that many chains already depend on).
 
@@ -636,7 +636,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-026-a`, `LRE-B-026-b`, `LRE-B-026-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-026-a`, `LRE-B-026-b`, `LRE-B-026-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -654,7 +654,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-027-a`, `LRE-B-027-b`, `LRE-B-027-c`, `LRE-B-027-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-027-a`, `LRE-B-027-b`, `LRE-B-027-c`, `LRE-B-027-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -672,7 +672,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-031-a`, `LRE-B-031-b`, `LRE-B-031-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-legal-regulatory-events` / `LRE-B-031-a`, `LRE-B-031-b`, `LRE-B-031-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-legal-regulatory-events/README.md)
 
 ---
 
@@ -692,7 +692,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-root-authority-succession` / `LRAS-C-007-a` to `LRAS-C-007-k` (11) (candidate, not yet merged)
+**Fixture:** `lifecycle-root-authority-succession` / `LRAS-C-007-a` to `LRAS-C-007-k` (11) (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-root-authority-succession/README.md)
 
 ---
 
@@ -712,7 +712,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-002-a` to `LC-C-002-i` (9) (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-002-a` to `LC-C-002-i` (9) (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -730,7 +730,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-005-a`, `LC-C-005-b`, `LC-C-005-c`, `LC-C-005-d`, `LC-C-005-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-005-a`, `LC-C-005-b`, `LC-C-005-c`, `LC-C-005-d`, `LC-C-005-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -748,7 +748,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-006-a`, `LC-C-006-b`, `LC-C-006-c`, `LC-C-006-d`, `LC-C-006-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-006-a`, `LC-C-006-b`, `LC-C-006-c`, `LC-C-006-d`, `LC-C-006-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -766,7 +766,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `activation-not-established` / `AX-02`, `AX-03`, `AX-04`, `AX-06` (candidate, not yet merged)
+**Fixture:** `activation-not-established` / `AX-02`, `AX-03`, `AX-04`, `AX-06` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/activation-not-established/README.md)
 
 ---
 
@@ -784,7 +784,7 @@ Variants: LC-B-001 (a board resolution strips one officer's signing authority th
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-011-a`, `LC-C-011-b`, `LC-C-011-c`, `LC-C-011-d`, `LC-C-011-e`, `LC-C-011-f`, `LC-C-011-g` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-011-a`, `LC-C-011-b`, `LC-C-011-c`, `LC-C-011-d`, `LC-C-011-e`, `LC-C-011-f`, `LC-C-011-g` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 Variants: B-003 (a dual-control money threshold requiring two independent chains before the next authorization boundary, the same "one valid chain is insufficient" gate in a corporate treasury setting rather than a safety-critical one).
 
@@ -804,7 +804,7 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-012-a`, `LC-C-012-b`, `LC-C-012-c`, `LC-C-012-d`, `LC-C-012-e`, `LC-C-012-f`, `LC-C-012-g` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-012-a`, `LC-C-012-b`, `LC-C-012-c`, `LC-C-012-d`, `LC-C-012-e`, `LC-C-012-f`, `LC-C-012-g` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -822,7 +822,7 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-016-a`, `LC-C-016-b`, `LC-C-016-c`, `LC-C-016-d`, `LC-C-016-e`, `LC-C-016-f`, `LC-C-016-g` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-016-a`, `LC-C-016-b`, `LC-C-016-c`, `LC-C-016-d`, `LC-C-016-e`, `LC-C-016-f`, `LC-C-016-g` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -840,7 +840,7 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-018-a`, `LC-C-018-b`, `LC-C-018-c`, `LC-C-018-d`, `LC-C-018-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-018-a`, `LC-C-018-b`, `LC-C-018-c`, `LC-C-018-d`, `LC-C-018-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -858,7 +858,7 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-020-a` to `LC-C-020-i` (9) (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-020-a` to `LC-C-020-i` (9) (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -876,7 +876,7 @@ Variants: B-003 (a dual-control money threshold requiring two independent chains
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-022-a`, `LC-C-022-b`, `LC-C-022-c`, `LC-C-022-d`, `LC-C-022-e`, `LC-C-022-f` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-022-a`, `LC-C-022-b`, `LC-C-022-c`, `LC-C-022-d`, `LC-C-022-e`, `LC-C-022-f` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 Variants: B-032 (an officer suspended pending investigation, where the open part is whether conversion to revocation reaches back to the suspension's start or runs only from the investigation's conclusion, and unsourced where this entry is sourced).
 
@@ -896,7 +896,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-029-a`, `LC-C-029-b`, `LC-C-029-c`, `LC-C-029-d`, `LC-C-029-e`, `LC-C-029-f` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-029-a`, `LC-C-029-b`, `LC-C-029-c`, `LC-C-029-d`, `LC-C-029-e`, `LC-C-029-f` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -914,7 +914,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-031-a`, `LC-C-031-b`, `LC-C-031-c`, `LC-C-031-d`, `LC-C-031-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-C-031-a`, `LC-C-031-b`, `LC-C-031-c`, `LC-C-031-d`, `LC-C-031-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -932,7 +932,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-001-a`, `LC-H-001-b`, `LC-H-001-c`, `LC-H-001-d`, `LC-H-001-e`, `LC-H-001-f`, `LC-H-001-g` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-001-a`, `LC-H-001-b`, `LC-H-001-c`, `LC-H-001-d`, `LC-H-001-e`, `LC-H-001-f`, `LC-H-001-g` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -950,7 +950,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-002-a`, `LC-H-002-b`, `LC-H-002-c`, `LC-H-002-d`, `LC-H-002-e`, `LC-H-002-f`, `LC-H-002-g` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-002-a`, `LC-H-002-b`, `LC-H-002-c`, `LC-H-002-d`, `LC-H-002-e`, `LC-H-002-f`, `LC-H-002-g` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -968,7 +968,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-003-a`, `LC-H-003-b`, `LC-H-003-c`, `LC-H-003-d`, `LC-H-003-e`, `LC-H-003-f`, `LC-H-003-g` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-003-a`, `LC-H-003-b`, `LC-H-003-c`, `LC-H-003-d`, `LC-H-003-e`, `LC-H-003-f`, `LC-H-003-g` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -988,7 +988,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-outside-the-chain-standing` / `LC-H-004-a`, `LC-H-004-b`, `LC-H-004-c`, `LC-H-004-d`, `LC-H-004-e`, `LC-H-004-f`, `LC-H-004-g`, `LC-H-004-h` (candidate, not yet merged)
+**Fixture:** `lifecycle-outside-the-chain-standing` / `LC-H-004-a`, `LC-H-004-b`, `LC-H-004-c`, `LC-H-004-d`, `LC-H-004-e`, `LC-H-004-f`, `LC-H-004-g`, `LC-H-004-h` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-outside-the-chain-standing/README.md)
 
 ---
 
@@ -1006,7 +1006,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-005-a`, `LC-H-005-b`, `LC-H-005-c`, `LC-H-005-d`, `LC-H-005-e`, `LC-H-005-f` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-005-a`, `LC-H-005-b`, `LC-H-005-c`, `LC-H-005-d`, `LC-H-005-e`, `LC-H-005-f` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -1024,7 +1024,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-006-a`, `LC-H-006-b`, `LC-H-006-c`, `LC-H-006-d`, `LC-H-006-e`, `LC-H-006-f`, `LC-H-006-g`, `LC-H-006-h` (candidate, not yet merged)
+**Fixture:** `lifecycle-multiple-principals-and-conflict` / `LC-H-006-a`, `LC-H-006-b`, `LC-H-006-c`, `LC-H-006-d`, `LC-H-006-e`, `LC-H-006-f`, `LC-H-006-g`, `LC-H-006-h` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-multiple-principals-and-conflict/README.md)
 
 ---
 
@@ -1044,7 +1044,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-007-a`, `LC-H-007-b`, `LC-H-007-c`, `LC-H-007-d`, `LC-H-007-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-007-a`, `LC-H-007-b`, `LC-H-007-c`, `LC-H-007-d`, `LC-H-007-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-subdelegation-edges/README.md)
 
 ---
 
@@ -1062,7 +1062,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-008-a`, `LC-H-008-b`, `LC-H-008-c`, `LC-H-008-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-008-a`, `LC-H-008-b`, `LC-H-008-c`, `LC-H-008-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-subdelegation-edges/README.md)
 
 ---
 
@@ -1082,7 +1082,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-agent-renunciation` / `LAR-H-010-a` to `LAR-H-010-i` (9) (candidate, not yet merged)
+**Fixture:** `lifecycle-agent-renunciation` / `LAR-H-010-a` to `LAR-H-010-i` (9) (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-renunciation/README.md)
 
 ---
 
@@ -1100,7 +1100,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-agent-renunciation` / `LAR-H-011-a`, `LAR-H-011-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-agent-renunciation` / `LAR-H-011-a`, `LAR-H-011-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-renunciation/README.md)
 
 ---
 
@@ -1120,7 +1120,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-principal-unreachable` / `LPU-H-012-a` to `LPU-H-012-j` (10) (candidate, not yet merged)
+**Fixture:** `lifecycle-principal-unreachable` / `LPU-H-012-a` to `LPU-H-012-j` (10) (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-principal-unreachable/README.md)
 
 ---
 
@@ -1140,7 +1140,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-008-a-default-successor-resolved`, `LC-C-008-b-no-declared-default`, `LC-C-008-c-eligibility-not-met`, `LC-C-008-d-rule-without-standing`, `LC-C-008-e-direction-from-a-party-with-no-tenure` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-008-a-default-successor-resolved`, `LC-C-008-b-no-declared-default`, `LC-C-008-c-eligibility-not-met`, `LC-C-008-d-rule-without-standing`, `LC-C-008-e-direction-from-a-party-with-no-tenure` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1158,7 +1158,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-014-a-outgoing-acts-before-acknowledgment`, `LC-C-014-b-incoming-acts-before-acknowledgment`, `LC-C-014-c-incoming-acts-after-acknowledgment`, `LC-C-014-d-outgoing-acts-after-acknowledgment`, `LC-C-014-e-acknowledgment-from-a-party-the-offer-does-not-name` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-014-a-outgoing-acts-before-acknowledgment`, `LC-C-014-b-incoming-acts-before-acknowledgment`, `LC-C-014-c-incoming-acts-after-acknowledgment`, `LC-C-014-d-outgoing-acts-after-acknowledgment`, `LC-C-014-e-acknowledgment-from-a-party-the-offer-does-not-name` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1176,7 +1176,7 @@ Variants: B-032 (an officer suspended pending investigation, where the open part
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-015-a-live-direction-present`, `LC-C-015-b-fallback-scope-active`, `LC-C-015-c-outside-the-fallback-scope`, `LC-C-015-d-no-fallback-recorded`, `LC-C-015-e-contact-restored` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-015-a-live-direction-present`, `LC-C-015-b-fallback-scope-active`, `LC-C-015-c-outside-the-fallback-scope`, `LC-C-015-d-no-fallback-recorded`, `LC-C-015-e-contact-restored` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 Variants: LC-C-010 (the same unreachability-triggers-fallback shape at organizational rather than single-agent granularity: continuity-of-government devolution to a pre-designated backup site when leadership at the primary seat cannot be contacted, per NSPD-51/PPD-40, with reconstitution required on restored contact rather than automatic resumption), E-016 (autonomous fallback authority activating only once round-trip time exceeds the decision window, and only for the pre-scoped action).
 
@@ -1196,7 +1196,7 @@ Variants: LC-C-010 (the same unreachability-triggers-fallback shape at organizat
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-017-a-scheduled-swap-pre-authorized`, `LC-C-017-b-swap-off-the-schedule`, `LC-C-017-c-required-rest-not-elapsed`, `LC-C-017-d-rest-state-not-recorded` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-017-a-scheduled-swap-pre-authorized`, `LC-C-017-b-swap-off-the-schedule`, `LC-C-017-c-required-rest-not-elapsed`, `LC-C-017-d-rest-state-not-recorded` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1214,7 +1214,7 @@ Variants: LC-C-010 (the same unreachability-triggers-fallback shape at organizat
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-025-a-atomic-relief`, `LC-C-025-b-gap-between-departure-and-designation`, `LC-C-025-c-after-the-designation`, `LC-C-025-d-designee-qualification-not-recorded`, `LC-C-025-e-designation-names-another-party` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-C-025-a-atomic-relief`, `LC-C-025-b-gap-between-departure-and-designation`, `LC-C-025-c-after-the-designation`, `LC-C-025-d-designee-qualification-not-recorded`, `LC-C-025-e-designation-names-another-party` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goal with a scripted two-event relinquish-then-assume ritual instead of an atomic departure-plus-designation record, and treats a gap between the two events as indeterminate rather than defaulting to either party) and LC-C-028 (surgeon incapacitation mid-incision adds that the action itself is non-pausable and actively degrading, so the zero-gap requirement carries no safety margin at all, unlike a monitoring role where the underlying process is not necessarily worsening during the gap).
 
@@ -1234,7 +1234,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-008-a-pinned-version-still-permits`, `LC-E-008-b-control-before-the-cutover`, `LC-E-008-c-new-instance-pinned-to-the-tighter-version`, `LC-E-008-d-instance-without-a-pin`, `LC-E-008-e-pinned-version-not-resolvable` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-008-a-pinned-version-still-permits`, `LC-E-008-b-control-before-the-cutover`, `LC-E-008-c-new-instance-pinned-to-the-tighter-version`, `LC-E-008-d-instance-without-a-pin`, `LC-E-008-e-pinned-version-not-resolvable` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1252,7 +1252,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-014-a-before-owner-removal`, `LC-E-014-b-owner-authority-revoked`, `LC-E-014-c-owner-removed-with-nothing-revoked`, `LC-E-014-d-recorded-disposition-reassigns` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-014-a-before-owner-removal`, `LC-E-014-b-owner-authority-revoked`, `LC-E-014-c-owner-removed-with-nothing-revoked`, `LC-E-014-d-recorded-disposition-reassigns` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1270,7 +1270,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-018-a-occurrence-keeps-its-creation-template`, `LC-E-018-b-next-occurrence-under-the-tightened-template`, `LC-E-018-c-occurrence-template-version-not-recorded`, `LC-E-018-d-control-read-under-the-tightened-template` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-018-a-occurrence-keeps-its-creation-template`, `LC-E-018-b-next-occurrence-under-the-tightened-template`, `LC-E-018-c-occurrence-template-version-not-recorded`, `LC-E-018-d-control-read-under-the-tightened-template` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1288,7 +1288,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-019-a-inside-the-grace-window`, `LC-E-019-b-after-the-grace-window`, `LC-E-019-c-revoked-during-the-wind-down`, `LC-E-019-d-no-declared-grace-bound` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-019-a-inside-the-grace-window`, `LC-E-019-b-after-the-grace-window`, `LC-E-019-c-revoked-during-the-wind-down`, `LC-E-019-d-no-declared-grace-bound` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1306,7 +1306,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-020-a-creator-grant-unchanged`, `LC-E-020-b-creator-narrowed-job-definition-untouched`, `LC-E-020-c-narrowed-but-inside`, `LC-E-020-d-no-creator-grant-recorded` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-020-a-creator-grant-unchanged`, `LC-E-020-b-creator-narrowed-job-definition-untouched`, `LC-E-020-c-narrowed-but-inside`, `LC-E-020-d-no-creator-grant-recorded` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1324,7 +1324,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-007-a-inside-by-the-checking-party-clock`, `LC-G-007-b-expired-by-a-second-checking-party-clock`, `LC-G-007-c-not-yet-effective-by-a-third-clock`, `LC-G-007-d-no-clock-attestation` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-007-a-inside-by-the-checking-party-clock`, `LC-G-007-b-expired-by-a-second-checking-party-clock`, `LC-G-007-c-not-yet-effective-by-a-third-clock`, `LC-G-007-d-no-clock-attestation` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1342,7 +1342,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-008-a-cross-checked-reading`, `LC-G-008-b-wrapped-single-source`, `LC-G-008-c-cross-check-disagrees-past-the-bound`, `LC-G-008-d-no-source-recorded` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-008-a-cross-checked-reading`, `LC-G-008-b-wrapped-single-source`, `LC-G-008-c-cross-check-disagrees-past-the-bound`, `LC-G-008-d-no-source-recorded` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1360,7 +1360,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-009-a-declared-smear-window`, `LC-G-009-b-no-declared-window`, `LC-G-009-c-divergence-past-the-declared-bound`, `LC-G-009-d-two-clocks-that-agree` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-G-009-a-declared-smear-window`, `LC-G-009-b-no-declared-window`, `LC-G-009-c-divergence-past-the-declared-bound`, `LC-G-009-d-two-clocks-that-agree` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -1380,7 +1380,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-001-a-third-party-disclosure-is-a-trigger`, `LC-D-001-b-reattested-after-disclosure`, `LC-D-001-c-unattributed-compromise-claim-is-not-a-trigger`, `LC-D-001-d-later-finding-does-not-rewrite-the-earlier-record` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-001-a-third-party-disclosure-is-a-trigger`, `LC-D-001-b-reattested-after-disclosure`, `LC-D-001-c-unattributed-compromise-claim-is-not-a-trigger`, `LC-D-001-d-later-finding-does-not-rewrite-the-earlier-record` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 **Variants:** LC-D-015 (Toyota T-Connect, the trigger is public exposure of the org's own credential rather than an integrator's breach disclosure), LC-D-018 (Salesloft Drift, the same integrator-compromise mechanism, but a single disclosure has to become a correlated revocation-relevant event across more than 700 independently administered downstream orgs at once).
 
@@ -1400,7 +1400,7 @@ Variants: LC-C-021 (US Navy deck-and-conn transfer reaches the same zero-gap goa
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-003-a-reach-over-the-graph-not-the-believed-list`, `LC-D-003-b-both-bases-agree-so-agreement-establishes-nothing` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-003-a-reach-over-the-graph-not-the-believed-list`, `LC-D-003-b-both-bases-agree-so-agreement-establishes-nothing` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 Variants: D-028 (a source-code leak surfacing credentials embedded over years, the same no-rotatable-inventory problem reached from the leak side rather than the rotation side).
 
@@ -1420,7 +1420,7 @@ Variants: D-028 (a source-code leak surfacing credentials embedded over years, t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-004-a-operator-identity-reaches-an-independent-tree`, `LC-D-004-b-operator-identity-with-no-edge-to-this-tree` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-004-a-operator-identity-reaches-an-independent-tree`, `LC-D-004-b-operator-identity-with-no-edge-to-this-tree` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1438,7 +1438,7 @@ Variants: D-028 (a source-code leak surfacing credentials embedded over years, t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-009-a-enforced-scope-exceeds-declared-scope`, `LC-D-009-b-no-reachable-scope-attestation`, `LC-D-009-c-enforced-scope-contained` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-009-a-enforced-scope-exceeds-declared-scope`, `LC-D-009-b-no-reachable-scope-attestation`, `LC-D-009-c-enforced-scope-contained` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1474,7 +1474,7 @@ Variants: D-028 (a source-code leak surfacing credentials embedded over years, t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-011-a-inherited-root-past-its-reattestation-deadline`, `LC-D-011-b-inherited-root-inside-its-deadline`, `LC-D-011-c-inherited-root-reestablished` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-011-a-inherited-root-past-its-reattestation-deadline`, `LC-D-011-b-inherited-root-inside-its-deadline`, `LC-D-011-c-inherited-root-reestablished` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 Variants: B-015 (a business-unit spin-off requiring a fresh grant from the new independent entity, rather than an acquisition inheriting an existing root).
 
@@ -1494,7 +1494,7 @@ Variants: B-015 (a business-unit spin-off requiring a fresh grant from the new i
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-014-a-issuance-log-integrity-unestablished-for-the-window`, `LC-D-014-b-issued-outside-the-covered-window`, `LC-D-014-c-reestablished-from-a-reverified-root` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-014-a-issuance-log-integrity-unestablished-for-the-window`, `LC-D-014-b-issued-outside-the-covered-window`, `LC-D-014-c-reestablished-from-a-reverified-root` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 Variants: F-031 (a transport-layer memory bug leaking active delegation tokens out of process memory, raising the same proactive-rotation-over-the-whole-exposure-window question), F-032 (a multi-tenant proxy bug leaking one tenant's credentials into another tenant's response, the same question at the proxy layer rather than at TLS termination).
 
@@ -1514,7 +1514,7 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-025-a-revoked-and-accounting-not-established`, `LC-D-025-b-revoked-and-accounting-established` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-025-a-revoked-and-accounting-not-established`, `LC-D-025-b-revoked-and-accounting-established` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1532,7 +1532,7 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-029-a-no-provenance-attestation`, `LC-D-029-b-provenance-attestor-is-the-signing-key-holder`, `LC-D-029-c-independent-provenance-attestation` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-029-a-no-provenance-attestation`, `LC-D-029-b-provenance-attestor-is-the-signing-key-holder`, `LC-D-029-c-independent-provenance-attestation` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1550,7 +1550,7 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-D-033-a-authorizer-with-no-addition-record`, `LC-D-033-b-addition-attestor-standing-not-declared`, `LC-D-033-c-every-authorizer-attested` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-D-033-a-authorizer-with-no-addition-record`, `LC-D-033-b-addition-attestor-standing-not-declared`, `LC-D-033-c-every-authorizer-attested` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1586,7 +1586,7 @@ Variants: F-031 (a transport-layer memory bug leaking active delegation tokens o
 
 **Status:** proposed.
 
-**Fixture:** `conflicting-status-sources` / `CSS-09-offline-snapshot-within-declared-bound-admits`, `CSS-10-offline-snapshot-past-declared-bound-not-established`, `CSS-11-offline-snapshot-revoked-denies` (candidate, not yet merged)
+**Fixture:** `conflicting-status-sources` / `CSS-09-offline-snapshot-within-declared-bound-admits`, `CSS-10-offline-snapshot-past-declared-bound-not-established`, `CSS-11-offline-snapshot-revoked-denies` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/conflicting-status-sources/README.md)
 
 Variants: LC-F-002 (a protocol migration leaves old verifiers with no working check at all and no signal they've stopped checking, not a deliberate bounded-offline design), LC-F-003 (staleness tracks a shipped runtime's update cadence rather than a single session's fixed sync point), LC-F-007 (a cache that could refresh live simply outlives its declared ttl, rather than a verifier with no live path by design), LC-F-010 (checking is deliberately disabled for privacy with no replacement snapshot at all, not degraded to a bounded offline one).
 
@@ -1606,7 +1606,7 @@ Variants: LC-F-002 (a protocol migration leaves old verifiers with no working ch
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-F-013-a-clock-disagreement-is-its-own-outcome`, `LC-F-013-b-expiry-with-clocks-agreeing`, `LC-F-013-c-clocks-agree-inside-the-window` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-F-013-a-clock-disagreement-is-its-own-outcome`, `LC-F-013-b-expiry-with-clocks-agreeing`, `LC-F-013-c-clocks-agree-inside-the-window` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong, a fleet anomaly to detect and correlate, not a single gateway-agent disagreement to tolerate case by case).
 
@@ -1626,7 +1626,7 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-F-033-a-issuer-population-trust-not-established`, `LC-F-033-b-issuer-population-reattested` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-F-033-a-issuer-population-trust-not-established`, `LC-F-033-b-issuer-population-reattested` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1644,7 +1644,7 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-G-001-a-planned-rotation-opens-no-suspect-window` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-G-001-a-planned-rotation-opens-no-suspect-window` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1662,7 +1662,7 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-G-002-a-window-starts-at-exposure-not-discovery`, `LC-G-002-b-issued-before-the-exposure-start` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-G-002-a-window-starts-at-exposure-not-discovery`, `LC-G-002-b-issued-before-the-exposure-start` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1680,7 +1680,7 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-G-003-a-independently-dated-before-the-compromise-point`, `LC-G-003-b-only-the-compromised-keys-own-claim-dates-the-artifact`, `LC-G-003-c-independently-dated-inside-the-window` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-G-003-a-independently-dated-before-the-compromise-point`, `LC-G-003-b-only-the-compromised-keys-own-claim-dates-the-artifact`, `LC-G-003-c-independently-dated-inside-the-window` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1698,7 +1698,7 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-G-004-a-key-scope-does-not-cover-the-claimed-audience`, `LC-G-004-b-no-key-scope-declared`, `LC-G-004-c-key-scope-covers-the-claimed-audience` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-G-004-a-key-scope-does-not-cover-the-claimed-audience`, `LC-G-004-b-no-key-scope-declared`, `LC-G-004-c-key-scope-covers-the-claimed-audience` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 ---
 
@@ -1718,7 +1718,7 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
-**Fixture:** `capability-binding-drift` / `CBD-04`, `CBD-05` (candidate, not yet merged)
+**Fixture:** `capability-binding-drift` / `CBD-04`, `CBD-05` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/capability-binding-drift/README.md)
 
 ---
 
@@ -1736,7 +1736,7 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-agent-side-events` / `ASE-01`, `ASE-02`, `ASE-03`, `ASE-04` (candidate, not yet merged)
+**Fixture:** `lifecycle-agent-side-events` / `ASE-01`, `ASE-02`, `ASE-03`, `ASE-04` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md)
 
 ---
 
@@ -1772,7 +1772,7 @@ Variants: LC-F-011 (many independent agents' own clocks are simultaneously wrong
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-conferral-without-authority` / `CWA-02`, `CWA-03`, `CWA-08`, `CWA-09`, `CWA-10` (candidate, not yet merged)
+**Fixture:** `lifecycle-conferral-without-authority` / `CWA-02`, `CWA-03`, `CWA-08`, `CWA-09`, `CWA-10` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-conferral-without-authority/README.md)
 
 Variants: E-007 (a platform default service-linked role lets a spawning agent create a child with no explicit pass grant, the opposite outcome on the same mechanism).
 
@@ -1792,7 +1792,7 @@ Variants: E-007 (a platform default service-linked role lets a spawning agent cr
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-agent-side-events` / `ASE-05`, `ASE-06`, `ASE-07`, `ASE-08` (candidate, not yet merged)
+**Fixture:** `lifecycle-agent-side-events` / `ASE-05`, `ASE-06`, `ASE-07`, `ASE-08` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md)
 
 Variants: E-009 (an approval delivered as 0-RTT-style early data, the same single-use and replay-window gap outside Kerberos).
 
@@ -1832,7 +1832,7 @@ Variants: E-024 (warm execution-environment reuse letting one invocation's backg
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-agent-side-events` / `ASE-09`, `ASE-10`, `ASE-11` (candidate, not yet merged)
+**Fixture:** `lifecycle-agent-side-events` / `ASE-09`, `ASE-10`, `ASE-11` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md)
 
 ---
 
@@ -1850,7 +1850,7 @@ Variants: E-024 (warm execution-environment reuse letting one invocation's backg
 
 **Status:** proposed.
 
-**Fixture:** `authority-epoch-rollback` / `AER-03`, `AER-04` (candidate, not yet merged)
+**Fixture:** `authority-epoch-rollback` / `AER-03`, `AER-04` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/authority-epoch-rollback/README.md)
 
 ---
 
@@ -1868,7 +1868,7 @@ Variants: E-024 (warm execution-environment reuse letting one invocation's backg
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-agent-side-events` / `ASE-12`, `ASE-13` (candidate, not yet merged)
+**Fixture:** `lifecycle-agent-side-events` / `ASE-12`, `ASE-13` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md)
 
 Variants: E-026 (a self-replicated swarm modelled as coordinating peers rather than descendants under one root).
 
@@ -1888,7 +1888,7 @@ Variants: E-026 (a self-replicated swarm modelled as coordinating peers rather t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-agent-side-events` / `ASE-16`, `ASE-17`, `ASE-18`, `ASE-19`, `ASE-20` (candidate, not yet merged)
+**Fixture:** `lifecycle-agent-side-events` / `ASE-16`, `ASE-17`, `ASE-18`, `ASE-19`, `ASE-20` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md)
 
 ---
 
@@ -1908,7 +1908,7 @@ Variants: E-026 (a self-replicated swarm modelled as coordinating peers rather t
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-agent-side-events` / `ASE-14`, `ASE-15` (candidate, not yet merged)
+**Fixture:** `lifecycle-agent-side-events` / `ASE-14`, `ASE-15` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-agent-side-events/README.md)
 
 ---
 
@@ -1926,7 +1926,7 @@ Variants: E-026 (a self-replicated swarm modelled as coordinating peers rather t
 
 **Status:** proposed.
 
-**Fixture:** `capability-binding-drift` / `CBD-02`, `CBD-03` (candidate, not yet merged)
+**Fixture:** `capability-binding-drift` / `CBD-02`, `CBD-03` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/capability-binding-drift/README.md)
 
 Variants: E-003 (deprecation notice windows that differ by model tier, so one countdown assumption fails, rather than the capability jump itself), E-005 (a mutable image tag changing the agent runtime with no logged authority-relevant event, rather than a provider-side capability update).
 
@@ -1948,7 +1948,7 @@ Variants: E-003 (deprecation notice windows that differ by model tier, so one co
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-006-a`, `LC-F-006-b`, `LC-F-006-c`, `LC-F-006-d-inverse-check` (candidate, not yet merged)
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-006-a`, `LC-F-006-b`, `LC-F-006-c`, `LC-F-006-d-inverse-check` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md)
 
 Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not a missed scheduled publish), LC-F-004 (identity-provider outage blocks new credential issuance, doesn't touch already-valid chains' revocation freshness), LC-F-005 (load-induced resolver timeouts under legitimate traffic, not a missed publish cycle), LC-F-012 (verifier process itself crashes fleet-wide from an unrelated scheduler bug, not a stale list), LC-F-015 (resolver answer's own timestamp is in the future relative to the verifier, not simply overdue), LC-F-019 (gateway is totally isolated from every authority source at once, not just one stale list).
 
@@ -1968,7 +1968,7 @@ Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-016-a`, `LC-F-016-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-016-a`, `LC-F-016-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md)
 
 ---
 
@@ -1986,7 +1986,7 @@ Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-017-a`, `LC-F-017-b`, `LC-F-017-c`, `LC-F-017-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-017-a`, `LC-F-017-b`, `LC-F-017-c`, `LC-F-017-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md)
 
 ---
 
@@ -2004,7 +2004,7 @@ Variants: LC-F-001 (unreachable live per-request OCSP-style call timing out, not
 
 **Status:** proposed.
 
-**Fixture:** `conflicting-status-sources` / `CSS-06`, `CSS-13`, `CSS-14` (candidate, not yet merged)
+**Fixture:** `conflicting-status-sources` / `CSS-06`, `CSS-13`, `CSS-14` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/conflicting-status-sources/README.md)
 
 Variants: LC-F-020 (staleness comes from an added CDN edge-cache layer in front of the gateway, not from the authority store's own cross-region replication), LC-F-023 (gateways disagree over which policy version is loaded during a rolling config rollout, not over replication lag of authority-state data).
 
@@ -2024,7 +2024,7 @@ Variants: LC-F-020 (staleness comes from an added CDN edge-cache layer in front 
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-022-a`, `LC-F-022-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-022-a`, `LC-F-022-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md)
 
 ---
 
@@ -2042,7 +2042,7 @@ Variants: LC-F-020 (staleness comes from an added CDN edge-cache layer in front 
 
 **Status:** proposed.
 
-**Fixture:** `authority-epoch-rollback` / `AER-07`, `AER-08`, `AER-09`, `AER-10` (candidate, not yet merged)
+**Fixture:** `authority-epoch-rollback` / `AER-07`, `AER-08`, `AER-09`, `AER-10` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/authority-epoch-rollback/README.md)
 
 Variants: LC-F-025 (a specific documented bug in a lock service's own lease-recheck logic that grants a lock without validating the existing lease, rather than the general GC-pause pattern the fencing-token fix addresses).
 
@@ -2062,7 +2062,7 @@ Variants: LC-F-025 (a specific documented bug in a lock service's own lease-rech
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-026-a`, `LC-F-026-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-026-a`, `LC-F-026-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md)
 
 ---
 
@@ -2080,7 +2080,7 @@ Variants: LC-F-025 (a specific documented bug in a lock service's own lease-rech
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-027-a`, `LC-F-027-b` (candidate, not yet merged)
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-027-a`, `LC-F-027-b` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md)
 
 Variants: LC-F-029 (some downstream consumers never receive a revocation notification at all during a fan-out failover, rather than merely receiving it several minutes late).
 
@@ -2102,7 +2102,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-evidence-and-record` / `LC-G-005-a`, `LC-G-005-b`, `LC-G-005-c`, `LC-G-005-d`, `LC-G-005-e`, `LC-G-005-f` (candidate, not yet merged)
+**Fixture:** `lifecycle-evidence-and-record` / `LC-G-005-a`, `LC-G-005-b`, `LC-G-005-c`, `LC-G-005-d`, `LC-G-005-e`, `LC-G-005-f` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-evidence-and-record/README.md)
 
 ---
 
@@ -2120,7 +2120,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-evidence-and-record` / `LC-G-006-a`, `LC-G-006-b`, `LC-G-006-c`, `LC-G-006-d`, `LC-G-006-e`, `LC-G-006-f` (candidate, not yet merged)
+**Fixture:** `lifecycle-evidence-and-record` / `LC-G-006-a`, `LC-G-006-b`, `LC-G-006-c`, `LC-G-006-d`, `LC-G-006-e`, `LC-G-006-f` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-evidence-and-record/README.md)
 
 ---
 
@@ -2140,7 +2140,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-01`, `IRR-02`, `IRR-03`, `IRR-04`, `IRR-13` (candidate, not yet merged)
+**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-01`, `IRR-02`, `IRR-03`, `IRR-04`, `IRR-13` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-identifier-reuse-and-rename/README.md)
 
 ---
 
@@ -2158,7 +2158,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-05`, `IRR-06`, `IRR-07`, `IRR-08` (candidate, not yet merged)
+**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-05`, `IRR-06`, `IRR-07`, `IRR-08` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-identifier-reuse-and-rename/README.md)
 
 ---
 
@@ -2176,7 +2176,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-09`, `IRR-10`, `IRR-11`, `IRR-12` (candidate, not yet merged)
+**Fixture:** `lifecycle-identifier-reuse-and-rename` / `IRR-09`, `IRR-10`, `IRR-11`, `IRR-12` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-identifier-reuse-and-rename/README.md)
 
 ---
 
@@ -2196,7 +2196,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-policy-change` / `PC-01`, `PC-02`, `PC-03`, `PC-04`, `PC-05` (candidate, not yet merged)
+**Fixture:** `lifecycle-policy-change` / `PC-01`, `PC-02`, `PC-03`, `PC-04`, `PC-05` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-policy-change/README.md)
 
 ---
 
@@ -2214,7 +2214,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-policy-change` / `PC-06`, `PC-07`, `PC-08`, `PC-09` (candidate, not yet merged)
+**Fixture:** `lifecycle-policy-change` / `PC-06`, `PC-07`, `PC-08`, `PC-09` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-policy-change/README.md)
 
 ---
 
@@ -2232,7 +2232,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-policy-change` / `PC-10`, `PC-11`, `PC-12`, `PC-13` (candidate, not yet merged)
+**Fixture:** `lifecycle-policy-change` / `PC-10`, `PC-11`, `PC-12`, `PC-13` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-policy-change/README.md)
 
 ---
 
@@ -2252,7 +2252,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-007-a-reached-its-declared-end`, `LC-I-007-b-ended-early-for-cause`, `LC-I-007-c-later-expiry-does-not-rewrite-the-earlier-record`, `LC-I-007-d-revocation-claim-without-lifecycle-standing`, `LC-I-007-e-inside-its-declared-window` (candidate, not yet merged)
+**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-007-a-reached-its-declared-end`, `LC-I-007-b-ended-early-for-cause`, `LC-I-007-c-later-expiry-does-not-rewrite-the-earlier-record`, `LC-I-007-d-revocation-claim-without-lifecycle-standing`, `LC-I-007-e-inside-its-declared-window` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-expiry-and-renewal/README.md)
 
 ---
 
@@ -2270,7 +2270,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-008-a-renewal-is-a-new-artifact`, `LC-I-008-b-superseded-artifact-runs-to-its-own-end`, `LC-I-008-c-evidence-keyed-to-the-superseded-artifact`, `LC-I-008-d-extension-in-place-does-not-bind`, `LC-I-008-e-renewal-widens-beyond-its-parent` (candidate, not yet merged)
+**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-008-a-renewal-is-a-new-artifact`, `LC-I-008-b-superseded-artifact-runs-to-its-own-end`, `LC-I-008-c-evidence-keyed-to-the-superseded-artifact`, `LC-I-008-d-extension-in-place-does-not-bind`, `LC-I-008-e-renewal-widens-beyond-its-parent` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-expiry-and-renewal/README.md)
 
 ---
 
@@ -2288,7 +2288,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-009-a-inside-the-recorded-caretaking-scope`, `LC-I-009-b-outside-the-recorded-caretaking-scope`, `LC-I-009-c-child-extends-past-the-interim-grant`, `LC-I-009-d-extension-record-is-not-a-fresh-grant`, `LC-I-009-e-self-extension-by-the-interim-holder` (candidate, not yet merged)
+**Fixture:** `lifecycle-expiry-and-renewal` / `LC-I-009-a-inside-the-recorded-caretaking-scope`, `LC-I-009-b-outside-the-recorded-caretaking-scope`, `LC-I-009-c-child-extends-past-the-interim-grant`, `LC-I-009-d-extension-record-is-not-a-fresh-grant`, `LC-I-009-e-self-extension-by-the-interim-holder` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-expiry-and-renewal/README.md)
 
 ---
 
@@ -2308,7 +2308,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-010-a`, `LC-I-010-b`, `LC-I-010-c`, `LC-I-010-d`, `LC-I-010-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-010-a`, `LC-I-010-b`, `LC-I-010-c`, `LC-I-010-d`, `LC-I-010-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-shared-identity-with-no-accountable-principal/README.md)
 
 ---
 
@@ -2326,7 +2326,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-011-a`, `LC-I-011-b`, `LC-I-011-c`, `LC-I-011-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-011-a`, `LC-I-011-b`, `LC-I-011-c`, `LC-I-011-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-shared-identity-with-no-accountable-principal/README.md)
 
 ---
 
@@ -2344,7 +2344,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-012-a`, `LC-I-012-b`, `LC-I-012-c` (candidate, not yet merged)
+**Fixture:** `lifecycle-shared-identity-with-no-accountable-principal` / `LC-I-012-a`, `LC-I-012-b`, `LC-I-012-c` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-shared-identity-with-no-accountable-principal/README.md)
 
 ---
 
@@ -2404,7 +2404,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `conflicting-status-sources` / `CSS-04-fresh-conflict-denies-with-conflict-reason`, `CSS-05-stale-revoked-against-fresh-active-denies`, `CSS-08-no-usable-answer-not-established` (candidate, not yet merged)
+**Fixture:** `conflicting-status-sources` / `CSS-04-fresh-conflict-denies-with-conflict-reason`, `CSS-05-stale-revoked-against-fresh-active-denies`, `CSS-08-no-usable-answer-not-established` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/conflicting-status-sources/README.md)
 
 ---
 
@@ -2422,7 +2422,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-organization-events` / `LC-B-004-a`, `LC-B-004-b`, `LC-B-004-c`, `LC-B-004-d`, `LC-B-004-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-organization-events` / `LC-B-004-a`, `LC-B-004-b`, `LC-B-004-c`, `LC-B-004-d`, `LC-B-004-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md)
 
 ---
 
@@ -2440,7 +2440,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-organization-events` / `LC-B-030-a`, `LC-B-030-b`, `LC-B-030-c`, `LC-B-030-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-organization-events` / `LC-B-030-a`, `LC-B-030-b`, `LC-B-030-c`, `LC-B-030-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-organization-events/README.md)
 
 ---
 
@@ -2460,7 +2460,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-034-a-suspension-lifted-before-fire`, `LC-E-034-b-suspension-still-active-at-fire`, `LC-E-034-c-revoked-between-queue-and-fire`, `LC-E-034-d-suspension-source-silent-at-fire-time` (candidate, not yet merged)
+**Fixture:** `lifecycle-time-and-scheduling` / `LC-E-034-a-suspension-lifted-before-fire`, `LC-E-034-b-suspension-still-active-at-fire`, `LC-E-034-c-revoked-between-queue-and-fire`, `LC-E-034-d-suspension-source-silent-at-fire-time` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-time-and-scheduling/README.md)
 
 ---
 
@@ -2480,7 +2480,7 @@ Variants: LC-F-029 (some downstream consumers never receive a revocation notific
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-credential-events` / `LC-F-035-a-revocation-not-yet-effective-for-this-credential-class`, `LC-F-035-b-revocation-effective-where-status-is-looked-up` (candidate, not yet merged)
+**Fixture:** `lifecycle-credential-events` / `LC-F-035-a-revocation-not-yet-effective-for-this-credential-class`, `LC-F-035-b-revocation-effective-where-status-is-looked-up` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-credential-events/README.md)
 
 Variants: LC-F-034 (ambiguity is about how far a revocation cascades across derived tokens once cascading is possible, not about whether the base credential format can be revoked early at all).
 
@@ -2502,7 +2502,7 @@ Variants: LC-F-034 (ambiguity is about how far a revocation cascades across deri
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-009-a`, `LC-F-009-b`, `LC-F-009-c`, `LC-F-009-d`, `LC-F-009-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-009-a`, `LC-F-009-b`, `LC-F-009-c`, `LC-F-009-d`, `LC-F-009-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md)
 
 Variants: D-012 (the scope of a past disclosure revised upward long afterwards, reaching the same correct-the-record question from the claim side rather than the revocation side).
 
@@ -2522,7 +2522,7 @@ Variants: D-012 (the scope of a past disclosure revised upward long afterwards, 
 
 **Status:** proposed.
 
-**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-014-a`, `LC-F-014-b`, `LC-F-014-c`, `LC-F-014-d`, `LC-F-014-e` (candidate, not yet merged)
+**Fixture:** `lifecycle-infrastructure-failure` / `LC-F-014-a`, `LC-F-014-b`, `LC-F-014-c`, `LC-F-014-d`, `LC-F-014-e` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-infrastructure-failure/README.md)
 
 ---
 
@@ -2548,6 +2548,6 @@ Not yet verified. Each one carries a "Known issue" note saying what is missing.
 
 **Status:** candidate.
 
-**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-009-a`, `LC-H-009-b`, `LC-H-009-c`, `LC-H-009-d` (candidate, not yet merged)
+**Fixture:** `lifecycle-subdelegation-edges` / `LC-H-009-a`, `LC-H-009-b`, `LC-H-009-c`, `LC-H-009-d` (merged_candidate, https://github.com/Agent-Authority-Conformance/aps-conformance-suite/blob/a3f60116726ca81edf6021d51206818746d52cce/fixtures/lifecycle-subdelegation-edges/README.md)
 
 ---
