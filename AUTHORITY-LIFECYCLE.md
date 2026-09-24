@@ -1,6 +1,6 @@
 # Authority Lifecycle for Long-Running AI Agents
 
-Version 0.1.0-draft. Part of the Agent Passport System work. Apache-2.0.
+Version 0.1.1-draft. Part of the Agent Passport System work. Apache-2.0.
 
 ## Scope
 
@@ -19,16 +19,78 @@ Statuses combine, for example specified and tested, or specified, not yet tested
 
 ## Lifecycle objects are separate
 
-These are separate records with separate lifecycle events. Most mistakes in this area come from treating two of them as one.
+Authority, as used here, is the bounded set of actions an agent may perform on behalf of a principal under currently valid grants and constraints.
 
-- **Agent identity.** Says this is still agent X.
-- **Principal binding.** Says which principal an agent acts for.
-- **Delegated authority.** Says X may do Y because principal Z granted it, through a specific chain.
-- **Signing key.** The key an identity signs with at a given time.
-- **Approval or authorization decision.** Says an action was allowed at the moment it was evaluated.
-- **Suspension state.** Pauses the use of authority without ending it.
-- **Revocation state.** Ends a specific authority artifact permanently.
-- **Execution.** The external effect that actually happened.
+Authority is not one record or one status flag. It depends on parties, authority artifacts, lifecycle states, action state and what a verifier can establish about them. These can change independently. A transition in one does not imply a transition in another unless the applicable authority model binds them. A common mistake in this area is treating two of them as one.
+
+Not every concept below has to be a separate protocol object.
+
+### Parties and standing
+
+- **Agent identity.** Says which agent is acting. Identity continuity does not establish authority continuity.
+- **Principal.** The person, office, organization or other body on whose behalf authority exists.
+- **Issuer.** Whoever issues or signs an authority artifact. The issuer and the principal can be different.
+- **Issuer standing.** Why the issuer was allowed to create, narrow, suspend, revoke or replace authority for the principal. A valid signature establishes who signed. It does not by itself establish standing.
+- **Principal binding.** Says which principal an agent acts for. It can exist before any grant and outlive one, for example an agent registered to an organization between grants.
+- **Sponsor or responsible owner.** Who is responsible for an agent's continued operation, where a system has that role. Changing a sponsor does not by itself transfer or replace existing authority.
+
+### Authority and dependencies
+
+- **Delegated authority.** Says X may do Y because principal Z granted it, under which constraints, for which targets and for what period, through a specific chain.
+- **Authority path and dependency.** Which other authority a grant currently depends on. Historical provenance and current dependency are not necessarily the same thing.
+- **Presented credential or session.** A session or derived token used to exercise authority in a particular request. Ending a grant does not necessarily invalidate every session or derived token already issued, and ending a session does not by itself end the grant.
+- **Activation condition.** When already issued authority becomes exercisable. A grant can be validly issued and still wait on a date or a recorded event.
+- **Target binding.** Which resource, counterparty or object the authority applies to. Continuity of a name does not by itself establish continuity of the thing named.
+
+### Authority lifecycle state
+
+- **Issuance.** The event that creates an authority artifact. Whether issuance was valid depends on the issuer's standing at that time.
+- **Suspension.** Pauses or narrows the use of authority without permanently ending it.
+- **Expiry or exhaustion.** Ends authority because a declared time, use count, budget, purpose or other bound has been reached. Expiry is not revocation.
+- **Revocation.** Permanently ends a named authority artifact. A reversible pause is suspension, not revocation.
+- **External restriction.** A block from outside the grant chain, such as a sanction, a court order or a legal hold. It can stop some effects while the grant itself stays valid.
+- **Authority epoch.** Where a system uses generations, separates current authority from stale authority surviving in sessions, queues, replicas, snapshots or restored state.
+
+### Decisions and effects
+
+- **Approval.** A principal or approver allows a proposed action. It is an input to authorization, with its own scope, expiry and use count, and it can be withdrawn before dispatch.
+- **Authorization decision.** The record an enforcement point makes that an action was allowed or denied, against the authority, policy and inputs it evaluated.
+- **Invocation.** The exact action submitted for execution.
+- **Execution.** The attempt to carry out that invocation.
+- **Effect.** The externally observable result, if any.
+- **In-flight state.** Where an action is between authorization and a known outcome. Authority can change inside that interval.
+
+### Verification and evidence
+
+- **Signing key.** The key an identity signs with at a given time. Key lifecycle and authority lifecycle are separate.
+- **Verifier trust policy.** Which issuers, roots, status sources and rules a verifier accepts. A verifier can stop trusting an issuer without anything being revoked.
+- **Status observation.** What authority state a verifier could establish, from which source, at what time and with what freshness. Current authority and observed authority can differ.
+- **Notice.** That a particular party or enforcement point learned of a transition at a particular time. Recording a transition and observing it are different events.
+- **Evidence.** Records a decision, transition, invocation, execution or effect. Ending authority does not by itself erase or invalidate evidence of earlier events.
+- **Coverage and completeness.** What set or interval the available evidence covers. Showing that individual records are authentic is weaker than establishing that all relevant events were observed.
+- **Accountability record.** Who a system identifies as responsible for an agent or action. It does not by itself establish legal liability.
+
+Human agency law has related distinctions between actual authority, notice and apparent authority. Those doctrines are a useful source of cases for this work. This document does not assume they apply to AI agents.
+
+Status. Agent identity, principal binding, delegated authority, signing key, approval, suspension, revocation and execution carry over from 0.1.0-draft. The grouping and every other entry are **proposed** in 0.1.1-draft. No public case tests them yet.
+
+### What changes when a person leaves
+
+A person's departure is not itself a revocation. It is an external event, and its effect on authority depends on the authority relationship involved and the rules that govern it.
+
+A person can be the principal of a grant. A person can instead be an issuer acting for an organization or office, with their own standing to issue coming from another authority relationship. These cases are not interchangeable.
+
+Two questions stay separate. First, was the grant validly issued? That depends in part on whether the issuer had standing when it was created. Second, what does the grant continue to depend on? A grant can stay dependent on an authority path that later ends, or the governing authority model can provide that a validly issued organizational grant continues after the individual issuer leaves.
+
+L1 is unchanged. If an authority artifact the grant currently depends on is revoked, the dependent authority is invalid. Personnel changes do not silently remove a dependency, re-parent authority or create replacement authority.
+
+Some organizational instruments say explicitly that authority delegated from an organizational position continues after the delegator leaves that position, until someone then empowered rescinds or modifies it. One example is a set of resolutions Lyondell Chemical filed with the SEC in 2010 ([exhibit](https://www.sec.gov/Archives/edgar/data/0000842635/000119312510084311/dex99t3b3.htm)). Other authority models end, suspend or require review of those grants. The departure alone does not choose between them.
+
+Where the verification result depends on whether authority was personal, organizational or dependent on another authority path, the supporting evidence has to distinguish the principal, the issuer and the relevant dependency. If it cannot, continuation of authority has not been established.
+
+Office vacancy and succession remain open. The model does not yet define whether office-based authority continues, suspends or needs reaffirmation when no current office holder can exercise or revoke it, or how to treat long-lived grants an issuer signs just before leaving.
+
+Status **proposed**. No public case tests these distinctions yet.
 
 ## Invariants
 
